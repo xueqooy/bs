@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TCPeriodSelectionView">
+            <connections>
+                <outlet property="explainLabel" destination="aou-P2-jvU" id="uaX-0Y-9LZ"/>
+                <outlet property="stackView" destination="zGo-9O-YTn" id="AYs-Tf-OMn"/>
+                <outlet property="titleLabel" destination="DsR-9S-0c6" id="qLV-CA-r7x"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="471" height="406"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择你的学习阶段" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DsR-9S-0c6">
+                    <rect key="frame" x="138" y="21" width="195" height="29"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="随时可以更改" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aou-P2-jvU">
+                    <rect key="frame" x="192.5" y="60" width="86" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zGo-9O-YTn">
+                    <rect key="frame" x="15" y="97" width="441" height="289"/>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="zGo-9O-YTn" firstAttribute="top" secondItem="aou-P2-jvU" secondAttribute="bottom" constant="20" id="9OR-CG-pAN">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
+                <constraint firstItem="aou-P2-jvU" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="M5f-9V-576"/>
+                <constraint firstAttribute="bottom" secondItem="zGo-9O-YTn" secondAttribute="bottom" constant="20" id="OoL-T1-fGd">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
+                <constraint firstAttribute="trailing" secondItem="zGo-9O-YTn" secondAttribute="trailing" constant="15" id="SUF-sY-gNf">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
+                <constraint firstItem="aou-P2-jvU" firstAttribute="top" secondItem="DsR-9S-0c6" secondAttribute="bottom" constant="10" id="V3z-0e-rEa">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
+                <constraint firstItem="DsR-9S-0c6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="21" id="hNU-cd-ht3">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
+                <constraint firstItem="DsR-9S-0c6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vF0-Au-SQM"/>
+                <constraint firstItem="zGo-9O-YTn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="wXX-vY-eDM">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-287.68115942028987" y="3.3482142857142856"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FETermsAlertView">
+            <connections>
+                <outlet property="agreeButton" destination="IGQ-se-B5Q" id="i9J-fL-23x"/>
+                <outlet property="disagreeButton" destination="bnE-lw-fxC" id="0dc-BZ-Ism"/>
+                <outlet property="secretButton" destination="CLM-6X-MEr" id="Hbe-et-eG5"/>
+                <outlet property="serviceButton" destination="9gN-Op-dqm" id="hMI-U4-sVA"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="537" height="341"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温馨提示" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHK-I2-7t9">
+                    <rect key="frame" x="231.5" y="17" width="74" height="22"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <color key="textColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    感谢您使用心知鹿！我们非常重视您的个人    " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgo-gr-OVx">
+                    <rect key="frame" x="123.5" y="56" width="290" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="Nmn-c7-hqj">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                        <constraint firstAttribute="width" constant="290" id="hIz-OX-k01">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="信息和隐私保护，为了更好地保障您的个人权    " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fgy-C7-vNh">
+                    <rect key="frame" x="123.5" y="78" width="290" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="2sn-KA-kum">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                        <constraint firstAttribute="width" constant="290" id="coV-0D-omI">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="益，在您使用我们的产品前，请您认真阅读" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USA-hc-h8e">
+                    <rect key="frame" x="123.5" y="100" width="290" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="OPZ-mc-eBG">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                        <constraint firstAttribute="width" constant="290" id="W66-gn-kRq">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="的全部内容，同" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oB-Pz-BlU">
+                    <rect key="frame" x="309.5" y="122" width="104" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="0Gh-kL-rcj">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                        <constraint firstAttribute="width" constant="104" id="s2U-zC-ecD">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLM-6X-MEr">
+                    <rect key="frame" x="226.5" y="115" width="86" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="《隐私政策》">
+                        <color key="titleColor" red="0.98823529409999999" green="0.4039215686" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonClickAction:" destination="-1" eventType="touchUpInside" id="XRl-yb-BF8"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="和" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ysz-Rz-Lo6">
+                    <rect key="frame" x="211.5" y="122" width="15" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="R3k-BM-TSf">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                        <constraint firstAttribute="width" constant="15" id="k6R-WA-JQL">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="意并接受全部条款后开始使用我们的产品和服  " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R22-hw-uB0">
+                    <rect key="frame" x="123.5" y="144" width="290" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="4mk-6E-gaP">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                        <constraint firstAttribute="width" constant="290" id="rDP-Pg-1BW">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="务。我们会严格按照政策内容使用和保护您的" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRi-5R-FW1">
+                    <rect key="frame" x="123.5" y="166" width="290" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="P8A-cF-x88">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                        <constraint firstAttribute="width" constant="290" id="hjj-5e-0O5">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="个人信息，感谢您的信任。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6j-S5-7cI">
+                    <rect key="frame" x="123.5" y="188" width="290" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="6gL-Mz-4lp">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                        <constraint firstAttribute="width" constant="290" id="OEM-eZ-VYV">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnE-lw-fxC">
+                    <rect key="frame" x="0.0" y="231.5" width="268.5" height="109.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="不同意">
+                        <color key="titleColor" red="0.18823529411764706" green="0.19215686274509802" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonClickAction:" destination="-1" eventType="touchUpInside" id="zUI-rX-nJa"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fsE-P0-QbS">
+                    <rect key="frame" x="0.0" y="231" width="537" height="0.5"/>
+                    <color key="backgroundColor" red="0.92156862745098034" green="0.92941176470588238" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="WcL-yE-tPs">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGQ-se-B5Q">
+                    <rect key="frame" x="268.5" y="231" width="268.5" height="110"/>
+                    <color key="backgroundColor" red="0.98823529409999999" green="0.4039215686" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="同意">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonClickAction:" destination="-1" eventType="touchUpInside" id="LMl-13-8lD"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gN-Op-dqm">
+                    <rect key="frame" x="123" y="115" width="86" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="《服务协议》">
+                        <color key="titleColor" red="0.98823529409999999" green="0.4039215686" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonClickAction:" destination="-1" eventType="touchUpInside" id="dDm-3a-iD5"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="bnE-lw-fxC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0us-wm-zBB"/>
+                <constraint firstItem="R22-hw-uB0" firstAttribute="top" secondItem="5oB-Pz-BlU" secondAttribute="bottom" constant="7" id="1Xb-Y8-aAd">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
+                <constraint firstItem="Ysz-Rz-Lo6" firstAttribute="leading" secondItem="9gN-Op-dqm" secondAttribute="trailing" id="2aa-sg-Qqe">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
+                <constraint firstItem="a6j-S5-7cI" firstAttribute="centerX" secondItem="mRi-5R-FW1" secondAttribute="centerX" id="4VL-Sb-Hwb"/>
+                <constraint firstItem="IGQ-se-B5Q" firstAttribute="top" secondItem="fsE-P0-QbS" secondAttribute="bottom" constant="-0.5" id="83y-37-cld"/>
+                <constraint firstItem="xHK-I2-7t9" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ky8-tc-Wiv"/>
+                <constraint firstItem="Fgy-C7-vNh" firstAttribute="centerX" secondItem="tgo-gr-OVx" secondAttribute="centerX" id="NI8-uf-nZg"/>
+                <constraint firstItem="Fgy-C7-vNh" firstAttribute="top" secondItem="tgo-gr-OVx" secondAttribute="bottom" constant="7" id="Suv-hq-2qH">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
+                <constraint firstItem="fsE-P0-QbS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="TGo-Pt-KjP"/>
+                <constraint firstItem="tgo-gr-OVx" firstAttribute="top" secondItem="xHK-I2-7t9" secondAttribute="bottom" constant="17" id="TQM-7F-GR3">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
+                <constraint firstItem="USA-hc-h8e" firstAttribute="top" secondItem="Fgy-C7-vNh" secondAttribute="bottom" constant="7" id="U5A-gN-9qp">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
+                <constraint firstItem="9gN-Op-dqm" firstAttribute="centerY" secondItem="5oB-Pz-BlU" secondAttribute="centerY" id="XUp-Ox-HIa"/>
+                <constraint firstItem="bnE-lw-fxC" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:2" id="Y1D-55-srx"/>
+                <constraint firstItem="fsE-P0-QbS" firstAttribute="top" secondItem="a6j-S5-7cI" secondAttribute="bottom" constant="28" id="fM8-tH-NUC">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
+                <constraint firstItem="bnE-lw-fxC" firstAttribute="top" secondItem="fsE-P0-QbS" secondAttribute="bottom" id="gUS-Js-i9W">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
+                <constraint firstAttribute="trailing" secondItem="fsE-P0-QbS" secondAttribute="trailing" id="hdW-oH-w2V"/>
+                <constraint firstItem="a6j-S5-7cI" firstAttribute="top" secondItem="mRi-5R-FW1" secondAttribute="bottom" constant="7" id="jHQ-58-Lb5"/>
+                <constraint firstAttribute="bottom" secondItem="bnE-lw-fxC" secondAttribute="bottom" id="lYi-T5-txq"/>
+                <constraint firstItem="Ysz-Rz-Lo6" firstAttribute="centerY" secondItem="5oB-Pz-BlU" secondAttribute="centerY" id="odv-cA-wmA"/>
+                <constraint firstItem="mRi-5R-FW1" firstAttribute="top" secondItem="R22-hw-uB0" secondAttribute="bottom" constant="7" id="om2-wG-gjN">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
+                <constraint firstItem="USA-hc-h8e" firstAttribute="centerX" secondItem="Fgy-C7-vNh" secondAttribute="centerX" id="qlA-BB-Mjf"/>
+                <constraint firstItem="5oB-Pz-BlU" firstAttribute="top" secondItem="USA-hc-h8e" secondAttribute="bottom" constant="7" id="rai-1J-MFq">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
+                <constraint firstItem="CLM-6X-MEr" firstAttribute="leading" secondItem="Ysz-Rz-Lo6" secondAttribute="trailing" id="saA-dv-jeg"/>
+                <constraint firstItem="mRi-5R-FW1" firstAttribute="centerX" secondItem="R22-hw-uB0" secondAttribute="centerX" id="tD0-UI-hgN"/>
+                <constraint firstItem="R22-hw-uB0" firstAttribute="centerX" secondItem="USA-hc-h8e" secondAttribute="centerX" id="toA-kJ-6Bq"/>
+                <constraint firstItem="xHK-I2-7t9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="17" id="uTO-jU-Khx">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
+                <constraint firstAttribute="bottom" secondItem="IGQ-se-B5Q" secondAttribute="bottom" id="wdR-iw-RVQ"/>
+                <constraint firstItem="IGQ-se-B5Q" firstAttribute="leading" secondItem="bnE-lw-fxC" secondAttribute="trailing" id="x43-J7-iqE"/>
+                <constraint firstItem="tgo-gr-OVx" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xD4-in-dh8"/>
+                <constraint firstItem="CLM-6X-MEr" firstAttribute="centerY" secondItem="5oB-Pz-BlU" secondAttribute="centerY" id="xlM-9j-Jnw"/>
+                <constraint firstItem="5oB-Pz-BlU" firstAttribute="trailing" secondItem="Fgy-C7-vNh" secondAttribute="trailing" id="xmg-4A-LJ1"/>
+                <constraint firstItem="CLM-6X-MEr" firstAttribute="trailing" secondItem="5oB-Pz-BlU" secondAttribute="leading" constant="3" id="yln-3y-ER7"/>
+                <constraint firstItem="IGQ-se-B5Q" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:2" id="ztz-GB-10X"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="222" y="30"/>
+        </view>
+    </objects>
+</document>

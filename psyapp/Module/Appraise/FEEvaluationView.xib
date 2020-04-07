@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment version="2304" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FEEvaluationView">
+            <rect key="frame" x="0.0" y="0.0" width="368" height="349"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w98-RN-c5s" userLabel="Container">
+                    <rect key="frame" x="0.0" y="0.0" width="368" height="349"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="该测评结果与你对自己的认识结果相符吗?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPP-lN-Rn0">
+                            <rect key="frame" x="51.666666666666657" y="20" width="265" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击星星评分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aN3-ML-2Sr">
+                            <rect key="frame" x="144" y="57" width="80" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXx-pi-RMA">
+                            <rect key="frame" x="69.666666666666686" y="90" width="229" height="29"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAe-9z-cjC" userLabel="Button1">
+                                    <rect key="frame" x="0.0" y="0.0" width="30" height="29"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="30" id="C7B-de-Fcp">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </constraint>
+                                        <constraint firstAttribute="height" constant="29" id="RLA-08-UFx">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </constraint>
+                                    </constraints>
+                                    <state key="normal" image="star_inactive"/>
+                                    <connections>
+                                        <action selector="chooseStarAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="EUX-CG-DAM"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCm-JT-TAu" userLabel="Button2">
+                                    <rect key="frame" x="50" y="0.0" width="30" height="29"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="30" id="Doz-nZ-eww">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </constraint>
+                                        <constraint firstAttribute="height" constant="29" id="fKW-5b-kYt">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </constraint>
+                                    </constraints>
+                                    <state key="normal" image="star_inactive"/>
+                                    <connections>
+                                        <action selector="chooseStarAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="eIb-OW-XCf"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJJ-Hn-LXF" userLabel="Button3">
+                                    <rect key="frame" x="99.333333333333329" y="0.0" width="29.999999999999986" height="29"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="29" id="DT1-Z0-vmc">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </constraint>
+                                        <constraint firstAttribute="width" constant="30" id="WPX-NJ-ma1">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </constraint>
+                                    </constraints>
+                                    <state key="normal" image="star_inactive"/>
+                                    <connections>
+                                        <action selector="chooseStarAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="R9D-03-0M6"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkj-7g-rwW" userLabel="Button4">
+                                    <rect key="frame" x="149" y="0.0" width="30" height="29"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="30" id="IMi-cI-G8O">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </constraint>
+                                        <constraint firstAttribute="height" constant="29" id="hNR-cE-nri">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </constraint>
+                                    </constraints>
+                                    <state key="normal" image="star_inactive"/>
+                                    <connections>
+                                        <action selector="chooseStarAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="igZ-ou-eNb"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWE-te-lQF" userLabel="Button5">
+                                    <rect key="frame" x="199" y="0.0" width="30" height="29"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="30" id="BxL-ky-WWV">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </constraint>
+                                        <constraint firstAttribute="height" constant="29" id="Gls-t8-OzW">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </constraint>
+                                    </constraints>
+                                    <state key="normal" image="star_inactive"/>
+                                    <connections>
+                                        <action selector="chooseStarAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="8w9-iL-R69"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="oWE-te-lQF" firstAttribute="centerY" secondItem="oJJ-Hn-LXF" secondAttribute="centerY" id="5an-5y-ffv"/>
+                                <constraint firstItem="FAe-9z-cjC" firstAttribute="centerY" secondItem="oJJ-Hn-LXF" secondAttribute="centerY" id="FJI-60-xlX"/>
+                                <constraint firstItem="WCm-JT-TAu" firstAttribute="leading" secondItem="FAe-9z-cjC" secondAttribute="trailing" constant="20" id="Np9-bN-8uP">
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </constraint>
+                                <constraint firstItem="FAe-9z-cjC" firstAttribute="leading" secondItem="eXx-pi-RMA" secondAttribute="leading" id="bMb-ap-IoE"/>
+                                <constraint firstAttribute="trailing" secondItem="oWE-te-lQF" secondAttribute="trailing" id="cMw-ct-ulH"/>
+                                <constraint firstAttribute="height" constant="29" id="cmg-WV-9Xb">
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </constraint>
+                                <constraint firstItem="oJJ-Hn-LXF" firstAttribute="centerY" secondItem="eXx-pi-RMA" secondAttribute="centerY" id="de6-5N-D9Z"/>
+                                <constraint firstAttribute="width" constant="229" id="e7o-rg-p72">
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </constraint>
+                                <constraint firstItem="WCm-JT-TAu" firstAttribute="centerY" secondItem="oJJ-Hn-LXF" secondAttribute="centerY" id="ixL-td-MWF"/>
+                                <constraint firstItem="zkj-7g-rwW" firstAttribute="centerY" secondItem="oJJ-Hn-LXF" secondAttribute="centerY" id="jPg-Sm-9ZC"/>
+                                <constraint firstItem="oJJ-Hn-LXF" firstAttribute="centerX" secondItem="eXx-pi-RMA" secondAttribute="centerX" id="kBV-0h-Ybx"/>
+                                <constraint firstItem="oWE-te-lQF" firstAttribute="leading" secondItem="zkj-7g-rwW" secondAttribute="trailing" constant="20" id="qg7-wO-7Yh">
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </constraint>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifC-Uc-8XW" customClass="TCCommonButton">
+                            <rect key="frame" x="134" y="289" width="100" height="40"/>
+                            <color key="backgroundColor" red="0.98823529409999999" green="0.4039215686" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="7ck-0G-dXO">
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </constraint>
+                                <constraint firstAttribute="height" constant="40" id="Mf1-7P-gfz">
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </constraint>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="完成">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="confirmAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="xLK-W9-75z"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="ifC-Uc-8XW" firstAttribute="centerX" secondItem="w98-RN-c5s" secondAttribute="centerX" id="17s-Kl-39L"/>
+                        <constraint firstItem="eXx-pi-RMA" firstAttribute="top" secondItem="w98-RN-c5s" secondAttribute="top" constant="90" id="1kv-EZ-CtW">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                        <constraint firstItem="aN3-ML-2Sr" firstAttribute="top" secondItem="UPP-lN-Rn0" secondAttribute="bottom" constant="20" id="T60-gs-k6N">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                        <constraint firstAttribute="bottom" secondItem="ifC-Uc-8XW" secondAttribute="bottom" constant="20" id="Y0l-kn-gUd">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                        <constraint firstItem="aN3-ML-2Sr" firstAttribute="centerX" secondItem="w98-RN-c5s" secondAttribute="centerX" id="aJu-7g-4XA"/>
+                        <constraint firstItem="UPP-lN-Rn0" firstAttribute="centerX" secondItem="w98-RN-c5s" secondAttribute="centerX" id="boo-3G-5cB"/>
+                        <constraint firstItem="eXx-pi-RMA" firstAttribute="centerX" secondItem="w98-RN-c5s" secondAttribute="centerX" id="hzf-Q5-5ac"/>
+                        <constraint firstItem="UPP-lN-Rn0" firstAttribute="top" secondItem="w98-RN-c5s" secondAttribute="top" constant="20" id="psl-Wf-2Db">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.92156862750000001" green="0.93333333330000001" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="w98-RN-c5s" secondAttribute="bottom" id="0h8-WD-sGB"/>
+                <constraint firstItem="w98-RN-c5s" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="2qp-HF-SbM"/>
+                <constraint firstAttribute="trailing" secondItem="w98-RN-c5s" secondAttribute="trailing" id="ZFt-iZ-D17"/>
+                <constraint firstItem="w98-RN-c5s" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sDf-tK-GTz"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="confirmButton" destination="ifC-Uc-8XW" id="2hk-rX-ggO"/>
+                <outlet property="container" destination="w98-RN-c5s" id="t9O-Rk-U5h"/>
+                <outlet property="explainLabel" destination="UPP-lN-Rn0" id="0fC-R3-RcK"/>
+                <outlet property="hintLabel" destination="aN3-ML-2Sr" id="SEk-Qe-1F9"/>
+                <outlet property="starsContainer" destination="eXx-pi-RMA" id="dQQ-pW-RAG"/>
+                <outletCollection property="starButtons" destination="FAe-9z-cjC" id="XRi-8n-3SA"/>
+                <outletCollection property="starButtons" destination="WCm-JT-TAu" id="Ug2-Hf-0pl"/>
+                <outletCollection property="starButtons" destination="oJJ-Hn-LXF" id="3x6-Or-qnI"/>
+                <outletCollection property="starButtons" destination="zkj-7g-rwW" id="kHJ-s4-X2m"/>
+                <outletCollection property="starButtons" destination="oWE-te-lQF" id="JOI-qP-dWa"/>
+            </connections>
+            <point key="canvasLocation" x="-223.18840579710147" y="68.885869565217391"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="star_inactive" width="28" height="27"/>
+    </resources>
+</document>

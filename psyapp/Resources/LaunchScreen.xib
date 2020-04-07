@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleAspectFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="295" height="506"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ikC-zc-TQ6">
+                    <rect key="frame" x="0.0" y="0.0" width="295" height="506"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slogan_logo_1" translatesAutoresizingMaskIntoConstraints="NO" id="veA-cl-53a">
+                            <rect key="frame" x="122" y="407" width="51" height="51"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="veA-cl-53a" secondAttribute="height" multiplier="1:1" id="wGl-EI-tRO"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="学生心理测评" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwd-Gm-dn7">
+                            <rect key="frame" x="104.5" y="471" width="86" height="17"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="veA-cl-53a" firstAttribute="width" secondItem="ikC-zc-TQ6" secondAttribute="width" multiplier="13:75" id="Aoz-3p-m4f"/>
+                        <constraint firstItem="veA-cl-53a" firstAttribute="centerX" secondItem="ikC-zc-TQ6" secondAttribute="centerX" id="HRS-MJ-SkN"/>
+                        <constraint firstItem="iwd-Gm-dn7" firstAttribute="top" secondItem="veA-cl-53a" secondAttribute="bottom" constant="13" id="esp-QJ-CW4"/>
+                        <constraint firstItem="iwd-Gm-dn7" firstAttribute="centerX" secondItem="ikC-zc-TQ6" secondAttribute="centerX" id="rzP-Bz-jWV"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <accessibility key="accessibilityConfiguration">
+                <accessibilityTraits key="traits" notEnabled="YES"/>
+            </accessibility>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ikC-zc-TQ6" secondAttribute="bottom" id="S32-gE-xss"/>
+                <constraint firstItem="ikC-zc-TQ6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="U0G-kC-oUI"/>
+                <constraint firstItem="FCd-B1-n1E" firstAttribute="bottom" secondItem="iwd-Gm-dn7" secondAttribute="bottom" constant="18" id="WyM-hw-jos"/>
+                <constraint firstItem="ikC-zc-TQ6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hHq-bN-kil"/>
+                <constraint firstAttribute="trailing" secondItem="ikC-zc-TQ6" secondAttribute="trailing" id="oGU-fz-b58"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="FCd-B1-n1E"/>
+            <point key="canvasLocation" x="-260.14492753623188" y="-131.25"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="slogan_logo_1" width="60" height="60"/>
+    </resources>
+</document>

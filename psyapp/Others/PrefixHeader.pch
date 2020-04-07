@@ -1,0 +1,25 @@
+//
+//  PrefixHeader.pch
+//  CheersgeniePlus
+//
+//  Created by xueqooy on 2019/7/15.
+//  Copyright © 2019 Cheersmind. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "TCAppTestGlobalMacros.h"
+#import "VendorHeader.h"
+#import "CustomHeader.h"
+#import "UtilsHeader.h"
+#import "SizeMacro.h"
+#import "PACommon.h"
+#import "HttpConfig.h"
+#import "ConstantConfig.h"
+#import "NotificationConfig.h"
+#import "FEThemeManager.h"
+#endif /* PrefixHeader_pch */
