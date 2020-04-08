@@ -12,7 +12,9 @@ target 'psyapp' do
   pod 'YTKKeyValueStore'
   pod 'LookinServer', :configurations => ['Debug']
   pod 'QMUIKit'
-    
+  pod 'YNPageViewController'
+  pod 'RATreeView', '~> 2.1.2'
+
   target 'psyappTests' do
     inherit! :search_paths
     # Pods for testing

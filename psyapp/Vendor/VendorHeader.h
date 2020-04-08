@@ -18,4 +18,5 @@
 #import "FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h"
 
 #import <AVOSCloud/AVOSCloud.h>
+#import "TCSystemFeedbackHelper.h"
 #endif /* VendorHeader_h */

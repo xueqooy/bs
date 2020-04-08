@@ -315,9 +315,11 @@ PODS:
     - QMUIKit/QMUICore
     - QMUIKit/QMUILog
   - QMUIKit/QMUIWeakObjectContainer (4.0.4)
+  - RATreeView (2.1.2)
   - SDWebImage (5.4.0):
     - SDWebImage/Core (= 5.4.0)
   - SDWebImage/Core (5.4.0)
+  - YNPageViewController (0.2.6)
   - YTKKeyValueStore (0.1.2):
     - FMDB (~> 2.0)
 
@@ -330,11 +332,13 @@ DEPENDENCIES:
   - MBProgressHUD
   - MJRefresh
   - QMUIKit
+  - RATreeView (~> 2.1.2)
   - SDWebImage
+  - YNPageViewController
   - YTKKeyValueStore
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - FLAnimatedImage
     - FMDB
@@ -346,6 +350,9 @@ SPEC REPOS:
     - QMUIKit
     - SDWebImage
     - YTKKeyValueStore
+  trunk:
+    - RATreeView
+    - YNPageViewController
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -357,9 +364,11 @@ SPEC CHECKSUMS:
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MJRefresh: eeda70fbf0ad277f3178cef1cd0c3532591d6237
   QMUIKit: 73899f707bdd51f44d16e10d11f224fb821fbe74
+  RATreeView: 380cde0090cfde21dc6ac29137f49d3b768fdd28
   SDWebImage: 5bf6aec6481ae2a062bdc59f9d6c1d1e552090e0
+  YNPageViewController: 33040d429adf0b415d4449ffeec848d8339934ea
   YTKKeyValueStore: 4d002941540dd5108fa23009b71e0f2f937f7a0f
 
-PODFILE CHECKSUM: 6b8b2b6bce5053d319633c6a04c6b55d6d03d7d4
+PODFILE CHECKSUM: e53b4f2b0c22abacb989710dfb3756304f2b3d99
 
-COCOAPODS: 1.7.4
+COCOAPODS: 1.9.1

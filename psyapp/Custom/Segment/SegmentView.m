@@ -36,7 +36,6 @@
 
 
 @implementation SegmentView
-#pragma mark - Life
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     self.headerHeight = STWidth(40);
@@ -44,7 +43,14 @@
     return self;
 }
 
-#pragma mark - Setter
+
+- (UIScrollView *)scrollView {
+    return self.contentScrollView;
+}
+
+- (UIScrollView *)headerScrollView {
+    return self.headerView.scrollView;
+}
 
 - (void)setTitleArray:(NSArray<NSString *> *)titleArray {
     if (titleArray.count != self.viewControllers.count) return;
@@ -70,6 +76,7 @@
     _headerView.moveLineHidden = _header.moveLineHidden;
     _headerView.customRightView = _header.customRightView;
     _headerView.customLeftView = _header.customLeftView;
+    _headerView.bottomSeparatorHeight = _header.bottomSeparatorHeight;
     [self addSubview:self.headerView];
     [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_equalTo(0);
@@ -152,6 +159,10 @@
     self.currentViewController = viewController;
     
     [self.loadedViewControllerIndexSet addIndex:idx];
+    
+    if (_didSwitchToViewController ){
+        _didSwitchToViewController(self.currentViewController);
+    }
 }
 
 - (void)setSelectedIndex:(NSUInteger)selectedIndex {
@@ -160,21 +171,50 @@
 }
 
 #pragma mark - UIScrollViewDelegate
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-
-}
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-
+    if (decelerate) {
+        scrollView.scrollEnabled = NO;
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offsetX = scrollView.contentOffset.x;
+    
+    NSInteger selectedIndex = _headerView.selectedIndex;
+    
+    CGFloat floatIdx = offsetX / mScreenWidth;
+//    NSInteger roundIdx = round(floatIdx);
+    NSInteger floorIdx = floor(floatIdx);
+    NSInteger ceilIdx = ceil(floatIdx);
+
+    CGFloat progress;
+    NSInteger targetIndex;
+    
+    if (ceilIdx > selectedIndex) {
+        targetIndex = ceilIdx;
+        progress = floatIdx - selectedIndex;
+    } else {
+        targetIndex = floorIdx;
+        progress = 1 - floatIdx + floorIdx;
+    }
+    
+    //滚动过快
+    if (labs(targetIndex - selectedIndex) > 1) {
+        self.headerView.selectedIndex = targetIndex > selectedIndex? selectedIndex + 1 : selectedIndex - 1;
+    }
+    
+    NSLog(@"%f", progress);
+     [self.headerView setAppearanceSelectedIndex:targetIndex progress:progress];
+    
     
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    NSUInteger selectedIndex = (NSUInteger)self.contentScrollView.contentOffset.x / kWidth;
+    NSUInteger selectedIndex = (NSUInteger)self.contentScrollView.contentOffset.x / mScreenWidth;
     [self.headerView changeItemWithTargetIndex:selectedIndex];
+    scrollView.scrollEnabled = YES;
+
 }
 
 @end

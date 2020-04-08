@@ -10,6 +10,9 @@
 #import "SegmentHeaderView.h"
 
 @interface SegmentView : UIView
+@property (nonatomic, readonly) UIScrollView *scrollView;
+@property (nonatomic, readonly) UIScrollView *headerScrollView;
+
 @property (nonatomic, weak) UIViewController *rootViewController;
 @property (nonatomic, strong) NSArray <UIViewController *>* viewControllers;
 @property (nonatomic, weak)  UIViewController *currentViewController;
@@ -24,7 +27,7 @@
 - (void)setViewControllers:(NSArray <UIViewController *>*)viewControllers  parentViewController:(UIViewController *)parentController titles:(NSArray <NSString *>*)titles ;
 
 @property (nonatomic, copy) void (^onViewControllerSWitch)(NSInteger idx);
-
+@property (nonatomic, copy) void (^didSwitchToViewController)(UIViewController *viewController);
 
 @end
 

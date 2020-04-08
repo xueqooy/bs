@@ -10,7 +10,39 @@
 #import "FEEqualSpaceFlowLayoutEvolve.h"
 #import "FECommonAlertView.h"
 
-@interface FESearchRecordView () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout >
+@interface FESearchRecordCollectionViewCell : UICollectionViewCell
+@property (nonatomic, copy) NSString *text;
+@end
+
+@implementation FESearchRecordCollectionViewCell {
+    UILabel *_label;
+}
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    self.layer.cornerRadius = 2;
+    self.backgroundColor = UIColor.fe_buttonBackgroundColorActive;
+
+    _label = [[UILabel alloc] init];
+    _label.font = [UIFont systemFontOfSize:14];
+    _label.textColor = UIColor.fe_auxiliaryTextColor;
+    _label.textAlignment = NSTextAlignmentCenter;
+    [self.contentView addSubview:_label];
+    [_label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.offset(0);
+    }];
+    
+    return self;
+}
+
+- (void)setText:(NSString *)text {
+    _text = text;
+    _label.text = _text;
+}
+
+
+@end
+
+@interface FESearchRecordView () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 //@property (nonatomic, strong) UIButton *trashButton;
@@ -20,16 +52,25 @@
 static NSString * const kSearchRecordKey = @"search_record";
 @implementation FESearchRecordView
 {
-    NSMutableArray *records;
+    NSMutableArray *_records;
 }
 #pragma mark - public
-- (instancetype)init {
+- (instancetype)initWithKey:(NSString *)key {
     self = [super init];
     if (self) {
+        self.key = key;
         self.maxCap = 20;
-//        records = @[@"测试", @"好棒我啊啊 啊啊啊", @"是打算打算打算打算打算打算打算的大时代大厦的啊的爱上大叔的撒 阿斯顿", @"das", @"1",@"dsadasdasdas", @"说的是当时的"].mutableCopy;
+//        _records = @[@"测试", @"好棒我啊啊 啊啊啊", @"是打算打算打算打算打算打算打算的大时代大厦的啊的爱上大叔的撒 阿斯顿", @"das", @"1",@"dsadasdasdas", @"说的是当时的"].mutableCopy;
+//        self.popularSearchTextArray = @[@"搜a你哦吗", @"是大多数", @"搭噶的阿", @"额但素健康的哈萨克觉得哈萨克剑辉的家啊是", @"大好时机看动画设计大奖就打算空间", @"das"];
         [self _loadLocalSearchRecords];
         [self addSubview:self.collectionView];
+        
+        
+        [self.collectionView addTapGestureWithBlock:^{
+            [mKeyWindow endEditing:YES];
+        }];
+        
+        self.collectionView.gestureRecognizers.lastObject.delegate = self;
     }
     return self;
 }
@@ -51,7 +92,7 @@ static NSString * const kSearchRecordKey = @"search_record";
 
 - (void)saveSearchRecord:(NSString *)aRecord {
     
-    NSMutableArray *data = (NSMutableArray *)[[NSUserDefaults standardUserDefaults] objectForKey:kSearchRecordKey];
+    NSMutableArray *data = (NSMutableArray *)[[NSUserDefaults standardUserDefaults] objectForKey:_key?_key : kSearchRecordKey];
     NSMutableArray *newRecords;
     if (data.count == 0) {
         newRecords = @[].mutableCopy;
@@ -72,17 +113,17 @@ static NSString * const kSearchRecordKey = @"search_record";
         }
     }
     //存档
-    [[NSUserDefaults standardUserDefaults] setObject:newRecords forKey:kSearchRecordKey];
+    [[NSUserDefaults standardUserDefaults] setObject:newRecords forKey:_key?_key : kSearchRecordKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self reloadRecords];
 }
 #pragma mark - private
 
 - (void)_loadLocalSearchRecords {
-    records = @[].mutableCopy;
-    NSArray *data = [[NSUserDefaults standardUserDefaults] objectForKey:kSearchRecordKey];
-    records = data.mutableCopy;
-    if (records.count != 0) {
+    _records = @[].mutableCopy;
+    NSArray *data = [[NSUserDefaults standardUserDefaults] objectForKey:_key?_key : kSearchRecordKey];
+    _records = data.mutableCopy;
+    if (_records.count != 0) {
         [self addSubview:self.collectionView];
     }
 }
@@ -103,7 +144,7 @@ static NSString * const kSearchRecordKey = @"search_record";
         _collectionView.bounces = NO;
         
         //注册
-        [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cellReuseIdentifier"];
+        [_collectionView registerClass:[FESearchRecordCollectionViewCell class] forCellWithReuseIdentifier:@"cellReuseIdentifier"];
         [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerViewReuseIdentifier"];
     }
     return _collectionView;
@@ -113,76 +154,86 @@ static NSString * const kSearchRecordKey = @"search_record";
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return records.count;
+    if (section == 0) {
+        return _records.count;
+    } else {
+        return self.popularSearchTextArray.count;
+    }
 }
 
 - ( UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellReuseIdentifier" forIndexPath:indexPath];
+    FESearchRecordCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellReuseIdentifier" forIndexPath:indexPath];
     
-    cell.layer.cornerRadius = 2;
-    cell.backgroundColor = UIColor.fe_buttonBackgroundColorActive;
-
-    UILabel *seekContentLabel = [[UILabel alloc] init];
-    seekContentLabel.font = [UIFont systemFontOfSize:14];
-    seekContentLabel.textColor = UIColor.fe_auxiliaryTextColor;
-    seekContentLabel.textAlignment = NSTextAlignmentCenter;
-    [cell addSubview:seekContentLabel];
-    [seekContentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(cell).offset(11);
-        make.centerY.equalTo(cell);
-        make.right.equalTo(cell).mas_offset(-11);
-    }];
-    seekContentLabel.tag = 2019;
-    
-    
-    UILabel *_seekContentLabel = [cell viewWithTag:2019];
-    _seekContentLabel.text = records[indexPath.item];
-    [_seekContentLabel sizeToFit];
     return cell;
 }
 
-
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    FESearchRecordCollectionViewCell *_cell = ((FESearchRecordCollectionViewCell *)cell);
+    if (indexPath.section == 0) {
+        _cell.text = _records[indexPath.item];
+    } else {
+        _cell.text = self.popularSearchTextArray[indexPath.item];
+    }
+}
 
 //设置头视图
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionReusableView *headerReusableView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerViewReuseIdentifier" forIndexPath:indexPath];
-    
+    [headerReusableView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     if(kind == UICollectionElementKindSectionHeader){
         UILabel *sectionLabel = [[UILabel alloc] init];
-        sectionLabel.tag = 2020;
-       
         [headerReusableView addSubview:sectionLabel];
-        [sectionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(headerReusableView).offset(15);
-            make.centerY.equalTo(headerReusableView);
-        }];
-        sectionLabel.textColor = UIColor.fe_mainTextColor;
-        sectionLabel.font = [UIFont systemFontOfSize:14];
-        UILabel *_sectionLabel = [headerReusableView viewWithTag:2020];
-        _sectionLabel.text =  @"历史记录";
+
+        sectionLabel.textColor = indexPath.section == 0?  UIColor.fe_mainTextColor : UIColor.fe_mainColor;
+        sectionLabel.font = STFontBold(14);
+        sectionLabel.text = indexPath.section == 0? @"历史记录" : @"大家都在搜";
         
-        UIButton *trashButton = [UIButton new];
-        trashButton.tag = 2021;
-        [trashButton setImage:records? [UIImage imageNamed:@"trash"]:nil forState:UIControlStateNormal];;
-        [headerReusableView addSubview:trashButton];
-        [trashButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(18, 18));
-            make.right.equalTo(headerReusableView).offset(-18);
-            make.centerY.equalTo(headerReusableView);
-        }];
-        
-        [trashButton addTarget:self action:@selector(deleteAllRecords)
-               forControlEvents:UIControlEventTouchUpInside];
+        if (indexPath.section == 0) {
+            [sectionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(headerReusableView).offset(STWidth(15));
+                make.centerY.equalTo(headerReusableView);
+            }];
+            
+            UIButton *trashButton = [UIButton new];
+            [trashButton setImage:_records? [UIImage imageNamed:@"trash"]:nil forState:UIControlStateNormal];;
+            [headerReusableView addSubview:trashButton];
+            [trashButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.size.mas_equalTo(STSize(18, 18));
+                make.right.equalTo(headerReusableView).offset(- STWidth(15));
+                make.centerY.equalTo(headerReusableView);
+            }];
+            
+            [trashButton addTarget:self action:@selector(deleteAllRecords)
+                   forControlEvents:UIControlEventTouchUpInside];
+        } else {
+            [sectionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(headerReusableView).offset(STWidth(40));
+                make.centerY.equalTo(headerReusableView);
+            }];
+            
+            UIImageView *imageView = UIImageView.new;
+            imageView.image = [UIImage imageNamed:@"search_hot"];
+            [headerReusableView addSubview:imageView];
+            [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.size.mas_equalTo(STSize(18, 18));
+                make.left.offset(STWidth(15));
+                make.centerY.offset(0);
+            }];
+        }
         
     }
-    headerReusableView.hidden = records.count?NO:YES;
+    if (indexPath.section == 0) {
+        headerReusableView.hidden = _records.count == 0;
+    } else {
+        headerReusableView.hidden = self.popularSearchTextArray.count == 0;
+    }
    
     return headerReusableView;
 }
@@ -192,7 +243,7 @@ static NSString * const kSearchRecordKey = @"search_record";
     alert.resultIndex = ^(NSInteger index) {
         if (index == 2) {
             NSMutableArray *emptyRecord = @[].mutableCopy;
-            [[NSUserDefaults standardUserDefaults] setObject:emptyRecord forKey:kSearchRecordKey];
+            [[NSUserDefaults standardUserDefaults] setObject:emptyRecord forKey:_key?_key : kSearchRecordKey];
             [[NSUserDefaults standardUserDefaults] synchronize];
             [self reloadRecords];
         }
@@ -201,13 +252,25 @@ static NSString * const kSearchRecordKey = @"search_record";
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    return CGSizeMake(_collectionView.frame.size.width, 50);
+    CGFloat height = 0;
+    if (section == 0) {
+        height = _records.count == 0 ? 0 : 50;
+        return CGSizeMake(_collectionView.frame.size.width, height);
+    } else {
+        height = self.popularSearchTextArray.count == 0 ? 0 : 50;
+        return CGSizeMake(_collectionView.frame.size.width, height);
+    }
 }
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *selectString = records[indexPath.item];
+    NSString *selectString ;
+    if (indexPath.section == 0) {
+        selectString = _records[indexPath.item];
+    } else {
+        selectString = self.popularSearchTextArray[indexPath.item];
+    }
     if (selectString) {
         if (_selectCompletionHandler) {
             _selectCompletionHandler(selectString);
@@ -217,7 +280,12 @@ static NSString * const kSearchRecordKey = @"search_record";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSString *content = records[indexPath.item];
+    NSString *content;
+    if (indexPath.section == 0) {
+        content = _records[indexPath.item];
+    } else {
+        content = self.popularSearchTextArray[indexPath.item];
+    }
     //计算字体宽度
     CGRect itemFrame = [content boundingRectWithSize:CGSizeMake(0, 20) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil];
     CGFloat width = itemFrame.size.width + 20;
@@ -227,6 +295,29 @@ static NSString * const kSearchRecordKey = @"search_record";
     }
     return CGSizeMake(width + 10,40);
 }
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if ([touch.view isDescendantOfView:self.collectionView] && touch.view != self.collectionView) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+@end
+
+
+@implementation FESearchRecordView (Popular)
+_Pragma("clang diagnostic push") _Pragma(ClangWarningConcat("-Wmismatched-parameter-types")) _Pragma(ClangWarningConcat("-Wmismatched-return-types"))
+static char kAssociatedObjectKey_popularSearchTextArray;
+- (void)setPopularSearchTextArray:(id)popularSearchTextArray {
+    [self reloadRecords];
+    objc_setAssociatedObject(self, &kAssociatedObjectKey_popularSearchTextArray, popularSearchTextArray, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (id)popularSearchTextArray {
+    return objc_getAssociatedObject(self, &kAssociatedObjectKey_popularSearchTextArray);
+}
+_Pragma("clang diagnostic pop")
 
 
 

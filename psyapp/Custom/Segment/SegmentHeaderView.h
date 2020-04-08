@@ -21,6 +21,8 @@ typedef NS_ENUM(NSInteger,SegmentHeaderAlignmentType){
 @interface SegmentHeaderView : UIView
 @property (nonatomic, copy) NSArray <NSString *>*titleArray;
 
+@property (nonatomic, readonly) UIScrollView *scrollView;
+
 @property (nonatomic, assign) CGFloat itemWidth;
 @property (nonatomic, assign) SegmentHeaderAlignmentType alignment;
 @property (nonatomic, assign) BOOL moveLineHidden;
@@ -32,8 +34,10 @@ typedef NS_ENUM(NSInteger,SegmentHeaderAlignmentType){
 @property (nonatomic, strong) UIFont *titleFont;
 @property (nonatomic, strong) UIFont *selectedTitleFont;
 
-@property (nonatomic) NSInteger appearanceSelectedIndex;
-@property (nonatomic) NSInteger selectedIndex;
+
+@property (nonatomic, assign) CGFloat bottomSeparatorHeight;
+
+
 @property (nonatomic, copy) void (^selectedItemHelper)(NSUInteger index);
 @property (nonatomic, assign) BOOL alwaysTriggerSelected;
 
@@ -41,6 +45,17 @@ typedef NS_ENUM(NSInteger,SegmentHeaderAlignmentType){
 @property (nonatomic, strong) UIView *customLeftView;
 
 - (void)changeItemWithTargetIndex:(NSUInteger)targetIndex;
+
+//只会更新appearance,不会更新selectedIndex，不会有s选中回调
+@property (nonatomic) NSInteger appearanceSelectedIndex;
+//更新selectedIndex,并更新appearance，有选中回调
+@property (nonatomic) NSInteger selectedIndex;
+
+//只会更新appearance,不会更新selectedIndex，不会有选中回调
+- (void)setAppearanceSelectedIndex:(NSInteger)appearanceSelectedIndex  progress:(CGFloat)progress;
+
+//更新appearance,并更新selectedIndex，不会有选中回调
+- (void)setAppearanceSelectedIndex:(NSInteger)appearanceSelectedIndex updateSelectedIndexValue:(BOOL)update;
 
 - (instancetype)initWithFrame:(CGRect)frame titleArray:(NSArray *)titleArray ;
 @end

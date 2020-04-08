@@ -12,10 +12,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FESearchRecordView : UIView
 @property (nonatomic, copy) void(^selectCompletionHandler)(NSString *searchString);
-
+@property (nonatomic, copy) NSString *key;
 - (void)setMaximumCapacityOfRecords:(NSInteger)n;
 - (void)saveSearchRecord:(NSString *)aRecord;
 - (void)reloadRecords;
+
+
+- (instancetype)initWithKey:(NSString *)key;
+@end
+
+@interface FESearchRecordView (Popular)
+@property (nonatomic, copy) NSArray <NSString *>*popularSearchTextArray;
 
 @end
 

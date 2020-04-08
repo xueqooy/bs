@@ -17,9 +17,8 @@
 		042F0F60241CFB8C00D39AA6 /* PATestCategoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 042F0F5F241CFB8C00D39AA6 /* PATestCategoryManager.m */; };
 		042F0F7A241D341F00D39AA6 /* TCDiscoverySearchResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 042F0F69241D341C00D39AA6 /* TCDiscoverySearchResultModel.m */; };
 		042F0F7B241D341F00D39AA6 /* TCDiscoverySearchDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 042F0F6B241D341C00D39AA6 /* TCDiscoverySearchDataManager.m */; };
-		042F0F7C241D341F00D39AA6 /* TCSearchMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042F0F71241D341C00D39AA6 /* TCSearchMainViewController.m */; };
+		042F0F7C241D341F00D39AA6 /* TCLibSearchMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042F0F71241D341C00D39AA6 /* TCLibSearchMainViewController.m */; };
 		042F0F7D241D341F00D39AA6 /* TCTestSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042F0F72241D341C00D39AA6 /* TCTestSearchViewController.m */; };
-		042F0F80241D341F00D39AA6 /* FESearchRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042F0F78241D341C00D39AA6 /* FESearchRecordView.m */; };
 		042F0F83241D34DF00D39AA6 /* FESearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 042F0F82241D34DD00D39AA6 /* FESearchBar.m */; };
 		044A8872241F1E4F00D520ED /* TCTestListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044A8870241F1E4E00D520ED /* TCTestListViewController.m */; };
 		044A8875241F1EA700D520ED /* TCTestListDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 044A8874241F1EA700D520ED /* TCTestListDataManager.m */; };
@@ -33,6 +32,128 @@
 		045D00DB243C977D0006423E /* SelectHeadAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D00D9243C977B0006423E /* SelectHeadAlertView.m */; };
 		045D00DF243C9F490006423E /* TCPeriodSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D00DD243C9F480006423E /* TCPeriodSelectionView.m */; };
 		045D00E0243C9F490006423E /* TCPeriodSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045D00DE243C9F490006423E /* TCPeriodSelectionView.xib */; };
+		045D00E3243D6A0D0006423E /* FEMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D00E2243D6A0D0006423E /* FEMainViewController.m */; };
+		045D00F6243D75690006423E /* PALibViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D00F5243D75690006423E /* PALibViewController.m */; };
+		045D01DB243D7B430006423E /* DegreesRootModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D00FA243D7B420006423E /* DegreesRootModel.m */; };
+		045D01DC243D7B430006423E /* UniversityRootModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0100243D7B420006423E /* UniversityRootModel.m */; };
+		045D01DD243D7B430006423E /* StudentDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0101243D7B420006423E /* StudentDataModel.m */; };
+		045D01DE243D7B430006423E /* UniversityGrduationOverallModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0105243D7B420006423E /* UniversityGrduationOverallModel.m */; };
+		045D01DF243D7B430006423E /* ProfessionalAdminsionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0106243D7B420006423E /* ProfessionalAdminsionModel.m */; };
+		045D01E0243D7B430006423E /* ChartItemDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0107243D7B420006423E /* ChartItemDataModel.m */; };
+		045D01E1243D7B430006423E /* UniverSitynameItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0108243D7B420006423E /* UniverSitynameItemModel.m */; };
+		045D01E2243D7B430006423E /* ChartDatasModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0109243D7B420006423E /* ChartDatasModel.m */; };
+		045D01E3243D7B430006423E /* ChartItemsDynamicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D010A243D7B420006423E /* ChartItemsDynamicModel.m */; };
+		045D01E4243D7B430006423E /* FactorResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D010B243D7B420006423E /* FactorResultModel.m */; };
+		045D01E5243D7B430006423E /* UniversityGraduationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D010D243D7B420006423E /* UniversityGraduationModel.m */; };
+		045D01E6243D7B430006423E /* DimensionChildModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0110243D7B420006423E /* DimensionChildModel.m */; };
+		045D01E7243D7B430006423E /* FEChartViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0111243D7B420006423E /* FEChartViewManager.m */; };
+		045D01E8243D7B430006423E /* ChartItemsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0114243D7B420006423E /* ChartItemsModel.m */; };
+		045D01E9243D7B430006423E /* DVFoodPieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0118243D7B420006423E /* DVFoodPieModel.m */; };
+		045D01EA243D7B430006423E /* DimensionBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0119243D7B420006423E /* DimensionBaseModel.m */; };
+		045D01EB243D7B430006423E /* UniversityAdminsionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D011F243D7B420006423E /* UniversityAdminsionModel.m */; };
+		045D01EC243D7B430006423E /* UniversityKindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0120243D7B420006423E /* UniversityKindModel.m */; };
+		045D01ED243D7B430006423E /* ChartDatasDynamicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0126243D7B420006423E /* ChartDatasDynamicModel.m */; };
+		045D01EE243D7B430006423E /* DegreesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0127243D7B420006423E /* DegreesModel.m */; };
+		045D01EF243D7B430006423E /* UniversitySituationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0129243D7B420006423E /* UniversitySituationModel.m */; };
+		045D01F0243D7B430006423E /* SubjectMajorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D012A243D7B420006423E /* SubjectMajorModel.m */; };
+		045D01F1243D7B430006423E /* EnrollmentNavigationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D012B243D7B420006423E /* EnrollmentNavigationModel.m */; };
+		045D01F2243D7B430006423E /* StudentRatioModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D012E243D7B420006423E /* StudentRatioModel.m */; };
+		045D01F3243D7B430006423E /* ProfessionalCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D012F243D7B420006423E /* ProfessionalCategoryModel.m */; };
+		045D01F4243D7B430006423E /* EnrollmentRootModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0130243D7B420006423E /* EnrollmentRootModel.m */; };
+		045D01F5243D7B430006423E /* UniversityKeySubjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0131243D7B420006423E /* UniversityKeySubjectModel.m */; };
+		045D01F6243D7B430006423E /* UniversityBasicInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0133243D7B420006423E /* UniversityBasicInfoModel.m */; };
+		045D01F7243D7B430006423E /* UniversityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0134243D7B420006423E /* UniversityModel.m */; };
+		045D01F8243D7B430006423E /* AdmissionParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0138243D7B420006423E /* AdmissionParamModel.m */; };
+		045D01F9243D7B430006423E /* UniversityMajorInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0139243D7B420006423E /* UniversityMajorInfoModel.m */; };
+		045D01FA243D7B430006423E /* EnrollmentNavigationItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D013A243D7B420006423E /* EnrollmentNavigationItemModel.m */; };
+		045D01FB243D7B430006423E /* DegreesRankingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D013B243D7B420006423E /* DegreesRankingModel.m */; };
+		045D01FC243D7B430006423E /* ProvinceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0143243D7B420006423E /* ProvinceModel.m */; };
+		045D01FD243D7B430006423E /* UniversityMajorRootModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0144243D7B420006423E /* UniversityMajorRootModel.m */; };
+		045D01FE243D7B430006423E /* UniversityMajorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0146243D7B420006423E /* UniversityMajorModel.m */; };
+		045D01FF243D7B430006423E /* EnrollmentOfficeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0148243D7B420006423E /* EnrollmentOfficeModel.m */; };
+		045D0200243D7B430006423E /* ProvinceRootModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0149243D7B420006423E /* ProvinceRootModel.m */; };
+		045D0201243D7B430006423E /* ProfessionalIntroducesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D014C243D7B420006423E /* ProfessionalIntroducesModel.m */; };
+		045D0202243D7B430006423E /* SubjectCountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D014D243D7B420006423E /* SubjectCountModel.m */; };
+		045D0203243D7B430006423E /* UniversityYearModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D014E243D7B420006423E /* UniversityYearModel.m */; };
+		045D0204243D7B430006423E /* ReportResultsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0150243D7B420006423E /* ReportResultsModel.m */; };
+		045D0205243D7B430006423E /* UniversityRankingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0151243D7B420006423E /* UniversityRankingModel.m */; };
+		045D0206243D7B430006423E /* UniversityRankingItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0153243D7B420006423E /* UniversityRankingItemModel.m */; };
+		045D0207243D7B430006423E /* AddItemViewsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0154243D7B420006423E /* AddItemViewsManager.m */; };
+		045D0208243D7B430006423E /* UniversityGraduationSettledModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0155243D7B420006423E /* UniversityGraduationSettledModel.m */; };
+		045D0209243D7B430006423E /* UniversityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0157243D7B420006423E /* UniversityListViewController.m */; };
+		045D020A243D7B430006423E /* RecruitStudentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0158243D7B420006423E /* RecruitStudentsViewController.m */; };
+		045D020B243D7B430006423E /* UniversitySituationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D015C243D7B420006423E /* UniversitySituationViewController.m */; };
+		045D020C243D7B430006423E /* UniversityDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0160243D7B420006423E /* UniversityDetailsViewController.m */; };
+		045D020D243D7B430006423E /* GraduationInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0161243D7B420006423E /* GraduationInfoViewController.m */; };
+		045D020E243D7B430006423E /* UniversityProfessionalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0162243D7B420006423E /* UniversityProfessionalViewController.m */; };
+		045D020F243D7B430006423E /* DVPieCenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0168243D7B420006423E /* DVPieCenterView.m */; };
+		045D0210243D7B430006423E /* ZJChooseViewOneLeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D016A243D7B420006423E /* ZJChooseViewOneLeftCell.m */; };
+		045D0211243D7B430006423E /* ZJOneChildView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D016B243D7B420006423E /* ZJOneChildView.m */; };
+		045D0212243D7B430006423E /* CommonScaleTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D016C243D7B420006423E /* CommonScaleTextTableViewCell.m */; };
+		045D0213243D7B430006423E /* UnivesityGraChartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D016F243D7B420006423E /* UnivesityGraChartTableViewCell.m */; };
+		045D0214243D7B430006423E /* CollegeAdmissionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0172243D7B420006423E /* CollegeAdmissionTableViewCell.m */; };
+		045D0215243D7B430006423E /* ZJChooseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0173243D7B420006423E /* ZJChooseModel.m */; };
+		045D0216243D7B430006423E /* ZJFourChildView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0174243D7B420006423E /* ZJFourChildView.m */; };
+		045D0217243D7B430006423E /* UniversityGraTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0179243D7B420006423E /* UniversityGraTableViewCell.m */; };
+		045D0218243D7B430006423E /* ZJZeroChildView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D017A243D7B420006423E /* ZJZeroChildView.m */; };
+		045D0219243D7B430006423E /* ZJChooseShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D017B243D7B420006423E /* ZJChooseShowView.m */; };
+		045D021A243D7B430006423E /* ProfessionalAdmissionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D017E243D7B420006423E /* ProfessionalAdmissionTableViewCell.m */; };
+		045D021B243D7B430006423E /* EnrollmentNavigationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0180243D7B420006423E /* EnrollmentNavigationTableViewCell.m */; };
+		045D021C243D7B430006423E /* EnrollmentOfficeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0182243D7B420006423E /* EnrollmentOfficeTableViewCell.m */; };
+		045D021D243D7B440006423E /* StudentSummaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0183243D7B420006423E /* StudentSummaryTableViewCell.m */; };
+		045D021E243D7B440006423E /* FacultyStrengthTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0184243D7B420006423E /* FacultyStrengthTableViewCell.m */; };
+		045D021F243D7B440006423E /* UniversityProfessionalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0185243D7B420006423E /* UniversityProfessionalTableViewCell.m */; };
+		045D0220243D7B440006423E /* UniversityRankingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0187243D7B420006423E /* UniversityRankingTableViewCell.m */; };
+		045D0221243D7B440006423E /* CommonBottomMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0188243D7B420006423E /* CommonBottomMenuView.m */; };
+		045D0222243D7B440006423E /* ZJButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D018B243D7B420006423E /* ZJButton.m */; };
+		045D0223243D7B440006423E /* CommonSingTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D018F243D7B420006423E /* CommonSingTextTableViewCell.m */; };
+		045D0224243D7B440006423E /* ZJChooseOneRightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0190243D7B430006423E /* ZJChooseOneRightCell.m */; };
+		045D0225243D7B440006423E /* FacultyStrengthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0191243D7B430006423E /* FacultyStrengthView.m */; };
+		045D0226243D7B440006423E /* DVPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0193243D7B430006423E /* DVPieChart.m */; };
+		045D0227243D7B440006423E /* ZJThreeChildView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0196243D7B430006423E /* ZJThreeChildView.m */; };
+		045D0228243D7B440006423E /* UniversityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0198243D7B430006423E /* UniversityTableViewCell.m */; };
+		045D0229243D7B440006423E /* ZJChooseControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0199243D7B430006423E /* ZJChooseControlView.m */; };
+		045D022A243D7B440006423E /* ProfessionalRootModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01A0243D7B430006423E /* ProfessionalRootModel.m */; };
+		045D022B243D7B440006423E /* ProfessionalSubjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01A1243D7B430006423E /* ProfessionalSubjectModel.m */; };
+		045D022C243D7B440006423E /* RaTreeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01A2243D7B430006423E /* RaTreeModel.m */; };
+		045D022D243D7B440006423E /* ProfessionalOccupationsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01A3243D7B430006423E /* ProfessionalOccupationsModel.m */; };
+		045D022E243D7B440006423E /* ProfessionalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01A4243D7B430006423E /* ProfessionalModel.m */; };
+		045D022F243D7B440006423E /* ProfessionalDetailRootModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01A6243D7B430006423E /* ProfessionalDetailRootModel.m */; };
+		045D0230243D7B440006423E /* ProfessionalOpenUniversityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01A9243D7B430006423E /* ProfessionalOpenUniversityViewController.m */; };
+		045D0231243D7B440006423E /* ProfessionalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01AC243D7B430006423E /* ProfessionalViewController.m */; };
+		045D0232243D7B440006423E /* ProfessionalDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01AD243D7B430006423E /* ProfessionalDetailsViewController.m */; };
+		045D0233243D7B440006423E /* ProfessionalBaseInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01AF243D7B430006423E /* ProfessionalBaseInfoViewController.m */; };
+		045D0234243D7B440006423E /* EmploymentProspectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01B0243D7B430006423E /* EmploymentProspectsViewController.m */; };
+		045D0235243D7B440006423E /* ProfessionalBenkeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01B4243D7B430006423E /* ProfessionalBenkeView.m */; };
+		045D0236243D7B440006423E /* STSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01B5243D7B430006423E /* STSegmentView.m */; };
+		045D0237243D7B440006423E /* ProfessionalOpenUniTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01BB243D7B430006423E /* ProfessionalOpenUniTableViewCell.m */; };
+		045D0238243D7B440006423E /* OccupationDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01BC243D7B430006423E /* OccupationDetailsTableViewCell.m */; };
+		045D0239243D7B440006423E /* ProfessionalZhuankeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01BE243D7B430006423E /* ProfessionalZhuankeView.m */; };
+		045D023A243D7B440006423E /* OccupationDetailsProTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01BF243D7B430006423E /* OccupationDetailsProTableViewCell.m */; };
+		045D023B243D7B440006423E /* FEOccupationDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01C4243D7B430006423E /* FEOccupationDataManager.m */; };
+		045D023C243D7B440006423E /* OccupationTypeItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01C8243D7B430006423E /* OccupationTypeItemModel.m */; };
+		045D023D243D7B440006423E /* FEOccupationTreeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01C9243D7B430006423E /* FEOccupationTreeModel.m */; };
+		045D023E243D7B440006423E /* OccupationDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01CA243D7B430006423E /* OccupationDetailsModel.m */; };
+		045D023F243D7B440006423E /* OccupationTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01CB243D7B430006423E /* OccupationTypeModel.m */; };
+		045D0240243D7B440006423E /* FEIndustryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01D1243D7B430006423E /* FEIndustryViewController.m */; };
+		045D0241243D7B440006423E /* FEOccupationLibViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01D2243D7B430006423E /* FEOccupationLibViewController.m */; };
+		045D0242243D7B440006423E /* FEProfessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01D3243D7B430006423E /* FEProfessionViewController.m */; };
+		045D0243243D7B440006423E /* OccupationDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01D4243D7B430006423E /* OccupationDetailsViewController.m */; };
+		045D0244243D7B440006423E /* OccupationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01D6243D7B430006423E /* OccupationTableViewCell.m */; };
+		045D0245243D7B440006423E /* FEOuccupationTreeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045D01D9243D7B430006423E /* FEOuccupationTreeViewCell.xib */; };
+		045D0246243D7B440006423E /* FEOuccupationTreeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D01DA243D7B430006423E /* FEOuccupationTreeViewCell.m */; };
+		045D0249243D7B6C0006423E /* CareerService.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0248243D7B6C0006423E /* CareerService.m */; };
+		045D024C243D7C1B0006423E /* EdgeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D024B243D7C1B0006423E /* EdgeLabel.m */; };
+		045D025D243D7D1D0006423E /* FESwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D025C243D7D1D0006423E /* FESwitch.m */; };
+		045D026E243D7E2A0006423E /* TCSystemFeedBackHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D026D243D7E2A0006423E /* TCSystemFeedBackHelper.m */; };
+		045D0271243DBCBA0006423E /* BSUniversitySearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0270243DBCBA0006423E /* BSUniversitySearchViewController.m */; };
+		045D0274243DC1EB0006423E /* TCSearchMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0273243DC1EA0006423E /* TCSearchMainViewController.m */; };
+		045D0277243DCAA00006423E /* TCSearchAppearanceButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0276243DCA9F0006423E /* TCSearchAppearanceButton.m */; };
+		045D027A243DE8B10006423E /* BSOccupationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0279243DE8B00006423E /* BSOccupationSearchViewController.m */; };
+		045D027F243DEB240006423E /* SegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D027B243DEB210006423E /* SegmentView.m */; };
+		045D0280243DEB240006423E /* SegmentHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D027C243DEB220006423E /* SegmentHeaderView.m */; };
+		045D0283243DEF1F0006423E /* FESearchRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0281243DEF1D0006423E /* FESearchRecordView.m */; };
+		045D0286243DFA660006423E /* BSMajorSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0285243DFA660006423E /* BSMajorSearchViewController.m */; };
 		0464301E241B23DD006FA1F5 /* UCManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0464301D241B23DC006FA1F5 /* UCManager.m */; };
 		04643021241B23FE006FA1F5 /* TCNetworkReachabilityHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 04643020241B23FD006FA1F5 /* TCNetworkReachabilityHelper.m */; };
 		04643028241B2469006FA1F5 /* LoginHttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04643026241B2469006FA1F5 /* LoginHttpManager.m */; };
@@ -125,8 +246,6 @@
 		0464314E241B8331006FA1F5 /* TCMyOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04643142241B8331006FA1F5 /* TCMyOrderViewController.m */; };
 		0464314F241B8331006FA1F5 /* TCMyOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04643145241B8331006FA1F5 /* TCMyOrderTableViewCell.m */; };
 		04643152241B88AB006FA1F5 /* TCImageHeaderScrollingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 04643151241B88AB006FA1F5 /* TCImageHeaderScrollingAnimator.m */; };
-		04643158241BA17E006FA1F5 /* SegmentHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04643156241BA17E006FA1F5 /* SegmentHeaderView.m */; };
-		04643159241BA17E006FA1F5 /* SegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04643157241BA17E006FA1F5 /* SegmentView.m */; };
 		0464317B241BA1BF006FA1F5 /* TCIAPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0464315B241BA1BF006FA1F5 /* TCIAPManager.m */; };
 		0464317C241BA1BF006FA1F5 /* TCCashierManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0464315F241BA1BF006FA1F5 /* TCCashierManager.m */; };
 		0464317D241BA1BF006FA1F5 /* TCCashierControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04643162241BA1BF006FA1F5 /* TCCashierControllerView.m */; };
@@ -479,12 +598,10 @@
 		042F0F6B241D341C00D39AA6 /* TCDiscoverySearchDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCDiscoverySearchDataManager.m; sourceTree = "<group>"; };
 		042F0F6C241D341C00D39AA6 /* TCDiscoverySearchResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCDiscoverySearchResultModel.h; sourceTree = "<group>"; };
 		042F0F6D241D341C00D39AA6 /* TCDiscoverySearchDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCDiscoverySearchDataManager.h; sourceTree = "<group>"; };
-		042F0F71241D341C00D39AA6 /* TCSearchMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCSearchMainViewController.m; sourceTree = "<group>"; };
+		042F0F71241D341C00D39AA6 /* TCLibSearchMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCLibSearchMainViewController.m; sourceTree = "<group>"; };
 		042F0F72241D341C00D39AA6 /* TCTestSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCTestSearchViewController.m; sourceTree = "<group>"; };
-		042F0F75241D341C00D39AA6 /* TCSearchMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCSearchMainViewController.h; sourceTree = "<group>"; };
+		042F0F75241D341C00D39AA6 /* TCLibSearchMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCLibSearchMainViewController.h; sourceTree = "<group>"; };
 		042F0F76241D341C00D39AA6 /* TCTestSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCTestSearchViewController.h; sourceTree = "<group>"; };
-		042F0F78241D341C00D39AA6 /* FESearchRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FESearchRecordView.m; sourceTree = "<group>"; };
-		042F0F79241D341C00D39AA6 /* FESearchRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FESearchRecordView.h; sourceTree = "<group>"; };
 		042F0F81241D34D800D39AA6 /* FESearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FESearchBar.h; sourceTree = "<group>"; };
 		042F0F82241D34DD00D39AA6 /* FESearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FESearchBar.m; sourceTree = "<group>"; };
 		044A8870241F1E4E00D520ED /* TCTestListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCTestListViewController.m; sourceTree = "<group>"; };
@@ -499,6 +616,249 @@
 		045D00DC243C9F470006423E /* TCPeriodSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPeriodSelectionView.h; sourceTree = "<group>"; };
 		045D00DD243C9F480006423E /* TCPeriodSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCPeriodSelectionView.m; sourceTree = "<group>"; };
 		045D00DE243C9F490006423E /* TCPeriodSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCPeriodSelectionView.xib; sourceTree = "<group>"; };
+		045D00E1243D6A0C0006423E /* FEMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMainViewController.h; sourceTree = "<group>"; };
+		045D00E2243D6A0D0006423E /* FEMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMainViewController.m; sourceTree = "<group>"; };
+		045D00F4243D75690006423E /* PALibViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PALibViewController.h; sourceTree = "<group>"; };
+		045D00F5243D75690006423E /* PALibViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PALibViewController.m; sourceTree = "<group>"; };
+		045D00FA243D7B420006423E /* DegreesRootModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DegreesRootModel.m; sourceTree = "<group>"; };
+		045D00FB243D7B420006423E /* UniversityBasicInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityBasicInfoModel.h; sourceTree = "<group>"; };
+		045D00FC243D7B420006423E /* ProfessionalCategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalCategoryModel.h; sourceTree = "<group>"; };
+		045D00FD243D7B420006423E /* EnrollmentRootModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnrollmentRootModel.h; sourceTree = "<group>"; };
+		045D00FE243D7B420006423E /* UniversityKeySubjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityKeySubjectModel.h; sourceTree = "<group>"; };
+		045D00FF243D7B420006423E /* StudentRatioModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentRatioModel.h; sourceTree = "<group>"; };
+		045D0100243D7B420006423E /* UniversityRootModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityRootModel.m; sourceTree = "<group>"; };
+		045D0101243D7B420006423E /* StudentDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentDataModel.m; sourceTree = "<group>"; };
+		045D0102243D7B420006423E /* EnrollmentNavigationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnrollmentNavigationModel.h; sourceTree = "<group>"; };
+		045D0103243D7B420006423E /* SubjectMajorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectMajorModel.h; sourceTree = "<group>"; };
+		045D0104243D7B420006423E /* UniversitySituationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversitySituationModel.h; sourceTree = "<group>"; };
+		045D0105243D7B420006423E /* UniversityGrduationOverallModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityGrduationOverallModel.m; sourceTree = "<group>"; };
+		045D0106243D7B420006423E /* ProfessionalAdminsionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalAdminsionModel.m; sourceTree = "<group>"; };
+		045D0107243D7B420006423E /* ChartItemDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartItemDataModel.m; sourceTree = "<group>"; };
+		045D0108243D7B420006423E /* UniverSitynameItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniverSitynameItemModel.m; sourceTree = "<group>"; };
+		045D0109243D7B420006423E /* ChartDatasModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartDatasModel.m; sourceTree = "<group>"; };
+		045D010A243D7B420006423E /* ChartItemsDynamicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartItemsDynamicModel.m; sourceTree = "<group>"; };
+		045D010B243D7B420006423E /* FactorResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactorResultModel.m; sourceTree = "<group>"; };
+		045D010C243D7B420006423E /* DegreesRankingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DegreesRankingModel.h; sourceTree = "<group>"; };
+		045D010D243D7B420006423E /* UniversityGraduationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityGraduationModel.m; sourceTree = "<group>"; };
+		045D010E243D7B420006423E /* UniversityMajorInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityMajorInfoModel.h; sourceTree = "<group>"; };
+		045D010F243D7B420006423E /* EnrollmentNavigationItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnrollmentNavigationItemModel.h; sourceTree = "<group>"; };
+		045D0110243D7B420006423E /* DimensionChildModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DimensionChildModel.m; sourceTree = "<group>"; };
+		045D0111243D7B420006423E /* FEChartViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEChartViewManager.m; sourceTree = "<group>"; };
+		045D0112243D7B420006423E /* AdmissionParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdmissionParamModel.h; sourceTree = "<group>"; };
+		045D0113243D7B420006423E /* UniversityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityModel.h; sourceTree = "<group>"; };
+		045D0114243D7B420006423E /* ChartItemsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartItemsModel.m; sourceTree = "<group>"; };
+		045D0115243D7B420006423E /* ProvinceRootModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvinceRootModel.h; sourceTree = "<group>"; };
+		045D0116243D7B420006423E /* EnrollmentOfficeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnrollmentOfficeModel.h; sourceTree = "<group>"; };
+		045D0117243D7B420006423E /* UniversityMajorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityMajorModel.h; sourceTree = "<group>"; };
+		045D0118243D7B420006423E /* DVFoodPieModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVFoodPieModel.m; sourceTree = "<group>"; };
+		045D0119243D7B420006423E /* DimensionBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DimensionBaseModel.m; sourceTree = "<group>"; };
+		045D011A243D7B420006423E /* UniversityMajorRootModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityMajorRootModel.h; sourceTree = "<group>"; };
+		045D011B243D7B420006423E /* ProvinceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvinceModel.h; sourceTree = "<group>"; };
+		045D011C243D7B420006423E /* UniversityRankingItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityRankingItemModel.h; sourceTree = "<group>"; };
+		045D011D243D7B420006423E /* UniversityGraduationSettledModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityGraduationSettledModel.h; sourceTree = "<group>"; };
+		045D011E243D7B420006423E /* AddItemViewsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemViewsManager.h; sourceTree = "<group>"; };
+		045D011F243D7B420006423E /* UniversityAdminsionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityAdminsionModel.m; sourceTree = "<group>"; };
+		045D0120243D7B420006423E /* UniversityKindModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityKindModel.m; sourceTree = "<group>"; };
+		045D0121243D7B420006423E /* UniversityRankingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityRankingModel.h; sourceTree = "<group>"; };
+		045D0122243D7B420006423E /* ReportResultsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportResultsModel.h; sourceTree = "<group>"; };
+		045D0123243D7B420006423E /* UniversityYearModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityYearModel.h; sourceTree = "<group>"; };
+		045D0124243D7B420006423E /* SubjectCountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectCountModel.h; sourceTree = "<group>"; };
+		045D0125243D7B420006423E /* ProfessionalIntroducesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalIntroducesModel.h; sourceTree = "<group>"; };
+		045D0126243D7B420006423E /* ChartDatasDynamicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartDatasDynamicModel.m; sourceTree = "<group>"; };
+		045D0127243D7B420006423E /* DegreesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DegreesModel.m; sourceTree = "<group>"; };
+		045D0128243D7B420006423E /* UniversityGrduationOverallModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityGrduationOverallModel.h; sourceTree = "<group>"; };
+		045D0129243D7B420006423E /* UniversitySituationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversitySituationModel.m; sourceTree = "<group>"; };
+		045D012A243D7B420006423E /* SubjectMajorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectMajorModel.m; sourceTree = "<group>"; };
+		045D012B243D7B420006423E /* EnrollmentNavigationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnrollmentNavigationModel.m; sourceTree = "<group>"; };
+		045D012C243D7B420006423E /* StudentDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentDataModel.h; sourceTree = "<group>"; };
+		045D012D243D7B420006423E /* UniversityRootModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityRootModel.h; sourceTree = "<group>"; };
+		045D012E243D7B420006423E /* StudentRatioModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentRatioModel.m; sourceTree = "<group>"; };
+		045D012F243D7B420006423E /* ProfessionalCategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalCategoryModel.m; sourceTree = "<group>"; };
+		045D0130243D7B420006423E /* EnrollmentRootModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnrollmentRootModel.m; sourceTree = "<group>"; };
+		045D0131243D7B420006423E /* UniversityKeySubjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityKeySubjectModel.m; sourceTree = "<group>"; };
+		045D0132243D7B420006423E /* DegreesRootModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DegreesRootModel.h; sourceTree = "<group>"; };
+		045D0133243D7B420006423E /* UniversityBasicInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityBasicInfoModel.m; sourceTree = "<group>"; };
+		045D0134243D7B420006423E /* UniversityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityModel.m; sourceTree = "<group>"; };
+		045D0135243D7B420006423E /* ChartItemsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartItemsModel.h; sourceTree = "<group>"; };
+		045D0136243D7B420006423E /* FEChartViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEChartViewManager.h; sourceTree = "<group>"; };
+		045D0137243D7B420006423E /* DimensionChildModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DimensionChildModel.h; sourceTree = "<group>"; };
+		045D0138243D7B420006423E /* AdmissionParamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdmissionParamModel.m; sourceTree = "<group>"; };
+		045D0139243D7B420006423E /* UniversityMajorInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityMajorInfoModel.m; sourceTree = "<group>"; };
+		045D013A243D7B420006423E /* EnrollmentNavigationItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnrollmentNavigationItemModel.m; sourceTree = "<group>"; };
+		045D013B243D7B420006423E /* DegreesRankingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DegreesRankingModel.m; sourceTree = "<group>"; };
+		045D013C243D7B420006423E /* UniversityGraduationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityGraduationModel.h; sourceTree = "<group>"; };
+		045D013D243D7B420006423E /* FactorResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactorResultModel.h; sourceTree = "<group>"; };
+		045D013E243D7B420006423E /* ChartItemsDynamicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartItemsDynamicModel.h; sourceTree = "<group>"; };
+		045D013F243D7B420006423E /* ChartDatasModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartDatasModel.h; sourceTree = "<group>"; };
+		045D0140243D7B420006423E /* ChartItemDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartItemDataModel.h; sourceTree = "<group>"; };
+		045D0141243D7B420006423E /* UniverSitynameItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniverSitynameItemModel.h; sourceTree = "<group>"; };
+		045D0142243D7B420006423E /* ProfessionalAdminsionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalAdminsionModel.h; sourceTree = "<group>"; };
+		045D0143243D7B420006423E /* ProvinceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvinceModel.m; sourceTree = "<group>"; };
+		045D0144243D7B420006423E /* UniversityMajorRootModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityMajorRootModel.m; sourceTree = "<group>"; };
+		045D0145243D7B420006423E /* DimensionBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DimensionBaseModel.h; sourceTree = "<group>"; };
+		045D0146243D7B420006423E /* UniversityMajorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityMajorModel.m; sourceTree = "<group>"; };
+		045D0147243D7B420006423E /* DVFoodPieModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVFoodPieModel.h; sourceTree = "<group>"; };
+		045D0148243D7B420006423E /* EnrollmentOfficeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnrollmentOfficeModel.m; sourceTree = "<group>"; };
+		045D0149243D7B420006423E /* ProvinceRootModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvinceRootModel.m; sourceTree = "<group>"; };
+		045D014A243D7B420006423E /* DegreesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DegreesModel.h; sourceTree = "<group>"; };
+		045D014B243D7B420006423E /* ChartDatasDynamicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartDatasDynamicModel.h; sourceTree = "<group>"; };
+		045D014C243D7B420006423E /* ProfessionalIntroducesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalIntroducesModel.m; sourceTree = "<group>"; };
+		045D014D243D7B420006423E /* SubjectCountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectCountModel.m; sourceTree = "<group>"; };
+		045D014E243D7B420006423E /* UniversityYearModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityYearModel.m; sourceTree = "<group>"; };
+		045D014F243D7B420006423E /* UniversityKindModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityKindModel.h; sourceTree = "<group>"; };
+		045D0150243D7B420006423E /* ReportResultsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportResultsModel.m; sourceTree = "<group>"; };
+		045D0151243D7B420006423E /* UniversityRankingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityRankingModel.m; sourceTree = "<group>"; };
+		045D0152243D7B420006423E /* UniversityAdminsionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityAdminsionModel.h; sourceTree = "<group>"; };
+		045D0153243D7B420006423E /* UniversityRankingItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityRankingItemModel.m; sourceTree = "<group>"; };
+		045D0154243D7B420006423E /* AddItemViewsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemViewsManager.m; sourceTree = "<group>"; };
+		045D0155243D7B420006423E /* UniversityGraduationSettledModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityGraduationSettledModel.m; sourceTree = "<group>"; };
+		045D0157243D7B420006423E /* UniversityListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityListViewController.m; sourceTree = "<group>"; };
+		045D0158243D7B420006423E /* RecruitStudentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecruitStudentsViewController.m; sourceTree = "<group>"; };
+		045D0159243D7B420006423E /* UniversityProfessionalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityProfessionalViewController.h; sourceTree = "<group>"; };
+		045D015A243D7B420006423E /* GraduationInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraduationInfoViewController.h; sourceTree = "<group>"; };
+		045D015B243D7B420006423E /* UniversityDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityDetailsViewController.h; sourceTree = "<group>"; };
+		045D015C243D7B420006423E /* UniversitySituationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversitySituationViewController.m; sourceTree = "<group>"; };
+		045D015D243D7B420006423E /* UniversityListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityListViewController.h; sourceTree = "<group>"; };
+		045D015E243D7B420006423E /* RecruitStudentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecruitStudentsViewController.h; sourceTree = "<group>"; };
+		045D015F243D7B420006423E /* UniversitySituationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversitySituationViewController.h; sourceTree = "<group>"; };
+		045D0160243D7B420006423E /* UniversityDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityDetailsViewController.m; sourceTree = "<group>"; };
+		045D0161243D7B420006423E /* GraduationInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraduationInfoViewController.m; sourceTree = "<group>"; };
+		045D0162243D7B420006423E /* UniversityProfessionalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityProfessionalViewController.m; sourceTree = "<group>"; };
+		045D0164243D7B420006423E /* UniversityProfessionalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityProfessionalTableViewCell.h; sourceTree = "<group>"; };
+		045D0165243D7B420006423E /* FacultyStrengthTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacultyStrengthTableViewCell.h; sourceTree = "<group>"; };
+		045D0166243D7B420006423E /* StudentSummaryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentSummaryTableViewCell.h; sourceTree = "<group>"; };
+		045D0167243D7B420006423E /* EnrollmentOfficeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnrollmentOfficeTableViewCell.h; sourceTree = "<group>"; };
+		045D0168243D7B420006423E /* DVPieCenterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVPieCenterView.m; sourceTree = "<group>"; };
+		045D0169243D7B420006423E /* EnrollmentNavigationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnrollmentNavigationTableViewCell.h; sourceTree = "<group>"; };
+		045D016A243D7B420006423E /* ZJChooseViewOneLeftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJChooseViewOneLeftCell.m; sourceTree = "<group>"; };
+		045D016B243D7B420006423E /* ZJOneChildView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJOneChildView.m; sourceTree = "<group>"; };
+		045D016C243D7B420006423E /* CommonScaleTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonScaleTextTableViewCell.m; sourceTree = "<group>"; };
+		045D016D243D7B420006423E /* CommonBottomMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonBottomMenuView.h; sourceTree = "<group>"; };
+		045D016E243D7B420006423E /* UniversityRankingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityRankingTableViewCell.h; sourceTree = "<group>"; };
+		045D016F243D7B420006423E /* UnivesityGraChartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnivesityGraChartTableViewCell.m; sourceTree = "<group>"; };
+		045D0170243D7B420006423E /* ZJChooseOneRightCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJChooseOneRightCell.h; sourceTree = "<group>"; };
+		045D0171243D7B420006423E /* CommonSingTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonSingTextTableViewCell.h; sourceTree = "<group>"; };
+		045D0172243D7B420006423E /* CollegeAdmissionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollegeAdmissionTableViewCell.m; sourceTree = "<group>"; };
+		045D0173243D7B420006423E /* ZJChooseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJChooseModel.m; sourceTree = "<group>"; };
+		045D0174243D7B420006423E /* ZJFourChildView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJFourChildView.m; sourceTree = "<group>"; };
+		045D0175243D7B420006423E /* ZJButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJButton.h; sourceTree = "<group>"; };
+		045D0176243D7B420006423E /* UniversityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityTableViewCell.h; sourceTree = "<group>"; };
+		045D0177243D7B420006423E /* ZJChooseControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJChooseControlView.h; sourceTree = "<group>"; };
+		045D0178243D7B420006423E /* ZJThreeChildView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJThreeChildView.h; sourceTree = "<group>"; };
+		045D0179243D7B420006423E /* UniversityGraTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityGraTableViewCell.m; sourceTree = "<group>"; };
+		045D017A243D7B420006423E /* ZJZeroChildView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJZeroChildView.m; sourceTree = "<group>"; };
+		045D017B243D7B420006423E /* ZJChooseShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJChooseShowView.m; sourceTree = "<group>"; };
+		045D017C243D7B420006423E /* DVPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVPieChart.h; sourceTree = "<group>"; };
+		045D017D243D7B420006423E /* FacultyStrengthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacultyStrengthView.h; sourceTree = "<group>"; };
+		045D017E243D7B420006423E /* ProfessionalAdmissionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalAdmissionTableViewCell.m; sourceTree = "<group>"; };
+		045D017F243D7B420006423E /* ZJChooseViewOneLeftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJChooseViewOneLeftCell.h; sourceTree = "<group>"; };
+		045D0180243D7B420006423E /* EnrollmentNavigationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnrollmentNavigationTableViewCell.m; sourceTree = "<group>"; };
+		045D0181243D7B420006423E /* DVPieCenterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVPieCenterView.h; sourceTree = "<group>"; };
+		045D0182243D7B420006423E /* EnrollmentOfficeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnrollmentOfficeTableViewCell.m; sourceTree = "<group>"; };
+		045D0183243D7B420006423E /* StudentSummaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentSummaryTableViewCell.m; sourceTree = "<group>"; };
+		045D0184243D7B420006423E /* FacultyStrengthTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacultyStrengthTableViewCell.m; sourceTree = "<group>"; };
+		045D0185243D7B420006423E /* UniversityProfessionalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityProfessionalTableViewCell.m; sourceTree = "<group>"; };
+		045D0186243D7B420006423E /* UnivesityGraChartTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnivesityGraChartTableViewCell.h; sourceTree = "<group>"; };
+		045D0187243D7B420006423E /* UniversityRankingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityRankingTableViewCell.m; sourceTree = "<group>"; };
+		045D0188243D7B420006423E /* CommonBottomMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonBottomMenuView.m; sourceTree = "<group>"; };
+		045D0189243D7B420006423E /* ZJOneChildView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJOneChildView.h; sourceTree = "<group>"; };
+		045D018A243D7B420006423E /* CommonScaleTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonScaleTextTableViewCell.h; sourceTree = "<group>"; };
+		045D018B243D7B420006423E /* ZJButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJButton.m; sourceTree = "<group>"; };
+		045D018C243D7B420006423E /* ZJFourChildView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJFourChildView.h; sourceTree = "<group>"; };
+		045D018D243D7B420006423E /* ZJChooseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJChooseModel.h; sourceTree = "<group>"; };
+		045D018E243D7B420006423E /* CollegeAdmissionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollegeAdmissionTableViewCell.h; sourceTree = "<group>"; };
+		045D018F243D7B420006423E /* CommonSingTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonSingTextTableViewCell.m; sourceTree = "<group>"; };
+		045D0190243D7B430006423E /* ZJChooseOneRightCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJChooseOneRightCell.m; sourceTree = "<group>"; };
+		045D0191243D7B430006423E /* FacultyStrengthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacultyStrengthView.m; sourceTree = "<group>"; };
+		045D0192243D7B430006423E /* ProfessionalAdmissionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalAdmissionTableViewCell.h; sourceTree = "<group>"; };
+		045D0193243D7B430006423E /* DVPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVPieChart.m; sourceTree = "<group>"; };
+		045D0194243D7B430006423E /* ZJChooseShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJChooseShowView.h; sourceTree = "<group>"; };
+		045D0195243D7B430006423E /* ZJZeroChildView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJZeroChildView.h; sourceTree = "<group>"; };
+		045D0196243D7B430006423E /* ZJThreeChildView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJThreeChildView.m; sourceTree = "<group>"; };
+		045D0197243D7B430006423E /* UniversityGraTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityGraTableViewCell.h; sourceTree = "<group>"; };
+		045D0198243D7B430006423E /* UniversityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityTableViewCell.m; sourceTree = "<group>"; };
+		045D0199243D7B430006423E /* ZJChooseControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJChooseControlView.m; sourceTree = "<group>"; };
+		045D019C243D7B430006423E /* RaTreeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaTreeModel.h; sourceTree = "<group>"; };
+		045D019D243D7B430006423E /* ProfessionalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalModel.h; sourceTree = "<group>"; };
+		045D019E243D7B430006423E /* ProfessionalOccupationsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalOccupationsModel.h; sourceTree = "<group>"; };
+		045D019F243D7B430006423E /* ProfessionalDetailRootModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalDetailRootModel.h; sourceTree = "<group>"; };
+		045D01A0243D7B430006423E /* ProfessionalRootModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalRootModel.m; sourceTree = "<group>"; };
+		045D01A1243D7B430006423E /* ProfessionalSubjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalSubjectModel.m; sourceTree = "<group>"; };
+		045D01A2243D7B430006423E /* RaTreeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaTreeModel.m; sourceTree = "<group>"; };
+		045D01A3243D7B430006423E /* ProfessionalOccupationsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalOccupationsModel.m; sourceTree = "<group>"; };
+		045D01A4243D7B430006423E /* ProfessionalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalModel.m; sourceTree = "<group>"; };
+		045D01A5243D7B430006423E /* ProfessionalRootModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalRootModel.h; sourceTree = "<group>"; };
+		045D01A6243D7B430006423E /* ProfessionalDetailRootModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalDetailRootModel.m; sourceTree = "<group>"; };
+		045D01A7243D7B430006423E /* ProfessionalSubjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalSubjectModel.h; sourceTree = "<group>"; };
+		045D01A9243D7B430006423E /* ProfessionalOpenUniversityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalOpenUniversityViewController.m; sourceTree = "<group>"; };
+		045D01AA243D7B430006423E /* EmploymentProspectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmploymentProspectsViewController.h; sourceTree = "<group>"; };
+		045D01AB243D7B430006423E /* ProfessionalBaseInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalBaseInfoViewController.h; sourceTree = "<group>"; };
+		045D01AC243D7B430006423E /* ProfessionalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalViewController.m; sourceTree = "<group>"; };
+		045D01AD243D7B430006423E /* ProfessionalDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalDetailsViewController.m; sourceTree = "<group>"; };
+		045D01AE243D7B430006423E /* ProfessionalOpenUniversityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalOpenUniversityViewController.h; sourceTree = "<group>"; };
+		045D01AF243D7B430006423E /* ProfessionalBaseInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalBaseInfoViewController.m; sourceTree = "<group>"; };
+		045D01B0243D7B430006423E /* EmploymentProspectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmploymentProspectsViewController.m; sourceTree = "<group>"; };
+		045D01B1243D7B430006423E /* ProfessionalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalViewController.h; sourceTree = "<group>"; };
+		045D01B2243D7B430006423E /* ProfessionalDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalDetailsViewController.h; sourceTree = "<group>"; };
+		045D01B4243D7B430006423E /* ProfessionalBenkeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalBenkeView.m; sourceTree = "<group>"; };
+		045D01B5243D7B430006423E /* STSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSegmentView.m; sourceTree = "<group>"; };
+		045D01B6243D7B430006423E /* OccupationDetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OccupationDetailsTableViewCell.h; sourceTree = "<group>"; };
+		045D01B7243D7B430006423E /* ProfessionalOpenUniTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalOpenUniTableViewCell.h; sourceTree = "<group>"; };
+		045D01B8243D7B430006423E /* ProfessionalZhuankeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalZhuankeView.h; sourceTree = "<group>"; };
+		045D01B9243D7B430006423E /* OccupationDetailsProTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OccupationDetailsProTableViewCell.h; sourceTree = "<group>"; };
+		045D01BA243D7B430006423E /* ProfessionalBenkeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfessionalBenkeView.h; sourceTree = "<group>"; };
+		045D01BB243D7B430006423E /* ProfessionalOpenUniTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalOpenUniTableViewCell.m; sourceTree = "<group>"; };
+		045D01BC243D7B430006423E /* OccupationDetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OccupationDetailsTableViewCell.m; sourceTree = "<group>"; };
+		045D01BD243D7B430006423E /* STSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSegmentView.h; sourceTree = "<group>"; };
+		045D01BE243D7B430006423E /* ProfessionalZhuankeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfessionalZhuankeView.m; sourceTree = "<group>"; };
+		045D01BF243D7B430006423E /* OccupationDetailsProTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OccupationDetailsProTableViewCell.m; sourceTree = "<group>"; };
+		045D01C2243D7B430006423E /* FEOccupationTreeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEOccupationTreeModel.h; sourceTree = "<group>"; };
+		045D01C3243D7B430006423E /* OccupationTypeItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OccupationTypeItemModel.h; sourceTree = "<group>"; };
+		045D01C4243D7B430006423E /* FEOccupationDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEOccupationDataManager.m; sourceTree = "<group>"; };
+		045D01C5243D7B430006423E /* OccupationTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OccupationTypeModel.h; sourceTree = "<group>"; };
+		045D01C6243D7B430006423E /* OccupationDetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OccupationDetailsModel.h; sourceTree = "<group>"; };
+		045D01C7243D7B430006423E /* FEOccupationDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEOccupationDataManager.h; sourceTree = "<group>"; };
+		045D01C8243D7B430006423E /* OccupationTypeItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OccupationTypeItemModel.m; sourceTree = "<group>"; };
+		045D01C9243D7B430006423E /* FEOccupationTreeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEOccupationTreeModel.m; sourceTree = "<group>"; };
+		045D01CA243D7B430006423E /* OccupationDetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OccupationDetailsModel.m; sourceTree = "<group>"; };
+		045D01CB243D7B430006423E /* OccupationTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OccupationTypeModel.m; sourceTree = "<group>"; };
+		045D01CD243D7B430006423E /* FEIndustryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEIndustryViewController.h; sourceTree = "<group>"; };
+		045D01CE243D7B430006423E /* FEOccupationLibViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEOccupationLibViewController.h; sourceTree = "<group>"; };
+		045D01CF243D7B430006423E /* FEProfessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEProfessionViewController.h; sourceTree = "<group>"; };
+		045D01D0243D7B430006423E /* OccupationDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OccupationDetailsViewController.h; sourceTree = "<group>"; };
+		045D01D1243D7B430006423E /* FEIndustryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEIndustryViewController.m; sourceTree = "<group>"; };
+		045D01D2243D7B430006423E /* FEOccupationLibViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEOccupationLibViewController.m; sourceTree = "<group>"; };
+		045D01D3243D7B430006423E /* FEProfessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEProfessionViewController.m; sourceTree = "<group>"; };
+		045D01D4243D7B430006423E /* OccupationDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OccupationDetailsViewController.m; sourceTree = "<group>"; };
+		045D01D6243D7B430006423E /* OccupationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OccupationTableViewCell.m; sourceTree = "<group>"; };
+		045D01D7243D7B430006423E /* FEOuccupationTreeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEOuccupationTreeViewCell.h; sourceTree = "<group>"; };
+		045D01D8243D7B430006423E /* OccupationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OccupationTableViewCell.h; sourceTree = "<group>"; };
+		045D01D9243D7B430006423E /* FEOuccupationTreeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FEOuccupationTreeViewCell.xib; sourceTree = "<group>"; };
+		045D01DA243D7B430006423E /* FEOuccupationTreeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEOuccupationTreeViewCell.m; sourceTree = "<group>"; };
+		045D0247243D7B6C0006423E /* CareerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CareerService.h; sourceTree = "<group>"; };
+		045D0248243D7B6C0006423E /* CareerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CareerService.m; sourceTree = "<group>"; };
+		045D024A243D7C1A0006423E /* EdgeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EdgeLabel.h; sourceTree = "<group>"; };
+		045D024B243D7C1B0006423E /* EdgeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EdgeLabel.m; sourceTree = "<group>"; };
+		045D024E243D7D1C0006423E /* FESwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FESwitch.h; sourceTree = "<group>"; };
+		045D025C243D7D1D0006423E /* FESwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FESwitch.m; sourceTree = "<group>"; };
+		045D025F243D7E290006423E /* TCSystemFeedBackHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCSystemFeedBackHelper.h; sourceTree = "<group>"; };
+		045D026D243D7E2A0006423E /* TCSystemFeedBackHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCSystemFeedBackHelper.m; sourceTree = "<group>"; };
+		045D026F243DBCBA0006423E /* BSUniversitySearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSUniversitySearchViewController.h; sourceTree = "<group>"; };
+		045D0270243DBCBA0006423E /* BSUniversitySearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BSUniversitySearchViewController.m; sourceTree = "<group>"; };
+		045D0272243DC1E90006423E /* TCSearchMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCSearchMainViewController.h; path = "../../../../../cheers-genie-plus/CheersgeniePlus/Module/Discovery/Search/C/TCSearchMainViewController.h"; sourceTree = "<group>"; };
+		045D0273243DC1EA0006423E /* TCSearchMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCSearchMainViewController.m; path = "../../../../../cheers-genie-plus/CheersgeniePlus/Module/Discovery/Search/C/TCSearchMainViewController.m"; sourceTree = "<group>"; };
+		045D0275243DCA9F0006423E /* TCSearchAppearanceButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCSearchAppearanceButton.h; sourceTree = "<group>"; };
+		045D0276243DCA9F0006423E /* TCSearchAppearanceButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCSearchAppearanceButton.m; sourceTree = "<group>"; };
+		045D0278243DE8B00006423E /* BSOccupationSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSOccupationSearchViewController.h; sourceTree = "<group>"; };
+		045D0279243DE8B00006423E /* BSOccupationSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BSOccupationSearchViewController.m; sourceTree = "<group>"; };
+		045D027B243DEB210006423E /* SegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentView.m; sourceTree = "<group>"; };
+		045D027C243DEB220006423E /* SegmentHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentHeaderView.m; sourceTree = "<group>"; };
+		045D027D243DEB230006423E /* SegmentHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentHeaderView.h; sourceTree = "<group>"; };
+		045D027E243DEB240006423E /* SegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentView.h; sourceTree = "<group>"; };
+		045D0281243DEF1D0006423E /* FESearchRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FESearchRecordView.m; sourceTree = "<group>"; };
+		045D0282243DEF1F0006423E /* FESearchRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FESearchRecordView.h; sourceTree = "<group>"; };
+		045D0284243DFA660006423E /* BSMajorSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSMajorSearchViewController.h; sourceTree = "<group>"; };
+		045D0285243DFA660006423E /* BSMajorSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BSMajorSearchViewController.m; sourceTree = "<group>"; };
 		0464301C241B23DB006FA1F5 /* UCManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCManager.h; sourceTree = "<group>"; };
 		0464301D241B23DC006FA1F5 /* UCManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCManager.m; sourceTree = "<group>"; };
 		0464301F241B23FC006FA1F5 /* TCNetworkReachabilityHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCNetworkReachabilityHelper.h; sourceTree = "<group>"; };
@@ -677,10 +1037,6 @@
 		04643146241B8331006FA1F5 /* TCMyOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCMyOrderTableViewCell.h; sourceTree = "<group>"; };
 		04643150241B88AA006FA1F5 /* TCImageHeaderScrollingAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCImageHeaderScrollingAnimator.h; sourceTree = "<group>"; };
 		04643151241B88AB006FA1F5 /* TCImageHeaderScrollingAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCImageHeaderScrollingAnimator.m; sourceTree = "<group>"; };
-		04643154241BA17E006FA1F5 /* SegmentHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentHeaderView.h; sourceTree = "<group>"; };
-		04643155241BA17E006FA1F5 /* SegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentView.h; sourceTree = "<group>"; };
-		04643156241BA17E006FA1F5 /* SegmentHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentHeaderView.m; sourceTree = "<group>"; };
-		04643157241BA17E006FA1F5 /* SegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentView.m; sourceTree = "<group>"; };
 		0464315B241BA1BF006FA1F5 /* TCIAPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCIAPManager.m; sourceTree = "<group>"; };
 		0464315E241BA1BF006FA1F5 /* TCCashierManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCashierManager.h; sourceTree = "<group>"; };
 		0464315F241BA1BF006FA1F5 /* TCCashierManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCashierManager.m; sourceTree = "<group>"; };
@@ -1167,10 +1523,18 @@
 		042F0F6E241D341C00D39AA6 /* C */ = {
 			isa = PBXGroup;
 			children = (
-				042F0F75241D341C00D39AA6 /* TCSearchMainViewController.h */,
-				042F0F71241D341C00D39AA6 /* TCSearchMainViewController.m */,
+				042F0F75241D341C00D39AA6 /* TCLibSearchMainViewController.h */,
+				042F0F71241D341C00D39AA6 /* TCLibSearchMainViewController.m */,
+				045D0272243DC1E90006423E /* TCSearchMainViewController.h */,
+				045D0273243DC1EA0006423E /* TCSearchMainViewController.m */,
 				042F0F76241D341C00D39AA6 /* TCTestSearchViewController.h */,
 				042F0F72241D341C00D39AA6 /* TCTestSearchViewController.m */,
+				045D026F243DBCBA0006423E /* BSUniversitySearchViewController.h */,
+				045D0270243DBCBA0006423E /* BSUniversitySearchViewController.m */,
+				045D0284243DFA660006423E /* BSMajorSearchViewController.h */,
+				045D0285243DFA660006423E /* BSMajorSearchViewController.m */,
+				045D0278243DE8B00006423E /* BSOccupationSearchViewController.h */,
+				045D0279243DE8B00006423E /* BSOccupationSearchViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1178,8 +1542,8 @@
 		042F0F77241D341C00D39AA6 /* V */ = {
 			isa = PBXGroup;
 			children = (
-				042F0F78241D341C00D39AA6 /* FESearchRecordView.m */,
-				042F0F79241D341C00D39AA6 /* FESearchRecordView.h */,
+				045D0282243DEF1F0006423E /* FESearchRecordView.h */,
+				045D0281243DEF1D0006423E /* FESearchRecordView.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1228,6 +1592,344 @@
 				045D00CE243C545B0006423E /* AVOSCloud-macOSTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		045D00E4243D6A130006423E /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				045D00E1243D6A0C0006423E /* FEMainViewController.h */,
+				045D00E2243D6A0D0006423E /* FEMainViewController.m */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
+		045D00E6243D75440006423E /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				045D00F4243D75690006423E /* PALibViewController.h */,
+				045D00F5243D75690006423E /* PALibViewController.m */,
+				045D0275243DCA9F0006423E /* TCSearchAppearanceButton.h */,
+				045D0276243DCA9F0006423E /* TCSearchAppearanceButton.m */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		045D00F7243D7B420006423E /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				045D00F8243D7B420006423E /* University */,
+				045D019A243D7B430006423E /* Major */,
+				045D01C0243D7B430006423E /* Profession */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		045D00F8243D7B420006423E /* University */ = {
+			isa = PBXGroup;
+			children = (
+				045D00F9243D7B420006423E /* M */,
+				045D0156243D7B420006423E /* C */,
+				045D0163243D7B420006423E /* V */,
+			);
+			path = University;
+			sourceTree = "<group>";
+		};
+		045D00F9243D7B420006423E /* M */ = {
+			isa = PBXGroup;
+			children = (
+				045D00FA243D7B420006423E /* DegreesRootModel.m */,
+				045D00FB243D7B420006423E /* UniversityBasicInfoModel.h */,
+				045D00FC243D7B420006423E /* ProfessionalCategoryModel.h */,
+				045D00FD243D7B420006423E /* EnrollmentRootModel.h */,
+				045D00FE243D7B420006423E /* UniversityKeySubjectModel.h */,
+				045D00FF243D7B420006423E /* StudentRatioModel.h */,
+				045D0100243D7B420006423E /* UniversityRootModel.m */,
+				045D0101243D7B420006423E /* StudentDataModel.m */,
+				045D0102243D7B420006423E /* EnrollmentNavigationModel.h */,
+				045D0103243D7B420006423E /* SubjectMajorModel.h */,
+				045D0104243D7B420006423E /* UniversitySituationModel.h */,
+				045D0105243D7B420006423E /* UniversityGrduationOverallModel.m */,
+				045D0106243D7B420006423E /* ProfessionalAdminsionModel.m */,
+				045D0107243D7B420006423E /* ChartItemDataModel.m */,
+				045D0108243D7B420006423E /* UniverSitynameItemModel.m */,
+				045D0109243D7B420006423E /* ChartDatasModel.m */,
+				045D010A243D7B420006423E /* ChartItemsDynamicModel.m */,
+				045D010B243D7B420006423E /* FactorResultModel.m */,
+				045D010C243D7B420006423E /* DegreesRankingModel.h */,
+				045D010D243D7B420006423E /* UniversityGraduationModel.m */,
+				045D010E243D7B420006423E /* UniversityMajorInfoModel.h */,
+				045D010F243D7B420006423E /* EnrollmentNavigationItemModel.h */,
+				045D0110243D7B420006423E /* DimensionChildModel.m */,
+				045D0111243D7B420006423E /* FEChartViewManager.m */,
+				045D0112243D7B420006423E /* AdmissionParamModel.h */,
+				045D0113243D7B420006423E /* UniversityModel.h */,
+				045D0114243D7B420006423E /* ChartItemsModel.m */,
+				045D0115243D7B420006423E /* ProvinceRootModel.h */,
+				045D0116243D7B420006423E /* EnrollmentOfficeModel.h */,
+				045D0117243D7B420006423E /* UniversityMajorModel.h */,
+				045D0118243D7B420006423E /* DVFoodPieModel.m */,
+				045D0119243D7B420006423E /* DimensionBaseModel.m */,
+				045D011A243D7B420006423E /* UniversityMajorRootModel.h */,
+				045D011B243D7B420006423E /* ProvinceModel.h */,
+				045D011C243D7B420006423E /* UniversityRankingItemModel.h */,
+				045D011D243D7B420006423E /* UniversityGraduationSettledModel.h */,
+				045D011E243D7B420006423E /* AddItemViewsManager.h */,
+				045D011F243D7B420006423E /* UniversityAdminsionModel.m */,
+				045D0120243D7B420006423E /* UniversityKindModel.m */,
+				045D0121243D7B420006423E /* UniversityRankingModel.h */,
+				045D0122243D7B420006423E /* ReportResultsModel.h */,
+				045D0123243D7B420006423E /* UniversityYearModel.h */,
+				045D0124243D7B420006423E /* SubjectCountModel.h */,
+				045D0125243D7B420006423E /* ProfessionalIntroducesModel.h */,
+				045D0126243D7B420006423E /* ChartDatasDynamicModel.m */,
+				045D0127243D7B420006423E /* DegreesModel.m */,
+				045D0128243D7B420006423E /* UniversityGrduationOverallModel.h */,
+				045D0129243D7B420006423E /* UniversitySituationModel.m */,
+				045D012A243D7B420006423E /* SubjectMajorModel.m */,
+				045D012B243D7B420006423E /* EnrollmentNavigationModel.m */,
+				045D012C243D7B420006423E /* StudentDataModel.h */,
+				045D012D243D7B420006423E /* UniversityRootModel.h */,
+				045D012E243D7B420006423E /* StudentRatioModel.m */,
+				045D012F243D7B420006423E /* ProfessionalCategoryModel.m */,
+				045D0130243D7B420006423E /* EnrollmentRootModel.m */,
+				045D0131243D7B420006423E /* UniversityKeySubjectModel.m */,
+				045D0132243D7B420006423E /* DegreesRootModel.h */,
+				045D0133243D7B420006423E /* UniversityBasicInfoModel.m */,
+				045D0134243D7B420006423E /* UniversityModel.m */,
+				045D0135243D7B420006423E /* ChartItemsModel.h */,
+				045D0136243D7B420006423E /* FEChartViewManager.h */,
+				045D0137243D7B420006423E /* DimensionChildModel.h */,
+				045D0138243D7B420006423E /* AdmissionParamModel.m */,
+				045D0139243D7B420006423E /* UniversityMajorInfoModel.m */,
+				045D013A243D7B420006423E /* EnrollmentNavigationItemModel.m */,
+				045D013B243D7B420006423E /* DegreesRankingModel.m */,
+				045D013C243D7B420006423E /* UniversityGraduationModel.h */,
+				045D013D243D7B420006423E /* FactorResultModel.h */,
+				045D013E243D7B420006423E /* ChartItemsDynamicModel.h */,
+				045D013F243D7B420006423E /* ChartDatasModel.h */,
+				045D0140243D7B420006423E /* ChartItemDataModel.h */,
+				045D0141243D7B420006423E /* UniverSitynameItemModel.h */,
+				045D0142243D7B420006423E /* ProfessionalAdminsionModel.h */,
+				045D0143243D7B420006423E /* ProvinceModel.m */,
+				045D0144243D7B420006423E /* UniversityMajorRootModel.m */,
+				045D0145243D7B420006423E /* DimensionBaseModel.h */,
+				045D0146243D7B420006423E /* UniversityMajorModel.m */,
+				045D0147243D7B420006423E /* DVFoodPieModel.h */,
+				045D0148243D7B420006423E /* EnrollmentOfficeModel.m */,
+				045D0149243D7B420006423E /* ProvinceRootModel.m */,
+				045D014A243D7B420006423E /* DegreesModel.h */,
+				045D014B243D7B420006423E /* ChartDatasDynamicModel.h */,
+				045D014C243D7B420006423E /* ProfessionalIntroducesModel.m */,
+				045D014D243D7B420006423E /* SubjectCountModel.m */,
+				045D014E243D7B420006423E /* UniversityYearModel.m */,
+				045D014F243D7B420006423E /* UniversityKindModel.h */,
+				045D0150243D7B420006423E /* ReportResultsModel.m */,
+				045D0151243D7B420006423E /* UniversityRankingModel.m */,
+				045D0152243D7B420006423E /* UniversityAdminsionModel.h */,
+				045D0153243D7B420006423E /* UniversityRankingItemModel.m */,
+				045D0154243D7B420006423E /* AddItemViewsManager.m */,
+				045D0155243D7B420006423E /* UniversityGraduationSettledModel.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		045D0156243D7B420006423E /* C */ = {
+			isa = PBXGroup;
+			children = (
+				045D0157243D7B420006423E /* UniversityListViewController.m */,
+				045D0158243D7B420006423E /* RecruitStudentsViewController.m */,
+				045D0159243D7B420006423E /* UniversityProfessionalViewController.h */,
+				045D015A243D7B420006423E /* GraduationInfoViewController.h */,
+				045D015B243D7B420006423E /* UniversityDetailsViewController.h */,
+				045D015C243D7B420006423E /* UniversitySituationViewController.m */,
+				045D015D243D7B420006423E /* UniversityListViewController.h */,
+				045D015E243D7B420006423E /* RecruitStudentsViewController.h */,
+				045D015F243D7B420006423E /* UniversitySituationViewController.h */,
+				045D0160243D7B420006423E /* UniversityDetailsViewController.m */,
+				045D0161243D7B420006423E /* GraduationInfoViewController.m */,
+				045D0162243D7B420006423E /* UniversityProfessionalViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		045D0163243D7B420006423E /* V */ = {
+			isa = PBXGroup;
+			children = (
+				045D0164243D7B420006423E /* UniversityProfessionalTableViewCell.h */,
+				045D0165243D7B420006423E /* FacultyStrengthTableViewCell.h */,
+				045D0166243D7B420006423E /* StudentSummaryTableViewCell.h */,
+				045D0167243D7B420006423E /* EnrollmentOfficeTableViewCell.h */,
+				045D0168243D7B420006423E /* DVPieCenterView.m */,
+				045D0169243D7B420006423E /* EnrollmentNavigationTableViewCell.h */,
+				045D016A243D7B420006423E /* ZJChooseViewOneLeftCell.m */,
+				045D016B243D7B420006423E /* ZJOneChildView.m */,
+				045D016C243D7B420006423E /* CommonScaleTextTableViewCell.m */,
+				045D016D243D7B420006423E /* CommonBottomMenuView.h */,
+				045D016E243D7B420006423E /* UniversityRankingTableViewCell.h */,
+				045D016F243D7B420006423E /* UnivesityGraChartTableViewCell.m */,
+				045D0170243D7B420006423E /* ZJChooseOneRightCell.h */,
+				045D0171243D7B420006423E /* CommonSingTextTableViewCell.h */,
+				045D0172243D7B420006423E /* CollegeAdmissionTableViewCell.m */,
+				045D0173243D7B420006423E /* ZJChooseModel.m */,
+				045D0174243D7B420006423E /* ZJFourChildView.m */,
+				045D0175243D7B420006423E /* ZJButton.h */,
+				045D0176243D7B420006423E /* UniversityTableViewCell.h */,
+				045D0177243D7B420006423E /* ZJChooseControlView.h */,
+				045D0178243D7B420006423E /* ZJThreeChildView.h */,
+				045D0179243D7B420006423E /* UniversityGraTableViewCell.m */,
+				045D017A243D7B420006423E /* ZJZeroChildView.m */,
+				045D017B243D7B420006423E /* ZJChooseShowView.m */,
+				045D017C243D7B420006423E /* DVPieChart.h */,
+				045D017D243D7B420006423E /* FacultyStrengthView.h */,
+				045D017E243D7B420006423E /* ProfessionalAdmissionTableViewCell.m */,
+				045D017F243D7B420006423E /* ZJChooseViewOneLeftCell.h */,
+				045D0180243D7B420006423E /* EnrollmentNavigationTableViewCell.m */,
+				045D0181243D7B420006423E /* DVPieCenterView.h */,
+				045D0182243D7B420006423E /* EnrollmentOfficeTableViewCell.m */,
+				045D0183243D7B420006423E /* StudentSummaryTableViewCell.m */,
+				045D0184243D7B420006423E /* FacultyStrengthTableViewCell.m */,
+				045D0185243D7B420006423E /* UniversityProfessionalTableViewCell.m */,
+				045D0186243D7B420006423E /* UnivesityGraChartTableViewCell.h */,
+				045D0187243D7B420006423E /* UniversityRankingTableViewCell.m */,
+				045D0188243D7B420006423E /* CommonBottomMenuView.m */,
+				045D0189243D7B420006423E /* ZJOneChildView.h */,
+				045D018A243D7B420006423E /* CommonScaleTextTableViewCell.h */,
+				045D018B243D7B420006423E /* ZJButton.m */,
+				045D018C243D7B420006423E /* ZJFourChildView.h */,
+				045D018D243D7B420006423E /* ZJChooseModel.h */,
+				045D018E243D7B420006423E /* CollegeAdmissionTableViewCell.h */,
+				045D018F243D7B420006423E /* CommonSingTextTableViewCell.m */,
+				045D0190243D7B430006423E /* ZJChooseOneRightCell.m */,
+				045D0191243D7B430006423E /* FacultyStrengthView.m */,
+				045D0192243D7B430006423E /* ProfessionalAdmissionTableViewCell.h */,
+				045D0193243D7B430006423E /* DVPieChart.m */,
+				045D0194243D7B430006423E /* ZJChooseShowView.h */,
+				045D0195243D7B430006423E /* ZJZeroChildView.h */,
+				045D0196243D7B430006423E /* ZJThreeChildView.m */,
+				045D0197243D7B430006423E /* UniversityGraTableViewCell.h */,
+				045D0198243D7B430006423E /* UniversityTableViewCell.m */,
+				045D0199243D7B430006423E /* ZJChooseControlView.m */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		045D019A243D7B430006423E /* Major */ = {
+			isa = PBXGroup;
+			children = (
+				045D019B243D7B430006423E /* M */,
+				045D01A8243D7B430006423E /* C */,
+				045D01B3243D7B430006423E /* V */,
+			);
+			path = Major;
+			sourceTree = "<group>";
+		};
+		045D019B243D7B430006423E /* M */ = {
+			isa = PBXGroup;
+			children = (
+				045D019C243D7B430006423E /* RaTreeModel.h */,
+				045D019D243D7B430006423E /* ProfessionalModel.h */,
+				045D019E243D7B430006423E /* ProfessionalOccupationsModel.h */,
+				045D019F243D7B430006423E /* ProfessionalDetailRootModel.h */,
+				045D01A0243D7B430006423E /* ProfessionalRootModel.m */,
+				045D01A1243D7B430006423E /* ProfessionalSubjectModel.m */,
+				045D01A2243D7B430006423E /* RaTreeModel.m */,
+				045D01A3243D7B430006423E /* ProfessionalOccupationsModel.m */,
+				045D01A4243D7B430006423E /* ProfessionalModel.m */,
+				045D01A5243D7B430006423E /* ProfessionalRootModel.h */,
+				045D01A6243D7B430006423E /* ProfessionalDetailRootModel.m */,
+				045D01A7243D7B430006423E /* ProfessionalSubjectModel.h */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		045D01A8243D7B430006423E /* C */ = {
+			isa = PBXGroup;
+			children = (
+				045D01AE243D7B430006423E /* ProfessionalOpenUniversityViewController.h */,
+				045D01A9243D7B430006423E /* ProfessionalOpenUniversityViewController.m */,
+				045D01B1243D7B430006423E /* ProfessionalViewController.h */,
+				045D01AC243D7B430006423E /* ProfessionalViewController.m */,
+				045D01B2243D7B430006423E /* ProfessionalDetailsViewController.h */,
+				045D01AD243D7B430006423E /* ProfessionalDetailsViewController.m */,
+				045D01AB243D7B430006423E /* ProfessionalBaseInfoViewController.h */,
+				045D01AF243D7B430006423E /* ProfessionalBaseInfoViewController.m */,
+				045D01AA243D7B430006423E /* EmploymentProspectsViewController.h */,
+				045D01B0243D7B430006423E /* EmploymentProspectsViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		045D01B3243D7B430006423E /* V */ = {
+			isa = PBXGroup;
+			children = (
+				045D01BA243D7B430006423E /* ProfessionalBenkeView.h */,
+				045D01B4243D7B430006423E /* ProfessionalBenkeView.m */,
+				045D01B8243D7B430006423E /* ProfessionalZhuankeView.h */,
+				045D01BE243D7B430006423E /* ProfessionalZhuankeView.m */,
+				045D01BD243D7B430006423E /* STSegmentView.h */,
+				045D01B5243D7B430006423E /* STSegmentView.m */,
+				045D01B6243D7B430006423E /* OccupationDetailsTableViewCell.h */,
+				045D01BC243D7B430006423E /* OccupationDetailsTableViewCell.m */,
+				045D01B7243D7B430006423E /* ProfessionalOpenUniTableViewCell.h */,
+				045D01BB243D7B430006423E /* ProfessionalOpenUniTableViewCell.m */,
+				045D01B9243D7B430006423E /* OccupationDetailsProTableViewCell.h */,
+				045D01BF243D7B430006423E /* OccupationDetailsProTableViewCell.m */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		045D01C0243D7B430006423E /* Profession */ = {
+			isa = PBXGroup;
+			children = (
+				045D01C1243D7B430006423E /* M */,
+				045D01CC243D7B430006423E /* C */,
+				045D01D5243D7B430006423E /* V */,
+			);
+			path = Profession;
+			sourceTree = "<group>";
+		};
+		045D01C1243D7B430006423E /* M */ = {
+			isa = PBXGroup;
+			children = (
+				045D01C2243D7B430006423E /* FEOccupationTreeModel.h */,
+				045D01C3243D7B430006423E /* OccupationTypeItemModel.h */,
+				045D01C4243D7B430006423E /* FEOccupationDataManager.m */,
+				045D01C5243D7B430006423E /* OccupationTypeModel.h */,
+				045D01C6243D7B430006423E /* OccupationDetailsModel.h */,
+				045D01C7243D7B430006423E /* FEOccupationDataManager.h */,
+				045D01C8243D7B430006423E /* OccupationTypeItemModel.m */,
+				045D01C9243D7B430006423E /* FEOccupationTreeModel.m */,
+				045D01CA243D7B430006423E /* OccupationDetailsModel.m */,
+				045D01CB243D7B430006423E /* OccupationTypeModel.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		045D01CC243D7B430006423E /* C */ = {
+			isa = PBXGroup;
+			children = (
+				045D01CD243D7B430006423E /* FEIndustryViewController.h */,
+				045D01D1243D7B430006423E /* FEIndustryViewController.m */,
+				045D01CE243D7B430006423E /* FEOccupationLibViewController.h */,
+				045D01D2243D7B430006423E /* FEOccupationLibViewController.m */,
+				045D01CF243D7B430006423E /* FEProfessionViewController.h */,
+				045D01D0243D7B430006423E /* OccupationDetailsViewController.h */,
+				045D01D3243D7B430006423E /* FEProfessionViewController.m */,
+				045D01D4243D7B430006423E /* OccupationDetailsViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		045D01D5243D7B430006423E /* V */ = {
+			isa = PBXGroup;
+			children = (
+				045D01D6243D7B430006423E /* OccupationTableViewCell.m */,
+				045D01D7243D7B430006423E /* FEOuccupationTreeViewCell.h */,
+				045D01D8243D7B430006423E /* OccupationTableViewCell.h */,
+				045D01D9243D7B430006423E /* FEOuccupationTreeViewCell.xib */,
+				045D01DA243D7B430006423E /* FEOuccupationTreeViewCell.m */,
+			);
+			path = V;
 			sourceTree = "<group>";
 		};
 		04643035241B24BF006FA1F5 /* Device */ = {
@@ -1294,6 +1996,8 @@
 		0464305D241B295B006FA1F5 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				045D0247243D7B6C0006423E /* CareerService.h */,
+				045D0248243D7B6C0006423E /* CareerService.m */,
 				0464305E241B295B006FA1F5 /* TCHTTPService.h */,
 				0464305F241B295B006FA1F5 /* TCCategoryService.h */,
 				04643060241B295B006FA1F5 /* EvaluateService.m */,
@@ -1590,10 +2294,10 @@
 		04643153241BA17E006FA1F5 /* Segment */ = {
 			isa = PBXGroup;
 			children = (
-				04643154241BA17E006FA1F5 /* SegmentHeaderView.h */,
-				04643155241BA17E006FA1F5 /* SegmentView.h */,
-				04643156241BA17E006FA1F5 /* SegmentHeaderView.m */,
-				04643157241BA17E006FA1F5 /* SegmentView.m */,
+				045D027D243DEB230006423E /* SegmentHeaderView.h */,
+				045D027C243DEB220006423E /* SegmentHeaderView.m */,
+				045D027E243DEB240006423E /* SegmentView.h */,
+				045D027B243DEB210006423E /* SegmentView.m */,
 			);
 			path = Segment;
 			sourceTree = "<group>";
@@ -1837,6 +2541,9 @@
 			isa = PBXGroup;
 			children = (
 				0467ECCF2419E7B5002F0694 /* PACommon.h */,
+				045D00F7243D7B420006423E /* Library */,
+				045D00E6243D75440006423E /* Lib */,
+				045D00E4243D6A130006423E /* Tab */,
 				0467EB852419E35F002F0694 /* Theme */,
 				04BE22A1241F4A2000C42540 /* Appraise */,
 				042F0F44241C733A00D39AA6 /* Home */,
@@ -1969,6 +2676,10 @@
 				046430B2241B3171006FA1F5 /* AlertView */,
 				0467ECB62419E5D2002F0694 /* EmptyErrorView.h */,
 				0467ECB52419E5D2002F0694 /* EmptyErrorView.m */,
+				045D024A243D7C1A0006423E /* EdgeLabel.h */,
+				045D024B243D7C1B0006423E /* EdgeLabel.m */,
+				045D024E243D7D1C0006423E /* FESwitch.h */,
+				045D025C243D7D1D0006423E /* FESwitch.m */,
 				04FB47B4241FB0950073E948 /* FETailLabel.h */,
 				04FB47B5241FB0950073E948 /* FETailLabel.m */,
 				04FB47B1241FB0750073E948 /* FEProgressBar.h */,
@@ -2002,6 +2713,8 @@
 				0467EB9E2419E3DC002F0694 /* DateUtil.m */,
 				0464305A241B2932006FA1F5 /* TCUserDataRestter.h */,
 				0464305B241B2934006FA1F5 /* TCUserDataRestter.m */,
+				045D025F243D7E290006423E /* TCSystemFeedBackHelper.h */,
+				045D026D243D7E2A0006423E /* TCSystemFeedBackHelper.m */,
 				0467EBA42419E3E1002F0694 /* FastClickUtils.h */,
 				0467EBA32419E3E0002F0694 /* FastClickUtils.m */,
 				04643113241B375C006FA1F5 /* TCKeyChainHelper.h */,
@@ -2884,6 +3597,7 @@
 				046430A7241B313C006FA1F5 /* PIInputBox.xib in Resources */,
 				0467EC882419E45C002F0694 /* AAChartView.html in Resources */,
 				0467EC842419E45C002F0694 /* AAHighchartsLib.js in Resources */,
+				045D0245243D7B440006423E /* FEOuccupationTreeViewCell.xib in Resources */,
 				0467EB6A2419DDDE002F0694 /* LaunchScreen.xib in Resources */,
 				04643191241BCB06006FA1F5 /* FECheckUpdateTableViewCell.xib in Resources */,
 				0466EE4C24206DEE00E2FBAF /* report_loading.gif in Resources */,
@@ -3021,25 +3735,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				0467EC8D2419E45C002F0694 /* AAPlotOptions.m in Sources */,
+				045D01EE243D7B430006423E /* DegreesModel.m in Sources */,
 				0464312C241B8317006FA1F5 /* ChildInfoTableViewCell.m in Sources */,
 				0466EE4B24206DEE00E2FBAF /* FEEvaluationReportSelectionView.m in Sources */,
+				045D01DF243D7B430006423E /* ProfessionalAdminsionModel.m in Sources */,
 				0467EC0B2419E3FB002F0694 /* StringUtils.m in Sources */,
 				0466EE4A24206DEE00E2FBAF /* FEEvaluationCareerReportCollectionViewCell.m in Sources */,
+				045D0230243D7B440006423E /* ProfessionalOpenUniversityViewController.m in Sources */,
+				045D027F243DEB240006423E /* SegmentView.m in Sources */,
+				045D01ED243D7B430006423E /* ChartDatasDynamicModel.m in Sources */,
 				0467EC162419E3FB002F0694 /* NSDate+Utils.m in Sources */,
+				045D01EB243D7B430006423E /* UniversityAdminsionModel.m in Sources */,
 				0467EB902419E35F002F0694 /* FEThemeConfigure.m in Sources */,
+				045D023B243D7B440006423E /* FEOccupationDataManager.m in Sources */,
 				0467EBFC2419E3FB002F0694 /* UIImage+Utils.m in Sources */,
 				046430ED241B32ED006FA1F5 /* FERectSpreadTransition.m in Sources */,
+				045D01F7243D7B430006423E /* UniversityModel.m in Sources */,
 				04FB47B3241FB0760073E948 /* FEProgressBar.m in Sources */,
+				045D0203243D7B430006423E /* UniversityYearModel.m in Sources */,
 				0467EBAA2419E3E2002F0694 /* SizeTool.m in Sources */,
+				045D027A243DE8B10006423E /* BSOccupationSearchViewController.m in Sources */,
 				0467EB922419E35F002F0694 /* FEThemeConfigureDefault.m in Sources */,
 				04643152241B88AB006FA1F5 /* TCImageHeaderScrollingAnimator.m in Sources */,
+				045D023D243D7B440006423E /* FEOccupationTreeModel.m in Sources */,
 				0464311A241B3A87006FA1F5 /* AppDelegate+Theme.m in Sources */,
 				046430B1241B313C006FA1F5 /* VerifyCodeTableViewCell.m in Sources */,
 				0464310A241B33D1006FA1F5 /* NSCalendar+STPicker.m in Sources */,
 				0467ECA22419E45C002F0694 /* AAChartView.m in Sources */,
 				0464314F241B8331006FA1F5 /* TCMyOrderTableViewCell.m in Sources */,
+				045D0221243D7B440006423E /* CommonBottomMenuView.m in Sources */,
+				045D01F6243D7B430006423E /* UniversityBasicInfoModel.m in Sources */,
 				0467EC8F2419E45C002F0694 /* AALine.m in Sources */,
 				0467EBA82419E3E2002F0694 /* UGTool.m in Sources */,
+				045D023E243D7B440006423E /* OccupationDetailsModel.m in Sources */,
 				0467EBA72419E3E2002F0694 /* FEDeviceManager.m in Sources */,
 				0464314B241B8331006FA1F5 /* TCMyOrderRecordModel.m in Sources */,
 				0464305C241B2934006FA1F5 /* TCUserDataRestter.m in Sources */,
@@ -3050,9 +3778,12 @@
 				04643050241B2550006FA1F5 /* PIClassMiddleTableViewCell.m in Sources */,
 				0467EBFA2419E3FB002F0694 /* UIImage+ColorAtPixel.m in Sources */,
 				042F0F7A241D341F00D39AA6 /* TCDiscoverySearchResultModel.m in Sources */,
+				045D0244243D7B440006423E /* OccupationTableViewCell.m in Sources */,
 				0467EC9B2419E45C002F0694 /* AAAnimation.m in Sources */,
 				04643051241B2550006FA1F5 /* LoginInfoPerfectionView.m in Sources */,
 				0464314D241B8331006FA1F5 /* TCMyOrderListViewController.m in Sources */,
+				045D01F5243D7B430006423E /* UniversityKeySubjectModel.m in Sources */,
+				045D0237243D7B440006423E /* ProfessionalOpenUniTableViewCell.m in Sources */,
 				046430F0241B33A0006FA1F5 /* FEBottomPopUpView.m in Sources */,
 				0467EC012419E3FB002F0694 /* UIColor+Utils.m in Sources */,
 				0467ECC32419E712002F0694 /* HttpErrorManager.m in Sources */,
@@ -3062,54 +3793,81 @@
 				0467EB912419E35F002F0694 /* FEThemeConfigureDark.m in Sources */,
 				0467EC372419E42A002F0694 /* UIButton+FEScreenAdapter.m in Sources */,
 				042F0F7B241D341F00D39AA6 /* TCDiscoverySearchDataManager.m in Sources */,
+				045D020F243D7B430006423E /* DVPieCenterView.m in Sources */,
+				045D01E4243D7B430006423E /* FactorResultModel.m in Sources */,
 				0466EE4924206DEE00E2FBAF /* FEEvaluationReportCollectionViewCell.m in Sources */,
+				045D0283243DEF1F0006423E /* FESearchRecordView.m in Sources */,
+				045D0223243D7B440006423E /* CommonSingTextTableViewCell.m in Sources */,
+				045D01F3243D7B430006423E /* ProfessionalCategoryModel.m in Sources */,
 				046430AA241B313C006FA1F5 /* SharedLabelTableViewCell.m in Sources */,
 				0467EC362419E42A002F0694 /* NSLayoutConstraint+FEScreenAdapter.m in Sources */,
 				0467EC9F2419E45C002F0694 /* AAItemStyle.m in Sources */,
 				04BE2297241F242600C42540 /* TCTestTitleLabelView.m in Sources */,
 				0467EC242419E40A002F0694 /* QSToast.m in Sources */,
+				045D0218243D7B430006423E /* ZJZeroChildView.m in Sources */,
 				04643052241B2550006FA1F5 /* PIGradeSelector.m in Sources */,
 				0467EC0D2419E3FB002F0694 /* UIViewController+DismissKeyboard.m in Sources */,
+				045D0277243DCAA00006423E /* TCSearchAppearanceButton.m in Sources */,
 				042F0F4B241C793E00D39AA6 /* PATestListViewController.m in Sources */,
+				045D0280243DEB240006423E /* SegmentHeaderView.m in Sources */,
 				04643069241B295C006FA1F5 /* UserService.m in Sources */,
 				0467EC122419E3FB002F0694 /* UITabBar+Tip.m in Sources */,
 				0467EB832419E33C002F0694 /* FEBaseViewController+CustomTitleTransition.m in Sources */,
 				04FB47A5241FAD610073E948 /* FEAnswerSelectionCell.m in Sources */,
+				045D01E5243D7B430006423E /* UniversityGraduationModel.m in Sources */,
 				0464314A241B8331006FA1F5 /* TCMyAccountRechargeGridViewCell.m in Sources */,
+				045D01E6243D7B430006423E /* DimensionChildModel.m in Sources */,
 				04643183241BA1C0006FA1F5 /* TCOrderModel.m in Sources */,
 				04643108241B33D1006FA1F5 /* STPickerViewUI.m in Sources */,
+				045D01F2243D7B430006423E /* StudentRatioModel.m in Sources */,
 				046430A9241B313C006FA1F5 /* BaseTableViewCell.m in Sources */,
+				045D01E7243D7B430006423E /* FEChartViewManager.m in Sources */,
+				045D01E9243D7B430006423E /* DVFoodPieModel.m in Sources */,
+				045D0216243D7B430006423E /* ZJFourChildView.m in Sources */,
 				046430DC241B325C006FA1F5 /* TCCommonButton.m in Sources */,
 				04643056241B2848006FA1F5 /* FEBaseModel.m in Sources */,
 				0467EC212419E409002F0694 /* QSLoadingView.m in Sources */,
 				04FB479F241FAD610073E948 /* QuestionChildModel.m in Sources */,
+				045D01EA243D7B430006423E /* DimensionBaseModel.m in Sources */,
 				04BE2291241F242600C42540 /* TCTestHistoryModel.m in Sources */,
 				0466EE4F24206E3300E2FBAF /* CareerChartDataModel.m in Sources */,
 				0467EC942419E45C002F0694 /* AAColumn.m in Sources */,
 				04FB47B9241FB1400073E948 /* FECourseSurplusView.m in Sources */,
 				0466EE3324206DEE00E2FBAF /* FEReportAppraiseView.m in Sources */,
 				0466EE3824206DEE00E2FBAF /* FEReportCategoryView.m in Sources */,
+				045D0222243D7B440006423E /* ZJButton.m in Sources */,
 				0466EE5E24206F6700E2FBAF /* FEBottomLineLabel.m in Sources */,
 				0467EC8C2419E45C002F0694 /* AAXAxis.m in Sources */,
 				04643034241B2492006FA1F5 /* LoginForgetView.m in Sources */,
+				045D026E243D7E2A0006423E /* TCSystemFeedBackHelper.m in Sources */,
 				0466EE5224206E4F00E2FBAF /* CareerReportDataModel.m in Sources */,
+				045D01DC243D7B430006423E /* UniversityRootModel.m in Sources */,
 				0467EC0A2419E3FB002F0694 /* NSString+Utils.m in Sources */,
 				0467EC912419E45C002F0694 /* AASubtitle.m in Sources */,
 				04FB47AA241FADF80073E948 /* FEExamProgressBar.m in Sources */,
 				0467EB842419E33C002F0694 /* FENavigationViewController.m in Sources */,
+				045D0225243D7B440006423E /* FacultyStrengthView.m in Sources */,
+				045D0241243D7B440006423E /* FEOccupationLibViewController.m in Sources */,
+				045D0204243D7B430006423E /* ReportResultsModel.m in Sources */,
 				04FB47A2241FAD610073E948 /* FEAnswerManager.m in Sources */,
+				045D0217243D7B430006423E /* UniversityGraTableViewCell.m in Sources */,
 				0464306A241B295C006FA1F5 /* TCCategoryService.m in Sources */,
 				046430CC241B3172006FA1F5 /* TCDeviceLoginAlertView.m in Sources */,
 				046430AF241B313C006FA1F5 /* ThirdSignInFooterView.m in Sources */,
 				042F0F5D241CFB3700D39AA6 /* TCCategroyModel.m in Sources */,
 				04FB47A3241FAD610073E948 /* FEMergeQuestionModel.m in Sources */,
+				045D01F1243D7B430006423E /* EnrollmentNavigationModel.m in Sources */,
+				045D0274243DC1EB0006423E /* TCSearchMainViewController.m in Sources */,
 				0466EE4524206DEE00E2FBAF /* FEReportRadarChartView.m in Sources */,
 				0466EE3724206DEE00E2FBAF /* FEReportProportionChartView.m in Sources */,
 				04643053241B2550006FA1F5 /* PIModel.m in Sources */,
+				045D0226243D7B440006423E /* DVPieChart.m in Sources */,
 				0466EE4824206DEE00E2FBAF /* FEEvaluationReportViewController.m in Sources */,
+				045D0242243D7B440006423E /* FEProfessionViewController.m in Sources */,
 				0467EC0F2419E3FB002F0694 /* NSArray+SafeIndex.m in Sources */,
 				046430A2241B313C006FA1F5 /* PIBoxStateManager.m in Sources */,
 				046430EB241B32ED006FA1F5 /* DismissVCAnimation.m in Sources */,
+				045D01E2243D7B430006423E /* ChartDatasModel.m in Sources */,
 				0467ECA52419E45C002F0694 /* AASeriesElement.m in Sources */,
 				046430CA241B3172006FA1F5 /* FEReportForbidAlerView.m in Sources */,
 				04643147241B8331006FA1F5 /* TCMyAccountDataManager.m in Sources */,
@@ -3118,41 +3876,62 @@
 				0467EC152419E3FB002F0694 /* NSDateFormatter+Utils.m in Sources */,
 				0467ECB72419E5D3002F0694 /* EmptyErrorView.m in Sources */,
 				0467EC142419E3FB002F0694 /* UITextField+EventObsever.m in Sources */,
+				045D0234243D7B440006423E /* EmploymentProspectsViewController.m in Sources */,
 				046430EA241B32ED006FA1F5 /* SwipeUpInteractiveTransition.m in Sources */,
+				045D021B243D7B430006423E /* EnrollmentNavigationTableViewCell.m in Sources */,
+				045D020E243D7B430006423E /* UniversityProfessionalViewController.m in Sources */,
 				04643195241BCF48006FA1F5 /* FEChangePasswordViewController.m in Sources */,
 				04643114241B375C006FA1F5 /* TCKeyChainHelper.m in Sources */,
 				0466EE4624206DEE00E2FBAF /* FEUIComponent.m in Sources */,
 				0467EBFD2419E3FB002F0694 /* UIImage+FixOrientation.m in Sources */,
 				04643122241B8284006FA1F5 /* PAMineViewController.m in Sources */,
 				0467EC342419E42A002F0694 /* UILabel+FEScreenAdapter.m in Sources */,
+				045D0201243D7B430006423E /* ProfessionalIntroducesModel.m in Sources */,
 				0467EC072419E3FB002F0694 /* UIFont+Category.m in Sources */,
 				0467EC332419E42A002F0694 /* RSA.m in Sources */,
+				045D0232243D7B440006423E /* ProfessionalDetailsViewController.m in Sources */,
+				045D020B243D7B430006423E /* UniversitySituationViewController.m in Sources */,
 				042F0F51241CEA8200D39AA6 /* PAPeriodStageSelectionView.m in Sources */,
 				0467ECA32419E45C002F0694 /* AAChartModel.m in Sources */,
 				0467EC892419E45C002F0694 /* AAAreaspline.m in Sources */,
 				04FB47A1241FAD610073E948 /* FEQuestionModel.m in Sources */,
+				045D021D243D7B440006423E /* StudentSummaryTableViewCell.m in Sources */,
 				046430A8241B313C006FA1F5 /* StartTableViewCell.m in Sources */,
+				045D0286243DFA660006423E /* BSMajorSearchViewController.m in Sources */,
 				042F0F57241CF90200D39AA6 /* PATestListDataManager.m in Sources */,
+				045D0215243D7B430006423E /* ZJChooseModel.m in Sources */,
 				042F0F47241C735700D39AA6 /* PAHomeViewController.m in Sources */,
+				045D0208243D7B430006423E /* UniversityGraduationSettledModel.m in Sources */,
 				0466EE3424206DEE00E2FBAF /* FEReportOverallDescView.m in Sources */,
 				0466EE3E24206DEE00E2FBAF /* FEReportFlowLayoutTagView.m in Sources */,
 				04BE22BC241F4A2000C42540 /* FEAppraisalManager.m in Sources */,
+				045D023A243D7B440006423E /* OccupationDetailsProTableViewCell.m in Sources */,
 				04FB47B0241FB0490073E948 /* FECommentInputView.m in Sources */,
+				045D01FD243D7B430006423E /* UniversityMajorRootModel.m in Sources */,
+				045D01F0243D7B430006423E /* SubjectMajorModel.m in Sources */,
+				045D022E243D7B440006423E /* ProfessionalModel.m in Sources */,
 				046430AC241B313C006FA1F5 /* InvitationCodeTableViewCell.m in Sources */,
+				045D0228243D7B440006423E /* UniversityTableViewCell.m in Sources */,
 				0466EE4724206DEE00E2FBAF /* FEEvalutaionReportManager.m in Sources */,
+				045D020C243D7B430006423E /* UniversityDetailsViewController.m in Sources */,
 				0466EE7024206FEB00E2FBAF /* KMTagListView.m in Sources */,
 				04FB479E241FAD610073E948 /* OptionModel.m in Sources */,
 				046430CD241B3172006FA1F5 /* FETextInputAlertView.m in Sources */,
 				0467EC102419E3FB002F0694 /* NSObject+FEObserver.m in Sources */,
+				045D0206243D7B430006423E /* UniversityRankingItemModel.m in Sources */,
 				0467EC9C2419E45C002F0694 /* AALegend.m in Sources */,
 				046430E9241B32ED006FA1F5 /* FEPageTurnTranstion.m in Sources */,
 				045D00DB243C977D0006423E /* SelectHeadAlertView.m in Sources */,
 				04643059241B2915006FA1F5 /* FELoadingPlaceholderView.m in Sources */,
 				042F0F7D241D341F00D39AA6 /* TCTestSearchViewController.m in Sources */,
 				0467EBAD2419E3E2002F0694 /* UITableView+TCHelper.m in Sources */,
+				045D01DD243D7B430006423E /* StudentDataModel.m in Sources */,
+				045D0229243D7B440006423E /* ZJChooseControlView.m in Sources */,
 				0467EC832419E45C002F0694 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				048990202417BD0F005F25DC /* ViewController.m in Sources */,
+				045D0238243D7B440006423E /* OccupationDetailsTableViewCell.m in Sources */,
 				04FB47B6241FB0960073E948 /* FETailLabel.m in Sources */,
+				045D0233243D7B440006423E /* ProfessionalBaseInfoViewController.m in Sources */,
 				0489901A2417BD0F005F25DC /* AppDelegate.m in Sources */,
 				0466EE7124206FEB00E2FBAF /* KMTag.m in Sources */,
 				04643189241BA25D006FA1F5 /* TCSimultaneousScrollView.m in Sources */,
@@ -3163,42 +3942,58 @@
 				04643148241B8331006FA1F5 /* TCMyAccountViewController.m in Sources */,
 				0467EB8F2419E35F002F0694 /* FEThemeManager.m in Sources */,
 				0467EBFB2419E3FB002F0694 /* UIImage+Category.m in Sources */,
+				045D01F8243D7B430006423E /* AdmissionParamModel.m in Sources */,
 				0466EE3B24206DEE00E2FBAF /* FEReportRecommendedArticleView.m in Sources */,
+				045D0205243D7B430006423E /* UniversityRankingModel.m in Sources */,
 				046430D9241B3193006FA1F5 /* FELoginViewController.m in Sources */,
 				0467EC112419E3FB002F0694 /* NSObject+Utils.m in Sources */,
 				0467EC092419E3FB002F0694 /* UIImageView+Utils.m in Sources */,
 				04BE228F241F242600C42540 /* JudgeModel.m in Sources */,
 				0467ECA42419E45C002F0694 /* AAOptions.m in Sources */,
+				045D0240243D7B440006423E /* FEIndustryViewController.m in Sources */,
+				045D01FA243D7B430006423E /* EnrollmentNavigationItemModel.m in Sources */,
 				0467EC082419E3FB002F0694 /* UITextView+Utils.m in Sources */,
 				0467EC962419E45C002F0694 /* AAOptions3d.m in Sources */,
 				0464317C241BA1BF006FA1F5 /* TCCashierManager.m in Sources */,
 				0466EE4224206DEE00E2FBAF /* FEReportMoreButton.m in Sources */,
 				0467EC952419E45C002F0694 /* AAPlotLinesElement.m in Sources */,
 				044A8872241F1E4F00D520ED /* TCTestListViewController.m in Sources */,
+				045D0220243D7B440006423E /* UniversityRankingTableViewCell.m in Sources */,
+				045D01E8243D7B430006423E /* ChartItemsModel.m in Sources */,
+				045D021F243D7B440006423E /* UniversityProfessionalTableViewCell.m in Sources */,
 				0464314E241B8331006FA1F5 /* TCMyOrderViewController.m in Sources */,
+				045D022B243D7B440006423E /* ProfessionalSubjectModel.m in Sources */,
+				045D0249243D7B6C0006423E /* CareerService.m in Sources */,
+				045D01DB243D7B430006423E /* DegreesRootModel.m in Sources */,
 				04643186241BA1C0006FA1F5 /* TCEmoneyModel.m in Sources */,
 				0467EC9A2419E45C002F0694 /* AAArea.m in Sources */,
 				04643106241B33D1006FA1F5 /* STPickerView.m in Sources */,
+				045D01E0243D7B430006423E /* ChartItemDataModel.m in Sources */,
 				0467EC902419E45C002F0694 /* AATooltip.m in Sources */,
 				0467EBAE2419E3E2002F0694 /* FastClickUtils.m in Sources */,
+				045D023F243D7B440006423E /* OccupationTypeModel.m in Sources */,
 				0467ECD52419E801002F0694 /* TCUserInfo.m in Sources */,
 				0467EC932419E45C002F0694 /* AACrosshair.m in Sources */,
 				046430A3241B313C006FA1F5 /* PIBirthDaySelector.m in Sources */,
 				04BE2295241F242600C42540 /* TCTestDetailControllerView.m in Sources */,
-				042F0F80241D341F00D39AA6 /* FESearchRecordView.m in Sources */,
 				0466EE5524206ED000E2FBAF /* CareerChartDataItemModel.m in Sources */,
+				045D0211243D7B430006423E /* ZJOneChildView.m in Sources */,
 				0467EC032419E3FB002F0694 /* UIView+Utils.m in Sources */,
+				045D0214243D7B430006423E /* CollegeAdmissionTableViewCell.m in Sources */,
 				0464309D241B313C006FA1F5 /* PIClassSelectionViewCell.m in Sources */,
 				0466EE3D24206DEE00E2FBAF /* FEReportCircleScoreView.m in Sources */,
 				04FB47AD241FAE440073E948 /* FESlidingHintView.m in Sources */,
+				045D022F243D7B440006423E /* ProfessionalDetailRootModel.m in Sources */,
 				04BE228B241F242600C42540 /* TCTestDetailViewController.m in Sources */,
 				0467EB822419E33C002F0694 /* FEBaseViewController.m in Sources */,
 				0467EC992419E45C002F0694 /* AATitle.m in Sources */,
 				04BE229D241F2CAD00C42540 /* TCProductPriceView.m in Sources */,
+				045D01EC243D7B430006423E /* UniversityKindModel.m in Sources */,
 				0467ECCE2419E77C002F0694 /* TCDeviceAccount.m in Sources */,
 				0467ECC12419E712002F0694 /* AppSettingsManager.m in Sources */,
 				0464318C241BA290006FA1F5 /* FEEqualSpaceFlowLayoutEvolve.m in Sources */,
 				04643105241B33D1006FA1F5 /* STPickerArea.m in Sources */,
+				045D0239243D7B440006423E /* ProfessionalZhuankeView.m in Sources */,
 				04643185241BA1C0006FA1F5 /* TCProductModel.m in Sources */,
 				04643021241B23FE006FA1F5 /* TCNetworkReachabilityHelper.m in Sources */,
 				045D00D8243C7B820006423E /* BSUser.m in Sources */,
@@ -3207,11 +4002,14 @@
 				04BE2292241F242600C42540 /* FEDimensionFiveScoreView.m in Sources */,
 				0467ECB42419E5A5002F0694 /* FEBaseViewController+EmptyLoading.m in Sources */,
 				04643119241B3A87006FA1F5 /* AppDelegate+TCStore.m in Sources */,
+				045D0243243D7B440006423E /* OccupationDetailsViewController.m in Sources */,
 				0464303F241B24BF006FA1F5 /* TCDeviceLoginInfoPerfectionTableViewCell.m in Sources */,
 				0464317D241BA1BF006FA1F5 /* TCCashierControllerView.m in Sources */,
-				042F0F7C241D341F00D39AA6 /* TCSearchMainViewController.m in Sources */,
+				045D025D243D7D1D0006423E /* FESwitch.m in Sources */,
+				042F0F7C241D341F00D39AA6 /* TCLibSearchMainViewController.m in Sources */,
 				0466EE6724206FA900E2FBAF /* MbtiDateModel.m in Sources */,
 				0467EC8A2419E45C002F0694 /* AALabels.m in Sources */,
+				045D0202243D7B430006423E /* SubjectCountModel.m in Sources */,
 				04643182241BA1C0006FA1F5 /* TCCashierProductTableViewCell.m in Sources */,
 				0466EE3624206DEE00E2FBAF /* FEUIColumn.m in Sources */,
 				04BE22BE241F4A2000C42540 /* FEEvaluationView.m in Sources */,
@@ -3222,11 +4020,18 @@
 				04643184241BA1C0006FA1F5 /* TCProductCategoryModel.m in Sources */,
 				04643104241B33D1006FA1F5 /* STPickerDate.m in Sources */,
 				0466EE6A24206FB400E2FBAF /* MbtiRecommendModel.m in Sources */,
+				045D0231243D7B440006423E /* ProfessionalViewController.m in Sources */,
+				045D01FE243D7B430006423E /* UniversityMajorModel.m in Sources */,
 				046430D1241B3172006FA1F5 /* FETermsAlertView.m in Sources */,
-				04643159241BA17E006FA1F5 /* SegmentView.m in Sources */,
+				045D01FC243D7B430006423E /* ProvinceModel.m in Sources */,
+				045D00F6243D75690006423E /* PALibViewController.m in Sources */,
+				045D0200243D7B430006423E /* ProvinceRootModel.m in Sources */,
 				0467EBFF2419E3FB002F0694 /* UILabel+Utils.m in Sources */,
+				045D0207243D7B430006423E /* AddItemViewsManager.m in Sources */,
 				0467EC0E2419E3FB002F0694 /* UIViewController+Additions.m in Sources */,
 				0466EE4024206DEE00E2FBAF /* UIView+FEUI.m in Sources */,
+				045D0213243D7B430006423E /* UnivesityGraChartTableViewCell.m in Sources */,
+				045D024C243D7C1B0006423E /* EdgeLabel.m in Sources */,
 				04643190241BCB06006FA1F5 /* FECheckUpdateTableViewCell.m in Sources */,
 				0467ECD62419E801002F0694 /* QSRequestBase.m in Sources */,
 				04BE228E241F242600C42540 /* JudgeItemModel.m in Sources */,
@@ -3235,44 +4040,63 @@
 				04FB47A7241FAD610073E948 /* FEAnswerCollectionCell.m in Sources */,
 				04643149241B8331006FA1F5 /* TCMyAccountControllerView.m in Sources */,
 				04BE22A0241F498000C42540 /* TCPopupContainerView.m in Sources */,
+				045D01DE243D7B430006423E /* UniversityGrduationOverallModel.m in Sources */,
 				0467ECA02419E45C002F0694 /* AAPie.m in Sources */,
 				04FB47A6241FAD610073E948 /* FEAnswerMergeSelectionCell.m in Sources */,
 				0464310E241B36AA006FA1F5 /* QSWebViewBaseController.m in Sources */,
 				04643111241B36DE006FA1F5 /* FEWebViewManager.m in Sources */,
+				045D01EF243D7B430006423E /* UniversitySituationModel.m in Sources */,
 				04FB47A0241FAD610073E948 /* FEAnswerModel.m in Sources */,
 				0464303D241B24BF006FA1F5 /* TCDeviceLoginAlertViewController.m in Sources */,
+				045D0219243D7B430006423E /* ZJChooseShowView.m in Sources */,
 				042F0F54241CF3DF00D39AA6 /* TCTestListTableViewCell.m in Sources */,
 				0466EE6124206F7F00E2FBAF /* FEScoreCircleProgressView.m in Sources */,
+				045D01FF243D7B430006423E /* EnrollmentOfficeModel.m in Sources */,
 				0467EBAF2419E3E2002F0694 /* TCSandBoxHelper.m in Sources */,
 				04BE228D241F242600C42540 /* EvaluationDetailDimensionsModel.m in Sources */,
 				0464309C241B313C006FA1F5 /* PIXibBaseBox.m in Sources */,
 				046430AE241B313C006FA1F5 /* SharedButtonTableViewCell.m in Sources */,
+				045D0227243D7B440006423E /* ZJThreeChildView.m in Sources */,
 				04BE22BF241F4A2000C42540 /* TCAppraisalHelper.m in Sources */,
 				0467EC982419E45C002F0694 /* AABar.m in Sources */,
 				0467ECAD2419E473002F0694 /* NotificationConfig.m in Sources */,
+				045D020D243D7B430006423E /* GraduationInfoViewController.m in Sources */,
 				0467EBAC2419E3E2002F0694 /* DateUtil.m in Sources */,
 				0466EE3924206DEE00E2FBAF /* FEReportScoreDescView.m in Sources */,
 				04BE229A241F2BBF00C42540 /* PATestDetailHeaderTableViewCell.m in Sources */,
 				0467EC352419E42A002F0694 /* UITextView+FEScreenAdapter.m in Sources */,
 				0467ECCC2419E77C002F0694 /* TCFormalAccount.m in Sources */,
 				0466EE3F24206DEE00E2FBAF /* FEReportTitleLabel.m in Sources */,
+				045D0224243D7B440006423E /* ZJChooseOneRightCell.m in Sources */,
+				045D0246243D7B440006423E /* FEOuccupationTreeViewCell.m in Sources */,
 				0464309E241B313C006FA1F5 /* PIClassSelectionView.m in Sources */,
 				0464301E241B23DD006FA1F5 /* UCManager.m in Sources */,
 				046430A4241B313C006FA1F5 /* PIGenderBox.m in Sources */,
 				042F0F83241D34DF00D39AA6 /* FESearchBar.m in Sources */,
 				046430C9241B3172006FA1F5 /* FEBaseAlertView.m in Sources */,
+				045D021C243D7B430006423E /* EnrollmentOfficeTableViewCell.m in Sources */,
 				0467EBAB2419E3E2002F0694 /* TCPagedDataManager.m in Sources */,
+				045D0236243D7B440006423E /* STSegmentView.m in Sources */,
 				046430EC241B32ED006FA1F5 /* PresentVCAnimation.m in Sources */,
 				046430D8241B3193006FA1F5 /* TCLoginViewStacker.m in Sources */,
+				045D01FB243D7B430006423E /* DegreesRankingModel.m in Sources */,
+				045D01F9243D7B430006423E /* UniversityMajorInfoModel.m in Sources */,
 				045D00DF243C9F490006423E /* TCPeriodSelectionView.m in Sources */,
 				04643033241B2492006FA1F5 /* LoginPasswordView.m in Sources */,
 				04BE2290241F242600C42540 /* FEDimensionEvaluateModel.m in Sources */,
+				045D0209243D7B430006423E /* UniversityListViewController.m in Sources */,
 				0466EE4324206DEE00E2FBAF /* FEReportItemDescView.m in Sources */,
+				045D01E1243D7B430006423E /* UniverSitynameItemModel.m in Sources */,
+				045D01F4243D7B430006423E /* EnrollmentRootModel.m in Sources */,
 				04643107241B33D1006FA1F5 /* UIView+STPicker.m in Sources */,
+				045D0210243D7B430006423E /* ZJChooseViewOneLeftCell.m in Sources */,
 				04643032241B2492006FA1F5 /* LoginSMSView.m in Sources */,
 				0467EC062419E3FB002F0694 /* UIView+Extension.m in Sources */,
+				045D01E3243D7B430006423E /* ChartItemsDynamicModel.m in Sources */,
+				045D022C243D7B440006423E /* RaTreeModel.m in Sources */,
 				0467EBFE2419E3FB002F0694 /* UILabel+FEChain.m in Sources */,
 				0467ECC22419E712002F0694 /* TCAutoLoginManager.m in Sources */,
+				045D020A243D7B430006423E /* RecruitStudentsViewController.m in Sources */,
 				0467EC022419E3FB002F0694 /* UIColor+Category.m in Sources */,
 				046430D2241B3172006FA1F5 /* FECommonAlertView.m in Sources */,
 				04643031241B2492006FA1F5 /* LoginVerifyView.m in Sources */,
@@ -3284,9 +4108,11 @@
 				0467EC052419E3FB002F0694 /* UIView+AZGradient.m in Sources */,
 				0466EE772420E24A00E2FBAF /* TCRecommendTestProductView.m in Sources */,
 				04FB47A4241FAD610073E948 /* FEAnswerViewController.m in Sources */,
+				045D0235243D7B440006423E /* ProfessionalBenkeView.m in Sources */,
 				0464317B241BA1BF006FA1F5 /* TCIAPManager.m in Sources */,
 				044A8875241F1EA700D520ED /* TCTestListDataManager.m in Sources */,
 				042F0F60241CFB8C00D39AA6 /* PATestCategoryManager.m in Sources */,
+				045D022A243D7B440006423E /* ProfessionalRootModel.m in Sources */,
 				0466EE3A24206DEE00E2FBAF /* FEUIContainer.m in Sources */,
 				0466EE3C24206DEE00E2FBAF /* FEReportItemResultView.m in Sources */,
 				0466EE742420E13600E2FBAF /* TCTestReportRecommendProductModel.m in Sources */,
@@ -3295,20 +4121,26 @@
 				046430A0241B313C006FA1F5 /* PITableViewXibBaseCell.m in Sources */,
 				0467EC002419E3FB002F0694 /* UIButton+Utils.m in Sources */,
 				04643109241B33D1006FA1F5 /* STPickerSingle.m in Sources */,
-				04643158241BA17E006FA1F5 /* SegmentHeaderView.m in Sources */,
 				042F0F4E241C79B000D39AA6 /* PAHomeGridViewCell.m in Sources */,
+				045D022D243D7B440006423E /* ProfessionalOccupationsModel.m in Sources */,
 				0464306B241B295C006FA1F5 /* TCHTTPService.m in Sources */,
 				0467EB732419DE70002F0694 /* TCLaunchPlaceholderViewController.m in Sources */,
+				045D00E3243D6A0D0006423E /* FEMainViewController.m in Sources */,
 				0466EE6424206F9600E2FBAF /* CareerSubItemsModel.m in Sources */,
 				0466EE4124206DEE00E2FBAF /* FEReportMBTIDescView.m in Sources */,
+				045D0212243D7B430006423E /* CommonScaleTextTableViewCell.m in Sources */,
 				0467EC9E2419E45C002F0694 /* AASpline.m in Sources */,
 				0467EC0C2419E3FB002F0694 /* UIViewController+WBLefeCircleEventManagement.m in Sources */,
+				045D0271243DBCBA0006423E /* BSUniversitySearchViewController.m in Sources */,
 				046430A6241B313C006FA1F5 /* PIGuardianSelector.m in Sources */,
 				0464309B241B313C006FA1F5 /* PIInputBox.m in Sources */,
 				0467EC382419E42A002F0694 /* UITextField+FEScreenAdapter.m in Sources */,
+				045D023C243D7B440006423E /* OccupationTypeItemModel.m in Sources */,
 				04643125241B82DC006FA1F5 /* FEMineTableViewCell.m in Sources */,
+				045D021E243D7B440006423E /* FacultyStrengthTableViewCell.m in Sources */,
 				0489902B2417BD14005F25DC /* main.m in Sources */,
 				046430B0241B313C006FA1F5 /* SharedTextTableViewCell.m in Sources */,
+				045D021A243D7B430006423E /* ProfessionalAdmissionTableViewCell.m in Sources */,
 				0464317E241BA1C0006FA1F5 /* TCCashierViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

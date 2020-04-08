@@ -35,7 +35,6 @@
         }];
         
         _bottomLine = UIView.new;
-        _bottomLine.hidden = YES;
         _bottomLine.backgroundColor = UIColor.fe_mainColor;
         _bottomLine.layer.cornerRadius = STWidth(2);
         [self.contentView addSubview:self.bottomLine];
@@ -63,14 +62,17 @@
 @end
 
 
-@implementation SegmentHeaderView
+@implementation SegmentHeaderView {
+    SegmentHeaderViewCollectionViewCell *_selectedCell;
+}
 
 #pragma mark - Life Cycle
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
+    _bottomSeparatorHeight = STWidth(0.5);
     self.qmui_borderPosition = QMUIViewBorderPositionBottom;
     self.qmui_borderLocation = QMUIViewBorderLocationInside;
-    self.qmui_borderWidth = STWidth(0.5);
+    self.qmui_borderWidth = _bottomSeparatorHeight;
     self.qmui_borderColor = UIColor.fe_separatorColor;
     _moveLineHidden = NO;
     _selectedTitleFont = STFontBold(16);
@@ -93,6 +95,16 @@
 }
 
 #pragma mark - Public Method
+
+- (UIScrollView *)scrollView {
+    return _collectionView;
+}
+
+- (void)setBottomSeparatorHeight:(CGFloat)bottomSeparatorHeight {
+    if (_bottomSeparatorHeight == bottomSeparatorHeight) return;
+    _bottomSeparatorHeight = bottomSeparatorHeight;
+    self.qmui_borderWidth = _bottomSeparatorHeight;
+}
 
 - (void)setCustomRightView:(UIView *)customRightView {
     _customRightView = customRightView;
@@ -133,29 +145,6 @@
     _moveLine.hidden = _moveLineHidden;
 }
 
-- (void)changeItemWithTargetIndex:(NSUInteger)targetIndex {
-    if (_selectedIndex == targetIndex && !_alwaysTriggerSelected) {
-        return;
-    }
-    self .appearanceSelectedIndex = targetIndex;
-//    SegmentHeaderViewCollectionViewCell *selectedCell = [self getCell:_selectedIndex];
-//    if (selectedCell) {
-//        selectedCell.titleLabel.textColor = self.titleColor;
-//        selectedCell.titleLabel.font = self.titleFont;
-//        selectedCell.bottomLine.hidden = YES;
-//    }
-//    SegmentHeaderViewCollectionViewCell *targetCell = [self getCell:targetIndex];
-//    if (targetCell) {
-//        targetCell.titleLabel.textColor = self.selectedTitleColor;
-//        targetCell.titleLabel.font = self.selectedTitleFont;
-//        targetCell.bottomLine.hidden = NO;
-//    }
-    
-    _selectedIndex = targetIndex;
-    
-    [self layoutAndScrollToSelectedItem];
-}
-
 - (void)setTitleArray:(NSArray<NSString *> *)titleArray {
     _titleArray = titleArray;
     [self updateTitleWidthArray];
@@ -176,6 +165,18 @@
     _titleWidthArray = temp;
 }
 
+- (void)changeItemWithTargetIndex:(NSUInteger)targetIndex {
+    if (_selectedIndex == targetIndex && !_alwaysTriggerSelected) {
+        return;
+    }
+    self.appearanceSelectedIndex = targetIndex;
+    
+    _selectedIndex = targetIndex;
+    
+    [self layoutAndScrollToSelectedItem];
+    
+}
+
 - (void)setSelectedIndex:(NSInteger)selectedIndex {
     
     if (self.titleArray == nil && self.titleArray.count == 0) {
@@ -188,25 +189,62 @@
 }
 
 - (void)setAppearanceSelectedIndex:(NSInteger)appearanceSelectedIndex {
-    if (appearanceSelectedIndex == _selectedIndex) return;
-    SegmentHeaderViewCollectionViewCell *selectedCell = [self getCell:_selectedIndex];
-    if (selectedCell) {
-        selectedCell.titleLabel.textColor = self.titleColor;
-        selectedCell.titleLabel.font = self.titleFont;
-        selectedCell.bottomLine.hidden = YES;
-    }
-    SegmentHeaderViewCollectionViewCell *targetCell = [self getCell:appearanceSelectedIndex];
-    if (targetCell) {
-        targetCell.titleLabel.textColor = self.selectedTitleColor;
-        targetCell.titleLabel.font = self.selectedTitleFont;
-        targetCell.bottomLine.hidden = NO;
-    }
-    
+    if (_appearanceSelectedIndex == appearanceSelectedIndex) return;
+    [self setAppearanceSelectedIndex:appearanceSelectedIndex progress:1.f];
+
+}
+
+- (void)setAppearanceSelectedIndex:(NSInteger)appearanceSelectedIndex updateSelectedIndexValue:(BOOL)update {
+    self.appearanceSelectedIndex = appearanceSelectedIndex;
     _selectedIndex = appearanceSelectedIndex;
 }
 
-- (NSInteger)appearanceSelectedIndex {
-    return self.selectedIndex;
+- (void)setAppearanceSelectedIndex:(NSInteger)appearanceSelectedIndex progress:(CGFloat)progress {
+    SegmentHeaderViewCollectionViewCell *selectedCell = [self getCell:_selectedIndex];
+    SegmentHeaderViewCollectionViewCell *targetCell = [self getCell:appearanceSelectedIndex];
+
+    
+    UIColor *selectedCellTitleColor = [QMUIAnimationHelper interpolateFromValue:self.selectedTitleColor toValue:self.titleColor time:progress easing:QMUIAnimationEasingsLinear];
+    UIColor *targetCellTitleColor = [QMUIAnimationHelper interpolateFromValue:self.titleColor toValue:self.selectedTitleColor time:progress easing:QMUIAnimationEasingsSpring];
+    
+    UIFont *seletedCellTitleFont;
+    UIFont *targetCellTitleFont;
+//    [UIFont fontWithDescriptor:self.font.fontDescriptor size:STWidth(self.font.pointSize)]
+    if (progress == 0) {
+        seletedCellTitleFont = self.selectedTitleFont;
+        targetCellTitleFont = self.titleFont;
+    } else if (progress == 1){
+        seletedCellTitleFont = self.titleFont;
+        targetCellTitleFont = self.selectedTitleFont;
+    } else {
+        NSNumber *seletedfontSize = [QMUIAnimationHelper interpolateFromValue:@(self.selectedTitleFont.pointSize) toValue:@(self.titleFont.pointSize) time:progress easing:QMUIAnimationEasingsLinear];
+        NSNumber *targetfontSize = [QMUIAnimationHelper interpolateFromValue:@(self.titleFont.pointSize) toValue:@(self.selectedTitleFont.pointSize) time:progress easing:QMUIAnimationEasingsLinear];
+        seletedCellTitleFont = [UIFont fontWithDescriptor:self.titleFont.fontDescriptor size:seletedfontSize.floatValue];
+        targetCellTitleFont = [UIFont fontWithDescriptor:self.selectedTitleFont.fontDescriptor size:targetfontSize.floatValue];
+    }
+    
+    if (selectedCell) {
+        selectedCell.titleLabel.textColor = selectedCellTitleColor;
+        selectedCell.titleLabel.font = seletedCellTitleFont;
+        
+        UIView *selectedCellBottomLine = selectedCell.bottomLine;
+        CGFloat selectedCellBottomLineWidth = [[QMUIAnimationHelper interpolateFromValue:@(STWidth(18)) toValue:@(0) time:progress easing:QMUIAnimationEasingsLinear] floatValue];
+        [selectedCellBottomLine mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(selectedCellBottomLineWidth);
+        }];
+    }
+    
+    if (targetCell) {
+        targetCell.titleLabel.textColor = targetCellTitleColor;
+        targetCell.titleLabel.font = targetCellTitleFont;
+        
+        UIView *targetCellBottomLine = targetCell.bottomLine;
+        CGFloat targetCellBottomLineWidth = [[QMUIAnimationHelper interpolateFromValue:@(0) toValue:@(STWidth(18)) time:progress easing:QMUIAnimationEasingsSpring] floatValue];
+        [targetCellBottomLine mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(targetCellBottomLineWidth);
+        }];
+    }
+    _appearanceSelectedIndex = appearanceSelectedIndex;
 }
 
 #pragma mark - Private Method
@@ -235,19 +273,10 @@
          flowLayout.sectionInset = UIEdgeInsetsMake(0, self.itemSpacing + width, 0, self.itemSpacing);
         [self bringSubviewToFront:_customLeftView];
     }
-    
-    
-//    [self.moveLine mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.offset(STWidth(24));
-//        make.height.mas_equalTo(STWidth(3));
-//    }];
-//    [self setupMoveLineDefaultLocation];
-    
-//    [self setSelectedIndex:_selectedIndex];
 }
 
 - (SegmentHeaderViewCollectionViewCell *)getCell:(NSUInteger)Index {
-    return (SegmentHeaderViewCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:Index inSection:0]];
+    return (SegmentHeaderViewCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:Index inSection:0]];
 }
 
 - (void)layoutAndScrollToSelectedItem {
@@ -266,11 +295,12 @@
         //    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_selectedIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     }
     
+    
+    
     if (self.selectedItemHelper) {
         self.selectedItemHelper(_selectedIndex);
     }
 
-//    [self updateMoveLineLocation];
 
 }
 
@@ -291,7 +321,6 @@
     CGFloat offsetX = [self getMoveLineOffsetX];
     [UIView animateWithDuration:0.2 animations:^{
         [self.moveLine mas_remakeConstraints:^(MASConstraintMaker *make) {
-//            make.top.offset(STWidth(24));
             make.bottom.offset(0);
             make.height.mas_equalTo(STWidth(3));
             make.left.offset(offsetX);
@@ -346,13 +375,18 @@
    if (indexPath.item == _selectedIndex) {
        cell.titleLabel.font = self.selectedTitleFont;
        cell.titleLabel.textColor = self.selectedTitleColor;
-       cell.bottomLine.hidden = NO;
+       
+       [cell.bottomLine mas_updateConstraints:^(MASConstraintMaker *make) {
+           make.width.mas_equalTo(STWidth(18));
+       }];
     } else {
        cell.titleLabel.textColor = self.titleColor;
        cell.titleLabel.font = self.titleFont;
-       cell.bottomLine.hidden = YES;
+       
+       [cell.bottomLine mas_updateConstraints:^(MASConstraintMaker *make) {
+           make.width.mas_equalTo(0);
+       }];
    }
-//   [self.collectionView sendSubviewToBack:self.moveLine];
 
     return cell;
 }
@@ -364,7 +398,7 @@
 
 
 
-#pragma mark - Getter
+#pragma mark - Lazy
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
         FEEqualSpaceFlowLayoutEvolve *flowLayout = [[FEEqualSpaceFlowLayoutEvolve alloc] initWthType:(AlignType)self.alignment];

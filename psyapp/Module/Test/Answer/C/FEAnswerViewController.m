@@ -383,7 +383,7 @@
 
 -(void)showFastClickAlert{
    // 非正式环境关闭快速答题提示
-    if(![@"https://psytest-server.cheersmind.com" isEqualToString:UC_HOST]){
+    if(![@"https://psytest-server.cheersmind.com" isEqualToString:API_HOST]){
         return;
     }
     if(self.currPageIndex < self.answerManager.questions.count-1){

@@ -11,24 +11,18 @@
 
 #if APPTEST_ENVIRONMENT_DEVELOP_ENABLE
 //develop
-#define UC_HOST @"http://psytest-server.test.cheersmind.qst"
-#define API_HOST @"http://psytest-server.test.cheersmind.qst" //@"http://localhost:9890"
-#define WEB_HOST @"http://psytest-web.test.cheersmind.qst"
-#define VIDEO_HOST @"http://video-test.cheersmind.com"
+#define API_HOST @"http://psytest-server.test.cheersmind.qst" 
 
 #else
 //product
-#define UC_HOST @"https://psytest-server.cheersmind.com"
-#define API_HOST @"https://psytest-server.cheersmind.com"// @"http://psyservice.cheersbrain.com"
-#define WEB_HOST @"https://psytest-web.cheersmind.com"
-#define VIDEO_HOST @"https://video.cheersmind.com"
+#define API_HOST @"http://psytest-server9528-pre.cheersmind.com" //@"https://psytest-server.cheersmind.com"
 
 #endif
 
 #define VIDEO_KEY @"3deaadbc1e5540539884401ae0abaf0b"
 
 //local-国权
-//#define UC_HOST @"http://192.168.205.203:8080"
+//#define API_HOST @"http://192.168.205.203:8080"
 //#define API_HOST @"http://192.168.205.203:8080"
 //#define WEB_HOST @"http://psytest-web.test.cheersmind.qst"
 
@@ -40,11 +34,11 @@
 //第三方登录 [POST] /oauth2/tokens/actions/third_sign_in【修改URI】
 //Token续约 [POST] /oauth2/tokens/actions/{refresh_token}?persist=0【修改URI】
 //登录
-//#define URL_LOGIN UC_HOST@"/v1.0/tokens"
-#define URL_LOGIN UC_HOST@"/v1/oauth2/tokens/actions/sign_in"
+//#define URL_LOGIN API_HOST@"/v1.0/tokens"
+#define URL_LOGIN API_HOST@"/v1/oauth2/tokens/actions/sign_in"
 //第三方登录
-//#define URL_LOGIN_THIRD UC_HOST@"/v1.0/third_sign_up"
-#define URL_LOGIN_THIRD UC_HOST@"/v1/oauth2/tokens/actions/third_sign_in"
+//#define URL_LOGIN_THIRD API_HOST@"/v1.0/third_sign_up"
+#define URL_LOGIN_THIRD API_HOST@"/v1/oauth2/tokens/actions/third_sign_in"
 
 //第三方登录注册
 #define URL_REGISTER_THIRD API_HOST@"/v1/api/users/third/sign_in"
@@ -115,55 +109,55 @@
  */
 
 //用户登录
-#define FE_URL_USER_LOGIN UC_HOST@"/v2/oauth2/tokens/actions/sign_in";
+#define FE_URL_USER_LOGIN API_HOST@"/v2/oauth2/tokens/actions/sign_in";
 
 //第三方登录
-#define FE_URL_LOGIN_THIRD UC_HOST@"/v2/oauth2/tokens/actions/third_sign_in"
+#define FE_URL_LOGIN_THIRD API_HOST@"/v2/oauth2/tokens/actions/third_sign_in"
 
 //手机短信登录
-#define FE_URL_PHONE_SMS_LOGIN UC_HOST"/v2/oauth2/sms/sign_in";
+#define FE_URL_PHONE_SMS_LOGIN API_HOST"/v2/oauth2/sms/sign_in";
 
 //手机短信帐号注册
-#define FE_URL_PHONE_SMS_REGISTER UC_HOST"/v2/oauth2/mobile/sign_up";
+#define FE_URL_PHONE_SMS_REGISTER API_HOST"/v2/oauth2/mobile/sign_up";
 
 //退出登录 [DELETE]
-#define FE_URL_EXIT_LOGIN UC_HOST"/v2/oauth2/tokens/{access_token}";
+#define FE_URL_EXIT_LOGIN API_HOST"/v2/oauth2/tokens/{access_token}";
 
 //获取用户详情 [GET]
-//#define FE_URL_USER_INFO UC_HOST"/v2/oauth2/users";
+//#define FE_URL_USER_INFO API_HOST"/v2/oauth2/users";
 
 //获取用户已经绑定第三方平台 [GET]
-#define FE_URL_USER_THIRDS UC_HOST"/v2/accounts/users/third_party?tenant=CHEERSMIND";
+#define FE_URL_USER_THIRDS API_HOST"/v2/accounts/users/third_party?tenant=CHEERSMIND";
 
 //用户修改密码 [PATCH]
-#define FE_URL_CHANGE_PASSWORD UC_HOST"/v2/accounts/users/password";
+#define FE_URL_CHANGE_PASSWORD API_HOST"/v2/accounts/users/password";
 
 //第三方帐号绑定 [POST]
-#define FE_URL_THIRD_BINDING UC_HOST"/v2/accounts/actions/third_bind";
+#define FE_URL_THIRD_BINDING API_HOST"/v2/accounts/actions/third_bind";
 
 //第三方帐号解绑 [DELETE]
-#define FE_URL_THIRD_UNBINDING UC_HOST"/v2/accounts/actions/third_unbind";
+#define FE_URL_THIRD_UNBINDING API_HOST"/v2/accounts/actions/third_unbind";
 
 //绑定手机号 [PUT]
-#define FE_URL_MOBILE_BINDING UC_HOST"/v2/accounts/mobile/actions/bind";
+#define FE_URL_MOBILE_BINDING API_HOST"/v2/accounts/mobile/actions/bind";
 
 //更换手机号--验证原手机号 [POST]
-#define FE_URL_MOBILE_CHANGE UC_HOST"/v2/accounts/mobile/actions/check";
+#define FE_URL_MOBILE_CHANGE API_HOST"/v2/accounts/mobile/actions/check";
 
 //手机找回密码 [PATCH]
-#define FE_URL_MOBILE_RESET_PASS UC_HOST"/v2/accounts/password/actions/reset";
+#define FE_URL_MOBILE_RESET_PASS API_HOST"/v2/accounts/password/actions/reset";
 
 //下发短信验证码 [POST]
-#define FE_URL_SEND_SMS UC_HOST"/v2/accounts/sms";
+#define FE_URL_SEND_SMS API_HOST"/v2/accounts/sms";
 
 //创建会话 [POST] 会话类型，0：注册(手机)，1：登录(帐号、密码登录)，2：手机找回密码，3：登录(短信登录)，4:下发短信验证码
-#define FE_URL_SEND_SESSIONS UC_HOST"/v2/accounts/sessions";
+#define FE_URL_SEND_SESSIONS API_HOST"/v2/accounts/sessions";
 
 //获取图片验证码 [GET]
-#define FE_URL_GET_IMAGE UC_HOST"/v2/accounts/sessions/{session_id}/verification_code";
+#define FE_URL_GET_IMAGE API_HOST"/v2/accounts/sessions/{session_id}/verification_code";
 
 //验证图片验证码 [POST] /accounts/sessions/{session_id}/verification_code/actions/valid
-#define FE_URL_CHECK_IMAGE UC_HOST"/v2/accounts/sessions/{session_id}/verification_code/actions/valid";
+#define FE_URL_CHECK_IMAGE API_HOST"/v2/accounts/sessions/{session_id}/verification_code/actions/valid";
 
 //用户日常签到 [POST]
 #define FE_URL_SIGN_IN API_HOST"/v2/api/missions/daily/sign_in";

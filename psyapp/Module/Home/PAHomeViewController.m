@@ -261,12 +261,12 @@
 
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    if ([NSString isEmptyString:searchBar.text.qmui_trim]) {
-        [QSToast toast:mKeyWindow message:@"搜索内容不能为空" offset:CGPointMake(0, - STWidth(50)) duration:1];
-        return;
-    };
-    TCSearchMainViewController *searchViewController = TCSearchMainViewController.new;
-    searchViewController.keyword = searchBar.text.qmui_trim;
-    [self.navigationController pushViewController:searchViewController animated:YES];
+//    if ([NSString isEmptyString:searchBar.text.qmui_trim]) {
+//        [QSToast toast:mKeyWindow message:@"搜索内容不能为空" offset:CGPointMake(0, - STWidth(50)) duration:1];
+//        return;
+//    };
+//    TCSearchMainViewController *searchViewController = TCSearchMainViewController.new;
+//    searchViewController.keyword = searchBar.text.qmui_trim;
+//    [self.navigationController pushViewController:searchViewController animated:YES];
 }
 @end

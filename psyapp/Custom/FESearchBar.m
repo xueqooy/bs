@@ -12,50 +12,27 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    self.placeholder = @"请输入关键词";
+    self.placeholder = @"搜文章/课程/测评";
     self.showsCancelButton = YES;
-    self.backgroundColor = [UIColor clearColor];
+    self.clipsToBounds = YES;
+    
+    self.placeholder = @"搜文章/课程/测评";
+    self.backgroundImage = [UIImage qmui_imageWithColor:UIColor.fe_backgroundColor];
     [self setImage:[UIImage imageNamed:@"share_clear"] forSearchBarIcon:UISearchBarIconClear state:UIControlStateNormal];
-    
-    [self setQmui_placeholderColor:UIColor.fe_placeholderColor];
-
-    UITextField *searchTextField;
-    if(mIsIOS13) {
-        searchTextField = self.searchTextField;
-    } else {
-        searchTextField = [self valueForKey:@"_searchField"];
-    }
- 
-    searchTextField.backgroundColor = UIColor.clearColor;
-    searchTextField.font = mFont(18);
-    searchTextField.textColor = UIColor.fe_titleTextColorLighten;
-    searchTextField.leftView = nil;
-    searchTextField.tintColor = UIColor.whiteColor;
-    
-    searchTextField.qmui_borderPosition = QMUIViewBorderPositionBottom;
-    searchTextField.qmui_borderLocation = QMUIViewBorderLocationInside;
-    searchTextField.qmui_borderColor = mHexColor(@"#EBEDF0");
-    searchTextField.qmui_borderWidth = 1;
-    
-    
-    UIButton *cancelBtn = [self valueForKey:@"cancelButton"];
-    [cancelBtn setTitle:@"" forState:UIControlStateNormal];
-    
-    
+//    [self setImage:nil forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
+    self.qmui_textField.leftView = nil;
+    self.qmui_textField.backgroundColor = UIColor.clearColor;
+    self.qmui_textColor = UIColor.fe_mainTextColor;
+    self.qmui_placeholderColor = UIColor.fe_placeholderColor;
+    self.qmui_textFieldMargins = UIEdgeInsetsMake(0, 0, 0, -STWidth(30));
+    [self.qmui_cancelButton setTitle:@"" forState:UIControlStateNormal];
+    self.qmui_textField.font = mFont(18);
     return self;
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    if (mIsIOS13) {
-        self.searchTextField.frame = CGRectMake(CGRectGetMinX(self.searchTextField.frame) , CGRectGetMinY(self.searchTextField.frame), STWidth(265), CGRectGetHeight(self.searchTextField.frame));
-    } else {
-        UITextField *textField = [self valueForKey:@"_searchField"];
-           
-           if (textField) {
-               textField.frame = CGRectMake(CGRectGetMinX(textField.frame) , CGRectGetMinY(textField.frame), STWidth(265), CGRectGetHeight(textField.frame));
-           }
-    }
+    self.layer.cornerRadius = self.frame.size.height / 2;
 }
 
 @end

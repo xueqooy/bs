@@ -12,8 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
-@interface TCSearchMainViewController : FEBaseViewController
+@interface TCLibSearchMainViewController : FEBaseViewController
 @property (nonatomic, copy) NSString *keyword;
+- (void)present;
+
 @end
 
 NS_ASSUME_NONNULL_END

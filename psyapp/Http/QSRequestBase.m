@@ -50,7 +50,7 @@
     if (![UCManager sharedInstance].accessToken) {
         return @"";
     }
-    NSString *host = [url hasPrefix:UC_HOST]?UC_HOST:API_HOST;
+    NSString *host = [url hasPrefix:API_HOST]?API_HOST:API_HOST;
     NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
     
     //NSTimeZone *timeZone = [NSTimeZone systemTimeZone]; // 获取的是系统的时区
@@ -87,11 +87,11 @@
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     if(![url containsString:@"third_sign_in"] ){
         if(!UCManager.sharedInstance.isVisitorPattern){
-            [manager.requestSerializer setValue:[self getAuth:method url:url] forHTTPHeaderField:@"Authorization"];
+//            [manager.requestSerializer setValue:[self getAuth:method url:url] forHTTPHeaderField:@"Authorization"];
         }
     }
     
-    [manager.requestSerializer setValue:API_APP_ID forHTTPHeaderField:@"CHEERSMIND-APPID"];
+//    [manager.requestSerializer setValue:API_APP_ID forHTTPHeaderField:@"CHEERSMIND-APPID"];
     
     [manager.requestSerializer setValue:@"agent" forHTTPHeaderField:@"X-IOS"];
     [manager.requestSerializer setValue:@"local" forHTTPHeaderField:@"zh"];

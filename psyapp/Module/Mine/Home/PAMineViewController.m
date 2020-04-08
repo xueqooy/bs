@@ -34,7 +34,6 @@
 @property (nonatomic,strong) UILabel *nickNameLabel;
 @property (nonatomic,strong) UILabel *nameLabel;
 @property (nonatomic, strong) UIButton *bottomButton;
-@property (nonatomic, strong) UIButton *backButton;
 @property (nonatomic, strong) QMUIGhostButton *editInfoButton;
 
 @property (nonatomic,strong)NSArray *imageNameArray;
@@ -139,7 +138,7 @@
     _tableView.tableFooterView = bottomView;
     
     _headerScrollingAnimator = TCImageHeaderScrollingAnimator.new;
-    _headerScrollingAnimator.size = CGSizeMake(mScreenWidth, STWidth(137) + mStatusBarHeight);
+    _headerScrollingAnimator.size = CGSizeMake(mScreenWidth, STWidth(100) + mStatusBarHeight);
     _headerScrollingAnimator.scrollView = _tableView;
     
     UIView *headerView = _headerScrollingAnimator.container;
@@ -183,12 +182,7 @@
         make.size.mas_equalTo(STSize(80, 25));
     }];
     
-    _backButton = UIButton.new;
-    [_backButton setImage:[UIImage imageNamed:@"share_back_white"] forState:UIControlStateNormal] ;
-    _backButton.frame = CGRectMake(20, 5 + mStatusBarHeight, 30, 34);
-    [_backButton addTarget:self action:@selector(actionForButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_backButton];
-
+ 
 }
 
 
@@ -225,9 +219,7 @@
 }
 
 - (void)actionForButton:(UIButton *)sender {
-    if (sender == _backButton) {
-        [self.navigationController popViewControllerAnimated:YES];
-    } else if (sender == _editInfoButton) {
+    if (sender == _editInfoButton) {
         FEChildInfoViewController *infoViewController = FEChildInfoViewController.new;
         [self.navigationController pushViewController:infoViewController animated:YES];
     } else {

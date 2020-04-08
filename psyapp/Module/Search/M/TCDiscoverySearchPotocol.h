@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "TCDiscoverySearchDataManager.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol TCDiscoverySearchPotocol <NSObject>
+@optional
 @property (nonatomic, weak) TCDiscoverySearchDataManager *dataManager;
 @property (nonatomic, copy) NSString *filter;
 - (void)startSearchWithFilter:(NSString *)filter;

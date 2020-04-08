@@ -15,6 +15,7 @@
 #import "FELoginViewController.h"
 #import "PAHomeViewController.h"
 #import "TCLaunchPlaceholderViewController.h"
+#import "FEMainViewController.h"
 
 #import <AVOSCloud/AVOSCloud.h>
 
@@ -99,8 +100,8 @@
         loginNavigaitionController.modalPresentationStyle = UIModalPresentationFullScreen;
         [QMUIHelper.visibleViewController presentViewController:loginNavigaitionController animated:NO completion:nil];
     } else if ([page isEqualToNumber:WINDOW_ROOT_MAIN]) {
-        FENavigationViewController *mainNavigaitionController = [[FENavigationViewController alloc] initWithRootViewController:[PAHomeViewController new]];
-        _window.rootViewController = mainNavigaitionController;
+        FEMainViewController *mainViewController = FEMainViewController.new;
+        _window.rootViewController = mainViewController;
     }
     if (_didLaunch == NO) {
         [self startLaunchingAnimation];
