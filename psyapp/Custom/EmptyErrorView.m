@@ -18,7 +18,6 @@
 
 //@property (nonatomic,strong) UIImageView *bgImage;
 
-@property (nonatomic,strong) UILabel *titleLabel;
 
 @property (nonatomic,strong) UIButton *refreshBtn;
 
@@ -26,11 +25,11 @@
 
 @implementation EmptyErrorView
 
--(instancetype)initWithType:(FEErrorType)type fatherView:(UIView *)fatherView{
+-(instancetype) initWithType:(FEErrorType)type fatherView:(UIView *)fatherView insets:(UIEdgeInsets)insets{
     
     if (self == [super init]) {
         
-        self.frame = CGRectMake(0, 0, fatherView.width, fatherView.height);
+        [self updateLayoutWithInsets:insets];
        if (fatherView != nil) {
            [fatherView addSubview:self];
        } else {
@@ -59,7 +58,7 @@
         
         self.titleLabel = [[UILabel alloc] init];
         self.titleLabel.text = @"暂无数据";
-        self.titleLabel.textColor = UIColor.fe_auxiliaryTextColor;
+        self.titleLabel.textColor = UIColor.fe_mainTextColor;
         self.titleLabel.font = [UIFont systemFontOfSize:16.0f];
         self.titleLabel.numberOfLines = 0;
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -82,7 +81,7 @@
         self.refreshBtn.backgroundColor = UIColor.fe_mainColor;
         [self.refreshBtn addTarget:self action:@selector(refreshBtnClick) forControlEvents:UIControlEventTouchUpInside];
         self.refreshBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 5, 0);
-        self.refreshBtn.layer.cornerRadius = STWidth(4);
+        self.refreshBtn.layer.cornerRadius = 20;
         self.refreshBtn.hidden = YES;
         [self.containerView addSubview:self.refreshBtn];
         [self.refreshBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -100,7 +99,7 @@
 }
 
 - (instancetype)initWithNoDataTitle:(NSString *)title buttonText:(NSString *)buttonText fatherView:(UIView *)fatherView {
-    self = [self initWithType:FEErrorType_NoData fatherView:fatherView];
+    self = [self initWithType:FEErrorType_NoData fatherView:fatherView insets:UIEdgeInsetsZero];
     if (![NSString isEmptyString:buttonText]) {
         self.refreshBtn.hidden = NO;
         [self.refreshBtn setTitle:buttonText forState:UIControlStateNormal];
@@ -114,8 +113,9 @@
     return self;
 }
 
-- (void)updateLayout {
-    self.frame = CGRectMake(0, 0, self.superview.frame.size.width, self.superview.frame.size.height);
+- (void)updateLayoutWithInsets:(UIEdgeInsets)insets {
+    
+    self.frame = CGRectMake(insets.left, insets.top, self.superview.frame.size.width - insets.left - insets.right, self.superview.frame.size.height - insets.top - insets.bottom);
 }
 
 -(void)titleLabelClick{

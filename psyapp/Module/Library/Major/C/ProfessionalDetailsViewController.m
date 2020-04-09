@@ -38,6 +38,8 @@
 
 @implementation ProfessionalDetailsViewController {
     FESwitch *aSwitch;
+    AVObject *followData;
+    BOOL _isFollow;
 }
 
 - (void)viewDidLoad {
@@ -66,28 +68,54 @@
     
     __weak typeof(self) weakSelf = self;
     aSwitch.switchHandler = ^(BOOL on) {
-        if ((on !=  [weakSelf.professionalDetailRootModel.isFollow boolValue]) ) {
-            [QSLoadingView show];
-            [CareerService careerFollow:weakSelf.professionalDetailRootModel.majorCode type:@"1" isFollow:([weakSelf.professionalDetailRootModel.isFollow integerValue]==0 ? @1: @0) tag:weakSelf.professionalDetailRootModel.majorName success:^(id data) {
-                [QSLoadingView dismiss];
-                if([data[@"is_follow"] integerValue] == 1){
-                    [QSToast toast:weakSelf.view message:@"关注成功"];
-                    weakSelf.professionalDetailRootModel.isFollow = @1;
-                }else{
-                    [QSToast toast:weakSelf.view message:@"已取消关注"];
-                    weakSelf.professionalDetailRootModel.isFollow = @0;
-                }
-                [weakSelf updateFolowStatus];
-            } failure:^(NSError *error) {
-                [QSLoadingView dismiss];
-                [HttpErrorManager showErorInfo:error showView:weakSelf.view];
-            }];
-        }
+        [weakSelf clickRightBarButtonItem];
     };
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:aSwitch];
 }
 
+-(void)clickRightBarButtonItem{
+    if (BSUser.currentUser == nil) {
+        [UCManager showLoginAlertIfVisitorPatternWithMessage:@"需要登录"];
+    }
+
+    NSMutableArray *majors = ((NSArray *)[self->followData objectForKey:@"majors"]).mutableCopy;
+    void (^block)(void) = ^{
+        [self->followData setObject:majors forKey:@"majors"];
+        [self->followData saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded) {
+                if (self->_isFollow) {
+                    [QSToast toast:self.view message:@"取消关注"];
+                    self->_isFollow = NO;
+                } else {
+                    [QSToast toast:self.view message:@"关注成功"];
+                    self->_isFollow = YES;
+                }
+                [self updateFolowStatus];
+            }
+        }];
+    };
+    
+    if (_isFollow) {
+        for (NSDictionary *majorDic in majors) {
+            if ([majorDic[@"majorCode"] isEqualToString:self.majorCode]) {
+                [majors removeObject:majorDic];
+                block();
+                return;
+            }
+        }
+    } else {
+        NSDictionary *majorDic = @{
+            @"majorCode" : self.majorCode,
+            @"majorName" : self.professionalDetailRootModel.majorName?  self.professionalDetailRootModel.majorName : @""
+        };
+        [majors addObject:majorDic];
+        block();
+        return;
+    }
+    
+    
+}
 
 #pragma mark - Public Function
 
@@ -238,24 +266,10 @@
         make.right.equalTo(self.headView).offset(-20);
         make.centerY.equalTo(self.subjectLable);
     }];
-    
-//    self.rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [self.rightBtn setTitleColor:[UIColor colorWithHexString:@"ffffff"] forState:UIControlStateNormal];
-//    self.rightBtn.backgroundColor = [UIColor colorWithHexString:@"ff8b00"];
-//    self.rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-//    [self.rightBtn setTitle:@"关注"forState:UIControlStateNormal];
-//    self.rightBtn.layer.masksToBounds = YES;
-//    self.rightBtn.layer.cornerRadius = 5;
-//    [self.rightBtn addTarget:self action:@selector(clickRightBarButtonItem) forControlEvents:UIControlEventTouchUpInside];
-//    [self.headView addSubview:self.rightBtn];
-//    [self.rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(self.headView).offset(mScreenWidth-20-64);
-//        make.centerY.equalTo(self.nameLable);
-//        make.size.mas_equalTo(CGSizeMake(64, 30));
-//    }];
+
     
     if(!self.emptyView){
-        self.emptyView = [[EmptyErrorView alloc] initWithType:1 fatherView:self.view ];
+        self.emptyView = [[EmptyErrorView alloc] initWithType:1 fatherView:self.view insets:UIEdgeInsetsZero];
         self.emptyView.backgroundColor = UIColor.fe_backgroundColor;
     }
     self.emptyView.hidden = YES;
@@ -263,35 +277,11 @@
 
 }
 
-//-(void)clickRightBarButtonItem{
-//    //关注
-//    if(self.professionalDetailRootModel){
-//        [QSLoadingView show];
-//        [CareerService careerFollow:self.professionalDetailRootModel.majorCode type:@"1" isFollow:([self.professionalDetailRootModel.isFollow integerValue]==0 ? @1: @0) tag:self.professionalDetailRootModel.majorName success:^(id data) {
-//
-//            [QSLoadingView dismiss];
-//            if([data[@"is_follow"] integerValue] == 1){
-//                [QSToast toast:self.view message:@"关注成功"];
-//                self.professionalDetailRootModel.isFollow = @1;
-//            }else{
-//                [QSToast toast:self.view message:@"已取消关注"];
-//                self.professionalDetailRootModel.isFollow = @0;
-//            }
-//            [self updateFolowStatus];
-//        } failure:^(NSError *error) {
-//            [QSLoadingView dismiss];
-//            [HttpErrorManager showErorInfo:error showView:self.view];
-//        }];
-//    }
-//}
-
 -(void)updateFolowStatus{
-    if([self.professionalDetailRootModel.isFollow integerValue] == 1){
+    if(_isFollow){
         [aSwitch setOn:YES hasHandler:NO];
-       // [self.rightBtn setTitle:@"取消关注"forState:UIControlStateNormal];
     }else{
         [aSwitch setOn:NO hasHandler:NO];
-       // [self.rightBtn setTitle:@"关注"forState:UIControlStateNormal];
     }
 }
 
@@ -312,7 +302,6 @@
                 if(!vc.professionalDetailRootModel){
                     [vc updateModel:self.professionalDetailRootModel];
                 }
-                [self updateFolowStatus];
             }else{
                 [self.emptyView showEmptyView];
                 [self.emptyView setErrorType:FEErrorType_NoNet];
@@ -334,6 +323,42 @@
             [weakSelf loadData];
         };
     }];
+    
+    [self loadFollowData];
+}
+
+
+- (void)loadFollowData {
+    BSUser *currentUser = BSUser.currentUser;
+    if (currentUser) {
+        AVQuery *query = [AVQuery queryWithClassName:@"LibFollow"];
+        [query whereKey:@"userId" equalTo:currentUser.objectId];
+        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            if (objects.firstObject) {
+                self->followData = objects.firstObject;
+            } else {
+                self->followData = [AVObject objectWithClassName:@"LibFollow"];
+                [self->followData setObject:currentUser.objectId forKey:@"userId"];
+            }
+            NSArray *majors;
+            if ([self->followData objectForKey:@"majors"]) {
+                majors = [self->followData objectForKey:@"majors"];
+                for (NSDictionary *majorDic in majors) {
+                    if ([majorDic[@"majorCode"] isEqualToString:self.majorCode]) {
+                        self->_isFollow = YES;
+                        [self updateFolowStatus];
+                        return ;
+                    }
+                }
+            } else {
+                majors = @[];
+                [self->followData setObject:majors forKey:@"majors"];
+                self->_isFollow = NO;
+                [self updateFolowStatus];
+                return ;
+            }
+        }];
+    }
 }
 
 -(void)updateData{

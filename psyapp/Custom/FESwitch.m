@@ -67,9 +67,7 @@
 
 - (void)tapAction:(UITapGestureRecognizer *)sender {
     if (![FastClickUtils isFastClick]) {
-        if (_on == NO) {
-            [TCSystemFeedbackHelper impactLight];
-        }
+       [TCSystemFeedbackHelper impactLight];
         [self setOn:!_on];
     }
 }

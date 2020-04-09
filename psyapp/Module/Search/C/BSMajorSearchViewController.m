@@ -62,7 +62,7 @@
 
 - (void)showNetErrorViewIfNeeded {
 
-    @weakObj(self);
+     @weakObj(self);
     [self showEmptyViewForNoNetInView:selfweak.view refreshHandler:^{
         [selfweak loadData];
     }];

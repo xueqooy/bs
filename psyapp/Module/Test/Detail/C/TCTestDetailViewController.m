@@ -53,7 +53,7 @@ BindControllerView(TCTestDetailControllerView)
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"测评详情";
-    [self showLoadingPlaceHolderViewInView:self.view];
+    [self showLoadingPlaceHolderViewInView:self.view type:FESketonTypeTestAndCourse];
     self.loadingPlaceholderView.imageInsets = UIEdgeInsetsMake(-STWidth(80), 0, 0, 0);
     [self configViewAction];
     [self addObserverIfNeeded];

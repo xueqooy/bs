@@ -31,11 +31,12 @@ typedef void(^EmptyViewResult)(NSInteger index);
 @interface EmptyErrorView : UIView
 
 @property (nonatomic,strong) UIImageView *iconImage;
+@property (nonatomic,strong) UILabel *titleLabel;
 
 @property (nonatomic,copy) EmptyViewResult refreshIndex;
 
 @property (nonatomic, copy) void(^extraHandler)(void);
-- (instancetype) initWithType: (FEErrorType) type fatherView:(UIView *)fatherView;
+- (instancetype) initWithType: (FEErrorType) type fatherView:(UIView *)fatherView insets:(UIEdgeInsets)insets;
 
 - (instancetype) initWithNoDataTitle:(NSString *)title buttonText:(NSString *)buttonText fatherView:(UIView *)fatherView;
 
@@ -52,5 +53,5 @@ typedef void(^EmptyViewResult)(NSInteger index);
 
 -(void)hiddenRefreshBtn:(BOOL)isHidden;
 
--(void)updateLayout;
+-(void)updateLayoutWithInsets:(UIEdgeInsets)insets;
 @end

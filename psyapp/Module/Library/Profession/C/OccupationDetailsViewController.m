@@ -31,6 +31,8 @@
 
 @implementation OccupationDetailsViewController {
     FESwitch *aSwitch;
+    AVObject *followData;
+    BOOL _isFollow;
 }
 
 - (void)viewDidLoad {
@@ -57,30 +59,10 @@
     
     __weak typeof(self) weakSelf = self;
     aSwitch.switchHandler = ^(BOOL on) {
-        if ((on !=  [weakSelf.occupationDetailsModel.isFollow boolValue]) ) {
-            [QSLoadingView show];
-            [CareerService careerFollow:[weakSelf.occupationDetailsModel.occupationId stringValue] type:@"2" isFollow:([weakSelf.occupationDetailsModel.isFollow integerValue]==0 ? @1: @0) tag:weakSelf.occupationDetailsModel.occupationName success:^(id data) {
-                [QSLoadingView dismiss];
-                if([data[@"is_follow"] integerValue] == 1){
-                    [QSToast toast:weakSelf.view message:@"关注成功"];
-                    weakSelf.occupationDetailsModel.isFollow = @1;
-                }else{
-                    [QSToast toast:weakSelf.view message:@"已取消关注"];
-                    weakSelf.occupationDetailsModel.isFollow = @0;
-                }
-                [weakSelf updateFolowStatus];
-            } failure:^(NSError *error) {
-                [QSLoadingView dismiss];
-                [HttpErrorManager showErorInfo:error showView:weakSelf.view];
-            }];
-        }
+        [weakSelf clickRightBarButtonItem];
     };
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:aSwitch];
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    
 }
 
 -(void)setupView{
@@ -136,53 +118,56 @@
         make.left.equalTo(self.hylyLabel.mas_right).offset(20);
         make.centerY.equalTo(self.hylyLabel);
     }];
-//    self.rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [self.rightBtn setTitleColor:[UIColor colorWithHexString:@"ffffff"] forState:UIControlStateNormal];
-//    self.rightBtn.backgroundColor = [UIColor colorWithHexString:@"ff8b00"];
-//    self.rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-//    [self.rightBtn setTitle:@"关注"forState:UIControlStateNormal];
-//    self.rightBtn.layer.masksToBounds = YES;
-//    self.rightBtn.layer.cornerRadius = 5;
-//    [self.rightBtn addTarget:self action:@selector(clickRightBarButtonItem) forControlEvents:UIControlEventTouchUpInside];
-//    [self.headView addSubview:self.rightBtn];
-//    [self.rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.right.equalTo(self.headView).offset(-15);
-//        make.centerY.equalTo(self.nameLabel);
-//        make.size.mas_equalTo(CGSizeMake(64, 30));
-//    }];
-    
-    
 }
 
 -(void)clickRightBarButtonItem{
-    //关注
-    if(self.occupationDetailsModel){
-        [QSLoadingView show];
-        [CareerService careerFollow:[self.occupationDetailsModel.occupationId stringValue] type:@"2" isFollow:([self.occupationDetailsModel.isFollow integerValue]==0 ? @1: @0) tag:self.occupationDetailsModel.occupationName success:^(id data) {
-            [QSLoadingView dismiss];
-            if([data[@"is_follow"] integerValue] == 1){
-                [QSToast toast:self.view message:@"关注成功"];
-                self.occupationDetailsModel.isFollow = @1;
-            }else{
-                [QSToast toast:self.view message:@"已取消关注"];
-                self.occupationDetailsModel.isFollow = @0;
-            }
-            [self updateFolowStatus];
-        } failure:^(NSError *error) {
-            [QSLoadingView dismiss];
-            [HttpErrorManager showErorInfo:error showView:self.view];
-        }];
+    if (BSUser.currentUser == nil) {
+        [UCManager showLoginAlertIfVisitorPatternWithMessage:@"需要登录"];
     }
+
+    NSMutableArray *occupations = ((NSArray *)[self->followData objectForKey:@"occupations"]).mutableCopy;
+    void (^block)(void) = ^{
+        [self->followData setObject:occupations forKey:@"occupations"];
+        [self->followData saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded) {
+                if (self->_isFollow) {
+                    [QSToast toast:self.view message:@"取消关注"];
+                    self->_isFollow = NO;
+                } else {
+                    [QSToast toast:self.view message:@"关注成功"];
+                    self->_isFollow = YES;
+                }
+                [self updateFolowStatus];
+            }
+        }];
+    };
+    
+    if (_isFollow) {
+        for (NSDictionary *occupationDic in occupations) {
+            if ([occupationDic[@"occupationId"] isEqualToString:self.occupationId]) {
+                [occupations removeObject:occupationDic];
+                block();
+                return;
+            }
+        }
+    } else {
+        NSDictionary *occupationDic = @{
+            @"occupationId" : self.occupationId,
+            @"occupationName" : self.occupationDetailsModel.occupationName?  self.occupationDetailsModel.occupationName : @""
+        };
+        [occupations addObject:occupationDic];
+        block();
+        return;
+    }
+    
+    
 }
 
 -(void)updateFolowStatus{
-    if([self.occupationDetailsModel.isFollow integerValue] == 1){
+    if(_isFollow){
         [aSwitch setOn:YES hasHandler:NO];
-       // [self.rightBtn setTitle:@"取消关注"forState:UIControlStateNormal];
     }else{
         [aSwitch setOn:NO hasHandler:NO];
-
-      //  [self.rightBtn setTitle:@"关注"forState:UIControlStateNormal];
     }
 }
 
@@ -202,17 +187,48 @@
                 self.zylxLabel.text = [NSString stringWithFormat:@"职业类型:%@",self.occupationDetailsModel.category];
                 
                 [self.tableView reloadData];
-                
-                [self updateFolowStatus];
             }
         }
     } failure:^(NSError *error) {
         [QSLoadingView dismiss];
         [HttpErrorManager showErorInfo:error showView:self.view];
     }];
+    
+    [self loadFollowData];
 }
 
-
+- (void)loadFollowData {
+    BSUser *currentUser = BSUser.currentUser;
+    if (currentUser) {
+        AVQuery *query = [AVQuery queryWithClassName:@"LibFollow"];
+        [query whereKey:@"userId" equalTo:currentUser.objectId];
+        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            if (objects.firstObject) {
+                self->followData = objects.firstObject;
+            } else {
+                self->followData = [AVObject objectWithClassName:@"LibFollow"];
+                [self->followData setObject:currentUser.objectId forKey:@"userId"];
+            }
+            NSArray *occupations;
+            if ([self->followData objectForKey:@"occupations"]) {
+                occupations = [self->followData objectForKey:@"occupations"];
+                for (NSDictionary *occupationDic in occupations) {
+                    if ([occupationDic[@"occupationId"] isEqualToString:self.occupationId]) {
+                        self->_isFollow = YES;
+                        [self updateFolowStatus];
+                        return ;
+                    }
+                }
+            } else {
+                occupations = @[];
+                [self->followData setObject:occupations forKey:@"occupations"];
+                self->_isFollow = NO;
+                [self updateFolowStatus];
+                return ;
+            }
+        }];
+    }
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

@@ -32,6 +32,8 @@
 
 @implementation UniversityDetailsViewController {
     FESwitch *aSwitch;
+    AVObject *followData;
+    BOOL _isFollow;
 }
 
 - (void)viewDidLoad {
@@ -56,25 +58,9 @@
         } addTo:nil];
         label;
     });
-    __weak typeof(self) weakSelf = self;
+    @weakObj(self);
     aSwitch.switchHandler = ^(BOOL on) {
-        if ((on !=  [weakSelf.universitySituationModel.isFollow boolValue]) ) {
-            [QSLoadingView show];
-            [CareerService careerFollow:weakSelf.universityModel.universityId type:@"0" isFollow:([weakSelf.universitySituationModel.isFollow integerValue]==0 ? @1: @0) tag:weakSelf.universityModel.cnName success:^(id data) {
-                [QSLoadingView dismiss];
-                if([data[@"is_follow"] integerValue] == 1){
-                    [QSToast toast:weakSelf.view message:@"关注成功"];
-                    weakSelf.universitySituationModel.isFollow = @1;
-                }else{
-                    [QSToast toast:weakSelf.view message:@"已取消关注"];
-                    weakSelf.universitySituationModel.isFollow = @0;
-                }
-                [weakSelf updateFolowStatus];
-            } failure:^(NSError *error) {
-                [QSLoadingView dismiss];
-                [HttpErrorManager showErorInfo:error showView:weakSelf.view];
-            }];
-        }
+        [selfweak clickRightBarButtonItem];
     };
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:aSwitch];
@@ -196,24 +182,54 @@
 }
 
 -(void)clickRightBarButtonItem{
-    //关注
-    if(self.universitySituationModel){
-        [QSLoadingView show];
-        [CareerService careerFollow:self.universityModel.universityId type:@"0" isFollow:([self.universitySituationModel.isFollow integerValue]==0 ? @1: @0) tag:self.universityModel.cnName success:^(id data) {
-            [QSLoadingView dismiss];
-            if([data[@"is_follow"] integerValue] == 1){
-                [QSToast toast:self.view message:@"关注成功"];
-                self.universitySituationModel.isFollow = @1;
-            }else{
-                [QSToast toast:self.view message:@"已取消关注"];
-                self.universitySituationModel.isFollow = @0;
+    if (BSUser.currentUser == nil) {
+        [UCManager showLoginAlertIfVisitorPatternWithMessage:@"需要登录"];
+    }
+
+    NSMutableArray *universities = ((NSArray *)[self->followData objectForKey:@"universities"]).mutableCopy;
+    void (^block)(void) = ^{
+        [self->followData setObject:universities forKey:@"universities"];
+        [self->followData saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded) {
+                if (self->_isFollow) {
+                    [QSToast toast:self.view message:@"取消关注"];
+                    self->_isFollow = NO;
+                } else {
+                    [QSToast toast:self.view message:@"关注成功"];
+                    self->_isFollow = YES;
+                }
+                [self updateFolowStatus];
             }
-            [self updateFolowStatus];
-        } failure:^(NSError *error) {
-            [QSLoadingView dismiss];
-            [HttpErrorManager showErorInfo:error showView:self.view];
+        }];
+    };
+    
+    if (_isFollow) {
+        for (NSDictionary *universityDic in universities) {
+            if ([universityDic[@"universityId"] isEqualToString:self.universityModel.universityId]) {
+                [universities removeObject:universityDic];
+                block();
+                return;
+            }
+        }
+    } else {
+        AVQuery *universityQuery = [AVQuery queryWithClassName:@"UniversityLib"];
+        [universityQuery whereKey:@"universityId" equalTo:self.universityModel.universityId];
+        [universityQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            if (objects.firstObject) {
+                AVObject *university = objects.firstObject;
+                NSMutableDictionary *dictionary = university.dictionaryForObject.mutableCopy;
+                [dictionary removeObjectForKey:@"objectId"];
+                [dictionary removeObjectForKey:@"__type"];
+                [dictionary removeObjectForKey:@"className"];
+                [universities addObject:dictionary];
+                block();
+                return ;
+            } else {
+                [QSToast toast:self.view message:@"学校不存在"];
+            }
         }];
     }
+    
     
 }
 
@@ -255,12 +271,10 @@
 }
 
 -(void)updateFolowStatus{
-    if([self.universitySituationModel.isFollow integerValue] == 1){
-        //[self.rightBtn setTitle:@"取消关注"forState:UIControlStateNormal];
+    if(_isFollow){
         [aSwitch setOn:YES hasHandler:NO];
     }else{
         [aSwitch setOn:NO hasHandler:NO];
-        //[self.rightBtn setTitle:@"关注"forState:UIControlStateNormal];
     }
 }
 
@@ -288,12 +302,46 @@
                 if(!vc.universitySituationModel){
                     [vc updateModel:weakSelf.universitySituationModel];
                 }
-                [weakSelf updateFolowStatus];
             }
         }
     } failure:^(NSError *error) {
         [QSLoadingView dismiss];
     }];
+    
+    [self loadFollowData];
+}
+
+- (void)loadFollowData {
+    BSUser *currentUser = BSUser.currentUser;
+    if (currentUser) {
+        AVQuery *query = [AVQuery queryWithClassName:@"LibFollow"];
+        [query whereKey:@"userId" equalTo:currentUser.objectId];
+        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            if (objects.firstObject) {
+                self->followData = objects.firstObject;
+            } else {
+                self->followData = [AVObject objectWithClassName:@"LibFollow"];
+                [self->followData setObject:currentUser.objectId forKey:@"userId"];
+            }
+            NSArray *universities;
+            if ([self->followData objectForKey:@"universities"]) {
+                universities = [self->followData objectForKey:@"universities"];
+                for (NSDictionary *universityDic in universities) {
+                    if ([universityDic[@"universityId"] isEqualToString:self.universityModel.universityId]) {
+                        self->_isFollow = YES;
+                        [self updateFolowStatus];
+                        return ;
+                    }
+                }
+            } else {
+                universities = @[];
+                [self->followData setObject:universities forKey:@"universities"];
+                self->_isFollow = NO;
+                [self updateFolowStatus];
+                return ;
+            }
+        }];
+    }
 }
 
 

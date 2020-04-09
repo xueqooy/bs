@@ -410,6 +410,13 @@
 		0489902B2417BD14005F25DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0489902A2417BD14005F25DC /* main.m */; };
 		048990352417BD14005F25DC /* psyappTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 048990342417BD14005F25DC /* psyappTests.m */; };
 		048990402417BD14005F25DC /* psyappUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0489903F2417BD14005F25DC /* psyappUITests.m */; };
+		048FC702243ED49A0047D4A2 /* FEOtherFollowsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048FC6FA243ED4980047D4A2 /* FEOtherFollowsTableViewCell.m */; };
+		048FC703243ED49A0047D4A2 /* FEMyFollowsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048FC6FB243ED4980047D4A2 /* FEMyFollowsViewController.m */; };
+		048FC704243ED49A0047D4A2 /* FESchoolFollowsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048FC6FC243ED4980047D4A2 /* FESchoolFollowsTableViewCell.m */; };
+		048FC705243ED49A0047D4A2 /* FEMyFollowsDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 048FC6FD243ED4990047D4A2 /* FEMyFollowsDataManager.m */; };
+		048FC706243ED49A0047D4A2 /* FEOtherFollowsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048FC6FE243ED4990047D4A2 /* FEOtherFollowsTableViewCell.xib */; };
+		048FC707243ED49A0047D4A2 /* FESchoolFollowsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048FC6FF243ED4990047D4A2 /* FESchoolFollowsTableViewCell.xib */; };
+		048FC708243ED49A0047D4A2 /* FEMyFollowsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048FC700243ED4990047D4A2 /* FEMyFollowsViewController.xib */; };
 		04BE228B241F242600C42540 /* TCTestDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BE2270241F242300C42540 /* TCTestDetailViewController.m */; };
 		04BE228C241F242600C42540 /* FEDimensionDetailManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BE2273241F242400C42540 /* FEDimensionDetailManager.m */; };
 		04BE228D241F242600C42540 /* EvaluationDetailDimensionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BE2275241F242400C42540 /* EvaluationDetailDimensionsModel.m */; };
@@ -1369,6 +1376,17 @@
 		0489903B2417BD14005F25DC /* psyappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = psyappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0489903F2417BD14005F25DC /* psyappUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = psyappUITests.m; sourceTree = "<group>"; };
 		048990412417BD14005F25DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		048FC6F7243ED4960047D4A2 /* FESchoolFollowsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FESchoolFollowsTableViewCell.h; sourceTree = "<group>"; };
+		048FC6F8243ED4970047D4A2 /* FEOtherFollowsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEOtherFollowsTableViewCell.h; sourceTree = "<group>"; };
+		048FC6F9243ED4970047D4A2 /* FEMyFollowsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMyFollowsViewController.h; sourceTree = "<group>"; };
+		048FC6FA243ED4980047D4A2 /* FEOtherFollowsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEOtherFollowsTableViewCell.m; sourceTree = "<group>"; };
+		048FC6FB243ED4980047D4A2 /* FEMyFollowsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMyFollowsViewController.m; sourceTree = "<group>"; };
+		048FC6FC243ED4980047D4A2 /* FESchoolFollowsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FESchoolFollowsTableViewCell.m; sourceTree = "<group>"; };
+		048FC6FD243ED4990047D4A2 /* FEMyFollowsDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMyFollowsDataManager.m; sourceTree = "<group>"; };
+		048FC6FE243ED4990047D4A2 /* FEOtherFollowsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FEOtherFollowsTableViewCell.xib; sourceTree = "<group>"; };
+		048FC6FF243ED4990047D4A2 /* FESchoolFollowsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FESchoolFollowsTableViewCell.xib; sourceTree = "<group>"; };
+		048FC700243ED4990047D4A2 /* FEMyFollowsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FEMyFollowsViewController.xib; sourceTree = "<group>"; };
+		048FC701243ED49A0047D4A2 /* FEMyFollowsDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMyFollowsDataManager.h; sourceTree = "<group>"; };
 		04BE2270241F242300C42540 /* TCTestDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCTestDetailViewController.m; sourceTree = "<group>"; };
 		04BE2271241F242300C42540 /* TCTestDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCTestDetailViewController.h; sourceTree = "<group>"; };
 		04BE2273241F242400C42540 /* FEDimensionDetailManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEDimensionDetailManager.m; sourceTree = "<group>"; };
@@ -1606,6 +1624,7 @@
 		045D00E6243D75440006423E /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				048FC6E9243ED4820047D4A2 /* Follow */,
 				045D00F4243D75690006423E /* PALibViewController.h */,
 				045D00F5243D75690006423E /* PALibViewController.m */,
 				045D0275243DCA9F0006423E /* TCSearchAppearanceButton.h */,
@@ -3214,6 +3233,24 @@
 			path = psyappUITests;
 			sourceTree = "<group>";
 		};
+		048FC6E9243ED4820047D4A2 /* Follow */ = {
+			isa = PBXGroup;
+			children = (
+				048FC701243ED49A0047D4A2 /* FEMyFollowsDataManager.h */,
+				048FC6FD243ED4990047D4A2 /* FEMyFollowsDataManager.m */,
+				048FC6F9243ED4970047D4A2 /* FEMyFollowsViewController.h */,
+				048FC6FB243ED4980047D4A2 /* FEMyFollowsViewController.m */,
+				048FC700243ED4990047D4A2 /* FEMyFollowsViewController.xib */,
+				048FC6F8243ED4970047D4A2 /* FEOtherFollowsTableViewCell.h */,
+				048FC6FA243ED4980047D4A2 /* FEOtherFollowsTableViewCell.m */,
+				048FC6FE243ED4990047D4A2 /* FEOtherFollowsTableViewCell.xib */,
+				048FC6F7243ED4960047D4A2 /* FESchoolFollowsTableViewCell.h */,
+				048FC6FC243ED4980047D4A2 /* FESchoolFollowsTableViewCell.m */,
+				048FC6FF243ED4990047D4A2 /* FESchoolFollowsTableViewCell.xib */,
+			);
+			path = Follow;
+			sourceTree = "<group>";
+		};
 		04BE226E241F23E600C42540 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -3587,12 +3624,14 @@
 				0467EC852419E45C002F0694 /* AAHighchartsMore.js in Resources */,
 				0464310B241B33D1006FA1F5 /* area.plist in Resources */,
 				046430C8241B3172006FA1F5 /* FETermsAlertView.xib in Resources */,
+				048FC707243ED49A0047D4A2 /* FESchoolFollowsTableViewCell.xib in Resources */,
 				0464317F241BA1C0006FA1F5 /* TCCashierPaymentMethodTableViewCell.xib in Resources */,
 				046430CF241B3172006FA1F5 /* TCDeviceLoginAlertView.xib in Resources */,
 				04BE2294241F242600C42540 /* FEDimensionDetailHeaderView.xib in Resources */,
 				046430A5241B313C006FA1F5 /* PISelectBox.xib in Resources */,
 				04BE22BD241F4A2000C42540 /* FEEvaluationView.xib in Resources */,
 				04643040241B24BF006FA1F5 /* TCDeviceLoginInfoPerfectionTableViewCell.xib in Resources */,
+				048FC706243ED49A0047D4A2 /* FEOtherFollowsTableViewCell.xib in Resources */,
 				04643181241BA1C0006FA1F5 /* TCCashierProductTableViewCell.xib in Resources */,
 				046430A7241B313C006FA1F5 /* PIInputBox.xib in Resources */,
 				0467EC882419E45C002F0694 /* AAChartView.html in Resources */,
@@ -3603,6 +3642,7 @@
 				0466EE4C24206DEE00E2FBAF /* report_loading.gif in Resources */,
 				0467EC862419E45C002F0694 /* AAFunnel.js in Resources */,
 				0464304F241B2550006FA1F5 /* PIClassMiddleTableViewCell.xib in Resources */,
+				048FC708243ED49A0047D4A2 /* FEMyFollowsViewController.xib in Resources */,
 				0464309F241B313C006FA1F5 /* PIGenderBox.xib in Resources */,
 				045D00E0243C9F490006423E /* TCPeriodSelectionView.xib in Resources */,
 				048990252417BD14005F25DC /* Assets.xcassets in Resources */,
@@ -3745,6 +3785,7 @@
 				045D027F243DEB240006423E /* SegmentView.m in Sources */,
 				045D01ED243D7B430006423E /* ChartDatasDynamicModel.m in Sources */,
 				0467EC162419E3FB002F0694 /* NSDate+Utils.m in Sources */,
+				048FC705243ED49A0047D4A2 /* FEMyFollowsDataManager.m in Sources */,
 				045D01EB243D7B430006423E /* UniversityAdminsionModel.m in Sources */,
 				0467EB902419E35F002F0694 /* FEThemeConfigure.m in Sources */,
 				045D023B243D7B440006423E /* FEOccupationDataManager.m in Sources */,
@@ -3816,6 +3857,7 @@
 				04FB47A5241FAD610073E948 /* FEAnswerSelectionCell.m in Sources */,
 				045D01E5243D7B430006423E /* UniversityGraduationModel.m in Sources */,
 				0464314A241B8331006FA1F5 /* TCMyAccountRechargeGridViewCell.m in Sources */,
+				048FC703243ED49A0047D4A2 /* FEMyFollowsViewController.m in Sources */,
 				045D01E6243D7B430006423E /* DimensionChildModel.m in Sources */,
 				04643183241BA1C0006FA1F5 /* TCOrderModel.m in Sources */,
 				04643108241B33D1006FA1F5 /* STPickerViewUI.m in Sources */,
@@ -3895,6 +3937,7 @@
 				0467ECA32419E45C002F0694 /* AAChartModel.m in Sources */,
 				0467EC892419E45C002F0694 /* AAAreaspline.m in Sources */,
 				04FB47A1241FAD610073E948 /* FEQuestionModel.m in Sources */,
+				048FC704243ED49A0047D4A2 /* FESchoolFollowsTableViewCell.m in Sources */,
 				045D021D243D7B440006423E /* StudentSummaryTableViewCell.m in Sources */,
 				046430A8241B313C006FA1F5 /* StartTableViewCell.m in Sources */,
 				045D0286243DFA660006423E /* BSMajorSearchViewController.m in Sources */,
@@ -3913,6 +3956,7 @@
 				046430AC241B313C006FA1F5 /* InvitationCodeTableViewCell.m in Sources */,
 				045D0228243D7B440006423E /* UniversityTableViewCell.m in Sources */,
 				0466EE4724206DEE00E2FBAF /* FEEvalutaionReportManager.m in Sources */,
+				048FC702243ED49A0047D4A2 /* FEOtherFollowsTableViewCell.m in Sources */,
 				045D020C243D7B430006423E /* UniversityDetailsViewController.m in Sources */,
 				0466EE7024206FEB00E2FBAF /* KMTagListView.m in Sources */,
 				04FB479E241FAD610073E948 /* OptionModel.m in Sources */,

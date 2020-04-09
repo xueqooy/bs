@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FELoadingPlaceholderView : UIView
+@property (nonatomic, copy) NSString *GIFImageName;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, assign) UIEdgeInsets imageInsets;
 @end

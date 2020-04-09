@@ -12,6 +12,7 @@
 #import "ProfessionalViewController.h"
 #import "FEOccupationLibViewController.h"
 #import "TCLibSearchMainViewController.h"
+#import "FEMyFollowsViewController.h"
 
 #import "TCImageHeaderScrollingAnimator.h"
 #import "PAHomeGridViewCell.h"
@@ -189,7 +190,10 @@
 }
 
 - (void)actionForTopButton:(UIButton *)sender {
-
+    if (sender == _topRightButton) {
+        FEMyFollowsViewController *followsViewController =  [[FEMyFollowsViewController alloc] initWithNibName:@"FEMyFollowsViewController" bundle:nil];
+        [self.navigationController pushViewController:followsViewController animated:YES];
+    }
 }
 
 
