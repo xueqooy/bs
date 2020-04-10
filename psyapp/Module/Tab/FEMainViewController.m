@@ -11,7 +11,7 @@
 #import "FEMainViewController.h"
 #import "FENavigationViewController.h"
 #import "PAHomeViewController.h"
-
+#import "TCDiscoveryHomepageViewController.h"
 #import "PAMineViewController.h"
 #import "PALibViewController.h"
 //#import "FETabBar.h"
@@ -121,6 +121,7 @@
 //    TESTViewController *testVC = TESTViewController.new;
 //    TCDiscoveryHomepageViewController *discoveryViewController = TCDiscoveryHomepageViewController.new;
 //    self.discoveryViewController = discoveryViewController;
+    TCDiscoveryHomepageViewController *articleViewController = TCDiscoveryHomepageViewController.new;
     PALibViewController *libViewController = PALibViewController.new;
     PAHomeViewController *testHomePageViewController = PAHomeViewController.new;
 
@@ -128,9 +129,10 @@
     
     NSMutableArray *viewControllers =@[].mutableCopy;
 //    [viewControllers addObject:[self createNavigationControllerWithRootViewController:discoveryViewController title:@"阅读" index:0]];
-    [viewControllers addObject:[self createNavigationControllerWithRootViewController:libViewController title:@"资料" index:0]];
-    [viewControllers addObject:[self createNavigationControllerWithRootViewController:testHomePageViewController title:@"测评" index:1]];
-    [viewControllers addObject:[self createNavigationControllerWithRootViewController:mineHomePageViewController title:@"我的" index:2]];
+    [viewControllers addObject:[self createNavigationControllerWithRootViewController:articleViewController title:@"阅读" index:0]];
+    [viewControllers addObject:[self createNavigationControllerWithRootViewController:libViewController title:@"资料" index:1]];
+    [viewControllers addObject:[self createNavigationControllerWithRootViewController:testHomePageViewController title:@"测评" index:2]];
+    [viewControllers addObject:[self createNavigationControllerWithRootViewController:mineHomePageViewController title:@"我的" index:3]];
 //    [viewControllers addObject:[self createNavigationControllerWithRootViewController:test title:@"测试" index:4]];
     self.viewControllers = viewControllers;
     self.selectedIndex = 0;

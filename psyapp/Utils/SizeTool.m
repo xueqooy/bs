@@ -44,6 +44,9 @@ static CGFloat screenHeight;
     return CGSizeMake([SizeTool width:width], [SizeTool height:height]);
 }
 
++ (UIEdgeInsets)insetsWithTop:(CGFloat)top left:(CGFloat)left bottom:(CGFloat)bottom right:(CGFloat)right {
+    return UIEdgeInsetsMake([SizeTool width:top], [SizeTool width:left], [SizeTool width:bottom], [SizeTool width:right]);
+}
 
 #pragma mark -- Font
 + (UIFont *)fontBold:(CGFloat)size {

@@ -1,0 +1,19 @@
+name-template: 'Next Version'
+tag-template: '$NEXT_PATCH_VERSION'
+categories:
+  - title: '⚠️ Breaking Changes' 
+    labels:
+      - 'feat!'
+  - title: '🚀 New Features'
+    labels:
+      - 'feat'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'fix'
+  - title: '🧰 Maintenance'
+    labels:
+      - 'refactor'
+      - 'docs'
+change-template: '* $TITLE (#$NUMBER)'
+template: |
+  $CHANGES

@@ -316,9 +316,70 @@ PODS:
     - QMUIKit/QMUILog
   - QMUIKit/QMUIWeakObjectContainer (4.0.4)
   - RATreeView (2.1.2)
+  - Reachability (3.2)
   - SDWebImage (5.4.0):
     - SDWebImage/Core (= 5.4.0)
   - SDWebImage/Core (5.4.0)
+  - SJBaseVideoPlayer (3.2.6):
+    - Masonry
+    - Reachability
+    - SJBaseVideoPlayer/AVPlayer (= 3.2.6)
+    - SJBaseVideoPlayer/Common (= 3.2.6)
+    - SJUIKit/AttributesFactory (>= 0.0.0.38)
+    - SJUIKit/ObserverHelper
+    - SJUIKit/Queues
+    - SJUIKit/SQLite3
+  - SJBaseVideoPlayer/AVPlayer (3.2.6):
+    - Masonry
+    - Reachability
+    - SJBaseVideoPlayer/Common
+    - SJUIKit/AttributesFactory (>= 0.0.0.38)
+    - SJUIKit/ObserverHelper
+    - SJUIKit/Queues
+    - SJUIKit/SQLite3
+  - SJBaseVideoPlayer/Common (3.2.6):
+    - Masonry
+    - Reachability
+    - SJBaseVideoPlayer/ResourceLoader
+    - SJUIKit/AttributesFactory (>= 0.0.0.38)
+    - SJUIKit/ObserverHelper
+    - SJUIKit/Queues
+    - SJUIKit/SQLite3
+  - SJBaseVideoPlayer/ResourceLoader (3.2.6):
+    - Masonry
+    - Reachability
+    - SJUIKit/AttributesFactory (>= 0.0.0.38)
+    - SJUIKit/ObserverHelper
+    - SJUIKit/Queues
+    - SJUIKit/SQLite3
+  - SJUIKit/AttributesFactory (0.0.0.42):
+    - SJUIKit/AttributesFactory/Deprecated (= 0.0.0.42)
+    - SJUIKit/AttributesFactory/UIKitText (= 0.0.0.42)
+  - SJUIKit/AttributesFactory/Deprecated (0.0.0.42)
+  - SJUIKit/AttributesFactory/UIKitText (0.0.0.42)
+  - SJUIKit/ObserverHelper (0.0.0.42)
+  - SJUIKit/Queues (0.0.0.42)
+  - SJUIKit/SQLite3 (0.0.0.42):
+    - SJUIKit/SQLite3/Core (= 0.0.0.42)
+    - SJUIKit/SQLite3/Protocol (= 0.0.0.42)
+  - SJUIKit/SQLite3/Core (0.0.0.42):
+    - SJUIKit/SQLite3/Protocol
+  - SJUIKit/SQLite3/Protocol (0.0.0.42)
+  - SJVideoPlayer (3.2.3):
+    - SJBaseVideoPlayer (>= 3.2.5)
+    - SJVideoPlayer/Common (= 3.2.3)
+    - SJVideoPlayer/ControlLayers (= 3.2.3)
+    - SJVideoPlayer/ResourceLoader (= 3.2.3)
+  - SJVideoPlayer/Common (3.2.3):
+    - Masonry
+    - SJBaseVideoPlayer (>= 3.2.5)
+    - SJUIKit/AttributesFactory
+    - SJVideoPlayer/ResourceLoader
+  - SJVideoPlayer/ControlLayers (3.2.3):
+    - SJBaseVideoPlayer (>= 3.2.5)
+    - SJVideoPlayer/Common
+  - SJVideoPlayer/ResourceLoader (3.2.3):
+    - SJBaseVideoPlayer (>= 3.2.5)
   - YNPageViewController (0.2.6)
   - YTKKeyValueStore (0.1.2):
     - FMDB (~> 2.0)
@@ -334,6 +395,9 @@ DEPENDENCIES:
   - QMUIKit
   - RATreeView (~> 2.1.2)
   - SDWebImage
+  - SJBaseVideoPlayer (from `https://gitee.com/changsanjiang/SJBaseVideoPlayer.git`)
+  - SJUIKit/Queues (from `https://gitee.com/changsanjiang/SJUIKit.git`)
+  - SJVideoPlayer (from `https://gitee.com/changsanjiang/SJVideoPlayer.git`)
   - YNPageViewController
   - YTKKeyValueStore
 
@@ -352,7 +416,27 @@ SPEC REPOS:
     - YTKKeyValueStore
   trunk:
     - RATreeView
+    - Reachability
     - YNPageViewController
+
+EXTERNAL SOURCES:
+  SJBaseVideoPlayer:
+    :git: https://gitee.com/changsanjiang/SJBaseVideoPlayer.git
+  SJUIKit:
+    :git: https://gitee.com/changsanjiang/SJUIKit.git
+  SJVideoPlayer:
+    :git: https://gitee.com/changsanjiang/SJVideoPlayer.git
+
+CHECKOUT OPTIONS:
+  SJBaseVideoPlayer:
+    :commit: e7a81f2c804b91105cf57c3ded3527b08962f833
+    :git: https://gitee.com/changsanjiang/SJBaseVideoPlayer.git
+  SJUIKit:
+    :commit: 1c59847bcb3053570ab1abbcae4bca3b0784c24c
+    :git: https://gitee.com/changsanjiang/SJUIKit.git
+  SJVideoPlayer:
+    :commit: 938bc0c6855023069d955d226bc54175b85c9265
+    :git: https://gitee.com/changsanjiang/SJVideoPlayer.git
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -365,10 +449,14 @@ SPEC CHECKSUMS:
   MJRefresh: eeda70fbf0ad277f3178cef1cd0c3532591d6237
   QMUIKit: 73899f707bdd51f44d16e10d11f224fb821fbe74
   RATreeView: 380cde0090cfde21dc6ac29137f49d3b768fdd28
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: 5bf6aec6481ae2a062bdc59f9d6c1d1e552090e0
+  SJBaseVideoPlayer: 6d12484e40ae56aeb7cd33d4c8588adb7e113798
+  SJUIKit: 1356488a2488a9aafeddaf6a098006277c0eb9b8
+  SJVideoPlayer: 7de6e0f187f4f68b0a1bb3499559d07571267c04
   YNPageViewController: 33040d429adf0b415d4449ffeec848d8339934ea
   YTKKeyValueStore: 4d002941540dd5108fa23009b71e0f2f937f7a0f
 
-PODFILE CHECKSUM: e53b4f2b0c22abacb989710dfb3756304f2b3d99
+PODFILE CHECKSUM: 1a0c428552676af1d74d7358503116eb2093e07d
 
 COCOAPODS: 1.9.1

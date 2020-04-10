@@ -260,19 +260,19 @@
         make.edges.mas_equalTo(UIEdgeInsetsZero);
     }];
     
-    if (_customRightView){
-        FEEqualSpaceFlowLayoutEvolve *flowLayout = (FEEqualSpaceFlowLayoutEvolve *)_collectionView.collectionViewLayout;
-        CGFloat width = CGRectGetWidth(_customRightView.frame);
-         flowLayout.sectionInset = UIEdgeInsetsMake(0, self.itemSpacing, 0, self.itemSpacing + width);
-        [self bringSubviewToFront:_customRightView];
-    }
-    
-    if (_customLeftView){
-        FEEqualSpaceFlowLayoutEvolve *flowLayout = (FEEqualSpaceFlowLayoutEvolve *)_collectionView.collectionViewLayout;
-        CGFloat width = CGRectGetWidth(_customLeftView.frame);
-         flowLayout.sectionInset = UIEdgeInsetsMake(0, self.itemSpacing + width, 0, self.itemSpacing);
-        [self bringSubviewToFront:_customLeftView];
-    }
+//    if (_customRightView){
+//        FEEqualSpaceFlowLayoutEvolve *flowLayout = (FEEqualSpaceFlowLayoutEvolve *)_collectionView.collectionViewLayout;
+//        CGFloat width = CGRectGetWidth(_customRightView.frame);
+//         flowLayout.sectionInset = UIEdgeInsetsMake(0, self.itemSpacing, 0, self.itemSpacing + width);
+//        [self bringSubviewToFront:_customRightView];
+//    }
+//
+//    if (_customLeftView){
+//        FEEqualSpaceFlowLayoutEvolve *flowLayout = (FEEqualSpaceFlowLayoutEvolve *)_collectionView.collectionViewLayout;
+//        CGFloat width = CGRectGetWidth(_customLeftView.frame);
+//         flowLayout.sectionInset = UIEdgeInsetsMake(0, self.itemSpacing + width, 0, self.itemSpacing);
+//        [self bringSubviewToFront:_customLeftView];
+//    }
 }
 
 - (SegmentHeaderViewCollectionViewCell *)getCell:(NSUInteger)Index {
@@ -404,10 +404,9 @@
         FEEqualSpaceFlowLayoutEvolve *flowLayout = [[FEEqualSpaceFlowLayoutEvolve alloc] initWthType:(AlignType)self.alignment];
         flowLayout.betweenOfCell = self.itemSpacing;
         flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        flowLayout.minimumLineSpacing = 0;
+        flowLayout.minimumLineSpacing = self.itemSpacing;
         flowLayout.minimumInteritemSpacing = self.itemSpacing;
-       
-       
+
         flowLayout.sectionInset = UIEdgeInsetsMake(0, self.itemSpacing, 0, self.itemSpacing);
         
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kWidth, CGRectGetHeight(self.frame)) collectionViewLayout:flowLayout];

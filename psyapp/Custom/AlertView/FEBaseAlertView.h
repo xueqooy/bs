@@ -20,7 +20,7 @@ extern const NSInteger FEBaseAlertViewContainerTag;
 @property (nonatomic, copy) void(^extraHandlerForClickingBackground)(void);
 @property (nonatomic, assign) BOOL backgroundTapDisable;
 @property (nonatomic, assign) BOOL backgroundTapHideAnimationDisable;
-
+@property (nonatomic, copy) void (^didHideBlock)(void);
 - (void)showWithAnimated:(BOOL)animated;
 - (void)hideWithAnimated:(BOOL)animated completion:(void(^)(void))completion;
 @end

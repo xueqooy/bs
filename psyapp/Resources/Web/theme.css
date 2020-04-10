@@ -1,0 +1,14 @@
+@media (prefers-color-scheme: dark) {
+    html {
+        background : #1a1513 !important;
+    }
+    
+    body {
+        filter: invert(1) opacity(0.55);
+    }
+    
+    img {
+        opacity : 0.9;
+        filter: invert(1);
+    }
+}

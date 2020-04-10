@@ -15,6 +15,10 @@ target 'psyapp' do
   pod 'YNPageViewController'
   pod 'RATreeView', '~> 2.1.2'
 
+  pod 'SJBaseVideoPlayer', :git => 'https://gitee.com/changsanjiang/SJBaseVideoPlayer.git'
+  pod 'SJVideoPlayer', :git => 'https://gitee.com/changsanjiang/SJVideoPlayer.git'
+  pod 'SJUIKit/Queues', :git => 'https://gitee.com/changsanjiang/SJUIKit.git'
+  
   target 'psyappTests' do
     inherit! :search_paths
     # Pods for testing
