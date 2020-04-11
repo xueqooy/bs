@@ -18,8 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef enum FECommentType {
     FECommentTypeArticle = 0,
-    FECommentTypeCourseDetail = 1,
-    FECommentTypeTestDetail = 3,
     FECommentTypeReply = 4//评论的评论
 } FECommentType;
 

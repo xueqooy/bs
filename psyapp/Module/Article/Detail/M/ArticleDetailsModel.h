@@ -40,6 +40,10 @@
 @property(nonatomic,strong) ArticleTopicInfo *topicInfo;
 @property(nonatomic,strong) CategoriesModel *category;
 
+@property (nonatomic, copy) NSArray <BSUser *>*thumpUpUsers;
+@property (nonatomic, strong) NSNumber *thumpUpNum;
+@property (nonatomic, assign) BOOL alreadyThumpUp;
+
 @property (nonatomic, copy) NSArray <EvaluationDetailDimensionsModel *>*dimensions;//文章包含的测评
 @property (nonatomic, copy) NSArray <NSDictionary *>*dimension_JSON; //对应dimensions，用于给web传值，由于web端使用的key和服务端定义的相同，不能直接将模型转化为字典
 @property (nonatomic, copy) NSString *childExamId; //custom 有childExamId时赋值

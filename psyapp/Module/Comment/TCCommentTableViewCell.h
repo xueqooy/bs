@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong, nullable) CommentModel * model;
 
-@property (nonatomic, assign) BOOL canCancelThumpUp; //NO by default
+@property (nonatomic, assign) BOOL canCancelThumpUp; //YES by default
 @property (nonatomic, assign) BOOL separatorHidden;
 
 @property (nonatomic) BOOL replyDisabled;

@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber *gradeNum;
 @property (nonatomic, strong) AVFile *avatar;
 
+
 @property (nonatomic, copy, readonly) NSString *gradeName;
 @end
 

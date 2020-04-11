@@ -69,14 +69,14 @@
     if (model.subCommentNum && model.subCommentNum.integerValue > 1) {
         _moreButton.hidden = NO;
         _buttonTopContraint.offset(STWidth(10));
-        [_moreButton setTitle:[NSString stringWithFormat:@"全部%li条回复", model.subCommentNum.integerValue] forState:UIControlStateNormal];
+        [_moreButton setTitle:[NSString stringWithFormat:@"全部%li条回复", (long)model.subCommentNum.integerValue] forState:UIControlStateNormal];
     } else {
         _moreButton.hidden = YES;
         _buttonTopContraint.offset(0);
     }
     
     NSMutableString *contentText = @"".mutableCopy;
-    NSString *nickname = subCommentModel.userData.nickname? subCommentModel.userData.nickname:@" ";
+    NSString *nickname = subCommentModel.user.nickname? subCommentModel.user.nickname:@" ";
     NSString *content = subCommentModel.commentInfo? subCommentModel.commentInfo : @" ";
     [contentText appendFormat:@"%@：",nickname];
     [contentText appendString:content];
@@ -102,7 +102,7 @@
 - (void)addRepliedCommentCount {
     NSInteger currentCount = _model.subCommentNum? _model.subCommentNum.integerValue : 0;
     _model.subCommentNum = @(currentCount + 1);
-    [_moreButton setTitle:[NSString stringWithFormat:@"全部%li条回复", _model.subCommentNum.integerValue] forState:UIControlStateNormal];
+    [_moreButton setTitle:[NSString stringWithFormat:@"全部%li条回复", (long)_model.subCommentNum.integerValue] forState:UIControlStateNormal];
 }
 @end
 
@@ -116,6 +116,7 @@
     UILabel *_contentLabel;
     QMUIButton *_thumbUpButton;
     UIView  *_separator;
+    UILabel *_periodLabel;
     
     MASConstraint *_bottomConstrant;
     BOOL _thumbUpLocked;
@@ -128,6 +129,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     self.contentView.backgroundColor = UIColor.fe_contentBackgroundColor;
+    _canCancelThumpUp = YES;
     _helper = [[TCCommentCellHelper alloc] initWithCell:self];
     [self setUpSubviews];
     return self;
@@ -147,6 +149,8 @@
     [_avatarImageView setImage:[UIImage imageNamed:@"default_header_boy"]];
     
     _nicknameLabel = [UILabel createLabelWithDefaultText:@"" numberOfLines:1 textColor:UIColor.fe_titleTextColorLighten font:STFontBold(12)];
+    
+    _periodLabel = [UILabel createLabelWithDefaultText:@"" numberOfLines:1 textColor:UIColor.fe_placeholderColor font:STFontRegular(12)];
     
     _dateLabel = [UILabel createLabelWithDefaultText:@"" numberOfLines:1 textColor:UIColor.fe_placeholderColor font:STFontRegular(10)];
     
@@ -168,6 +172,7 @@
     [self.contentView addSubview:_container];
     [_container addSubview:_avatarImageView];
     [_container addSubview:_nicknameLabel];
+    [_container addSubview:_periodLabel];
     [_container addSubview:_dateLabel];
     [_container addSubview:_contentLabel];
     [_container addSubview:_thumbUpButton];
@@ -185,7 +190,13 @@
     CGFloat marginLeft = STWidth(45);
     [_nicknameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(marginLeft);
-        make.top.right.offset(0);
+        make.top.offset(0);
+    }];
+    
+    [_periodLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_nicknameLabel.mas_right).offset(STWidth(5));
+        make.centerY.equalTo(_nicknameLabel);
+        make.right.offset(0).priorityLow();
     }];
     
     [_dateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -227,8 +238,8 @@
 - (void)setModel:(CommentModel *)model  {
     _model = model;
     
-    _nicknameLabel.text = model.userData.nickname ;
-    
+    _nicknameLabel.text = model.user.nickname ;
+    _periodLabel.text = [NSString stringWithFormat:@"(%@)", model.user.gradeName];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate *date = [dateFormatter dateFromString:model.createTime];
@@ -243,9 +254,9 @@
     [attributedString addAttribute:NSFontAttributeName value:STFontRegular(16) range:NSMakeRange(0, content.length)];
     _contentLabel.attributedText = attributedString;
     
-    [_avatarImageView sd_setImageWithURL: [NSURL URLWithString:model.userData.avatar] placeholderImage:[UIImage imageNamed:@"default_header_boy"]];
+    [_avatarImageView sd_setImageWithURL: [NSURL URLWithString:model.user.avatar.url] placeholderImage:[UIImage imageNamed:@"default_header_boy"]];
     
-    NSString *thumbUpCountString = model.thumbUpNum? ([model.thumbUpNum isEqualToNumber:@0]? nil:  model.thumbUpNum.stringValue) : nil;
+    NSString *thumbUpCountString = model.thumbUpNum? ([model.thumbUpNum isEqualToNumber:@0]? @"赞":  model.thumbUpNum.stringValue) : nil;
     [_thumbUpButton setTitle:thumbUpCountString forState:UIControlStateNormal];
     [self setThumbUpButtonActive:model.alreadyThumbUp];
     [_thumbUpButton layoutIfNeeded];
@@ -312,10 +323,10 @@
     
     _model.alreadyThumbUp = !self.model.alreadyThumbUp;
     _model.thumbUpNum = numString? @(numString.integerValue) : nil;
-    [_thumbUpButton setTitle:numString forState:UIControlStateNormal];
+    [_thumbUpButton setTitle:numString? numString : @"赞" forState:UIControlStateNormal];
     [_thumbUpButton layoutIfNeeded];
     
-    [_helper thumbUp:self.model.alreadyThumbUp completion:^(BOOL success) {
+    [_helper thumbUp:self.model completion:^(BOOL success) {
         
     }];
 }

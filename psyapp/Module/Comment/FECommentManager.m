@@ -23,7 +23,7 @@
     self = [super init];
     _type = type;
     _page = Page_CommentDataIsEmptyOrUnrquest;
-    _onceRequestCount = 10;
+    _onceRequestCount = 5;
     _contentId = contentId;
     return self;
 }
@@ -69,19 +69,26 @@
     
     _page ++;
     //第一次请求page = 1;
-    [EvaluateService articleCommentList:self.contentId type:self.type page:self.page size:self.onceRequestCount success:^(id data) {
-        CommentRootMdoel *model = [MTLJSONAdapter modelOfClass:CommentRootMdoel.class fromJSONDictionary:data error:nil];
-        if (model && model.items.count != 0) {
-            [_commentRootModel.items addObjectsFromArray:model.items];
-            _commentRootModel.total = model.total;
-//            [self _markType];
-            [self _computeHeight:model.items];
+    AVQuery *commentQuery = [AVQuery queryWithClassName:@"Comment"];
+    if (_page == 1) {
+        self.commentRootModel.total = [commentQuery countObjects];
+    }
+    commentQuery.limit = _onceRequestCount;
+    commentQuery.skip = (_page - 1) * _onceRequestCount;
+    [commentQuery orderByDescending:@"thumpUp"];
+    [commentQuery whereKey:@"targetId" equalTo:self.contentId];
+    [commentQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (error) {
+            self->_page --;
+            [HttpErrorManager showErorInfo:error];
+            if (failure) failure();
+        } else {
+            for (AVObject *object in objects) {
+                CommentModel *comment = [[CommentModel alloc] initWithAVObject:object];
+                [self.commentRootModel.items addObject:comment];
+            }
+            if (success) success();
         }
-        if (success) success();
-    } failure:^(NSError *error) {
-        _page --;
-        [HttpErrorManager showErorInfo:error showView:mKeyWindow];
-        if (failure) failure();
     }];
 }
 
@@ -108,26 +115,6 @@
     _heightArray = nil;
 }
 
-//- (void)_markType {
-//    for (CommentModel *model in self.commentModels) {
-//        model.type = self.type;
-//    }
-//}
-
-- (void)_computeHeight:(NSArray <CommentModel*> *)commentModels {
-    if (_computer && [_computer respondsToSelector:@selector(heightForComment:atIndex:)]) {
-        if (_heightArray == nil) {
-            _heightArray = @[].mutableCopy;
-        }
-        NSInteger beginIndex = self.count;
-        for (int i = 0; i < commentModels.count; i ++) {
-            CommentModel *item = commentModels[i];
-            NSNumber *heightNumber = @([_computer heightForComment:item atIndex:beginIndex + i]);
-            [_heightArray addObject:heightNumber];
-        }
-    }
-}
-
 + (void)commitComment:(NSString *)comment type:(FECommentType)type forContentId:(NSString *)contentId completion:(CommentResultBlock) completion{
     if ([NSString isEmptyString:contentId]) {
         [QSToast toastWithMessage:@"评论对象缺失"];
@@ -142,24 +129,34 @@
     }
     
     [QSLoadingView show];
-    [EvaluateService articleComment:contentId commentInfo:comment type:type success:^(id data) {
+    AVObject *object = [AVObject objectWithClassName:@"Comment"];
+    [object setObject:contentId forKey:@"targetId"];
+    [object setObject:comment forKey:@"content"];
+    [object setObject:BSUser.currentUser forKey:@"user"];
+    
+    [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         [QSLoadingView dismiss];
-        CommentModel *model = [MTLJSONAdapter modelOfClass:CommentModel.class fromJSONDictionary:data error:nil];
-        if(model){
+        if (succeeded) {
+            CommentModel *model = [[CommentModel alloc] initWithAVObject:object];
             if (completion) completion(YES, model);
+
+            if (type == FECommentTypeReply) {
+                AVObject *rootComment = [AVObject objectWithClassName:@"Comment" objectId:contentId];
+                [rootComment fetchInBackgroundWithBlock:^(AVObject * _Nullable _object, NSError * _Nullable error) {
+                    if (_object) {
+                        [_object setObject:object forKey:@"firstSubComment"];
+                        [_object incrementKey:@"subCommentNum"];
+                        [_object saveInBackground];
+                    }
+                }];
+                
+            }
         } else {
-            if (completion) completion(NO, nil);
-        }
-    } failure:^(NSError *error) {
-        [QSLoadingView dismiss];
-        NSDictionary *errorDic = [HttpErrorManager showErorInfo:error];
-        if([errorDic[@"code"] isEqualToString:@"PSY_COMMENT_TIME_INVALID"]){
-            [QSToast toast:mKeyWindow message:@"评论过于频繁，等稍后再评论"];
-            if (completion) completion(NO, nil);
-        } else {
+            [HttpErrorManager showErorInfo:error];
             if (completion) completion(NO, nil);
         }
     }];
+
 }
 
 + (void)prepareToReplyCommentId:(NSString *)commentId  nickName:(NSString *)nickname completion:(CommentResultBlock)completion {

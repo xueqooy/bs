@@ -72,6 +72,7 @@
 
 - (instancetype)initWithAVObject:(AVObject *)object {
     self = [super init];
+    self.articleId = object.objectId;
     self.articleContent = [object objectForKey:@"articleContent"];
     self.articleImg = [object objectForKey:@"articleImg"];
     self.articleTitle = [object objectForKey:@"articleTitle"];
@@ -82,6 +83,11 @@
     self.category = category;
     self.pageView = [object objectForKey:@"pageView"];
     self.sourceName = [object objectForKey:@"sourceName"];
+    NSDateFormatter *formatter = NSDateFormatter.new;
+    formatter.dateFormat = @"yyyy-MM-dd";
+    self.publishDate = [formatter stringFromDate:object.createdAt];
+    self.thumpUpNum = [object objectForKey:@"thumpUp"];
+    self.thumpUpUsers = [object objectForKey:@"thumpUpUsers"];
     return self;
 }
 @end

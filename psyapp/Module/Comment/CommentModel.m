@@ -24,6 +24,32 @@
              };
 }
 
+- (instancetype)initWithAVObject:(AVObject *)object {
+    self = [super initWithAVObject:object];
+    self.commentId = object.objectId;
+    self.commentInfo = [object objectForKey:@"content"];
+    NSDateFormatter *formatter = NSDateFormatter.new;
+    formatter.dateFormat = @"yyyy-MM-dd hh:mm:ss";
+    self.createTime = [formatter stringFromDate:object.createdAt];
+    self.thumbUpNum = [object objectForKey:@"thumpUp"];
+    BSUser *user = [object objectForKey:@"user"];
+    [user fetch];
+    self.user = user;
+    for (BSUser *user in [object objectForKey:@"thumpUpUsers"]) {
+        if([user.objectId isEqualToString:BSUser.currentUser.objectId]) {
+            self.alreadyThumbUp = YES;
+            break;
+        }
+    }
+    self.subCommentNum = [object objectForKey:@"subCommentNum"];
+    AVObject *firstSubComment = [object objectForKey:@"firstSubComment"];
+    if (firstSubComment) {
+        [firstSubComment fetch];
+        self.firstSubComment = [[CommentModel alloc] initWithAVObject:firstSubComment];
+    }
+    return self;
+}
+
 + (NSValueTransformer *)userDataJSONTransformer {
     return [MTLJSONAdapter dictionaryTransformerWithModelClass:TCUserInfo.class];
     

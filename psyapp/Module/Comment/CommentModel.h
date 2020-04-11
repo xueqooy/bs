@@ -18,11 +18,14 @@
 @property (nonatomic, strong) NSNumber *thumbUpNum;
 @property (nonatomic, strong) NSNumber *myThumbUpRefId;
 @property (nonatomic, strong) NSNumber *subCommentNum;
-@property (nonatomic, strong) TCUserInfo *userData;
+@property (nonatomic, strong) TCUserInfo *userData;//弃用
 @property (nonatomic, strong) CommentModel *firstSubComment;
-
+@property (nonatomic, strong) BSUser *user;
 
 //custom
 @property (nonatomic, copy) NSString *cacheUniqueKey;
 @property (nonatomic) BOOL alreadyThumbUp;
+
+
+
 @end

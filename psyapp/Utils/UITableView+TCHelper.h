@@ -12,11 +12,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^FooterRefreshAction)(void);
-@interface UITableView (MJRefreshHelper)
-@property (nonatomic, copy) FooterRefreshAction footerRefreshAction;
-- (void)addFooterRefreshTarget:(id)target action:(SEL)action;
+typedef void(^TCRefreshAction)(void);
+@interface UIScrollView (MJRefreshHelper)
+@property (nonatomic, copy) TCRefreshAction footerRefreshAction;
+@property (nonatomic, copy) TCRefreshAction headerRefreshAction;
 
+- (void)addFooterRefreshTarget:(id)target action:(SEL)action;
+- (void)addHeaderRefreshTarget:(id)target action:(SEL)action;
 @property (nonatomic, assign) BOOL alreadyLoadAllData;
 @end
 

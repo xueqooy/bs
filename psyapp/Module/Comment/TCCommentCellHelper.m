@@ -36,20 +36,18 @@
         if (success) {
             //尽量只刷新改行cell
             if (model) {
-//                if (_cell.model.firstSubComment == nil) {
-                _cell.model.firstSubComment = model;
-//                }
-                NSInteger subCommentNum = _cell.model.subCommentNum? _cell.model.subCommentNum.integerValue : 0;
+                self->_cell.model.firstSubComment = model;
+                NSInteger subCommentNum = self->_cell.model.subCommentNum? self->_cell.model.subCommentNum.integerValue : 0;
                 if (subCommentNum>= 0) {
                     subCommentNum += 1;
-                    _cell.model.subCommentNum = @(subCommentNum);
+                    self->_cell.model.subCommentNum = @(subCommentNum);
                 }
                 
                 [self reloadIndexPathOfCell];
             }
             
             [QSToast toastWithMessage:@"回复成功"];
-            if (_cell.replySuccessBlock) _cell.replySuccessBlock();
+            if (self->_cell.replySuccessBlock) self->_cell.replySuccessBlock();
         }
     }];
 }
@@ -80,21 +78,33 @@
     [visibleViewController.navigationController pushViewController:commentViewController animated:YES];
 }
 
-- (void)thumbUp:(BOOL)thumbUp completion:(void (^)(BOOL))completion{
-//    if (thumbUp == NO) {
-//        [TCHTTPService postThumbUpCancelByRefId:_cell.model.commentId type:@4 onSuccess:^(id data) {
-//            if (completion) completion(YES);
-//        } failure:^(NSError *error) {
-//            [HttpErrorManager showErorInfo:error];
-//            if (completion) completion(NO);
-//        }];
-//    } else {
-//        [TCHTTPService postThumbUpByRefId:_cell.model.commentId type:@4 onSuccess:^(id data) {
-//            if (completion) completion(YES);
-//        } failure:^(NSError *error) {
-//            [HttpErrorManager showErorInfo:error];
-//            if (completion) completion(NO);
-//        }];
-//    }
+- (void)thumbUp:(CommentModel *)model completion:(void (^)(BOOL))completion{
+    AVObject *object = [AVObject objectWithClassName:@"Comment" objectId:model.commentId];
+    [object fetchInBackgroundWithBlock:^(AVObject * _Nullable object, NSError * _Nullable error) {
+        NSMutableArray <BSUser *>*users = [object objectForKey:@"thumpUpUsers"];
+        if (users == nil) users = @[].mutableCopy;
+        if (model.alreadyThumbUp == NO) {
+            for (BSUser *user in users) {
+                if([user.objectId isEqualToString:BSUser.currentUser.objectId]) {
+                    [users removeObject:user];
+                    break;
+                }
+            }
+            [object setObject:users forKey:@"thumpUpUsers"];
+            [object incrementKey:@"thumpUp" byAmount:@(-1)];
+            [object saveInBackground];
+        } else {
+            for (BSUser *user in users) {
+                if([user.objectId isEqualToString:BSUser.currentUser.objectId]) {
+                    return;
+                }
+            }
+            [users addObject:BSUser.currentUser];
+            [object setObject:users forKey:@"thumpUpUsers"];
+            [object incrementKey:@"thumpUp"];
+            [object saveInBackground];
+        }
+    }];
+
 }
 @end

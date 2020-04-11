@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @class TCCommentTableViewCell;
+@class CommentModel;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TCCommentCellHelper : NSObject
@@ -15,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)reply;
 - (void)moreWithRepliedBlock:(void(^)(void))repliedBlock;
-- (void)thumbUp:(BOOL)thumbUp completion:(void(^)(BOOL success))completion;
+- (void)thumbUp:(CommentModel *)model completion:(void(^)(BOOL success))completion;
 @end
 
 NS_ASSUME_NONNULL_END

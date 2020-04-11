@@ -10,7 +10,7 @@
 
 
 
-@implementation UITableView (MJRefreshHelper)
+@implementation UIScrollView (MJRefreshHelper)
 static char kAssociatedObjectKey_alreadyLoadAllData;
 - (void)setAlreadyLoadAllData:(BOOL)alreadyLoadAllData {
     objc_setAssociatedObject(self, &kAssociatedObjectKey_alreadyLoadAllData, [NSNumber numberWithBool:alreadyLoadAllData], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -26,7 +26,7 @@ static char kAssociatedObjectKey_alreadyLoadAllData;
 }
 
 static char kAssociatedObjectKey_footerRefreshAction;
-- (void)setFooterRefreshAction:(FooterRefreshAction)footerRefreshAction {
+- (void)setFooterRefreshAction:(TCRefreshAction)footerRefreshAction {
     objc_setAssociatedObject(self, &kAssociatedObjectKey_footerRefreshAction, footerRefreshAction, OBJC_ASSOCIATION_COPY_NONATOMIC);
     if (footerRefreshAction != nil) {
         self.mj_footer = [MJRefreshAutoStateFooter footerWithRefreshingBlock:footerRefreshAction];
@@ -36,8 +36,23 @@ static char kAssociatedObjectKey_footerRefreshAction;
     }
 }
 
-- (FooterRefreshAction)footerRefreshAction {
+- (TCRefreshAction)footerRefreshAction {
     return objc_getAssociatedObject(self, &kAssociatedObjectKey_footerRefreshAction);
+}
+
+static char kAssociatedObjectKey_headerRefreshAction;
+- (void)setHeaderRefreshAction:(TCRefreshAction)headerRefreshAction {
+    objc_setAssociatedObject(self, &kAssociatedObjectKey_headerRefreshAction, headerRefreshAction, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    if (headerRefreshAction != nil) {
+        self.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:headerRefreshAction];
+        [self initRefreshHeader:(MJRefreshNormalHeader *)self.mj_header];
+    } else {
+        self.mj_header = nil;
+    }
+}
+
+- (TCRefreshAction)headerRefreshAction {
+    return objc_getAssociatedObject(self, &kAssociatedObjectKey_headerRefreshAction);
 }
 
 - (void)addFooterRefreshTarget:(id)target action:(SEL)action {
@@ -50,13 +65,34 @@ static char kAssociatedObjectKey_footerRefreshAction;
     }
 }
 
+- (void)addHeaderRefreshTarget:(id)target action:(SEL)action {
+    NSObject *_target = target;
+    if (_target != nil && action != nil && [_target respondsToSelector:action]) {
+        self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:target refreshingAction:action];
+        [self initRefreshHeader:((MJRefreshNormalHeader *)self.mj_header)];
+    } else {
+        self.mj_header = nil;
+    }
+}
+
 - (void)initRefreshFooter:(MJRefreshAutoStateFooter *)footer{
     [footer setTitle:@"" forState:MJRefreshStateIdle];
     [footer setTitle:@"" forState:MJRefreshStatePulling];
     [footer setTitle:@"" forState:MJRefreshStateRefreshing];
     [footer setTitle:@"" forState:MJRefreshStateNoMoreData];
     footer.stateLabel.font = STFontRegular(16);
-    footer.stateLabel.textColor = UIColor.fe_auxiliaryTextColor;
+    footer.stateLabel.textColor = UIColor.fe_placeholderColor;
+}
+
+- (void)initRefreshHeader:(MJRefreshNormalHeader *)header {
+    header.arrowView.image = nil;
+    [header setTitle:@"下拉刷新数据" forState:MJRefreshStateIdle];
+    [header setTitle:@"松开立即刷新数据" forState:MJRefreshStatePulling];
+    [header setTitle:@"数据加载中···" forState:MJRefreshStateRefreshing];
+    header.stateLabel.textColor = UIColor.fe_placeholderColor;
+    
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.backgroundColor = UIColor.clearColor;
 }
 
 

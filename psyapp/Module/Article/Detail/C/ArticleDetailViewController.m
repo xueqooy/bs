@@ -8,7 +8,7 @@
 
 #import "ArticleDetailViewController.h"
 #import "EvaluateService.h"
-#import "ArticleDetailsModel.h"
+#import "articleModel.h"
 #import "CommentModel.h"
 #import "SJVideoPlayer.h"
 #import "UserService.h"
@@ -22,6 +22,8 @@
 #import "FEBaseViewController+CustomTitleTransition.h"
 #import "TCArticleLoader.h"
 #import "UITableView+FDTemplateLayoutCell.h"
+
+#import "FECommentManager.h"
 @interface ArticleDetailViewController () <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 @property(nonatomic,strong) UIView *headerView;
 @property(nonatomic,strong) UITableView *tableView;
@@ -42,21 +44,13 @@
 
 @property(nonatomic,strong) FECommentView *commentView;
 @property(nonatomic,strong) UIView *emptyCommentView;
-
-
-
-@property(nonatomic,strong) ArticleDetailsModel *articleDetailsModel;
-
-
-@property(nonatomic,assign) NSInteger page;
-@property(nonatomic,assign) NSInteger size;
+@property(nonatomic,strong) FECommentManager *commentManager;
 
 @property(nonatomic, strong) NSMutableArray *commentsHeightArray;
 
 
 @property(nonatomic,assign) CGFloat bottomHeight;
 
-@property(nonatomic,assign) BOOL isComment;
 @end
 
 @implementation ArticleDetailViewController
@@ -83,21 +77,20 @@
     self.view.backgroundColor = UIColor.fe_contentBackgroundColor;
    
     self.fd_prefersNavigationBarHidden = ![NSString isEmptyString:_articleModel.articleVideo];
-    
-    self.page = 1;
-    self.size = 20;
-    
+  
     _bottomHeight = [SizeTool height:49];
     
     _webViewManager = [FEWebViewManager new];
+    _commentManager = [[FECommentManager alloc] initWithContentId:self.articleModel.articleId type:FECommentTypeArticle];
     [self configWebViewManager];
     
     //从其他tab跳转时无法传入articleModel， 视图创建延迟到数据请求之后
     [self setupView];
-    [self updateData:_articleModel];
+    [self updateView];
     [self showLoadingView];
     [self setNavigationBarShadowHidden:YES];
     self.customTitleLabel = self.defaultCustomTitleLabel;
+    self.customTitleLabel.text = self.articleModel.articleTitle;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -148,22 +141,9 @@
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"footer"];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+        
     
-    //下拉刷新
-    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(dropDownToRefresh)];
-    header.lastUpdatedTimeLabel.hidden = YES;
-    [header setTitle:@"下拉刷新数据" forState:MJRefreshStateIdle];
-    [header setTitle:@"松开立即刷新数据" forState:MJRefreshStatePulling];
-    [header setTitle:@"数据加载中···" forState:MJRefreshStateRefreshing];
-    self.tableView.mj_header = header;
-    
-    MJRefreshAutoStateFooter *footer = [MJRefreshAutoStateFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadCommentMoreData)];
-    [footer setTitle:@"上拉加载数据" forState:MJRefreshStateIdle];
-    [footer setTitle:@"松开立即加载更多数据" forState:MJRefreshStatePulling];
-    [footer setTitle:@"更多数据加载中 ..." forState:MJRefreshStateRefreshing];
-    footer.stateLabel.font = [UIFont systemFontOfSize:17];
-    self.tableView.mj_footer = footer;
-    self.tableView.mj_footer.hidden = YES;
+    [self.tableView addFooterRefreshTarget:self action:@selector(loadCommentData)];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     BOOL videoType = ![NSString isEmptyString:_articleModel.articleVideo] ;
@@ -270,7 +250,7 @@
     }];
     
     self.publishTimeLabel = [[UILabel alloc] init];
-    self.publishTimeLabel.textColor = UIColor.fe_mainTextColor;
+    self.publishTimeLabel.textColor = UIColor.fe_placeholderColor;
     self.publishTimeLabel.font = [UIFont systemFontOfSize:12];
     self.publishTimeLabel.text = @"2018-08-28";
     [self.headerView addSubview:self.publishTimeLabel];
@@ -349,60 +329,10 @@
 }
 
 - (void)dropDownToRefresh {
-    if ([_articleDetailsModel.showComment boolValue]) {
-        [self loadCommentData];
-    }
-
+    [self loadCommentData];
 }
 
--(void) loadData:(NSString *) articleId{
-    //[QSLoadingView show];
-//    [EvaluateService articleDetails:articleId childExamId:nil unneedCount:YES success:^(id data) {
-//        //[QSLoadingView dismiss];
-//        if(data){
-//            ArticleDetailsModel *articleDetails = [MTLJSONAdapter modelOfClass:ArticleDetailsModel.class fromJSONDictionary:data error:nil];
-//            articleDetails.dimension_JSON = data[@"dimensions"];
-//            [self observeAudioStatusChangedIfNeeded];
-//
-//            if(articleDetails){
-//                [self uploadToCloud:articleDetails];
-//                if (_articleModel == nil) {  //从其他tab跳入时，articleModel == nil
-//                    _articleModel = [ArticleModel new];
-//                    _articleModel.articleTitle = articleDetails.articleTitle;
-//                    _articleModel.contentType = articleDetails.contentType;
-//                    _articleModel.articleImg = articleDetails.articleImg;
-//                    if ([_articleModel.contentType isEqualToNumber:@2]) {
-//                        [self.navigationController setNavigationBarHidden:YES animated:NO];
-//                    }
-//                    [self setupView];
-//                }
-//
-//                [self updateData:articleDetails];
-//                @weakObj(self);
-//                [self addDoubleClickGestureForNavigationBarWithHandler:^{
-//                    @strongObj(self);
-//                    [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
-//                } andTitle:@""];
-//
-//
-//            }
-//        }
-//
-//    } failure:^(NSError *error) {
-//        [HttpErrorManager showErorInfo:error showView:mKeyWindow];
-//        if ([error.userInfo[@"message"] isEqualToString:@"文章已下架"]) {
-//            [self showEmptyViewInView:self.view type:FEErrorType_NoData];
-//            [self.emptyView setTitleText:@"文章已下架"];
-//        } else {
-//            @weakObj(self);
-//           [self showEmptyViewForNoNetInView:self.view refreshHandler:^{
-//               [selfweak loadData:articleId];
-//           }];
-//        }
-//    }];
-}
-
-//- (void)uploadToCloud:(ArticleDetailsModel *)article {
+//- (void)uploadToCloud:(articleModel *)article {
 //    AVQuery *query = [AVQuery queryWithClassName:@"Article"];
 //    [query whereKey:@"articleTitle" equalTo:article.articleTitle];
 //    [query getFirstObjectInBackgroundWithBlock:^(AVObject * _Nullable object, NSError * _Nullable error) {
@@ -424,51 +354,35 @@
 //    }];
 //}
 
--(void)updateData:(ArticleDetailsModel *) articleDetailModel{
-    if(!articleDetailModel){
-        return;
-    }
-    self.titleLabel.text = articleDetailModel.articleTitle;
-    self.customTitleLabel.text = self.articleModel.articleTitle;
+-(void)updateView{
 
-    _articleDetailsModel = articleDetailModel;
+    self.titleLabel.text = _articleModel.articleTitle;
+    self.customTitleLabel.text = self.articleModel.articleTitle;
     
-    
-    if([articleDetailModel.showComment boolValue]){
-        //self.tableView.mj_header.hidden = NO;
-        self.tableView.mj_footer.hidden = YES;//先隐藏上拉，评论列表请求成功后在设置
-        [self loadCommentData];
-    }else{
-   
-        [_commentView setPlaceholder:@"评论已关闭"];
-        _commentView.editable = NO;
-        self.tableView.mj_footer.hidden = YES;
-    }
+    [self loadCommentData];
     
     NSInteger countHeight = 0;
-    
-    self.articleDetailsModel = articleDetailModel;
-    
+        
     [self updateSupport];
     [self updateCollect];
     
-    if(!self.articleDetailsModel){
-        self.titleLabel.text = articleDetailModel.articleTitle;
+    if(!self.articleModel){
+        self.titleLabel.text = _articleModel.articleTitle;
     }
     
-    self.sourceNameLabel.text = articleDetailModel.sourceName;
-    self.publishTimeLabel.text = articleDetailModel.publishDate;
-    self.readCountLabel.text = [NSString stringWithFormat:@"%@",articleDetailModel.pageView];
+    self.sourceNameLabel.text = _articleModel.sourceName;
+    self.publishTimeLabel.text = _articleModel.publishDate;
+    self.readCountLabel.text = [NSString stringWithFormat:@"%@",_articleModel.pageView];
     
 
-    if(![NSString isEmptyString:articleDetailModel.articleVideo]){//视频
+    if(![NSString isEmptyString:_articleModel.articleVideo]){//视频
         [self addVideoObservation];
     } else {
         self.playImage.hidden = YES;
     }
     
 //    //加载webView
-//    NSString *articleContentString = articleDetailModel.articleContent;
+//    NSString *articleContentString = articleModel.articleContent;
 //    [self.webViewManager loadHTMLString:articleContentString];
 
     //C端改成加载本地web
@@ -501,7 +415,7 @@
     //界面完成导航
     _webViewManager.didFinishNavigationHandler = ^(CGFloat contentHeight) {
         if (!selfweak) return ;
-        [TCArticleLoader loadArticle:selfweak.articleDetailsModel onWebView:selfweak.webViewManager.webView WithCompletion:^(BOOL success) {
+        [TCArticleLoader loadArticle:selfweak.articleModel onWebView:selfweak.webViewManager.webView WithCompletion:^(BOOL success) {
         }];
     };
     
@@ -587,22 +501,15 @@
         [QSToast toast:self.view message:@"评论内容不能为空"];
         return;
     }
+    @weakObj(self);
+    [self.commentManager commitComment:text completion:^(BOOL success, CommentModel * _Nullable model) {
+        if (success) {
+            [QSToast toast:selfweak.view message:@"评论成功"];
+            [selfweak.commentManager resetData];
+            [selfweak loadCommentData];
+        }
+    }];
     
-//    [QSLoadingView show];
-//    [EvaluateService articleComment:self.articleId commentInfo:commentInfo type:0 success:^(id data) {
-//        [QSLoadingView dismiss];
-//        CommentModel *dataModel = [MTLJSONAdapter modelOfClass:CommentModel.class fromJSONDictionary:data error:nil];
-//        if(dataModel){
-//            [QSToast toast:self.view message:@"评论成功"];
-//            self.isComment = YES;
-//            [self loadCommentData];
-//        }
-//    } failure:^(NSError *error) {
-//        [QSLoadingView dismiss];
-//        NSDictionary *errorDic = [HttpErrorManager showErorInfo:error showView:self.view];
-//        if([errorDic[@"code"] isEqualToString:@"PSY_COMMENT_TIME_INVALID"]){
-//        }
-//    }];
 }
 
 
@@ -613,7 +520,7 @@
 
 
 -(void)updateCollect{
-    if([self.articleDetailsModel.favorite integerValue] == 1){
+    if([self.articleModel.favorite integerValue] == 1){
         [_commentView setSelected:YES forComponent:FECommentViewComponentCollect];
     }else{
         [_commentView setSelected:NO forComponent:FECommentViewComponentCollect];
@@ -622,26 +529,31 @@
 }
 
 -(void)updateSupport{
-    if([self.articleDetailsModel.like integerValue] == 1){
-        [_commentView setSelected:YES forComponent:FECommentViewComponentLike];
-    }else{
-        [_commentView setSelected:NO forComponent:FECommentViewComponentLike];
-        
+    NSArray *thumpUpUsers = self.articleModel.thumpUpUsers;
+    BOOL alreadyThumpUp = NO;
+    for (BSUser *user in thumpUpUsers) {
+        if ([user.objectId isEqualToString:BSUser.currentUser.objectId]) {
+            alreadyThumpUp = YES;
+            self.articleModel.alreadyThumpUp = YES;
+            break;
+        }
     }
+    [_commentView setSelected:alreadyThumpUp forComponent:FECommentViewComponentLike];
+    [_commentView setCount:self.articleModel.thumpUpNum.intValue forComponent:FECommentViewComponentLike];
 }
 
 - (void)scrollToComment {
-//    if(self.commentModels && self.commentModels.count>0){
-//        NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-//        [[self tableView] scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-//    }else{
-//        if(self.tableView.contentSize.height>self.tableView.frame.size.height) {
-//
-//            CGPoint offset = CGPointMake(0, self.tableView.contentSize.height - self.tableView.frame.size.height);
-//            [self.tableView setContentOffset:offset animated:YES];
-//
-//        }
-//    }
+    if(self.commentManager.isEmpty == NO){
+        NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [[self tableView] scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }else{
+        if(self.tableView.contentSize.height>self.tableView.frame.size.height) {
+
+            CGPoint offset = CGPointMake(0, self.tableView.contentSize.height - self.tableView.frame.size.height);
+            [self.tableView setContentOffset:offset animated:YES];
+
+        }
+    }
 }
 
 - (void)like {
@@ -650,22 +562,46 @@
         return;
     }
     
-    [EvaluateService articleLike:self.articleDetailsModel.articleId success:^(id data) {
-        
-        if([data[@"is_like"] boolValue]){
-            self.articleDetailsModel.like = @1;
-            self.articleDetailsModel.pageLike = @([self.articleDetailsModel.pageLike integerValue] + 1);
+    if(self.articleModel.alreadyThumpUp){
+        self.articleModel.alreadyThumpUp = NO;
+        self.articleModel.thumpUpNum = @([self.articleModel.thumpUpNum integerValue] - 1);
 
-        }else{
-            self.articleDetailsModel.like = @0;
-            self.articleDetailsModel.pageLike = @([self.articleDetailsModel.pageLike integerValue] - 1);
+    }else{
+        self.articleModel.alreadyThumpUp = YES;
+        self.articleModel.thumpUpNum = @([self.articleModel.thumpUpNum integerValue] + 1);
+    }
+//    [_commentView setSelected:self.articleModel.alreadyThumpUp forComponent:FECommentViewComponentLike]; //automaticlly
+    [_commentView setCount:self.articleModel.thumpUpNum.intValue forComponent:FECommentViewComponentLike];
+    
+    AVObject *object = [AVObject objectWithClassName:@"Article" objectId:self.articleModel.articleId];
+    [object fetchInBackgroundWithBlock:^(AVObject * _Nullable object, NSError * _Nullable error) {
+        NSMutableArray <BSUser *>*users = [object objectForKey:@"thumpUpUsers"];
+        if (users == nil) users = @[].mutableCopy;
+        if (self.articleModel.alreadyThumpUp == NO) {
+            for (BSUser *user in users) {
+                if([user.objectId isEqualToString:BSUser.currentUser.objectId]) {
+                    [users removeObject:user];
+                    break;
+                }
+            }
+            [object setObject:users forKey:@"thumpUpUsers"];
+            [object incrementKey:@"thumpUp" byAmount:@(-1)];
+            [object saveInBackground];
+        } else {
+            for (BSUser *user in users) {
+                if([user.objectId isEqualToString:BSUser.currentUser.objectId]) {
+                    return;
+                }
+            }
+            [users addObject:BSUser.currentUser];
+            [object setObject:users forKey:@"thumpUpUsers"];
+            [object incrementKey:@"thumpUp"];
+            [object saveInBackground];
         }
-        [self updateSupport];
-    } failure:^(NSError *error) {
-        [HttpErrorManager showErorInfo:error showView:self.view];
-        [self updateSupport];
+        self.articleModel.thumpUpUsers = users;
 
     }];
+ 
 }
 
 - (void)collect {
@@ -674,15 +610,15 @@
         return;
     }
   
-    [EvaluateService articleCollect:self.articleDetailsModel.articleId success:^(id data) {
+    [EvaluateService articleCollect:self.articleModel.articleId success:^(id data) {
         
         if([data[@"is_favorite"] boolValue]){
-            self.articleDetailsModel.favorite = @1;
-            self.articleDetailsModel.pageFavorite = @([self.articleDetailsModel.pageFavorite integerValue] + 1);
+            self.articleModel.favorite = @1;
+            self.articleModel.pageFavorite = @([self.articleModel.pageFavorite integerValue] + 1);
             [QSToast toast:self.view message:@"收藏成功"];
         }else{
-            self.articleDetailsModel.favorite = @0;
-            self.articleDetailsModel.pageFavorite = @([self.articleDetailsModel.pageFavorite integerValue] - 1);
+            self.articleModel.favorite = @0;
+            self.articleModel.pageFavorite = @([self.articleModel.pageFavorite integerValue] - 1);
             [QSToast toast:self.view message:@"取消收藏"];
         }
         
@@ -696,89 +632,22 @@
 }
 
 
-
-
-
-
 -(void)loadCommentData{
-//    [_tableView.mj_footer setState:MJRefreshStateIdle];
-//    NSInteger page = 1;
-//    NSString *articleId = self.articleId ? self.articleId : (self.articleDetailsModel.articleId ? self.articleDetailsModel.articleId : @"");
-//    [EvaluateService articleCommentList:articleId type:0 page:page size:self.size success:^(id data) {
-//        //        [QSLoadingView dismiss];
-//        [self.tableView.mj_header endRefreshing];
-//        if(data){
-//            CommentRootMdoel *dataModel = [MTLJSONAdapter modelOfClass:CommentRootMdoel.class fromJSONDictionary:data error:nil];
-//            if(dataModel && dataModel.items && dataModel.items.count>0){
-//                self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-//                self.page = page;
-//                self.commentRootModel = dataModel;
-//                self.commentModels = [[NSMutableArray alloc] init];
-//                [self.commentModels addObjectsFromArray:dataModel.items];
-//                [self computeHeightForComments];
-//
-//                [self setCommentCount:self.commentRootModel.total];
-//                [UIView performWithoutAnimation:^{
-//                    [self.tableView reloadData];
-//                }];
-//
-//                if(self.commentModels.count<self.size){
-//                    self.tableView.mj_footer.hidden = YES;
-//                }else{
-//                    self.tableView.mj_footer.hidden = NO;
-//                }
-//
-//                if(self.isComment){
-//                    //评论后滚到第一行评论
-//                    NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-//                    [[self tableView] scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-//                }
-//                self.isComment = NO;
-//            } else {//无评论,显示评论为空占位图
-//                [self p_addCommentEmptyView];
-//            }
-//        }
-//    } failure:^(NSError *error) {
-//        NSDictionary *info = [HttpErrorManager getErorInfo:error];
-//        if (![NSString isEmptyString:info[@"message"]]) {
-//            if ([info[@"message"] isEqualToString:@"不允许进行评论"]) {
-//               [_commentView setPlaceholder:@"评论已关闭"];
-//               _commentView.editable = NO;
-//               self.tableView.mj_header.hidden = YES;
-//               self.tableView.mj_footer.hidden = YES;
-//           }
-//        }
-//
-//        [self.tableView.mj_header endRefreshing];
-//        [HttpErrorManager showErorInfo:error showView:self.view];
-//    }];
-}
-
--(void)loadCommentMoreData{
-//    if (self.commentModels.count >= self.commentRootModel.total) {
-//
-//        [self.tableView.mj_footer endRefreshingWithNoMoreData];
-//        return;
-//
-//    }
-//    NSInteger page = self.page +1;
-//    [EvaluateService articleCommentList:self.articleDetailsModel.articleId type:0 page:page size:self.size success:^(id data) {
-//        if(data){
-//            CommentRootMdoel *dataModel = [MTLJSONAdapter modelOfClass:CommentRootMdoel.class fromJSONDictionary:data error:nil];
-//            if(dataModel && dataModel.items && dataModel.items.count>0){
-//                self.page ++;
-//                [self.commentModels addObjectsFromArray:dataModel.items];
-//                [self computeHeightForComments];
-//                [self.tableView reloadData];
-//                [self.tableView.mj_footer endRefreshing];
-//                if(self.commentModels.count >= self.rootModel.total){
-//                    self.tableView.mj_footer.state = MJRefreshStateNoMoreData;
-//                }
-//            }
-//        }
-//    } failure:^(NSError *error) {
-//        [self.tableView.mj_footer endRefreshing];
-//    }];
+    @weakObj(self);
+    [_commentManager loadCommentDataWithSuccess:^{
+        selfweak.tableView.alreadyLoadAllData = selfweak.commentManager.hasLoadAll;
+        if (selfweak.commentManager.isEmpty == NO) {
+            selfweak.tableView.tableFooterView = UIView.new;
+            [UIView performWithoutAnimation:^{
+                [selfweak.commentView setCount:selfweak.commentManager.count forComponent:FECommentViewComponentDiscuss];
+                [selfweak.tableView reloadData];
+            }];
+        } else {
+            [selfweak p_addCommentEmptyView];
+        }
+    } failure:^{
+        [selfweak.tableView.mj_footer endRefreshing];
+    }];
 }
 
 - (void)p_addCommentEmptyView {
@@ -810,10 +679,10 @@
 }
 
 - (CGFloat)heightForCommentCellAtIndexPath:(NSIndexPath *)indexPath {
-//    CommentModel *model = self.commentModels[indexPath.row];
-//    return [_tableView fd_heightForCellWithIdentifier:@"TCCommentTableViewCell" cacheByKey:model.cacheUniqueKey configuration:^(TCCommentTableViewCell *cell) {
-//        cell.model = model;
-//    }];
+    CommentModel *model = self.commentManager.commentModels[indexPath.row];
+    return [_tableView fd_heightForCellWithIdentifier:@"TCCommentTableViewCell" cacheByKey:model.cacheUniqueKey configuration:^(TCCommentTableViewCell *cell) {
+        cell.model = model;
+    }];
     return 0;
     
 }
@@ -831,21 +700,17 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
-//    return self.commentModels?self.commentModels.count:0;
+    return self.commentManager.commentModels.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if(![self.articleDetailsModel.showComment boolValue]){
-        return [SizeTool height:78];
+    if (self.commentManager.isEmpty == YES) {
+        return STWidth(10);
     } else {
-//        if (self.commentModels.count == 0) {
-//            return STWidth(10);
-//        } else {
-//            return STWidth(48);
-//        }
-        return 0;
+        return STWidth(48);
     }
+    return 0;
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -862,41 +727,17 @@
     UIView *view = [[UIView alloc] init];
     
     
-    if ([_articleDetailsModel.showComment boolValue] == YES) {
-        view.backgroundColor = UIColor.fe_backgroundColor;
-//        if (_commentModels.count != 0) {
-//            TCTitleHeaderView *titleView = TCTitleHeaderView.new;
-//            titleView.titleLabel.text = @"精选留言";
-//            titleView.insets = STEdgeInsets(10, 15, 0, 0);
-//            [view addSubview:titleView];
-//            [titleView mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.top.offset(STWidth(10));
-//                make.left.right.bottom.offset(0);
-//            }];
-//        }
-    } else {
-        view.backgroundColor = UIColor.fe_contentBackgroundColor;
-        
-        UIView *separatorView = [UIView new];
-        separatorView.backgroundColor =  UIColor.fe_backgroundColor;
-        [view addSubview:separatorView];
-        [separatorView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(STSize(375, 15));
-            make.top.left.mas_equalTo(0);
+    view.backgroundColor = UIColor.fe_backgroundColor;
+    if (self.commentManager.isEmpty == NO) {
+        TCTitleHeaderView *titleView = TCTitleHeaderView.new;
+        titleView.titleLabel.text = @"同学的留言";
+        titleView.insets = STEdgeInsets(10, 15, 0, 0);
+        [view addSubview:titleView];
+        [titleView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.offset(STWidth(10));
+            make.left.right.bottom.offset(0);
         }];
-       [UILabel create:^(UILabel *label) {
-            label.textIs(@"当前文章已关闭评论功能")
-            .textColorIs(UIColor.fe_auxiliaryTextColor)
-            .textAlignmentIs(NSTextAlignmentCenter)
-            .fontIs(STFont(14));
-           
-           [label mas_makeConstraints:^(MASConstraintMaker *make) {
-               make.centerX.mas_equalTo(0);
-               make.centerY.offset([SizeTool height:7.5]);
-           }];
-        } addTo:view];
     }
-    
     return view;
     
 }
@@ -909,8 +750,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TCCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TCCommentTableViewCell class]) forIndexPath:indexPath];
-//     CommentModel *aComment = self.commentModels[indexPath.row];
-//    cell.model = aComment;
+     CommentModel *aComment = self.commentManager.commentModels[indexPath.row];
+    cell.model = aComment;
 
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

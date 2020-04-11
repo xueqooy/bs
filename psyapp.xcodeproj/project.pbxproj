@@ -3419,8 +3419,8 @@
 		048FCA80244058F60047D4A2 /* C */ = {
 			isa = PBXGroup;
 			children = (
-				048FCA81244058F60047D4A2 /* ArticleDetailViewController.m */,
 				048FCA82244058F60047D4A2 /* ArticleDetailViewController.h */,
+				048FCA81244058F60047D4A2 /* ArticleDetailViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";

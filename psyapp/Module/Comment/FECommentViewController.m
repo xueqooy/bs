@@ -36,6 +36,9 @@ const CGFloat kCommentBoxHeight = 49;
 - (instancetype)initWithCommentModel:(CommentModel *)commentModel {
     self = [super init];
     self.commentModel = commentModel;
+    if (commentModel.subCommentNum) {
+        self.title = [NSString stringWithFormat:@"%@条回复", commentModel.subCommentNum.stringValue];
+    }
     return self;
 }
 
