@@ -22,6 +22,18 @@ typedef NS_OPTIONS(NSUInteger, TCPaymentType) {
     TCPaymentTypeIAP  = 3
 };
 
+
+typedef NS_OPTIONS(NSInteger, BSBannerType) {
+    BSBannerTypeArticle = 0,
+    BSBannerTypeTab = 1,
+    BSBannerTypeUniversity = 2,
+    BSBannerTypeMajor = 3,
+    BSBannerTypeOccupation = 4,
+    BSBannerTypeLink = 5,
+    BSBannerTypeLib = 6,
+    BSBannerTypeOccupationArea = 7
+};
+
 #define TC_PRODUCT_BEST_CATEGORY_ID @"product_best_category_id"
 
 

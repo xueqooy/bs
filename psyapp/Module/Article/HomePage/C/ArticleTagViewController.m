@@ -204,17 +204,8 @@
             }];
         } else {
             for (AVObject *object in objects) {
-                ArticleDetailsModel *articleModel = ArticleDetailsModel.new;
-                articleModel.articleContent = [object objectForKey:@"articleContent"];
-                articleModel.articleImg = [object objectForKey:@"articleImg"];
-                articleModel.articleTitle = [object objectForKey:@"articleTitle"];
-                AVFile *videoFile = [object objectForKey:@"video"];
-                articleModel.articleVideo = videoFile.url;
-                CategoriesModel *category = CategoriesModel.new;
-                category.name = [object objectForKey:@"category"];
-                articleModel.category = category;
-                articleModel.pageView = [object objectForKey:@"pageView"];
-                articleModel.sourceName = [object objectForKey:@"sourceName"];
+                ArticleDetailsModel *articleModel = [[ArticleDetailsModel alloc] initWithAVObject:object];
+                
                 [self.articleModels addObject:articleModel];
                 [self.tableView reloadData];
             }

@@ -25,7 +25,22 @@
     return self;
 }
 
--(void)getBannerForStage:(TCStageModel *)stage onSuccess:(void (^)(void))success failure:(void (^)(void))failure{
+-(void)getBannerOnSuccess:(void (^)(void))success failure:(void (^)(void))failure{
+    AVQuery *query = [AVQuery queryWithClassName:@"Banner"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (error) {
+            [HttpErrorManager showErorInfo:error];
+            if (failure) failure();
+        } else {
+            NSMutableArray *temp = @[].mutableCopy;
+            for (AVObject *object in objects) {
+                TCBannerModel *banner = [[TCBannerModel alloc] initWithAVObject:object];
+                [temp addObject:banner];
+            }
+            self.banners = temp.copy;
+            if (success) success();
+        }
+    }];
 //    [TCHTTPService getBannersByStage:stage.code.integerValue showTab:self.tab onSuccess:^(id data) {
 //        self.banners = [MTLJSONAdapter modelsOfClass:TCBannerModel.class fromJSONArray:data[@"items"] error:nil];
 //        [self getUndisplayedBannerAdsForStageCode:stage.code];
@@ -59,7 +74,7 @@
     if (set) {
         NSMutableSet *temp = set.mutableCopy;
         for (TCBannerModel *m in temp.allObjects) {
-            if ([model.uniqueId isEqualToNumber:m.uniqueId]) {
+            if ([model.uniqueId isEqualToString:m.uniqueId]) {
                 [set removeObject:m];
                 break;
             }
@@ -68,13 +83,17 @@
     [self saveBannerAdDisplay:model.uniqueId writeToFile:YES];
 }
 
-- (void)countBannerClick:(NSNumber *)uniqueId{
-    if (uniqueId == nil || uniqueId.stringValue == nil) return;
-//    [TCHTTPService putDiscoveryBannerClickById:uniqueId.stringValue onSuccess:^(id data) {
-//        mLog(@"banner-click: 统计成功");
-//    } failure:^(NSError *error) {
-//        mLog(@"banner-click: 统计失败");
-//    }];
+- (void)countBannerClick:(NSString *)uniqueId{
+    AVQuery *query = [AVQuery queryWithClassName:@"Banner"];
+    [query whereKey:@"objectId" equalTo:uniqueId];
+    [query getFirstObjectInBackgroundWithBlock:^(AVObject * _Nullable object, NSError * _Nullable error) {
+        if (object) {
+            [object incrementKey:@"click"];
+            [object saveInBackground];
+            return ;
+        }
+    }];
+    
 }
 
 - (BOOL)hasDisplayBannerAd:(NSNumber *)uniqueId {

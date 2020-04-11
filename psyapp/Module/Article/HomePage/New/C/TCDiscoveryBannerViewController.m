@@ -27,8 +27,6 @@
 @end
 
 @implementation TCDiscoveryBannerViewController {
-    TCStageModel *_stage;
-    
     BOOL _needsDisplayBannerAd;
 }
 
@@ -40,7 +38,7 @@
 }
 
 - (CGFloat)height {
-    return STWidth(140);
+    return STWidth(150);
 }
 
 - (void)loadView {
@@ -84,49 +82,47 @@
 - (void)displayBannerAdIfNeeded {
     if (_needsDisplayBannerAd == NO) return;
     _needsDisplayBannerAd = NO;
-    if (_stage == nil || _stage.code == nil) return;
-    NSSet *set = [self.dataManager.undisplayedBannerAds objectForKey:_stage.code];
-    if (set) {
-        for (TCBannerModel *model in set.allObjects) {
-            @weakObj(self);
-            void (^block)(void) = ^{
-                @strongObj(self);
-                TCAdvertPopupView *view = TCAdvertPopupView.new;
-                view.hideAnimated = NO;
-                view.hideWhenTapImage = YES;
-                GCD_ASYNC_GLOBAL(^{
-                    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:model.adImageURL]];
-                    GCD_ASYNC_MAIN(^{
-                        UIImage *image = [UIImage imageWithData:imageData];
-                        view.imageView.image = image;
-                        [view showWithAnimated:NO];
-                    });
-                });
-                view.didHideBlock = ^{
-                    @strongObj(self);
-                    if (self) {
-                        [self.adDisplayTaskQueue next];
-                        [self.dataManager displayedBannerAdModel:model forStageCode:self->_stage.code];
-                    }
-                };
-                view.didTapImage = ^{
-                    @strongObj(self);
-                    if (self) {
-                        [self handleBannerClick:model];
-                    }
-                };
-            };
-            [self.adDisplayTaskQueue addTaskBlock:block];
-        }
-        
-        [self.adDisplayTaskQueue next];
-    }
+//    NSSet *set = [self.dataManager.undisplayedBannerAds objectForKey:_stage.code];
+//    if (set) {
+//        for (TCBannerModel *model in set.allObjects) {
+//            @weakObj(self);
+//            void (^block)(void) = ^{
+//                @strongObj(self);
+//                TCAdvertPopupView *view = TCAdvertPopupView.new;
+//                view.hideAnimated = NO;
+//                view.hideWhenTapImage = YES;
+//                GCD_ASYNC_GLOBAL(^{
+//                    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:model.adImageURL]];
+//                    GCD_ASYNC_MAIN(^{
+//                        UIImage *image = [UIImage imageWithData:imageData];
+//                        view.imageView.image = image;
+//                        [view showWithAnimated:NO];
+//                    });
+//                });
+//                view.didHideBlock = ^{
+//                    @strongObj(self);
+//                    if (self) {
+//                        [self.adDisplayTaskQueue next];
+//                        [self.dataManager displayedBannerAdModel:model forStageCode:self->_stage.code];
+//                    }
+//                };
+//                view.didTapImage = ^{
+//                    @strongObj(self);
+//                    if (self) {
+//                        [self handleBannerClick:model];
+//                    }
+//                };
+//            };
+//            [self.adDisplayTaskQueue addTaskBlock:block];
+//        }
+//        
+//        [self.adDisplayTaskQueue next];
+//    }
 }
 
-- (void)updateWithStage:(TCStageModel *)stage {
-    _stage = stage;
+- (void)loadData {
     @weakObj(self);
-    [self.dataManager getBannerForStage:stage onSuccess:^{
+    [self.dataManager getBannerOnSuccess:^{
         [selfweak dataDidLoad];
     } failure:^{
         
@@ -154,7 +150,7 @@
 
 #pragma mark NewPagedFlowView Delegate
 - (CGSize)sizeForPageInFlowView:(NewPagedFlowView *)flowView {
-    return STSize(345, 140);
+    return STSize(345, 150);
 }
 
 - (void)didSelectCell:(UIView *)subView withSubViewIndex:(NSInteger)subIndex {

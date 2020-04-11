@@ -70,4 +70,18 @@
     
 }
 
+- (instancetype)initWithAVObject:(AVObject *)object {
+    self = [super init];
+    self.articleContent = [object objectForKey:@"articleContent"];
+    self.articleImg = [object objectForKey:@"articleImg"];
+    self.articleTitle = [object objectForKey:@"articleTitle"];
+    AVFile *videoFile = [object objectForKey:@"video"];
+    self.articleVideo = videoFile.url;
+    CategoriesModel *category = CategoriesModel.new;
+    category.name = [object objectForKey:@"category"];
+    self.category = category;
+    self.pageView = [object objectForKey:@"pageView"];
+    self.sourceName = [object objectForKey:@"sourceName"];
+    return self;
+}
 @end

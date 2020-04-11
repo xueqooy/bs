@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FEBaseModel : MTLModel<MTLJSONSerializing>
-
+- (instancetype)initWithAVObject:(AVObject *)object;
 @end
 
 NS_ASSUME_NONNULL_END

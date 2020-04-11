@@ -422,7 +422,6 @@
 		048FCAC9244058F90047D4A2 /* TCDicoveryArticleListDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 048FCA8F244058F80047D4A2 /* TCDicoveryArticleListDataManager.m */; };
 		048FCACA244058F90047D4A2 /* TCBannerEventHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 048FCA90244058F80047D4A2 /* TCBannerEventHandler.m */; };
 		048FCACB244058F90047D4A2 /* TCTaskSerialQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 048FCA91244058F80047D4A2 /* TCTaskSerialQueue.m */; };
-		048FCACC244058F90047D4A2 /* TCDiscoveryRecommendDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 048FCA92244058F90047D4A2 /* TCDiscoveryRecommendDataManager.m */; };
 		048FCACD244058F90047D4A2 /* TCDiscoveryHomepageDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 048FCA93244058F90047D4A2 /* TCDiscoveryHomepageDataManager.m */; };
 		048FCACF244058F90047D4A2 /* TCDiscoveryBannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048FCA9C244058F90047D4A2 /* TCDiscoveryBannerViewController.m */; };
 		048FCAD0244058F90047D4A2 /* TCDiscoveryHomepageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048FCA9D244058F90047D4A2 /* TCDiscoveryHomepageViewController.m */; };
@@ -1442,13 +1441,11 @@
 		048FCA89244058F80047D4A2 /* TCDicoveryArticleListDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCDicoveryArticleListDataManager.h; sourceTree = "<group>"; };
 		048FCA8A244058F80047D4A2 /* TCDiscoveryHomepageDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCDiscoveryHomepageDataManager.h; sourceTree = "<group>"; };
 		048FCA8B244058F80047D4A2 /* TCBannerDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCBannerDataManager.m; sourceTree = "<group>"; };
-		048FCA8C244058F80047D4A2 /* TCDiscoveryRecommendDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCDiscoveryRecommendDataManager.h; sourceTree = "<group>"; };
 		048FCA8D244058F80047D4A2 /* TCTaskSerialQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCTaskSerialQueue.h; sourceTree = "<group>"; };
 		048FCA8E244058F80047D4A2 /* TCBannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCBannerModel.h; sourceTree = "<group>"; };
 		048FCA8F244058F80047D4A2 /* TCDicoveryArticleListDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCDicoveryArticleListDataManager.m; sourceTree = "<group>"; };
 		048FCA90244058F80047D4A2 /* TCBannerEventHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCBannerEventHandler.m; sourceTree = "<group>"; };
 		048FCA91244058F80047D4A2 /* TCTaskSerialQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCTaskSerialQueue.m; sourceTree = "<group>"; };
-		048FCA92244058F90047D4A2 /* TCDiscoveryRecommendDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCDiscoveryRecommendDataManager.m; sourceTree = "<group>"; };
 		048FCA93244058F90047D4A2 /* TCDiscoveryHomepageDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCDiscoveryHomepageDataManager.m; sourceTree = "<group>"; };
 		048FCA94244058F90047D4A2 /* TCBannerDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCBannerDataManager.h; sourceTree = "<group>"; };
 		048FCA96244058F90047D4A2 /* TCDiscoveryBannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCDiscoveryBannerViewController.h; sourceTree = "<group>"; };
@@ -3459,20 +3456,18 @@
 		048FCA86244058F80047D4A2 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				048FCA8E244058F80047D4A2 /* TCBannerModel.h */,
 				048FCA87244058F80047D4A2 /* TCBannerModel.m */,
 				048FCA88244058F80047D4A2 /* TCBannerEventHandler.h */,
+				048FCA90244058F80047D4A2 /* TCBannerEventHandler.m */,
 				048FCA89244058F80047D4A2 /* TCDicoveryArticleListDataManager.h */,
 				048FCA8F244058F80047D4A2 /* TCDicoveryArticleListDataManager.m */,
-				048FCA8A244058F80047D4A2 /* TCDiscoveryHomepageDataManager.h */,
-				048FCA8B244058F80047D4A2 /* TCBannerDataManager.m */,
-				048FCA8C244058F80047D4A2 /* TCDiscoveryRecommendDataManager.h */,
 				048FCA8D244058F80047D4A2 /* TCTaskSerialQueue.h */,
-				048FCA8E244058F80047D4A2 /* TCBannerModel.h */,
-				048FCA90244058F80047D4A2 /* TCBannerEventHandler.m */,
 				048FCA91244058F80047D4A2 /* TCTaskSerialQueue.m */,
-				048FCA92244058F90047D4A2 /* TCDiscoveryRecommendDataManager.m */,
+				048FCA8A244058F80047D4A2 /* TCDiscoveryHomepageDataManager.h */,
 				048FCA93244058F90047D4A2 /* TCDiscoveryHomepageDataManager.m */,
 				048FCA94244058F90047D4A2 /* TCBannerDataManager.h */,
+				048FCA8B244058F80047D4A2 /* TCBannerDataManager.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -3485,8 +3480,8 @@
 				048FCA99244058F90047D4A2 /* TCDiscoveryHomepageProtocol.h */,
 				048FCA9A244058F90047D4A2 /* TCDiscoveryHomepageViewController.h */,
 				048FCA9D244058F90047D4A2 /* TCDiscoveryHomepageViewController.m */,
-				048FCA9C244058F90047D4A2 /* TCDiscoveryBannerViewController.m */,
 				048FCA96244058F90047D4A2 /* TCDiscoveryBannerViewController.h */,
+				048FCA9C244058F90047D4A2 /* TCDiscoveryBannerViewController.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -4475,7 +4470,6 @@
 				04643180241BA1C0006FA1F5 /* TCCashierPaymentMethodTableViewCell.m in Sources */,
 				0464303E241B24BF006FA1F5 /* TCDeviceLoginInfoPerfectionViewController.m in Sources */,
 				04FB47A7241FAD610073E948 /* FEAnswerCollectionCell.m in Sources */,
-				048FCACC244058F90047D4A2 /* TCDiscoveryRecommendDataManager.m in Sources */,
 				04643149241B8331006FA1F5 /* TCMyAccountControllerView.m in Sources */,
 				04BE22A0241F498000C42540 /* TCPopupContainerView.m in Sources */,
 				045D01DE243D7B430006423E /* UniversityGrduationOverallModel.m in Sources */,

@@ -24,4 +24,16 @@
     };
 }
 
+- (instancetype)initWithAVObject:(AVObject *)object {
+    self = [super initWithAVObject:object];
+    self.uniqueId = object.objectId;
+    AVFile *imgFile = [object objectForKey:@"img"];
+    self.imgUrl = imgFile.url;
+    self.type = [object objectForKey:@"type"];
+    self.value = [object objectForKey:@"value"];
+    self.includeAd = [object objectForKey:@"includeAd"];
+    AVFile *adImgFile = [object objectForKey:@"adImg"];
+    self.adImageURL = adImgFile.url;
+    return self;
+}
 @end

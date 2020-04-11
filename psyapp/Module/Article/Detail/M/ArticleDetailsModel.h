@@ -48,4 +48,6 @@
 @property(nonatomic, strong) NSNumber *mediaTimelong;
 @property(nonatomic, strong) NSNumber *hasTest; //是否有测评
 @property(nonatomic, strong) NSNumber *inFreeMode;//是否是试读文章
+
+- (instancetype)initWithAVObject:(AVObject *)object;
 @end

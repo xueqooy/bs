@@ -8,5 +8,8 @@
 
 #import "FEBaseModel.h"
 @implementation FEBaseModel
-
+- (instancetype)initWithAVObject:(AVObject *)object {
+    self = [super init];
+    return  self;
+}
 @end

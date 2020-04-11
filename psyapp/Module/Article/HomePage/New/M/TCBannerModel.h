@@ -13,7 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 // type 类型 1 文章 2 TAB 3.课程 4.测评量表 5.url跳转  6.个人中心 99.广告(新加的)
 @interface TCBannerModel : FEBaseModel
-@property (nonatomic, strong) NSNumber *uniqueId;
+@property (nonatomic, copy) NSString *uniqueId;
 @property(nonatomic, copy)NSString *describe;
 @property(nonatomic, copy)NSString *imgUrl;
 @property(nonatomic, strong)NSNumber *type;
@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber *showPage; // 0发现 1测评 
 //广告属性
 @property(nonatomic,strong)NSString *adImageURL;
+
 
 @end
 

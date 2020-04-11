@@ -15,11 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) NSArray<TCBannerModel *> *banners;
 @property (nonatomic, copy) NSMutableDictionary <NSString * , NSMutableSet <TCBannerModel *> *> *undisplayedBannerAds;
 
-- (void)getBannerForStage:(TCStageModel * _Nullable)stage onSuccess:(void (^)(void))success failure:(void (^)(void))failure;
+- (void)getBannerOnSuccess:(void (^)(void))success failure:(void (^)(void))failure;
 
 
 - (void)displayedBannerAdModel:(TCBannerModel *)model forStageCode:(NSString *)code;
-- (void)countBannerClick:(NSNumber *)uniqueId;
+- (void)countBannerClick:(NSString *)uniqueId;
 - (BOOL)hasDisplayBannerAd:(NSNumber *)uniqueId;
 - (void)saveBannerAdDisplay:(NSNumber * _Nullable)uniqueId writeToFile:(BOOL)writeToFile;
 @end

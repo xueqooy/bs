@@ -139,6 +139,7 @@
 
 - (void)loadData {
     [_articleListViewController loadData];
+    [_bannerViewController loadData];
 }
 
 - (void)initViewControllers {
