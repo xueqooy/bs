@@ -89,7 +89,10 @@
             NSDictionary *errorDic = [HttpErrorManager getErorInfo:error];
             if ([errorDic[@"code"] isEqualToNumber:@211]) {
                 if(failure) failure(LoginErrorTypeAccountDoesNotExist);
-            } else {
+            } else if ([errorDic[@"code"] isEqualToNumber:@210]) {
+                [QSToast toastWithMessage:@"账号不存在或密码错误"];
+                if (failure) failure(LoginErrorTypeUnknown);
+            } else  {
                 [HttpErrorManager showErorInfo:error];
                 if (failure) failure(LoginErrorTypeUnknown);
             }

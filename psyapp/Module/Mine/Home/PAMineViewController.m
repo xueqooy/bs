@@ -13,6 +13,7 @@
 #import "FELoginViewController.h"
 #import "FEChangePasswordViewController.h"
 #import "QSWebViewBaseController.h"
+#import "FEMyFollowsViewController.h"
 
 #import "FEMineTableViewCell.h"
 #import "FECheckUpdateTableViewCell.h"
@@ -44,8 +45,8 @@
 @end
 
 
-#define RowAccount 0
-#define RowOrder 1
+#define RowFollow 0
+#define RowCollect 1
 
 #define RowPassword 0
 #define RowService 1
@@ -79,24 +80,9 @@
     [super viewWillAppear:YES];
     
     [self updateViewData];
-
-    if (UCManager.sharedInstance.isVisitorPattern == NO) {
-        [self getEmoneyBalance];
-    }
-
 }
 
-- (void)getEmoneyBalance {
-    [TCMyAccountDataManager.sharedInstance getMyEmoneyBalanceOnSuccess:^{
-        self.emoneyBalance = TCMyAccountDataManager.sharedInstance.myEmoneyBalance.balanceCount;
-        FEMineTableViewCell *cell = [self->_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:RowAccount inSection:0]];
-        if (cell) {
-            cell.rightText = self.emoneyBalance < 0? @"":[NSString stringWithFormat:@"%.2f", self->_emoneyBalance];
-        }
-    } failure:^{
 
-    }];
-}
 
 
 - (void)registerInfoChangeNotificaton {
@@ -105,7 +91,7 @@
 
 -(void)initDataSource{
     self.imageNameArray = @[@[@"mine_account", @"mine_order"], @[@"mine_password", @"mine_about", @"mine_service", @"mine_secret", @"mine_version"]];
-    self.textArray = @[@[@"我的账户",@"我的订单"], @[@"修改密码", @"服务协议", @"隐私政策", @"检查更新"]];
+    self.textArray = @[@[@"我的关注",@"我的收藏"], @[@"修改密码", @"服务协议", @"隐私政策", @"检查更新"]];
 }
 
 -(void)setupSubviews{
@@ -303,10 +289,9 @@
         _cell.text = self.textArray[indexPath.section][indexPath.row];
         _cell.rightText = @"";
         if(indexPath.section == 0){
-            if (indexPath.row == RowOrder) {
+            if (indexPath.row == RowCollect) {
                 _cell.bottonLine.hidden = YES;
-            } else if (indexPath.row == RowAccount) {
-                _cell.rightText = self.emoneyBalance < 0? @"":[NSString stringWithFormat:@"%.2f", _emoneyBalance];
+            } else if (indexPath.row == RowFollow) {
             }
         }else{
             if (indexPath.row == RowPassword) {
@@ -325,9 +310,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UIViewController *viewController;
     if(indexPath.section == 0){
-        if (indexPath.row == RowAccount) {
-            viewController = TCMyAccountViewController.new;
-        } else if (indexPath.row == RowOrder) {
+        if (indexPath.row == RowFollow) {
+            viewController =  [[FEMyFollowsViewController alloc] initWithNibName:@"FEMyFollowsViewController" bundle:nil];;
+        } else if (indexPath.row == RowCollect) {
             viewController = TCMyOrderViewController.new;
         }
     }else if(indexPath.section == 1){

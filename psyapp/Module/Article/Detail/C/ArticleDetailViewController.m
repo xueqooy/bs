@@ -599,7 +599,7 @@
             [object saveInBackground];
         }
         self.articleModel.thumpUpUsers = users;
-
+ 
     }];
  
 }

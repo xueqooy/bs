@@ -45,20 +45,42 @@ typedef NS_OPTIONS(NSUInteger, TextInputCompleteState) {
 }
 
 - (void)completeAction {
+    if ([self checkPassword:_n3wPassword] == NO) {
+        return;
+    }
     [[UIApplication sharedApplication].keyWindow endEditing: YES];
     [QSLoadingView  show];
-    [UserService changePassword:_originPassword newPassword:_n3wPassword success:^(id data) {
+    BSUser *currentUser = BSUser.currentUser;
+    [currentUser updatePassword:_originPassword newPassword:_n3wPassword block:^(id  _Nullable object, NSError * _Nullable error) {
         [QSLoadingView dismiss];
-        [QSToast toast:self.view message:@"密码修改成功！"];
-        dispatch_time_t delayToPop = dispatch_time(DISPATCH_TIME_NOW, 0.6 * NSEC_PER_SEC);
-        dispatch_after(delayToPop, dispatch_get_main_queue(), ^(void){
-            [self.navigationController popViewControllerAnimated:YES];
-        });
-        
-    } failure:^(NSError *error) {
-        [QSLoadingView dismiss];
-        [HttpErrorManager showErorInfo:error showView:self.view];
+        if (error) {
+            if (error.code == 210) {
+                [QSToast toastWithMessage:@"旧密码不匹配"];
+            }
+        } else {
+            [QSToast toastWithMessage:@"密码修改成功！"];
+            dispatch_time_t delayToPop = dispatch_time(DISPATCH_TIME_NOW, 0.6 * NSEC_PER_SEC);
+            dispatch_after(delayToPop, dispatch_get_main_queue(), ^(void){
+                [self.navigationController popViewControllerAnimated:YES];
+            });
+        }
     }];
+   
+}
+
+//检查密码
+-(BOOL)checkPassword:(NSString *)firstPass{
+    if([firstPass isEqualToString:@""]){
+        [QSToast toast:self.view message:@"密码不能为空"];
+        return NO;
+    }
+    
+    if(firstPass.length<6 || firstPass.length>24){
+        [QSToast toast:self.view message:@"密码长度为6-24个字符，可以是数字、字母等任意字符" offset:CGPointMake(0, 100) duration:1.5];
+        return NO;
+    }
+    
+    return YES;
 }
 
 #pragma mark -

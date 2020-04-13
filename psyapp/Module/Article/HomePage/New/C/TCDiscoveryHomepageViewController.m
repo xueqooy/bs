@@ -44,6 +44,7 @@
 
 - (void)loadView {
     [super loadView];
+    [self showLeftTitle:@"主题阅读"];
     
     _scrollView = TCNestedSimultaneousScrollView.new;
     _scrollView.showsVerticalScrollIndicator = NO;
@@ -97,7 +98,6 @@
     _articleListViewController.horizontalSrollViewBlock = ^(UIScrollView * _Nonnull contentScrollView, UIScrollView *_Nonnull segmentScrollView) {
         selfweak.scrollView.mutexViews =@[selfweak.bannerViewController.bannerScrollView, contentScrollView, segmentScrollView];
     };
-    
 }
 
 - (void)viewDidLoad {

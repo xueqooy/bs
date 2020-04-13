@@ -21,7 +21,6 @@
 
 #import "PATestCategoryManager.h"
 @interface PALibViewController () <UIScrollViewDelegate, UISearchBarDelegate>
-@property (nonatomic, strong) QMUIButton *topLeftButton;
 @property (nonatomic, strong) QMUIButton *topRightButton;
 @property (nonatomic, strong) UIImageView *headerView;
 @property (nonatomic, strong) TCSearchAppearanceButton *searchButton;
@@ -48,7 +47,7 @@
 
 - (void)loadView {
     [super loadView];
-    CGFloat headerHeight = STWidth(162) + mStatusBarHeight;
+    CGFloat headerHeight = STWidth(60);
     UIView *topBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, mScreenWidth, headerHeight)];
     topBackgroundView.backgroundColor = UIColor.fe_mainColor;
     [self.view addSubview:topBackgroundView];
@@ -60,22 +59,6 @@
     _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.alwaysBounceVertical = YES;
-    @weakObj(self);
-    _scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [selfweak loadDataWithCompletion:nil];
-    }];
-
-    MJRefreshNormalHeader *header = (MJRefreshNormalHeader *)_scrollView.mj_header;
-    [header setTitle:@"下拉刷新数据" forState:MJRefreshStateIdle];
-    [header setTitle:@"松开立即刷新数据" forState:MJRefreshStatePulling];
-    [header setTitle:@"数据加载中···" forState:MJRefreshStateRefreshing];
-    header.stateLabel.textColor = UIColor.whiteColor;
-    header.backgroundColor = UIColor.clearColor;
-    header.lastUpdatedTimeLabel.hidden = YES;
-    if (@available(iOS 11.0, *)) {
-        _scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
-
     _scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
     _scrollView.delegate = self;
     [self.view addSubview:_scrollView];
@@ -90,15 +73,7 @@
     _headerView.image = gradientImage;
     [_scrollView addSubview:_headerView];
     [_scrollView sendSubviewToBack:_headerView];
-    
-    UILabel *searchLabel = [UILabel.alloc qmui_initWithFont:STFontBold(24) textColor:UIColor.whiteColor];
-    searchLabel.text = @"搜索学校/专业/职业";
-    [_headerView addSubview:searchLabel];
-    [searchLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.offset(STWidth(15));
-        make.bottom.offset(STWidth(-80));
-    }];
-    
+ 
     _searchButton = TCSearchAppearanceButton.new;
     _searchButton.frame = CGRectZero;
     _searchButton.layer.cornerRadius = STWidth(20);
@@ -107,32 +82,20 @@
     [_searchButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(STSize(345, 40));
         make.centerX.offset(0);
-        make.bottom.offset(-STWidth(30));
+        make.bottom.offset(-STWidth(10));
     }];
 
-    
-    _topLeftButton = QMUIButton.new;
-    [_topLeftButton setImage:[UIImage imageNamed:@"home_test"] forState:UIControlStateNormal];
-    [_topLeftButton setTitleColor:UIColor.fe_mainColor forState:UIControlStateNormal];
-    [_topLeftButton addTarget:self action:@selector(actionForTopButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_topLeftButton];
-    [_topLeftButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(22, 22));
-        make.top.offset(mStatusBarHeight + 7);
-        make.left.offset(STWidth(15));
-    }];
-    
-    _topRightButton = QMUIButton.new;
-    [_topRightButton setImage:[UIImage imageNamed:@"home_mine"] forState:UIControlStateNormal];
-    [_topRightButton setTitleColor:UIColor.fe_mainColor forState:UIControlStateNormal];
-    [_topRightButton addTarget:self action:@selector(actionForTopButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_topRightButton];
-    [_topRightButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(22, 22));
-        make.top.offset(mStatusBarHeight + 7);
-        make.right.offset(-STWidth(15));
-    }];
- 
+//    _topRightButton = QMUIButton.new;
+//    [_topRightButton setImage:[UIImage imageNamed:@"home_mine"] forState:UIControlStateNormal];
+//    [_topRightButton setTitleColor:UIColor.fe_mainColor forState:UIControlStateNormal];
+//    [_topRightButton addTarget:self action:@selector(actionForTopButton:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:_topRightButton];
+//    [_topRightButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.size.mas_equalTo(CGSizeMake(22, 22));
+//        make.top.offset(mStatusBarHeight + 7);
+//        make.right.offset(-STWidth(15));
+//    }];
+//
     
     UIView *gridViewBackgroundView = UIView.new;
     gridViewBackgroundView.backgroundColor = UIColor.fe_contentBackgroundColor;
@@ -155,9 +118,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.fd_prefersNavigationBarHidden = YES;
-    self.extendedLayoutIncludesOpaqueBars = YES;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+    [self showLeftTitle:@"学校/专业/职业"];
+    self.navigationBarShadowHidden = YES;
     [self loadDataWithCompletion:nil];
     [self updateGridView];
 }
@@ -189,12 +151,12 @@
     }
 }
 
-- (void)actionForTopButton:(UIButton *)sender {
-    if (sender == _topRightButton) {
-        FEMyFollowsViewController *followsViewController =  [[FEMyFollowsViewController alloc] initWithNibName:@"FEMyFollowsViewController" bundle:nil];
-        [self.navigationController pushViewController:followsViewController animated:YES];
-    }
-}
+//- (void)actionForTopButton:(UIButton *)sender {
+//    if (sender == _topRightButton) {
+//        FEMyFollowsViewController *followsViewController =  [[FEMyFollowsViewController alloc] initWithNibName:@"FEMyFollowsViewController" bundle:nil];
+//        [self.navigationController pushViewController:followsViewController animated:YES];
+//    }
+//}
 
 
 
@@ -215,10 +177,10 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat contentOffsetY = _scrollView.contentOffset.y;
     if (contentOffsetY < 0) {
-        _headerView.frame = CGRectMake(0, contentOffsetY, mScreenWidth, STWidth(162) + mStatusBarHeight - contentOffsetY);
+        _headerView.frame = CGRectMake(0, contentOffsetY, mScreenWidth, STWidth(60) - contentOffsetY);
 
     } else {
-        _headerView.frame = CGRectMake(0, 0, mScreenWidth, STWidth(162) + mStatusBarHeight);
+        _headerView.frame = CGRectMake(0, 0, mScreenWidth, STWidth(60));
     }
 }
 
