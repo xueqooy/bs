@@ -39,6 +39,8 @@ const NSInteger FEBaseAlertViewContainerTag = 11111;
     
     if (!animated) {
         _containerView.layer.position = self.center;
+        [self.context addSubview:self];
+        self.backgroundColor = mHexColorA(@"000000", 0.4);
         return;
     }
     

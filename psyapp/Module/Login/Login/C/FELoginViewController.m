@@ -211,7 +211,7 @@
         [self startInfoPerfectionSubmitProcess];
     } else if (type == LoginActionServiceAgreement) {
         QSWebViewBaseController *vc = [[QSWebViewBaseController alloc] init];
-        vc.url = WEB_SERVICE_AGREEMENT;
+        vc.filePathURL = [NSBundle.mainBundle URLForResource:@"service-agreement" withExtension:@"html"];
         vc.shouldDisableLongPressAction = YES;
         vc.shouldDisableZoom = YES;
         vc.navigationItem.title = @"服务协议";
@@ -220,7 +220,7 @@
         self.navigationController.navigationBar.hidden = NO;
     } else if (type == LoginActionSecretAgreement) {
         QSWebViewBaseController *vc = [[QSWebViewBaseController alloc] init];
-        vc.url = WEB_PRIVACY_POLICY;
+        vc.filePathURL = [NSBundle.mainBundle URLForResource:@"secret-policy" withExtension:@"html"];
         vc.shouldDisableLongPressAction = YES;
         vc.shouldDisableZoom = YES;
         vc.navigationItem.title = @"隐私政策";

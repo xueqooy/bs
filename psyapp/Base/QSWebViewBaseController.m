@@ -31,7 +31,6 @@
         vc.shouldDisableLongPressAction = YES;
         vc.shouldDisableZoom = YES;
         vc.url = url;
-        vc.navigationItem.title = @"关于我们";
         [selfweak.navigationController pushViewController:vc animated:YES];
     };
     [self.view addSubview:webView];
@@ -89,6 +88,11 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     
     [self.webViewManager loadRequest:request];
+}
+
+- (void)setFilePathURL:(NSURL *)filePathURL{
+    _filePathURL = filePathURL;
+    [self.webViewManager loadFileURL:filePathURL allowingReadAccessToURL:NSBundle.mainBundle.bundleURL];
 }
 
 - (FEWebViewManager *)webViewManager {

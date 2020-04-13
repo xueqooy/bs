@@ -19,12 +19,17 @@
 
 //#import "UserService.h"
 //#import "TCHTTPService.h"
-@interface FEMainViewController ()  //<FEEyeCareReminderDelegate>
-//@property (nonatomic, weak) TCDiscoveryHomepageViewController *discoveryViewController;
+@interface FEMainViewController () 
+@property (nonatomic, weak) TCDiscoveryHomepageViewController *articleViewController;
 
 @end
 
-@implementation FEMainViewController
+@implementation FEMainViewController {
+    BOOL _hasShownTerms;
+    BOOL _hasCheckVersion;
+    BOOL _hasDisplayBannerAd;
+}
+
 
 - (void)dealloc {
     NSLog(@"%@ Released", NSStringFromClass(self.class) );
@@ -52,42 +57,42 @@
     [super viewDidAppear:animated];
     @weakObj(self);
 
-//    if (!_hasShownTerms) {
-//        if ([AppSettingsManager sharedInstance].hasAgreeTermsInCurrentVersion == NO) {
-//            //判断是否需要条款弹窗
-//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                [[AppSettingsManager sharedInstance] showTermsAlertIfCurrentVersionHasNotAgreeWithAgreeExtraHandler:^{
-//                    [[AppSettingsManager sharedInstance] getVersionUpdateWithCompletion:^{
-//                        @strongObj(self);
-//                        if (self) {
-//                            [self.discoveryViewController startDisplayBannerAd];
-//                            self->_hasDisplayBannerAd = YES;
-//                        }
-//                    }];
-//                }];
-//            });
-//            
-//            return;
-//        }
-//        _hasShownTerms = YES;
-//    }
-//    if (!_hasCheckVersion) {
-//        _hasCheckVersion = YES;
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            [[AppSettingsManager sharedInstance] getVersionUpdateWithCompletion:^{
-//                @strongObj(self);
-//                if (self) {
-//                    [self.discoveryViewController startDisplayBannerAd];
-//                    self->_hasDisplayBannerAd = YES;
-//                }
-//            }]; 
-//        });
-//        return;
-//    }
-//    
-//    if (_hasDisplayBannerAd == NO) {
-//        [self.discoveryViewController startDisplayBannerAd];
-//    }
+     if (!_hasShownTerms) {
+           if ([AppSettingsManager sharedInstance].hasAgreeTermsInCurrentVersion == NO) {
+               //判断是否需要条款弹窗
+               dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                   [[AppSettingsManager sharedInstance] showTermsAlertIfCurrentVersionHasNotAgreeWithAgreeExtraHandler:^{
+                       [[AppSettingsManager sharedInstance] getVersionUpdateWithCompletion:^{
+                           @strongObj(self);
+                           if (self) {
+                               [self.articleViewController startDisplayBannerAd];
+                               self->_hasDisplayBannerAd = YES;
+                           }
+                       }];
+                   }];
+               });
+               
+               return;
+           }
+           _hasShownTerms = YES;
+       }
+       if (!_hasCheckVersion) {
+           _hasCheckVersion = YES;
+           dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+               [[AppSettingsManager sharedInstance] getVersionUpdateWithCompletion:^{
+                   @strongObj(self);
+                   if (self) {
+                       [self.articleViewController startDisplayBannerAd];
+                       self->_hasDisplayBannerAd = YES;
+                   }
+               }];
+           });
+           return;
+       }
+       
+       if (_hasDisplayBannerAd == NO) {
+           [self.articleViewController startDisplayBannerAd];
+       }
 }
 
 - (void)initTabBar {
@@ -121,7 +126,7 @@
 //    TESTViewController *testVC = TESTViewController.new;
 //    TCDiscoveryHomepageViewController *discoveryViewController = TCDiscoveryHomepageViewController.new;
 //    self.discoveryViewController = discoveryViewController;
-    TCDiscoveryHomepageViewController *articleViewController = TCDiscoveryHomepageViewController.new;
+    _articleViewController = TCDiscoveryHomepageViewController.new;
     PALibViewController *libViewController = PALibViewController.new;
     PAHomeViewController *testHomePageViewController = PAHomeViewController.new;
 
@@ -129,7 +134,7 @@
     
     NSMutableArray *viewControllers =@[].mutableCopy;
 //    [viewControllers addObject:[self createNavigationControllerWithRootViewController:discoveryViewController title:@"阅读" index:0]];
-    [viewControllers addObject:[self createNavigationControllerWithRootViewController:articleViewController title:@"阅读" index:0]];
+    [viewControllers addObject:[self createNavigationControllerWithRootViewController:_articleViewController title:@"阅读" index:0]];
     [viewControllers addObject:[self createNavigationControllerWithRootViewController:libViewController title:@"资料" index:1]];
     [viewControllers addObject:[self createNavigationControllerWithRootViewController:testHomePageViewController title:@"测评" index:2]];
     [viewControllers addObject:[self createNavigationControllerWithRootViewController:mineHomePageViewController title:@"我的" index:3]];

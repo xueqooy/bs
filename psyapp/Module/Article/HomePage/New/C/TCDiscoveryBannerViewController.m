@@ -82,42 +82,41 @@
 - (void)displayBannerAdIfNeeded {
     if (_needsDisplayBannerAd == NO) return;
     _needsDisplayBannerAd = NO;
-//    NSSet *set = [self.dataManager.undisplayedBannerAds objectForKey:_stage.code];
-//    if (set) {
-//        for (TCBannerModel *model in set.allObjects) {
-//            @weakObj(self);
-//            void (^block)(void) = ^{
-//                @strongObj(self);
-//                TCAdvertPopupView *view = TCAdvertPopupView.new;
-//                view.hideAnimated = NO;
-//                view.hideWhenTapImage = YES;
-//                GCD_ASYNC_GLOBAL(^{
-//                    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:model.adImageURL]];
-//                    GCD_ASYNC_MAIN(^{
-//                        UIImage *image = [UIImage imageWithData:imageData];
-//                        view.imageView.image = image;
-//                        [view showWithAnimated:NO];
-//                    });
-//                });
-//                view.didHideBlock = ^{
-//                    @strongObj(self);
-//                    if (self) {
-//                        [self.adDisplayTaskQueue next];
-//                        [self.dataManager displayedBannerAdModel:model forStageCode:self->_stage.code];
-//                    }
-//                };
-//                view.didTapImage = ^{
-//                    @strongObj(self);
-//                    if (self) {
-//                        [self handleBannerClick:model];
-//                    }
-//                };
-//            };
-//            [self.adDisplayTaskQueue addTaskBlock:block];
-//        }
-//        
-//        [self.adDisplayTaskQueue next];
-//    }
+    NSSet *set = self.dataManager.undisplayedBannerAds.copy;
+    if (set) {
+        for (TCBannerModel *model in set.allObjects) {
+            @weakObj(self);
+            void (^block)(void) = ^{
+                @strongObj(self);
+                TCAdvertPopupView *view = TCAdvertPopupView.new;
+                view.hideAnimated = NO;
+                view.hideWhenTapImage = YES;
+                GCD_ASYNC_GLOBAL(^{
+                    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:model.adImageURL]];
+                    GCD_ASYNC_MAIN(^{
+                        UIImage *image = [UIImage imageWithData:imageData];
+                        view.imageView.image = image;
+                        [view showWithAnimated:NO];
+                    });
+                });
+                view.didHideBlock = ^{
+                    @strongObj(self);
+                    if (self) {
+                        [self.adDisplayTaskQueue next];
+                    }
+                };
+                view.didTapImage = ^{
+                    @strongObj(self);
+                    if (self) {
+                        [self handleBannerClick:model];
+                    }
+                };
+            };
+            [self.adDisplayTaskQueue addTaskBlock:block];
+        }
+        
+        [self.adDisplayTaskQueue next];
+    }
 }
 
 - (void)loadData {

@@ -20,6 +20,8 @@
 
 @property (nonatomic,copy) NSString *url;
 
+@property (nonatomic,strong) NSURL *filePathURL;
+
 @property (nonatomic, copy) void (^handlerAfterPoping)(void);
 
 @end

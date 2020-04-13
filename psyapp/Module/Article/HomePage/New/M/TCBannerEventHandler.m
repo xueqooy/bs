@@ -40,7 +40,7 @@
     } else if (banner.type.integerValue == BSBannerTypeLink) {
         NSString *URLString = banner.value;
         QSWebViewBaseController *qsWeb  = [[QSWebViewBaseController alloc] init];
-        qsWeb.title = @"疫情实时大数据报告";
+        qsWeb.title = banner.describe;;
         qsWeb.url = URLString;
         targetViewController = qsWeb;
     } else if (banner.type.integerValue == BSBannerTypeLib) {

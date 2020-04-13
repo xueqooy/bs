@@ -50,7 +50,7 @@
 /**
  版本更新
  */
-- (void)getVersionUpdate;
+- (void)getVersionUpdateWithCompletion:(void(^)(void))completion;
 @property (nonatomic, assign) BOOL alreadyShowVersionUpdateAlertThisRun ;
 - (void)checkUpdateForVersion;
 - (void)versionChanged:(void (^)(BOOL changed))handler;

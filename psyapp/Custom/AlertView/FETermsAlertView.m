@@ -22,10 +22,10 @@
 
 - (IBAction)buttonClickAction:(UIButton *)sender {
     if (sender == self.serviceButton) {
-        [self pushToWebVCWithTitle:@"服务协议" url:WEB_SERVICE_AGREEMENT];
+        [self pushToWebVCWithTitle:@"服务协议" url:[NSBundle.mainBundle URLForResource:@"service-agreement" withExtension:@"html"]];
     } else if (sender == self.secretButton) {
         
-        [self pushToWebVCWithTitle:@"隐私政策" url:WEB_PRIVACY_POLICY];
+        [self pushToWebVCWithTitle:@"隐私政策" url:[NSBundle.mainBundle URLForResource:@"secret-policy" withExtension:@"html"]];
 
     } else if (sender == self.agreeButton) {
         @weakObj(self);
@@ -47,14 +47,14 @@
     }
 }
 
-- (void)pushToWebVCWithTitle:(NSString *)title url:(NSString *)url {
+- (void)pushToWebVCWithTitle:(NSString *)title url:(NSURL *)url {
     QSWebViewBaseController *vc = [[QSWebViewBaseController alloc] init];
     @weakObj(self);
     vc.handlerAfterPoping = ^{
         @strongObj(self);
         self.hidden = NO;
     };
-    vc.url = url;
+    vc.filePathURL = url;
     vc.shouldDisableLongPressAction = YES;
     vc.shouldDisableZoom = YES;
     vc.navigationItem.title = title;

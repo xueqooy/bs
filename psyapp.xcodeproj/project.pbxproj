@@ -397,6 +397,8 @@
 		0467ECCE2419E77C002F0694 /* TCDeviceAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467ECC82419E77C002F0694 /* TCDeviceAccount.m */; };
 		0467ECD52419E801002F0694 /* TCUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467ECD32419E801002F0694 /* TCUserInfo.m */; };
 		0467ECD62419E801002F0694 /* QSRequestBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467ECD42419E801002F0694 /* QSRequestBase.m */; };
+		046CF3CD2444356C004E83B4 /* service-agreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 046CF3CC2444356C004E83B4 /* service-agreement.html */; };
+		046CF3CF244449D0004E83B4 /* secret-policy.html in Resources */ = {isa = PBXBuildFile; fileRef = 046CF3CE244449D0004E83B4 /* secret-policy.html */; };
 		0489901A2417BD0F005F25DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 048990192417BD0F005F25DC /* AppDelegate.m */; };
 		048990202417BD0F005F25DC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0489901F2417BD0F005F25DC /* ViewController.m */; };
 		048990232417BD0F005F25DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048990212417BD0F005F25DC /* Main.storyboard */; };
@@ -1401,6 +1403,8 @@
 		0467ECD22419E801002F0694 /* QSRequestBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSRequestBase.h; sourceTree = "<group>"; };
 		0467ECD32419E801002F0694 /* TCUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCUserInfo.m; sourceTree = "<group>"; };
 		0467ECD42419E801002F0694 /* QSRequestBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSRequestBase.m; sourceTree = "<group>"; };
+		046CF3CC2444356C004E83B4 /* service-agreement.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "service-agreement.html"; sourceTree = "<group>"; };
+		046CF3CE244449D0004E83B4 /* secret-policy.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "secret-policy.html"; sourceTree = "<group>"; };
 		048990152417BD0F005F25DC /* bs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		048990182417BD0F005F25DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		048990192417BD0F005F25DC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -3594,6 +3598,8 @@
 				048FCB1A2440A0520047D4A2 /* theme.css */,
 				048FCB192440A0510047D4A2 /* webView.html */,
 				048FCB1F2440A0E70047D4A2 /* style.css */,
+				046CF3CC2444356C004E83B4 /* service-agreement.html */,
+				046CF3CE244449D0004E83B4 /* secret-policy.html */,
 			);
 			path = Web;
 			sourceTree = "<group>";
@@ -3985,11 +3991,13 @@
 				04643181241BA1C0006FA1F5 /* TCCashierProductTableViewCell.xib in Resources */,
 				046430A7241B313C006FA1F5 /* PIInputBox.xib in Resources */,
 				048FCB202440A0E70047D4A2 /* style.css in Resources */,
+				046CF3CD2444356C004E83B4 /* service-agreement.html in Resources */,
 				0467EC882419E45C002F0694 /* AAChartView.html in Resources */,
 				0467EC842419E45C002F0694 /* AAHighchartsLib.js in Resources */,
 				045D0245243D7B440006423E /* FEOuccupationTreeViewCell.xib in Resources */,
 				0467EB6A2419DDDE002F0694 /* LaunchScreen.xib in Resources */,
 				04643191241BCB06006FA1F5 /* FECheckUpdateTableViewCell.xib in Resources */,
+				046CF3CF244449D0004E83B4 /* secret-policy.html in Resources */,
 				0466EE4C24206DEE00E2FBAF /* report_loading.gif in Resources */,
 				0467EC862419E45C002F0694 /* AAFunnel.js in Resources */,
 				0464304F241B2550006FA1F5 /* PIClassMiddleTableViewCell.xib in Resources */,

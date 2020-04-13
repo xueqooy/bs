@@ -98,84 +98,91 @@
 }
 
 
--(void)getVersionUpdate {
-    if (_alreadyShowVersionUpdateAlertThisRun == YES) return;
-    [EvaluateService getVersionUpdate:^(id data) {
-        if(data){
-          //  TEST
-//            NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithDictionary:dat];
-//            [data setObject:@"40" forKey:@"version_code"];
-//            [data setObject:@"v2.1.2" forKey:@"version_name"];
-            
+-(void)getVersionUpdateWithCompletion:(void (^)(void))completion {
+    if (_alreadyShowVersionUpdateAlertThisRun == YES) {
+        if (completion) completion();
+        return;
+    };
+    
+    AVQuery *query = [AVQuery queryWithClassName:@"Version"];
+    [query orderByDescending:@"createdAt"];
+    [query getFirstObjectInBackgroundWithBlock:^(AVObject * _Nullable object, NSError * _Nullable error) {
+        if (error) {
+            [HttpErrorManager showErorInfo:error];
+            if (completion) completion();
+        } else {
             NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
             NSString *appBuild = [infoDictionary objectForKey:@"CFBundleVersion"];
             //本地保存appStore链接
-            self.appStoreURL = data[@"update_url"];
+            self.appStoreURL = [object objectForKey:@"update_url"];
             //判断是否有新版本
-            if ([data[@"version_code"] integerValue] > [appBuild integerValue]) {
+            if ([[object objectForKey:@"version_code"] integerValue] > [appBuild integerValue]) {
                 self.hasNewVersion = YES;
             } else {
                 self.hasNewVersion = NO;
             }
             
             //判断是否点击了不再提醒忽略了新版本
-            if([data[@"version_code"] integerValue] <= self.ignoredNewVersion){
+            if([[object objectForKey:@"version_code"] integerValue] <= self.ignoredNewVersion){
+                if (completion) completion();
                 return ;
             }
             
             //判断是否有新版本，有则弹窗提示
-            if([data[@"version_code"] integerValue] > [appBuild integerValue]){
-                _alreadyShowVersionUpdateAlertThisRun = YES;
-                FEVersionUpdateAlertView *updateAlert = [[FEVersionUpdateAlertView alloc] initWithLeftButtonTitle:@"不再提醒" rightButtonTitle:@"立即更新" versionName:data[@"version_name"] contentOfUpdate:[StringUtils setupAttributedString:data[@"description"] font:STWidth(14)] picture:[UIImage imageNamed:@"alert_newVersion"]];
+            if([[object objectForKey:@"version_code"] integerValue] > [appBuild integerValue]){
+                self->_alreadyShowVersionUpdateAlertThisRun = YES;
+                FEVersionUpdateAlertView *updateAlert = [[FEVersionUpdateAlertView alloc] initWithLeftButtonTitle:@"不再提醒" rightButtonTitle:@"立即更新" versionName:[object objectForKey:@"version_name"] contentOfUpdate:[StringUtils setupAttributedString:[object objectForKey:@"description"] font:STWidth(14)] picture:[UIImage imageNamed:@"alert_newVersion"]];
+                updateAlert.didHideBlock = ^{
+                    if (completion) completion();
+                };
                 updateAlert.resultIndex = ^(NSInteger index) {
                     if(index == 2){
-                        NSString *url = data[@"update_url"];
+                        NSString *url = [object objectForKey:@"update_url"];
                         if(url && ![url isKindOfClass:[NSNull class]]){
-                            NSString * urlStr = [url stringByReplacingOccurrencesOfString:@"https" withString:@"itms-apps"];
-                            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+                            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
                             
                         }
+                        
                     }else if(index == 1){
                         //新版本忽略
-                        self.ignoredNewVersion = [data[@"version_code"] integerValue];
+                        self.ignoredNewVersion = [[object objectForKey:@"version_code"] integerValue];
                     }
                 };
                 [updateAlert showWithAnimated:YES];
             } else {
                 
-                if (([appBuild integerValue] == [data[@"version_code"] integerValue])) {
-                    self.currentVersionName = data[@"version_name"];     
+                if (([appBuild integerValue] == [[object objectForKey:@"version_code"] integerValue])) {
+                    self.currentVersionName = [object objectForKey:@"version_name"];
                 }
+                if (completion) completion();
             }
             
-        }
-    } failure:^(NSError *error) {
-        [HttpErrorManager showErorInfo:error showView:[UIApplication sharedApplication].keyWindow];
+        } 
     }];
+    
+
 }
 
 - (void)checkUpdateForVersion {
-    [EvaluateService getVersionUpdate:^(id data) {
-        if(data){
-            //TEST
-//            NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithDictionary:dat];
-//            [data setObject:@"39" forKey:@"version_code"];
-//            [data setObject:@"v2.1.2" forKey:@"version_name"];
-            
+    AVQuery *query = [AVQuery queryWithClassName:@"Version"];
+    [query orderByDescending:@"createdAt"];
+    [query getFirstObjectInBackgroundWithBlock:^(AVObject * _Nullable object, NSError * _Nullable error) {
+        if (error) {
+            [HttpErrorManager showErorInfo:error];
+        } else {
             NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
             NSString *appBuild = [infoDictionary objectForKey:@"CFBundleVersion"];
-            
+           
             //判断是否有新版本，有则弹窗提示
-            if([data[@"version_code"] integerValue] > [appBuild integerValue]){
-                
-                 FEVersionUpdateAlertView *updateAlert = [[FEVersionUpdateAlertView alloc] initWithLeftButtonTitle:nil rightButtonTitle:@"立即更新" versionName:data[@"version_name"] contentOfUpdate:[StringUtils setupAttributedString:data[@"description"] font:STWidth(14)] picture:[UIImage imageNamed:@"alert_newVersion"]];
-                
-                updateAlert.resultIndex = ^(NSInteger index) {
+            if([[object objectForKey:@"version_code"] integerValue] > [appBuild integerValue]){
+               
+                 FEVersionUpdateAlertView *updateAlert = [[FEVersionUpdateAlertView alloc] initWithLeftButtonTitle:nil rightButtonTitle:@"立即更新" versionName:[object objectForKey:@"version_name"] contentOfUpdate:[StringUtils setupAttributedString:[object objectForKey:@"description"] font:STWidth(14)] picture:[UIImage imageNamed:@"alert_newVersion"]];
+               
+                 updateAlert.resultIndex = ^(NSInteger index) {
                     if(index == 2){
-                        NSString *url = data[@"update_url"];
+                        NSString *url = [object objectForKey:@"update_url"];
                         if(url && ![url isKindOfClass:[NSNull class]]){
-                            NSString * urlStr = [url stringByReplacingOccurrencesOfString:@"https" withString:@"itms-apps"];
-                            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+                            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
                         }
                     }
                 };
@@ -183,10 +190,7 @@
             } else {
                 [QSToast toast:[UIApplication sharedApplication].keyWindow  message:@"当前已经是最新版本了"];
             }
-            
         }
-    } failure:^(NSError *error) {
-        [HttpErrorManager showErorInfo:error showView:[UIApplication sharedApplication].keyWindow];
     }];
 }
 

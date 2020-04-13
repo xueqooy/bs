@@ -34,6 +34,7 @@
     self.includeAd = [object objectForKey:@"includeAd"];
     AVFile *adImgFile = [object objectForKey:@"adImg"];
     self.adImageURL = adImgFile.url;
+    self.describe = [object objectForKey:@"description"];
     return self;
 }
 @end

@@ -320,14 +320,15 @@
             viewController = FEChangePasswordViewController.new;
         } else if (indexPath.row == RowService) {
             QSWebViewBaseController *vc = [[QSWebViewBaseController alloc] init];
-            vc.url = WEB_SERVICE_AGREEMENT;
+//            vc.url = WEB_SERVICE_AGREEMENT;
+            vc.filePathURL = [NSBundle.mainBundle URLForResource:@"service-agreement" withExtension:@"html"];
             vc.shouldDisableLongPressAction = YES;
             vc.shouldDisableZoom = YES;
             vc.navigationItem.title = @"服务协议";
             viewController = vc;
         } else if (indexPath.row == RowSecret) {
             QSWebViewBaseController *vc = [[QSWebViewBaseController alloc] init];
-            vc.url = WEB_PRIVACY_POLICY;
+            vc.filePathURL = [NSBundle.mainBundle URLForResource:@"secret-policy" withExtension:@"html"];
             vc.shouldDisableLongPressAction = YES;
             vc.shouldDisableZoom = YES;
             vc.navigationItem.title = @"隐私政策";

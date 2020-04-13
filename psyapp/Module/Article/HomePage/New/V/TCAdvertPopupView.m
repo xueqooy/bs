@@ -13,7 +13,7 @@
     self = [super initWithFrame:frame];
     _maximumWidth = mScreenWidth - STWidth(30);
     _maximumHeight = mScreenHeight - mNavBarAndStatusBarHeight - mTabBarHeight;
-    _spacingBetweenImageAndButton = STWidth(50);
+    _spacingBetweenImageAndButton = STWidth(30);
     _buttonSize = STSize(32, 32);
     _hideWhenTapImage = YES;
     _hideAnimated = YES;
@@ -56,6 +56,11 @@
     } else {
         adjustedHeight = _maximumHeight - _spacingBetweenImageAndButton - _buttonSize.height;
         adjustedWidth = originalWidth/ originalHeight * adjustedHeight;
+        CGFloat ratio = adjustedHeight / adjustedWidth;
+        if(adjustedWidth > _maximumWidth) {
+            adjustedWidth = _maximumWidth;
+            adjustedHeight = adjustedWidth * ratio;
+        }
     }
 
     container.frame = CGRectMake(0, 0, adjustedWidth, adjustedHeight + _spacingBetweenImageAndButton + _buttonSize.height);
