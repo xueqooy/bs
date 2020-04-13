@@ -27,6 +27,8 @@
 
 
 - (IBAction)buttonClickAction:(UIButton *)sender {
+    [TCSystemFeedbackHelper impactLight];
+
     if (_clickHandler) {
         _clickHandler();
     }

@@ -171,7 +171,6 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if([searchText isEqualToString:@""]) {
-        [self.dataManager.dimensionResult resetData];
         self.searchRecordView.hidden = NO;
     }
 }

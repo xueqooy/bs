@@ -91,6 +91,8 @@
     [self setNavigationBarShadowHidden:YES];
     self.customTitleLabel = self.defaultCustomTitleLabel;
     self.customTitleLabel.text = self.articleModel.articleTitle;
+    
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -219,6 +221,7 @@
 
     
     self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.width, 60)];
+    self.headerView.clipsToBounds = YES;
     self.tableView.tableHeaderView = self.headerView;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
         
@@ -354,6 +357,23 @@
 //    }];
 //}
 
+- (void)getCollectionData {
+    if (BSUser.currentUser == nil) return;
+    self.articleModel.favorite = @0;
+    AVQuery *query = [AVQuery queryWithClassName:@"ArticleCollection"];
+    [query whereKey:@"userId" equalTo:BSUser.currentUser.objectId];
+    [query getFirstObjectInBackgroundWithBlock:^(AVObject * _Nullable object, NSError * _Nullable error) {
+        NSArray *articles = [object objectForKey:@"articles"];
+        for (AVObject *article in articles) {
+            if ([article.objectId isEqualToString:self.articleModel.articleId]) {
+                self.articleModel.favorite = @1;
+                [self updateCollect];
+                return ;
+            }
+        }
+    }];
+}
+
 -(void)updateView{
 
     self.titleLabel.text = _articleModel.articleTitle;
@@ -364,7 +384,7 @@
     NSInteger countHeight = 0;
         
     [self updateSupport];
-    [self updateCollect];
+    [self getCollectionData];
     
     if(!self.articleModel){
         self.titleLabel.text = _articleModel.articleTitle;
@@ -432,7 +452,7 @@
             NSDictionary *heightInfo = ((NSDictionary *)info);
             NSNumber *heightNumber = heightInfo[@"height"];
             if (heightNumber) {
-                [self updateWebViewHeight:heightNumber.floatValue + STWidth(40)];
+                [self updateWebViewHeight:heightNumber.floatValue + STWidth(30)];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [self hideLoadingPlaceholderView];
                 });
@@ -610,25 +630,45 @@
         return;
     }
   
-    [EvaluateService articleCollect:self.articleModel.articleId success:^(id data) {
-        
-        if([data[@"is_favorite"] boolValue]){
+    AVQuery *query = [AVQuery queryWithClassName:@"ArticleCollection"];
+    [query whereKey:@"userId" equalTo:BSUser.currentUser.objectId];
+    [query getFirstObjectInBackgroundWithBlock:^(AVObject * _Nullable object, NSError * _Nullable error) {
+        if (error && error.code != 101) return;
+        if (object == nil) {
+            object = [AVObject objectWithClassName:@"ArticleCollection"];
+            [object setObject:BSUser.currentUser.objectId forKey:@"userId"];
+        }
+        NSArray *articles = [object objectForKey:@"articles"];
+        NSMutableArray *mArticles;
+        if (!articles) {
+            mArticles = @[].mutableCopy;
+        } else {
+            mArticles = articles.mutableCopy;
+        }
+        BOOL found = NO;
+        for (AVObject *pointer in mArticles) {
+            if ([pointer.objectId isEqualToString:self.articleModel.articleId]) {
+                [QSToast toastWithMessage:@"取消收藏"];
+                self.articleModel.favorite = @0;
+                [self updateCollect];
+                [mArticles removeObject:pointer];
+                found = YES;
+                break;
+            }
+        }
+        if (found == NO) {
+            [QSToast toastWithMessage:@"收藏成功"];
             self.articleModel.favorite = @1;
-            self.articleModel.pageFavorite = @([self.articleModel.pageFavorite integerValue] + 1);
-            [QSToast toast:self.view message:@"收藏成功"];
-        }else{
-            self.articleModel.favorite = @0;
-            self.articleModel.pageFavorite = @([self.articleModel.pageFavorite integerValue] - 1);
-            [QSToast toast:self.view message:@"取消收藏"];
+            [self updateCollect];
+            AVObject *pointer = [AVObject objectWithClassName:@"Article" objectId:self.articleModel.articleId];
+            [mArticles addObject:pointer];
         }
         
         
-        [self updateCollect];
-    } failure:^(NSError *error) {
-        [HttpErrorManager showErorInfo:error showView:self.view];
-        [self updateCollect];
-
+        [object setObject:mArticles.copy forKey:@"articles"];
+        [object saveInBackground];
     }];
+
 }
 
 

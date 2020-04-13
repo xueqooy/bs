@@ -29,6 +29,8 @@
     _separator.backgroundColor = UIColor.fe_separatorColor;
 }
 - (IBAction)buttonClickAction:(UIButton *)sender {
+    [TCSystemFeedbackHelper impactLight];
+
     if (_clickHandler) {
         _clickHandler();
     }

@@ -14,6 +14,7 @@
 #import "FEChangePasswordViewController.h"
 #import "QSWebViewBaseController.h"
 #import "FEMyFollowsViewController.h"
+#import "FEMyCollectViewController.h"
 
 #import "FEMineTableViewCell.h"
 #import "FECheckUpdateTableViewCell.h"
@@ -313,7 +314,7 @@
         if (indexPath.row == RowFollow) {
             viewController =  [[FEMyFollowsViewController alloc] initWithNibName:@"FEMyFollowsViewController" bundle:nil];;
         } else if (indexPath.row == RowCollect) {
-            viewController = TCMyOrderViewController.new;
+            viewController = [[FEMyCollectViewController alloc] init];
         }
     }else if(indexPath.section == 1){
         if (indexPath.row == RowPassword) {

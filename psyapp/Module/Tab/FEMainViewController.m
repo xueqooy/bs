@@ -39,7 +39,7 @@
     [super viewDidLoad];
     [[UITextField appearance] setTintColor:UIColor.fe_mainColor];
     [[UITabBar appearance] setBarTintColor:UIColor.fe_contentBackgroundColor];
-    [UITabBar appearance].translucent = YES;
+    [UITabBar appearance].translucent = NO;
     
     [self initTabBar];
     [self initViewControllers];

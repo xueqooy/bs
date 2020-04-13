@@ -399,6 +399,10 @@
 		0467ECD62419E801002F0694 /* QSRequestBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0467ECD42419E801002F0694 /* QSRequestBase.m */; };
 		046CF3CD2444356C004E83B4 /* service-agreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 046CF3CC2444356C004E83B4 /* service-agreement.html */; };
 		046CF3CF244449D0004E83B4 /* secret-policy.html in Resources */ = {isa = PBXBuildFile; fileRef = 046CF3CE244449D0004E83B4 /* secret-policy.html */; };
+		046CF3D22444661C004E83B4 /* article_sketon.gif in Resources */ = {isa = PBXBuildFile; fileRef = 046CF3D12444661B004E83B4 /* article_sketon.gif */; };
+		046CF3D524447FD8004E83B4 /* FEMyCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046CF3D324447FD8004E83B4 /* FEMyCollectViewController.m */; };
+		046CF3D824448015004E83B4 /* FEArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046CF3D624448014004E83B4 /* FEArticleTableViewCell.m */; };
+		046CF3DB24449271004E83B4 /* TCArticleSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046CF3DA24449271004E83B4 /* TCArticleSearchViewController.m */; };
 		0489901A2417BD0F005F25DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 048990192417BD0F005F25DC /* AppDelegate.m */; };
 		048990202417BD0F005F25DC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0489901F2417BD0F005F25DC /* ViewController.m */; };
 		048990232417BD0F005F25DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048990212417BD0F005F25DC /* Main.storyboard */; };
@@ -1405,6 +1409,13 @@
 		0467ECD42419E801002F0694 /* QSRequestBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSRequestBase.m; sourceTree = "<group>"; };
 		046CF3CC2444356C004E83B4 /* service-agreement.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "service-agreement.html"; sourceTree = "<group>"; };
 		046CF3CE244449D0004E83B4 /* secret-policy.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "secret-policy.html"; sourceTree = "<group>"; };
+		046CF3D12444661B004E83B4 /* article_sketon.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = article_sketon.gif; sourceTree = "<group>"; };
+		046CF3D324447FD8004E83B4 /* FEMyCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEMyCollectViewController.m; sourceTree = "<group>"; };
+		046CF3D424447FD8004E83B4 /* FEMyCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEMyCollectViewController.h; sourceTree = "<group>"; };
+		046CF3D624448014004E83B4 /* FEArticleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEArticleTableViewCell.m; sourceTree = "<group>"; };
+		046CF3D724448015004E83B4 /* FEArticleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEArticleTableViewCell.h; sourceTree = "<group>"; };
+		046CF3D924449271004E83B4 /* TCArticleSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCArticleSearchViewController.h; sourceTree = "<group>"; };
+		046CF3DA24449271004E83B4 /* TCArticleSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCArticleSearchViewController.m; sourceTree = "<group>"; };
 		048990152417BD0F005F25DC /* bs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		048990182417BD0F005F25DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		048990192417BD0F005F25DC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1678,6 +1689,8 @@
 				042F0F71241D341C00D39AA6 /* TCLibSearchMainViewController.m */,
 				045D0272243DC1E90006423E /* TCSearchMainViewController.h */,
 				045D0273243DC1EA0006423E /* TCSearchMainViewController.m */,
+				046CF3D924449271004E83B4 /* TCArticleSearchViewController.h */,
+				046CF3DA24449271004E83B4 /* TCArticleSearchViewController.m */,
 				042F0F76241D341C00D39AA6 /* TCTestSearchViewController.h */,
 				042F0F72241D341C00D39AA6 /* TCTestSearchViewController.m */,
 				045D026F243DBCBA0006423E /* BSUniversitySearchViewController.h */,
@@ -2320,6 +2333,10 @@
 		0464311F241B822D006FA1F5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				046CF3D724448015004E83B4 /* FEArticleTableViewCell.h */,
+				046CF3D624448014004E83B4 /* FEArticleTableViewCell.m */,
+				046CF3D424447FD8004E83B4 /* FEMyCollectViewController.h */,
+				046CF3D324447FD8004E83B4 /* FEMyCollectViewController.m */,
 				0464318E241BCB06006FA1F5 /* FECheckUpdateTableViewCell.h */,
 				0464318D241BCB06006FA1F5 /* FECheckUpdateTableViewCell.m */,
 				0464318F241BCB06006FA1F5 /* FECheckUpdateTableViewCell.xib */,
@@ -3227,6 +3244,7 @@
 		0467ECAE2419E4AE002F0694 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				046CF3D12444661B004E83B4 /* article_sketon.gif */,
 				048FCB162440A03C0047D4A2 /* Web */,
 				048990242417BD14005F25DC /* Assets.xcassets */,
 				048990212417BD0F005F25DC /* Main.storyboard */,
@@ -3998,6 +4016,7 @@
 				0467EB6A2419DDDE002F0694 /* LaunchScreen.xib in Resources */,
 				04643191241BCB06006FA1F5 /* FECheckUpdateTableViewCell.xib in Resources */,
 				046CF3CF244449D0004E83B4 /* secret-policy.html in Resources */,
+				046CF3D22444661C004E83B4 /* article_sketon.gif in Resources */,
 				0466EE4C24206DEE00E2FBAF /* report_loading.gif in Resources */,
 				0467EC862419E45C002F0694 /* AAFunnel.js in Resources */,
 				0464304F241B2550006FA1F5 /* PIClassMiddleTableViewCell.xib in Resources */,
@@ -4268,6 +4287,7 @@
 				046430CC241B3172006FA1F5 /* TCDeviceLoginAlertView.m in Sources */,
 				046430AF241B313C006FA1F5 /* ThirdSignInFooterView.m in Sources */,
 				042F0F5D241CFB3700D39AA6 /* TCCategroyModel.m in Sources */,
+				046CF3D524447FD8004E83B4 /* FEMyCollectViewController.m in Sources */,
 				04FB47A3241FAD610073E948 /* FEMergeQuestionModel.m in Sources */,
 				045D01F1243D7B430006423E /* EnrollmentNavigationModel.m in Sources */,
 				045D0274243DC1EB0006423E /* TCSearchMainViewController.m in Sources */,
@@ -4322,6 +4342,7 @@
 				0466EE3424206DEE00E2FBAF /* FEReportOverallDescView.m in Sources */,
 				0466EE3E24206DEE00E2FBAF /* FEReportFlowLayoutTagView.m in Sources */,
 				04BE22BC241F4A2000C42540 /* FEAppraisalManager.m in Sources */,
+				046CF3D824448015004E83B4 /* FEArticleTableViewCell.m in Sources */,
 				045D023A243D7B440006423E /* OccupationDetailsProTableViewCell.m in Sources */,
 				04FB47B0241FB0490073E948 /* FECommentInputView.m in Sources */,
 				045D01FD243D7B430006423E /* UniversityMajorRootModel.m in Sources */,
@@ -4355,6 +4376,7 @@
 				048FCADE244058F90047D4A2 /* PGIndexBannerSubiew.m in Sources */,
 				045D0233243D7B440006423E /* ProfessionalBaseInfoViewController.m in Sources */,
 				0489901A2417BD0F005F25DC /* AppDelegate.m in Sources */,
+				046CF3DB24449271004E83B4 /* TCArticleSearchViewController.m in Sources */,
 				0466EE7124206FEB00E2FBAF /* KMTag.m in Sources */,
 				048FCACA244058F90047D4A2 /* TCBannerEventHandler.m in Sources */,
 				04643189241BA25D006FA1F5 /* TCSimultaneousScrollView.m in Sources */,
@@ -4761,7 +4783,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xueqooy.bs;
 				PRODUCT_NAME = bs;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4786,7 +4808,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xueqooy.bs;
 				PRODUCT_NAME = bs;
 				PROVISIONING_PROFILE_SPECIFIER = "";

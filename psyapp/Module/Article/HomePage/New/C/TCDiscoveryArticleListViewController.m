@@ -30,22 +30,13 @@ CGFloat const kSegmentHeight = 50.f;
     _dataManager = TCDicoveryArticleListDataManager.new;
     return self;
 }
-//只返回titleHeader高度，内容高度由外层scrollView高度决定
 - (CGFloat)height {
-//    return STWidth(43);
     return 0;
 }
 
 - (void)loadView {
     [super loadView];
-//    _titleHeaderView = TCTitleHeaderView.new;
-//    _titleHeaderView.insets = STEdgeInsets(0, 15, 0, 15);
-//    _titleHeaderView.titleLabel.text = @"主题阅读";
-//    [self.view addSubview:_titleHeaderView];
-//    [_titleHeaderView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.top.right.offset(0);
-//        make.height.mas_equalTo(STWidth(28));
-//    }];
+
     
     _segmentView = SegmentView.new;
     _segmentView.header.bottomSeparatorHeight = 0;

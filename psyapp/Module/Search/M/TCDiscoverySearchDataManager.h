@@ -12,6 +12,7 @@
 
 #import "UniversityModel.h"
 #import "ProfessionalCategoryModel.h"
+#import "ArticleDetailsModel.h"
 NS_ASSUME_NONNULL_BEGIN
 typedef enum TCSearchType {
     TCSearchTypeArticle = 1,
@@ -23,10 +24,11 @@ typedef enum TCSearchType {
 }TCSearchType;
 
 @interface TCDiscoverySearchDataManager : NSObject
-@property (nonatomic, strong) TCPagedDataManager *dimensionResult;
-@property (nonatomic, strong) TCPagedDataManager *courseResult;
-@property (nonatomic, strong) TCPagedDataManager *articleResult;
+//@property (nonatomic, strong) TCPagedDataManager *dimensionResult;
+//@property (nonatomic, strong) TCPagedDataManager *courseResult;
+//@property (nonatomic, strong) TCPagedDataManager *articleResult;
 
+@property (nonatomic, copy) NSArray <ArticleDetailsModel *>*articleResult;
 @property (nonatomic, copy) NSArray <UniversityModel *>*universityResult;
 @property (nonatomic, copy) NSArray <ProfessionalCategoryModel *>*majorResult;
 

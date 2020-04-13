@@ -12,14 +12,7 @@
 @end
 
 @implementation TCDiscoverySearchDataManager
-- (instancetype)init {
-    self = [super init];
-    self.articleResult = TCPagedDataManager.new;
-    self.courseResult = TCPagedDataManager.new;
-    self.dimensionResult = TCPagedDataManager.new;
-    
-    return self;
-}
+
 - (void)getSearchResultByFilter:(NSString *)filter type:(TCSearchType)type onSuccess:(void (^)(void))success failure:(void (^)(void))failure {
     if (type == BSSearchTypeUniversity) {
         [self searchUniversityByName:filter onSuccess:success failure:failure];
@@ -27,55 +20,31 @@
     } else if (type == BSSearchTypeMajor) {
         [self searchMajorByName:filter onSuccess:success failure:failure];
         return;
-
+    } else if (type == TCSearchTypeArticle) {
+        [self searchArticleByName:filter onSuccess:success failure:failure];
     }
     
-    @weakObj(self);
-    TCPagedDataGetter getter = ^(TCPagedDataSetter _Nonnull setter, NSInteger page, NSInteger count) {
-        [EvaluateService getSearchResultByFilter:filter type:type page:page size:count onSuccess:^(id data) {
-            TCDiscoverySearchResultModel *result = [MTLJSONAdapter modelOfClass:TCDiscoverySearchResultModel.class fromJSONDictionary:data error:nil];
-            if (type == TCSearchTypeArticle) {
-                TCArticleSearchResultModel *article = result.article;
-                setter(article.total.integerValue, article.items, NO);
-            } else if (type == TCSearchTypeCourse) {
-                TCCourseSearchResultModel *course = result.course;
-                setter(course.total.integerValue, course.items, NO);
-            } else {
-                TCDimensionSearchResultModel *dimension = result.dimension;
-                setter(dimension.total.integerValue, dimension.items, NO);
-            }
-            if (selfweak.onSearchCompletion) {
-                selfweak.onSearchCompletion();
-            }
-        } failure:^(NSError *error) {
-            if (selfweak.onSearchCompletion) {
-                selfweak.onSearchCompletion();
-            }
+    
+}
+
+- (void)searchArticleByName:(NSString *)name onSuccess:(void (^)(void))success failure:(void (^)(void))failure {
+    AVQuery *query = [AVQuery queryWithClassName:@"Article"];
+    [query whereKey:@"articleTitle" containsString:name];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        NSMutableArray *temp = @[].mutableCopy;
+        if (error) {
             [HttpErrorManager showErorInfo:error];
-            setter(0, nil, YES);
-        }];
-
-    };
-    TCPagedDataManager *manager;
-    if (type == TCSearchTypeArticle) {
-        manager = self.articleResult;
-    } else if (type == TCSearchTypeCourse) {
-        manager = self.courseResult;
-    } else {
-        manager = self.dimensionResult;
-    }
-    
-    manager.dataGetter = getter;
-    
-    [manager loadDataOnCompletion:^(TCPagedDataManager * _Nonnull manager, BOOL failed) {
-        if (failed) {
             if (failure) failure();
         } else {
+            for (AVObject *article in objects) {
+                ArticleDetailsModel *articleModel = [[ArticleDetailsModel alloc] initWithAVObject:article];
+                [temp addObject:articleModel];
+            }
+            self.articleResult = temp.copy;
             if (success) success();
         }
     }];
 }
-
 
 - (void)searchUniversityByName:(NSString *)name onSuccess:(void (^)(void))success failure:(void (^)(void))failure {
     AVQuery *query = [AVQuery queryWithClassName:@"UniversityLib"];
