@@ -16,7 +16,9 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
      self.backgroundColor = UIColor.fe_contentBackgroundColor;
-    
+    self.layer.shadowColor = UIColor.blackColor.CGColor;
+    self.layer.shadowOpacity = 0.1;
+    self.layer.shadowOffset = CGSizeMake(0, 0);
     UIView *centerContainer = UIView.new;
     _iconImageView = UIImageView.new;
     _iconImageView.image = [UIImage imageNamed: @"search_gray"];
@@ -27,7 +29,7 @@
         make.left.top.bottom.centerY.offset(0);
     }];
     
-    _placeholderLabel = [UILabel.alloc qmui_initWithFont:mFont(12) textColor:UIColor.fe_placeholderColor];
+    _placeholderLabel = [UILabel.alloc qmui_initWithFont:STFont(14) textColor:UIColor.fe_placeholderColor];
     _placeholderLabel.text = @"搜文章/课程/测评";
     _placeholderLabel.userInteractionEnabled = NO;
     [centerContainer addSubview:_placeholderLabel];

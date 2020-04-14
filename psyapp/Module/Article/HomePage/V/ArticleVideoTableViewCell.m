@@ -36,6 +36,8 @@
     if(self){
         
         self.itemView = [[UIView alloc] init];
+        self.itemView.backgroundColor = UIColor.fe_contentBackgroundColor;
+
         [self.contentView addSubview:self.itemView];
         [self.itemView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.contentView).offset(STWidth(15));
@@ -112,10 +114,10 @@
 //            make.height.mas_equalTo(0.5);
 //        }];
 //
-        
+        self.backgroundColor = UIColor.fe_backgroundColor;
+
     }
     
-    self.contentView.backgroundColor = UIColor.fe_contentBackgroundColor;
     
     return self;
 }

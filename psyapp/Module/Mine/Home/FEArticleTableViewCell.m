@@ -34,10 +34,14 @@
     
     if (self) {
         
+        
         self.itemView = [[UIView alloc] init];
         self.itemView.userInteractionEnabled = YES;
-        self.itemView.layer.masksToBounds = YES;
+//        self.itemView.layer.masksToBounds = YES;
         self.itemView.layer.cornerRadius = STWidth(4);
+        self.itemView.layer.shadowColor = UIColor.blackColor.CGColor;
+        self.itemView.layer.shadowOpacity = 0.1;
+        self.itemView.layer.shadowOffset = CGSizeMake(0, 0);
         self.itemView.backgroundColor = UIColor.fe_contentBackgroundColor;
         [self.contentView addSubview:self.itemView];
         [self.itemView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -48,6 +52,7 @@
         }];
         
         self.iconImage = [[UIImageView alloc] init];
+        self.iconImage.layer.cornerRadius = STWidth(4);
         self.iconImage.clipsToBounds = YES;
         [self.iconImage setImage:[UIImage imageNamed:@"default_32"]];
         self.iconImage.contentMode = UIViewContentModeScaleAspectFill;

@@ -23,7 +23,7 @@
 #import "ArticleDetailViewController.h"
 @interface ArticleTagViewController ()<UITableViewDataSource,UITableViewDelegate>
 
-@property(nonatomic,strong)UIView *headerView;
+//@property(nonatomic,strong)UIView *head erView;
 @property(nonatomic,strong) UIImageView *loadImageView;
 
 @property(nonatomic,strong) NSMutableArray<ArticleDetailsModel *> *articleModels;
@@ -45,7 +45,7 @@
 
 - (void)setupView{
     
-    self.view.backgroundColor =  UIColor.fe_contentBackgroundColor;
+    self.view.backgroundColor =  UIColor.fe_backgroundColor;
     
     self.tableView = [[UITableView alloc] init];
     if (@available(iOS 11.0, *)) {
@@ -61,7 +61,7 @@
     self.tableView.delegate = self;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.showsHorizontalScrollIndicator = NO;
-    self.tableView.backgroundColor = UIColor.fe_contentBackgroundColor;
+    self.tableView.backgroundColor = UIColor.fe_backgroundColor;
     
     //下拉刷新
     @weakObj(self);
@@ -92,15 +92,18 @@
     }];
     self.tableView.layer.masksToBounds = YES;
     self.tableView.layer.cornerRadius = 5;
-
+    self.tableView.tableHeaderView = ({
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, mScreenWidth, STWidth(2.5))];
+        view;
+    });
     //防止刷新后滚动一下
     self.tableView.estimatedRowHeight = 0;
     self.tableView.estimatedSectionHeaderHeight = 0;
     self.tableView.estimatedSectionFooterHeight = 0;
     
     [self.view layoutIfNeeded];
-    self.headerView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.tableView.tableHeaderView = self.headerView;
+//    self.headerView = [[UIView alloc] initWithFrame:CGRectZero];
+//    self.tableView.tableHeaderView = self.headerView;
     
  
     self.loadImageView = [[UIImageView alloc] init];

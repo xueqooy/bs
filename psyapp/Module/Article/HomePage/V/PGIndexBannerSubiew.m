@@ -52,6 +52,9 @@
         _mainImageView = [[UIImageView alloc] init];
         _mainImageView.contentMode = UIViewContentModeScaleAspectFill;
         _mainImageView.userInteractionEnabled = YES;
+        _mainImageView.layer.masksToBounds = YES;
+        _mainImageView.layer.cornerRadius = STWidth(4);
+
     }
     return _mainImageView;
 }

@@ -79,7 +79,7 @@
     _itemWidth = -1;
     _alignment = SegmentHeaderAlignmentLeft;
     _itemSpacing = STWidth(30);
-    _titleFont = STFontBold(14);
+    _titleFont = STFontBold(15);
     _titleColor = UIColor.fe_unselectedTextColor;
     _selectedTitleColor = UIColor.fe_titleTextColorLighten;
     _selectedIndex = 0;

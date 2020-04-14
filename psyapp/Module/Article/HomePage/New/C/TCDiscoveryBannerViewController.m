@@ -66,7 +66,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     _bannerView.delegate = self;
     _bannerView.dataSource = self;
 }
@@ -170,11 +169,13 @@
 
 - (PGIndexBannerSubiew *)flowView:(NewPagedFlowView *)flowView cellForPageAtIndex:(NSInteger)index{
     PGIndexBannerSubiew *bannerView = [flowView dequeueReusableCell];
+    bannerView.layer.shadowColor = UIColor.blackColor.CGColor;
+    bannerView.layer.shadowOpacity = 0.1;
+    bannerView.layer.shadowOffset = CGSizeMake(0, 0);
     if (!bannerView) {
         bannerView = [[PGIndexBannerSubiew alloc] init];
         bannerView.tag = index;
         bannerView.layer.cornerRadius = STWidth(4);
-        bannerView.layer.masksToBounds = YES;
     }
     
     NSURL *imageURL = [NSURL URLWithString:self.dataManager.banners[index].imgUrl];

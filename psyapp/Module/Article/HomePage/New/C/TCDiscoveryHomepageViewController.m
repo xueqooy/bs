@@ -38,7 +38,7 @@
 
 - (instancetype)init {
     self = [super init];
-    _verticalSpacing = STWidth(20.f);
+    _verticalSpacing = STWidth(15.f);
     return self;
 }
 

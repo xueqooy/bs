@@ -39,21 +39,32 @@
     if(self){
         
         self.itemView = [[UIView alloc] init];
+        self.itemView.backgroundColor = UIColor.fe_contentBackgroundColor;
+        self.itemView.layer.shadowColor = UIColor.blackColor.CGColor;
+        self.itemView.layer.shadowOpacity = 0.05;
+        self.itemView.layer.shadowOffset = CGSizeMake(0, 0.5);
+        self.itemView.layer.cornerRadius = STWidth(4);
         [self.contentView addSubview:self.itemView];
         [self.itemView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.mas_equalTo(mScreenWidth - STWidth(30));
-            make.edges.mas_equalTo(STEdgeInsetsAll(15));
+//            make.width.mas_equalTo(mScreenWidth - STWidth(30));
+//            make.edges.mas_equalTo(STEdgeInsetsAll(10));
+            make.left.offset(STWidth(5));
+            make.right.offset(-STWidth(5));
+            make.top.offset(STWidth(2.5));
+            make.bottom.offset(STWidth(-2.5));
         }];
         
         self.articleImage = [[UIImageView alloc] init];
         self.articleImage.clipsToBounds = YES;//设置该属性图片不会超过view范围
         self.articleImage.layer.cornerRadius = STWidth(4);
+        
         [self.articleImage setImage:[UIImage imageNamed:@"default_32"]];
         self.articleImage.contentMode = UIViewContentModeScaleAspectFill;
         [self.itemView addSubview:self.articleImage];
         [self.articleImage mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.top.bottom.offset(0);
-            make.size.mas_equalTo(STSize(120, 80));
+            make.top.offset(STWidth(10));
+            make.right.bottom.offset(STWidth(-10));
+            make.width.equalTo(_articleImage.mas_height).multipliedBy(1.5);
           
         }];
         
@@ -69,7 +80,7 @@
         [self.titleLabel sizeToFit];
         [self.itemView addSubview:self.titleLabel];
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.offset(0);
+            make.left.top.offset(STWidth(10));
             make.right.equalTo(self.articleImage.mas_left).offset(-STWidth(15));
         }];
         
@@ -88,8 +99,8 @@
         self.tagBtn.font = STFont(11);
         [self.itemView addSubview:self.tagBtn];
         [self.tagBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.itemView);
-            make.bottom.equalTo(self.itemView).offset(STWidth(1));
+            make.left.offset(STWidth(10));
+            make.bottom.offset(STWidth(STWidth(-10)));
         }];
 
         self.readCountLabel = [[UILabel alloc] init];
@@ -102,11 +113,10 @@
         }];
 //
 
-
+        self.backgroundColor = UIColor.fe_backgroundColor;
         
     }
     
-    self.contentView.backgroundColor = UIColor.fe_contentBackgroundColor;
     
     return self;
 }

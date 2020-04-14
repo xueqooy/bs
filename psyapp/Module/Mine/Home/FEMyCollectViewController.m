@@ -46,14 +46,14 @@
 
 
     [self setupSubViews];
-    [self loadData];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     //self.commonLineView.hidden = YES;
     self.navigationController.navigationBar.hidden = NO;
-    
+    [self loadData];
+
 }
 
 - (void) setupSubViews {

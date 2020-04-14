@@ -48,20 +48,20 @@
     self.page = 1;
     self.size = 20;
     
-    [self setupView];
     
     [self getProvinces];
-    [self getDegrees];
-    [self loadData];
+    @weakObj(self);
+    [self getDegreesWithCompletion:^{
+        [selfweak setupView];
+        [selfweak loadData];
+    }];
 }
 
 -(void)setupView{
     
     self.areaFilter = @"全国";
-    self.degreeFilter = @"本科";
-    self.rankFilter = @"cn_china15";
     
-    NSArray *array = @[self.areaFilter,self.degreeFilter,@"本科排名"];
+    NSArray *array = @[self.areaFilter,self.degreeFilter, _rankName];
     ZJChooseControlView *chooseView = [[ZJChooseControlView alloc]initWithFrame:CGRectMake(0, 0, mScreenWidth, 50)];
     chooseView.backgroundColor = UIColor.fe_contentBackgroundColor;
     chooseView.delegate = self;
@@ -73,6 +73,7 @@
     [self.view addSubview:self.tableView];
 
 }
+
 
 -(ZJChooseShowView *)showView{
     if (!_showView) {
@@ -265,30 +266,51 @@
     [store close];
 }
 
--(void)getDegrees{
+-(void)getDegreesWithCompletion:(void(^)(void))completion{
     
-    YTKKeyValueStore *store = [[YTKKeyValueStore alloc] initDBWithName:YTK_DB_NAME];
-    NSDictionary *degree = [store getObjectById:YTK_DEGREE_KEY fromTable:YTK_TABLE_UNIVERSITY];
-    if(degree){
-        DegreesRootModel *dataModel = [MTLJSONAdapter modelOfClass:DegreesRootModel.class fromJSONDictionary:degree error:nil];
-        self.degreeModels = dataModel.items;
-        [self.showView updateThreeArr:self.degreeModels];
-        [self.showView updateFourArr:self.degreeModels[0].rankingItems];
-    }else{
-        [CareerService getDegreesList:^(id data) {
-            if(data){
-                DegreesRootModel *dataModel = [MTLJSONAdapter modelOfClass:DegreesRootModel.class fromJSONDictionary:data error:nil];
-                if(dataModel){
-                    self.degreeModels = dataModel.items;
-                    [self.showView updateThreeArr:self.degreeModels];
-                    [self.showView updateFourArr:self.degreeModels[0].rankingItems];
+    
+    [CareerService getDegreesList:^(id data) {
+        if(data){
+            DegreesRootModel *dataModel = [MTLJSONAdapter modelOfClass:DegreesRootModel.class fromJSONDictionary:data error:nil];
+            if(dataModel){
+                self.degreeModels = dataModel.items;
+                NSInteger degreeIdx = 0;
+                NSInteger rankIdx = 0;
+                self.degreeFilter = @"本科";
+                if (!self.rankName) {
+                    self.rankName = @"本科排名";
+                    self.rankFilter = @"cn_china15";
+                } else {
+                    if ([self.rankName isEqualToString:@"专科排名"]) {
+                        self.degreeFilter = @"专科";
+                        self.rankFilter = @"cn_zhuanke16";
+                        degreeIdx = 1;
+                    } else {
+                        for (DegreesRankingModel *model in self.degreeModels[0].rankingItems) {
+                            if ([model.name isEqualToString:self.rankName]) {
+                                self.rankFilter = model.code;
+                                break;
+                            }
+                            rankIdx ++;
+                        }
+                    }
                 }
+                if (self.rankFilter == nil) {
+                    self.rankName = @"本科排名";
+                    self.rankFilter = @"cn_china15";
+                    degreeIdx = 0;
+                    rankIdx = 0;
+                }
+                
+                [self.showView updateThreeArr:self.degreeModels atIndex:degreeIdx];
+                [self.showView updateFourArr:self.degreeModels[degreeIdx].rankingItems atIndex:rankIdx];
+                if (completion) completion();
             }
-        } failure:^(NSError *error) {
-            
-        }];
-    }
-    [store close];
+        }
+    } failure:^(NSError *error) {
+        [HttpErrorManager showErorInfo:error];
+    }];
+    
     
 }
 

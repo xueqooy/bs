@@ -72,7 +72,7 @@ typedef enum : NSUInteger {
     }
 }
 
-- (void)updateThreeArr:(NSArray<DegreesModel *> *)degreesModels{
+- (void)updateThreeArr:(NSArray<DegreesModel *> *)degreesModels atIndex:(NSInteger)idx{
     
     self.degreesModels = degreesModels;
     
@@ -81,17 +81,20 @@ typedef enum : NSUInteger {
         [arr addObject:degreesModels[i].name];
     }
     if(self.threeView){
+        self.threeView.seleIndex = idx;
         [self.threeView setTitleArray:arr];
         self.threeTitleArr = arr;
+        
     }
 }
 
-- (void)updateFourArr:(NSArray<DegreesRankingModel *> *)degreesRankingModels{
+- (void)updateFourArr:(NSArray<DegreesRankingModel *> *)degreesRankingModels atIndex:(NSInteger)idx{
     NSMutableArray<NSString *> *arr = [[NSMutableArray alloc] init];
     for(int i=0;i<degreesRankingModels.count;i++){
         [arr addObject:degreesRankingModels[i].name];
     }
     if(self.fourView){
+        self.fourView.seleIndex = idx;
         [self.fourView setTitleArray:arr];
         self.fourTitleArr = arr;
     }
@@ -182,7 +185,7 @@ typedef enum : NSUInteger {
     if ([self.delegate respondsToSelector:@selector(chooseThreeViewCellDidSelectedWithIndex:)]) {
         [self.delegate chooseThreeViewCellDidSelectedWithIndex:index];
     }
-    [self updateFourArr:self.degreesModels[index].rankingItems];
+    [self updateFourArr:self.degreesModels[index].rankingItems atIndex:0];
     [self.btnArr[2] setTitle:self.fourTitleArr[0] forState:UIControlStateNormal];
     
     if(self.filterCallback){

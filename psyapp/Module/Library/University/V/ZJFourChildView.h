@@ -20,6 +20,7 @@
 @end
 
 @interface ZJFourChildView : UIView
+@property(nonatomic ,assign) NSInteger seleIndex;
 
 
 @property(nonatomic ,strong) UITableView *mainTable;

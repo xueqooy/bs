@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UniversityListViewController : FEBaseViewController
-
+@property (nonatomic, copy) NSString *rankName;
 @end
 
 NS_ASSUME_NONNULL_END

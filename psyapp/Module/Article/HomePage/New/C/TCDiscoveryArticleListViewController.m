@@ -37,7 +37,6 @@ CGFloat const kSegmentHeight = 50.f;
 - (void)loadView {
     [super loadView];
 
-    
     _segmentView = SegmentView.new;
     _segmentView.header.bottomSeparatorHeight = 0;
     [self.view addSubview:_segmentView];
@@ -48,7 +47,7 @@ CGFloat const kSegmentHeight = 50.f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = UIColor.fe_contentBackgroundColor;
+    self.view.backgroundColor = UIColor.fe_backgroundColor;
     @weakObj(self);
     _segmentView.didSwitchToViewController = ^(UIViewController *viewController) {
         if (selfweak.verticalScrollViewBlock) {

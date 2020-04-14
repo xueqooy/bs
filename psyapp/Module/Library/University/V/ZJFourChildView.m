@@ -14,7 +14,6 @@
 
 @interface ZJFourChildView()<UITableViewDelegate,UITableViewDataSource>
 
-@property(nonatomic ,assign) NSInteger seleIndex;
 
 @end
 

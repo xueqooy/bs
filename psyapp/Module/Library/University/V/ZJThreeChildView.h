@@ -23,6 +23,9 @@
 
 @interface ZJThreeChildView : UIView
 
+@property(nonatomic ,assign) NSInteger seleIndex;
+
+
 @property(nonatomic ,strong) UITableView *mainTable;
 
 @property(nonatomic ,strong) NSArray *titleArray;

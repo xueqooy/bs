@@ -403,6 +403,8 @@
 		046CF3D524447FD8004E83B4 /* FEMyCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046CF3D324447FD8004E83B4 /* FEMyCollectViewController.m */; };
 		046CF3D824448015004E83B4 /* FEArticleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046CF3D624448014004E83B4 /* FEArticleTableViewCell.m */; };
 		046CF3DB24449271004E83B4 /* TCArticleSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046CF3DA24449271004E83B4 /* TCArticleSearchViewController.m */; };
+		046CF3DE244566EF004E83B4 /* BSLibCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046CF3DD244566EF004E83B4 /* BSLibCell.m */; };
+		046CF3E12445904C004E83B4 /* TCFilterCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046CF3E02445904C004E83B4 /* TCFilterCollectionCell.m */; };
 		0489901A2417BD0F005F25DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 048990192417BD0F005F25DC /* AppDelegate.m */; };
 		048990202417BD0F005F25DC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0489901F2417BD0F005F25DC /* ViewController.m */; };
 		048990232417BD0F005F25DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048990212417BD0F005F25DC /* Main.storyboard */; };
@@ -1416,6 +1418,10 @@
 		046CF3D724448015004E83B4 /* FEArticleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEArticleTableViewCell.h; sourceTree = "<group>"; };
 		046CF3D924449271004E83B4 /* TCArticleSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCArticleSearchViewController.h; sourceTree = "<group>"; };
 		046CF3DA24449271004E83B4 /* TCArticleSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCArticleSearchViewController.m; sourceTree = "<group>"; };
+		046CF3DC244566EF004E83B4 /* BSLibCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSLibCell.h; sourceTree = "<group>"; };
+		046CF3DD244566EF004E83B4 /* BSLibCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BSLibCell.m; sourceTree = "<group>"; };
+		046CF3DF2445904B004E83B4 /* TCFilterCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCFilterCollectionCell.h; sourceTree = "<group>"; };
+		046CF3E02445904C004E83B4 /* TCFilterCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCFilterCollectionCell.m; sourceTree = "<group>"; };
 		048990152417BD0F005F25DC /* bs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		048990182417BD0F005F25DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		048990192417BD0F005F25DC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1755,6 +1761,10 @@
 				045D00F5243D75690006423E /* PALibViewController.m */,
 				045D0275243DCA9F0006423E /* TCSearchAppearanceButton.h */,
 				045D0276243DCA9F0006423E /* TCSearchAppearanceButton.m */,
+				046CF3DF2445904B004E83B4 /* TCFilterCollectionCell.h */,
+				046CF3E02445904C004E83B4 /* TCFilterCollectionCell.m */,
+				046CF3DC244566EF004E83B4 /* BSLibCell.h */,
+				046CF3DD244566EF004E83B4 /* BSLibCell.m */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -4373,6 +4383,7 @@
 				048FCB0C244060750047D4A2 /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
 				045D0238243D7B440006423E /* OccupationDetailsTableViewCell.m in Sources */,
 				04FB47B6241FB0960073E948 /* FETailLabel.m in Sources */,
+				046CF3E12445904C004E83B4 /* TCFilterCollectionCell.m in Sources */,
 				048FCADE244058F90047D4A2 /* PGIndexBannerSubiew.m in Sources */,
 				045D0233243D7B440006423E /* ProfessionalBaseInfoViewController.m in Sources */,
 				0489901A2417BD0F005F25DC /* AppDelegate.m in Sources */,
@@ -4535,6 +4546,7 @@
 				0464309E241B313C006FA1F5 /* PIClassSelectionView.m in Sources */,
 				0464301E241B23DD006FA1F5 /* UCManager.m in Sources */,
 				046430A4241B313C006FA1F5 /* PIGenderBox.m in Sources */,
+				046CF3DE244566EF004E83B4 /* BSLibCell.m in Sources */,
 				048FCAE1244058F90047D4A2 /* CenterTouchTableView.m in Sources */,
 				042F0F83241D34DF00D39AA6 /* FESearchBar.m in Sources */,
 				046430C9241B3172006FA1F5 /* FEBaseAlertView.m in Sources */,

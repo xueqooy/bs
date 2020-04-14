@@ -12,7 +12,6 @@
 
 @interface ZJThreeChildView()<UITableViewDelegate,UITableViewDataSource>
 
-@property(nonatomic ,assign) NSInteger seleIndex;
 
 @end
 

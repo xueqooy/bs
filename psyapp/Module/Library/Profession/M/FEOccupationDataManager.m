@@ -176,7 +176,7 @@
             }
         }
     } failure:^(NSError *error) {
-        _searchData = nil;
+        self->_searchData = nil;
         [QSLoadingView dismiss];
         [HttpErrorManager showErorInfo:error showView:[UIApplication sharedApplication].keyWindow];
         failure();
@@ -191,10 +191,13 @@
             NSArray *childTreeModels = level0TreeModel.children;
             if (childTreeModels) {
                 for (FEOccupationTreeModel *level1TreeModel in childTreeModels) {
-                    if ([level1TreeModel.name isEqualToString:areaName]) {
-                        NSLog(@"%@, %@", level1TreeModel.name, level1TreeModel.ID);
-                        return level1TreeModel;
+                    if (areaName) {
+                        if ([level1TreeModel.name containsString:areaName]) {
+                            NSLog(@"%@, %@", level1TreeModel.name, level1TreeModel.ID);
+                            return level1TreeModel;
+                        }
                     }
+                    
                 }
             }
         }

@@ -82,9 +82,9 @@ typedef void (^FilterBlock)(NSInteger type,NSInteger index,NSString *result);
 
 -(void)updateZeroArr:(NSArray<ProvinceModel *> *)provinces;
 
--(void)updateThreeArr:(NSArray<DegreesModel *> *)degreesModels;
+-(void)updateThreeArr:(NSArray<DegreesModel *> *)degreesModels atIndex:(NSInteger)idx;
 
--(void)updateFourArr:(NSArray<DegreesRankingModel *> *)degreesRankingModels;
+-(void)updateFourArr:(NSArray<DegreesRankingModel *> *)degreesRankingModels atIndex:(NSInteger)idx;
 
 @end
 

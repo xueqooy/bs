@@ -128,7 +128,7 @@
         
     }
     
-    self.contentView.backgroundColor = [UIColor colorWithHexString:@"ffffff"];
+    self.backgroundColor = UIColor.fe_backgroundColor;
     
     return self;
 }
