@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) TCDiscoverySearchDataManager *dataManager;
 @property (nonatomic, copy) NSString *filter;
 - (void)startSearchWithFilter:(NSString *)filter;
+@property (nonatomic, copy) void (^countDidChange) (NSInteger count);
 @end
 
 NS_ASSUME_NONNULL_END

@@ -12,7 +12,7 @@ NSString *const FEThemeConfigureDefaultIdentifier = @"Default";
 
 @implementation FEThemeConfigureDefault
 - (UIColor *)themeMainColor {
-    return mHexColor(@"##91d5ff");
+    return UIColorMake(49, 189, 243);//mHexColor(@"##91d5ff");
 }
 
 - (UIColor *)themeTextColorHighlighted {

@@ -18,7 +18,7 @@
 @implementation BSUniversitySearchViewController
 @synthesize dataManager = _dataManager;
 @synthesize filter = _filter;
-
+@synthesize countDidChange = _countDidChange;
 - (void)loadView {
     [super loadView];
     self.view.backgroundColor = UIColor.fe_backgroundColor;
@@ -49,6 +49,7 @@
     @weakObj(self);
     [self.dataManager getSearchResultByFilter:self.filter type:BSSearchTypeUniversity onSuccess:^{
         selfweak.tableView.alreadyLoadAllData = YES;
+        self.countDidChange(self.dataManager.universityResult.count);
 
         [selfweak.tableView reloadData];
         [selfweak showEmptyViewIfEmpty];

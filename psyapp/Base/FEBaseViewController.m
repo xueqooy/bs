@@ -101,12 +101,32 @@
 }
 
 - (void)showLeftTitle:(NSString *)title {
-    UILabel *leftTitleLabel = [UILabel createLabelWithDefaultText:title numberOfLines:1 textColor:UIColor.fe_titleTextColor font:mFontBold(24)];
+    UILabel *leftTitleLabel = [UILabel createLabelWithDefaultText:title numberOfLines:1 textColor:UIColor.fe_contentBackgroundColor font:mFontBold(24)];
     
     [leftTitleLabel sizeToFit];
     
     UIBarButtonItem *titleItem = [[UIBarButtonItem alloc] initWithCustomView:leftTitleLabel];
     self.navigationItem.leftBarButtonItem = titleItem;
+}
+
+- (void)showBetaLeftTitle:(NSString *)title {
+    UILabel *leftTitleLabel = [UILabel createLabelWithDefaultText:title numberOfLines:1 textColor:UIColor.fe_contentBackgroundColor font:mFontBold(24)];
+    UIView *view = [UIView new];
+    view.frame = CGRectMake(0, 0, 50, 44);
+    UIView *whiteView = UIView.new;
+    whiteView.backgroundColor = UIColor.whiteColor;
+    whiteView.frame = CGRectMake(10, 14, 33, 16);
+    [view addSubview:whiteView];
+    UIImageView *beta = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"beta"]];
+    beta.frame = CGRectMake(0, 0, 50, 44);
+    beta.contentMode = UIViewContentModeScaleAspectFit;
+    [view addSubview:beta];
+    [leftTitleLabel sizeToFit];
+    
+    UIBarButtonItem *titleItem = [[UIBarButtonItem alloc] initWithCustomView:leftTitleLabel];
+        UIBarButtonItem *betaItem = [[UIBarButtonItem alloc] initWithCustomView:view];
+
+    self.navigationItem.leftBarButtonItems = @[titleItem, betaItem];
 }
 
 - (void)setFullScreenPopGestureEnable:(BOOL)fullScreenPopGestureEnable{

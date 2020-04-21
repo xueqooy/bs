@@ -37,7 +37,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[UITextField appearance] setTintColor:UIColor.fe_mainColor];
+    [[UITextField appearance] setTintColor:[UIColor.fe_contentBackgroundColor colorWithAlphaComponent:0.5] ];
     [[UITabBar appearance] setBarTintColor:UIColor.fe_contentBackgroundColor];
     [UITabBar appearance].translucent = NO;
     
@@ -134,10 +134,10 @@
     
     NSMutableArray *viewControllers =@[].mutableCopy;
 //    [viewControllers addObject:[self createNavigationControllerWithRootViewController:discoveryViewController title:@"阅读" index:0]];
-    [viewControllers addObject:[self createNavigationControllerWithRootViewController:_articleViewController title:@"阅读" index:0]];
-    [viewControllers addObject:[self createNavigationControllerWithRootViewController:libViewController title:@"资料" index:1]];
+    [viewControllers addObject:[self createNavigationControllerWithRootViewController:_articleViewController title:@"主题阅读" index:0]];
+    [viewControllers addObject:[self createNavigationControllerWithRootViewController:libViewController title:@"信息库" index:1]];
     [viewControllers addObject:[self createNavigationControllerWithRootViewController:testHomePageViewController title:@"测评" index:2]];
-    [viewControllers addObject:[self createNavigationControllerWithRootViewController:mineHomePageViewController title:@"我的" index:3]];
+    [viewControllers addObject:[self createNavigationControllerWithRootViewController:mineHomePageViewController title:@"我" index:3]];
 //    [viewControllers addObject:[self createNavigationControllerWithRootViewController:test title:@"测试" index:4]];
     self.viewControllers = viewControllers;
     self.selectedIndex = 0;

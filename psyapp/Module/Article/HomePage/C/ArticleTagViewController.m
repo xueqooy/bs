@@ -140,7 +140,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     ArticleDetailsModel *articleModel = self.articleModels[indexPath.row];
     if (![NSString isEmptyString:articleModel.articleVideo]) {
-        return STWidth(300);
+        return STWidth(295);
     }
     return STWidth(110);
 }

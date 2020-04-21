@@ -37,13 +37,16 @@
         
         self.itemView = [[UIView alloc] init];
         self.itemView.backgroundColor = UIColor.fe_contentBackgroundColor;
-
+        self.itemView.layer.shadowColor = UIColor.blackColor.CGColor;
+             self.itemView.layer.shadowOpacity = 0.05;
+             self.itemView.layer.shadowOffset = CGSizeMake(0, 0.5);
+             self.itemView.layer.cornerRadius = STWidth(4);
         [self.contentView addSubview:self.itemView];
         [self.itemView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.contentView).offset(STWidth(15));
-            make.right.equalTo(self.contentView).offset(-STWidth(15));
-            make.top.equalTo(self.contentView).offset(STWidth(15));
-            make.bottom.equalTo(self.contentView).offset(STWidth(-15));
+             make.left.offset(STWidth(5));
+                       make.right.offset(-STWidth(5));
+                       make.top.offset(STWidth(2.5));
+                       make.bottom.offset(STWidth(-2.5));
         }];
         self.titleLabel = [[UILabel alloc] init];
         self.titleLabel.textColor = UIColor.fe_titleTextColorLighten;
@@ -53,9 +56,9 @@
         [self.titleLabel sizeToFit];
         [self.itemView addSubview:self.titleLabel];
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.itemView);
-            make.right.equalTo(self.itemView);
-            make.top.equalTo(self.itemView);
+            make.left.offset(STWidth(10));
+            make.right.offset(STWidth(-10));
+            make.top.offset(STWidth(10));
         }];
         
         self.articleImage = [[UIImageView alloc] init];
@@ -90,8 +93,8 @@
         [self.itemView addSubview:self.tagBtn];
         [self.tagBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.articleImage.mas_bottom).offset(STWidth(10));
-            make.left.equalTo(self.itemView);
-            make.bottom.equalTo(self.itemView);
+            make.left.offset(STWidth(10));
+            make.bottom.offset(-STWidth(10));
         }];
         
         self.readCountLabel = [[UILabel alloc] init];
@@ -141,6 +144,7 @@
     } else {
         self.readCountLabel.text = @"";
     }
+
     
 //    if([articleModel.contentType integerValue] == 2){
 //        self.playImage.hidden = NO;

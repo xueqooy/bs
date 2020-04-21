@@ -11,7 +11,7 @@
 #import "TCDiscoveryArticleListViewController.h"
 #import "TCDeviceLoginInfoPerfectionViewController.h"
 #import "TCSearchMainViewController.h"
-
+#import "UIImage+Category.h"
 #import "TCNestedScrollingAnimator.h"
 
 #import "TCDiscoveryHomepageDataManager.h"
@@ -19,7 +19,7 @@
  负责业务上学段的选择 和 滚动的处理
  */
 
-@interface TCDiscoveryHomepageViewController ()
+@interface TCDiscoveryHomepageViewController () <UIScrollViewDelegate>
 @property (nonatomic, strong) TCNestedSimultaneousScrollView *scrollView;
 @property (nonatomic, strong) UIStackView *contentStackView;
 
@@ -34,6 +34,7 @@
 
 @implementation TCDiscoveryHomepageViewController {
     CGFloat _verticalSpacing;
+    UIImageView *_headerView;
 }
 
 - (instancetype)init {
@@ -49,6 +50,16 @@
     _scrollView = TCNestedSimultaneousScrollView.new;
     _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.showsHorizontalScrollIndicator = NO;
+    _scrollView.delegate = self;
+    _scrollView.qmui_multipleDelegatesEnabled = YES;
+  _headerView = UIImageView.new;
+     _headerView.frame = CGRectMake(0, 0, mScreenWidth, STWidth(60));
+     _headerView.userInteractionEnabled = YES;
+     UIImage *gradientImage = [UIImage gradientImageWithWithColors:@[UIColor.fe_mainColor, UIColor.fe_backgroundColor] locations:@[@0, @1] startPoint:CGPointMake(0.5, 0) endPoint:CGPointMake(0.5, 1) size:CGSizeMake(mScreenWidth, STWidth(60))];
+     _headerView.image = gradientImage;
+    
+     [_scrollView addSubview:_headerView];
+     [_scrollView sendSubviewToBack:_headerView];
     @weakObj(self);
 //    _scrollView.headerRefreshAction = ^{
 //        [TCSystemFeedbackHelper impactLight];
@@ -102,13 +113,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = UIColor.fe_contentBackgroundColor;
+    self.view.backgroundColor = UIColor.fe_backgroundColor;
     _dataManager = TCDiscoveryHomepageDataManager.new;
+     self.navigationBarShadowHidden = YES;
     if (NO == [self performDeviceAccountInfoIfNeeded]) {
         [self loadData];
     }
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat contentOffsetY = _scrollView.contentOffset.y;
+    if (contentOffsetY < 0) {
+        _headerView.frame = CGRectMake(0, contentOffsetY, mScreenWidth, STWidth(60) - contentOffsetY);
+
+    } else {
+        _headerView.frame = CGRectMake(0, 0, mScreenWidth, STWidth(60));
+    }
+}
 
 
 - (void)startDisplayBannerAd{
@@ -144,8 +165,10 @@
 
 - (void)initViewControllers {
     _bannerViewController = TCDiscoveryBannerViewController.new;
+
     _articleListViewController = TCDiscoveryArticleListViewController.new;
-    
+    _articleListViewController.navigationBarShadowHidden = YES;
+
     [self addChildViewController:_bannerViewController];
     [self addChildViewController:_articleListViewController];
 }
@@ -155,7 +178,7 @@
     rightView.frame = CGRectMake(0, 0, 22, 22);
     QMUIButton *searchButton = QMUIButton.new;
     searchButton.frame = CGRectMake(0, 0, 22, 22);
-    [searchButton setImage:[UIImage imageNamed:@"search_black"] forState:UIControlStateNormal];
+    [searchButton setImage:[UIImage imageNamed:@"search_white"] forState:UIControlStateNormal];
     [searchButton addTarget:self action:@selector(gotoSearchPage) forControlEvents:UIControlEventTouchUpInside];
     [rightView addSubview:searchButton];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightView];

@@ -11,6 +11,7 @@
 #import "FEQuestionModel.h"
 #import "FEMergeQuestionModel.h"
 #import <YTKKeyValueStore.h>
+#import "TCJSONHelper.h"
 @interface FEAnswerManager ()
 @property (nonatomic, copy) NSString *childDimensionID;
 @property (nonatomic, assign) BOOL isMerge;
@@ -23,6 +24,14 @@
     self = [super init];
     self.childDimensionID = childDimensionID;
     self.isMerge = merge;
+    self.answers = @[].mutableCopy;
+    return self;
+}
+
+- (instancetype)initWithAVObject:(AVObject *)avObject {
+    self = [super init];
+    self.avObject = avObject;
+    self.isMerge = [[avObject objectForKey:@"isMerge"] boolValue];
     self.answers = @[].mutableCopy;
     return self;
 }
@@ -245,63 +254,48 @@
 }
 
 - (void)p_loadNoMergeQuestionsWithSuccess:(void (^)(NSInteger answerIndex))success failure:(void (^)(void))failure {
-    [QSLoadingView show];
-    [EvaluateService getDimensionQuestions:self.childDimensionID success:^(id data) {
-        [QSLoadingView dismiss];
-        
-        NSArray *items = data[@"items"];
-        NSMutableArray *tmp = @[].mutableCopy;
-        if(items){
-            for (int i = 0; i < items.count; i++) {
-                NSDictionary *item = items[i];
-                FEQuestionModel *question = [MTLJSONAdapter modelOfClass:FEQuestionModel.class fromJSONDictionary:item error:nil];
-                [tmp addObject:question];
-            }
-            
-            [self p_didRequstData:tmp];
-            
-            if (success) {
-                success(self.userAnswserIndex);
-            }
-           
+    
+    NSString *jsonString = [self.avObject objectForKey:@"data"];
+    NSDictionary *data = [TCJSONHelper dictionaryWithJsonString:jsonString];
+    NSArray *items = data[@"items"];
+    NSMutableArray *tmp = @[].mutableCopy;
+    if(items){
+        for (int i = 0; i < items.count; i++) {
+            NSDictionary *item = items[i];
+            FEQuestionModel *question = [MTLJSONAdapter modelOfClass:FEQuestionModel.class fromJSONDictionary:item error:nil];
+            [tmp addObject:question];
         }
- 
-    } failure:^(NSError *error) {
-        [QSLoadingView dismiss];
-        [HttpErrorManager showErorInfo:error showView:[UIApplication sharedApplication].keyWindow];
         
-        if (failure) {
-            failure();
+        [self p_didRequstData:tmp];
+        
+        if (success) {
+            success(self.userAnswserIndex);
         }
-    }];
+       
+    }
+
 }
 
 - (void)p_loadMergeQuestionsWithSuccess:(void (^)(NSInteger answerIndex))success failure:(void (^)(void))failure {
-    [QSLoadingView show];
-    [EvaluateService getDimensionMergeQuestions:self.childDimensionID success:^(id data) {
-        [QSLoadingView dismiss];
-        NSArray *items = data[@"items"];
-        NSMutableArray *tmp = @[].mutableCopy;
-        if(items){
-            for (int i = 0; i < items.count; i++) {
-                NSDictionary *item = items[i];
-                FEMergeQuestionModel *question = [MTLJSONAdapter modelOfClass:FEMergeQuestionModel.class fromJSONDictionary:item error:nil];
-                [tmp addObject:question];
-            }
+
+        
+    NSString *jsonString = [self.avObject objectForKey:@"data"];
+    NSDictionary *data = [TCJSONHelper dictionaryWithJsonString:jsonString];
+    NSArray *items = data[@"items"];
+    NSMutableArray *tmp = @[].mutableCopy;
+    if(items){
+        for (int i = 0; i < items.count; i++) {
+            NSDictionary *item = items[i];
+            FEMergeQuestionModel *question = [MTLJSONAdapter modelOfClass:FEMergeQuestionModel.class fromJSONDictionary:item error:nil];
+            [tmp addObject:question];
+        }
             
-            [self p_didRequstData:tmp];
+        [self p_didRequstData:tmp];
                    
-            if (success) {
-                success(self.userAnswserIndex);
-            }
+        if (success) {
+            success(self.userAnswserIndex);
         }
-    } failure:^(NSError *error) {
-        [QSLoadingView dismiss];
-        [HttpErrorManager showErorInfo:error showView:[UIApplication sharedApplication].keyWindow];
-        if (failure) {
-            failure();
-        }
-    }];
+    }
 }
 
 //这里做本地数据的判断，如果存在本地数据，将本地数据附加到questions中

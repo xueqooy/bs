@@ -26,7 +26,7 @@
     _completeCount = 0;
     _completeButton = button;
     _completeButton.fe_adjustTitleColorAutomatically = YES;
-    _completeButton.backgroundColor = UIColor.fe_buttonBackgroundColorDisabled;
+    _completeButton.backgroundColor = [UIColor.fe_mainColor colorWithAlphaComponent:0.4];
     _completedHandler = completeHandler;
     @weakObj(self);
     for (PIXibBaseBox *box in boxes) {
@@ -54,7 +54,7 @@
 
 - (void)setButtonEnableWhenStateChanged:(BOOL)complete {
     _completeButton.userInteractionEnabled = complete;
-    _completeButton.backgroundColor = complete? UIColor.fe_mainColor: UIColor.fe_buttonBackgroundColorDisabled;
+    _completeButton.backgroundColor = complete? UIColor.fe_mainColor: [UIColor.fe_mainColor colorWithAlphaComponent:0.4];
 }
 
 

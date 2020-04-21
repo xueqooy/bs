@@ -40,7 +40,7 @@
 - (void)setScoreDescText {
     BOOL isDarkMode = [[FEThemeManager currentTheme].themeName isEqualToString:FEThemeConfigureDarkIdentifier];
     NSString *mainTextColorString = isDarkMode ? @"rgba(255,255,255,0.6)" :@"#303133";
-    NSString *highlightedColorString = isDarkMode ? @"#99542a" : @"#ff8b45";
+    NSString *highlightedColorString = isDarkMode ? @"#99542a" : @"#FC674F";
     
     NSString *scoreStr = @"";
     if (![NSString isEmptyString:_desc]) {

@@ -12,4 +12,5 @@
 
 @interface FEAnswerViewController : FEBaseViewController
 @property (nonatomic,strong) EvaluationDetailDimensionsModel *dimensionModel;
+@property (nonatomic,strong) AVObject *avObject;
 @end

@@ -45,7 +45,7 @@
 - (void)buildUI {
     if (_scrollView == nil) {
         //添加骨架图
-        [self addSubview:self.skeletonView];
+//        [self addSubview:self.skeletonView];
 //        [QSLoadingView show];
         //延迟创建视图，否则将造成滚动卡顿
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

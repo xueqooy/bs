@@ -16,6 +16,7 @@
 @implementation BSMajorSearchViewController
 @synthesize dataManager = _dataManager;
 @synthesize filter = _filter;
+@synthesize countDidChange = _countDidChange;
 
 - (void)loadView {
     [super loadView];
@@ -47,6 +48,7 @@
     @weakObj(self);
     [self.dataManager getSearchResultByFilter:self.filter type:BSSearchTypeMajor onSuccess:^{
         selfweak.tableView.alreadyLoadAllData = YES;
+        self.countDidChange(self.dataManager.majorResult.count);
 
         [selfweak.tableView reloadData];
         [selfweak showEmptyViewIfEmpty];

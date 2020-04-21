@@ -63,7 +63,7 @@
     
     progressView = [[FEProgressBar alloc] init];
     progressView.trackTintColor = mHexColor(@"f0f2f5");
-    progressView.progressTintColor = mMainColor;
+    progressView.progressTintColor = UIColor.fe_mainColor;
     progressView.progress = 0;
     [progressView setAnimated:YES withDuration:0.25 damping:1.0];
     [progressView setCornerRadius:4];

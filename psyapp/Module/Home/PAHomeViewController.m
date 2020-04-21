@@ -12,10 +12,13 @@
 #import "TCTestListViewController.h"
 #import "TCSearchMainViewController.h"
 #import "TCDeviceLoginInfoPerfectionViewController.h"
-
+#import "FEEvaluationReportViewController.h"
 #import "UIImage+Category.h"
 #import "TCImageHeaderScrollingAnimator.h"
 #import "PAHomeGridViewCell.h"
+#import "FEAnswerViewController.h"
+#import "FECommonAlertView.h"
+#import "FECommentViewController.h"
 
 #import "PATestCategoryManager.h"
 @interface PAHomeViewController () <UIScrollViewDelegate, UISearchBarDelegate>
@@ -32,43 +35,27 @@
 
 @implementation PAHomeViewController {
     NSArray *_categoryTitles;
+    NSArray *_categoryCodes;
     NSArray *_categoryImageNames;
     NSArray *_categoryTintColors;
-    
+    NSArray *_completedStatus;
     BOOL _dataLoaded;
+    
+    AVObject *_obj;
 }
 - (void)loadView {
     [super loadView];
-    CGFloat headerHeight = STWidth(162) + mStatusBarHeight;
-    UIView *topBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, mScreenWidth, headerHeight)];
-    topBackgroundView.backgroundColor = UIColor.fe_mainColor;
-    [self.view addSubview:topBackgroundView];
-    UIView *bottomBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, headerHeight, mScreenHeight,  mScreenHeight - headerHeight)];
-    bottomBackgroundView.backgroundColor = UIColor.fe_contentBackgroundColor;
-    [self.view addSubview:bottomBackgroundView];
-    
+
+    CGFloat headerHeight = STWidth(60);
+  
     _scrollView = UIScrollView.new;
+    _scrollView.backgroundColor = UIColor.fe_backgroundColor;
     _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.alwaysBounceVertical = YES;
-    @weakObj(self);
-    _scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [selfweak loadDataWithCompletion:nil];
-    }];
-
-    MJRefreshNormalHeader *header = (MJRefreshNormalHeader *)_scrollView.mj_header;
-    [header setTitle:@"下拉刷新数据" forState:MJRefreshStateIdle];
-    [header setTitle:@"松开立即刷新数据" forState:MJRefreshStatePulling];
-    [header setTitle:@"数据加载中···" forState:MJRefreshStateRefreshing];
-    header.stateLabel.textColor = UIColor.whiteColor;
-    header.backgroundColor = UIColor.clearColor;
-    header.lastUpdatedTimeLabel.hidden = YES;
-    if (@available(iOS 11.0, *)) {
-        _scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
-
     _scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
     _scrollView.delegate = self;
+    _scrollView.contentSize = CGSizeMake(mScreenWidth, 100);
     [self.view addSubview:_scrollView];
     [_scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(UIEdgeInsetsZero);
@@ -77,128 +64,133 @@
     _headerView = UIImageView.new;
     _headerView.frame = CGRectMake(0, 0, mScreenWidth, headerHeight);
     _headerView.userInteractionEnabled = YES;
-    UIImage *gradientImage = [UIImage gradientImageWithWithColors:@[UIColor.fe_mainColor, mHexColor(@"#9EBAFF")] locations:@[@0, @1] startPoint:CGPointMake(0.5, 0) endPoint:CGPointMake(0.5, 1) size:CGSizeMake(mScreenWidth, headerHeight)];
+    UIImage *gradientImage = [UIImage gradientImageWithWithColors:@[UIColor.fe_mainColor, UIColor.fe_backgroundColor] locations:@[@0, @1] startPoint:CGPointMake(0.5, 0) endPoint:CGPointMake(0.5, 1) size:CGSizeMake(mScreenWidth, headerHeight)];
     _headerView.image = gradientImage;
+   
     [_scrollView addSubview:_headerView];
     [_scrollView sendSubviewToBack:_headerView];
     
-    UILabel *searchLabel = [UILabel.alloc qmui_initWithFont:STFontBold(24) textColor:UIColor.whiteColor];
-    searchLabel.text = @"搜索测评";
-    [_headerView addSubview:searchLabel];
-    [searchLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.offset(STWidth(15));
-        make.bottom.offset(STWidth(-80));
-    }];
-    
-    _searchBar = UISearchBar.new;
-    [_searchBar setImage:[UIImage imageNamed:@"share_clear"] forSearchBarIcon:UISearchBarIconClear state:UIControlStateNormal];
-    _searchBar.layer.cornerRadius = STWidth(4);
-    _searchBar.clipsToBounds = YES;
-    _searchBar.qmui_textField.backgroundColor = UIColor.clearColor;
-    _searchBar.qmui_textColor = UIColor.fe_mainTextColor;
-    _searchBar.qmui_placeholderColor = UIColor.fe_placeholderColor;
-    _searchBar.placeholder = @"输入标题或内容";
-    
-    _searchBar.qmui_font = STFontRegular(12);
-    _searchBar.backgroundImage = [UIImage qmui_imageWithColor:UIColor.fe_contentBackgroundColor];
-    [_headerView addSubview:_searchBar];
-    [_searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(STSize(345, 40));
-        make.centerX.offset(0);
-        make.bottom.offset(-STWidth(30));
-    }];
-    
-    _topLeftButton = QMUIButton.new;
-    [_topLeftButton setImage:[UIImage imageNamed:@"home_test"] forState:UIControlStateNormal];
-    [_topLeftButton setTitleColor:UIColor.fe_mainColor forState:UIControlStateNormal];
-    [_topLeftButton addTarget:self action:@selector(actionForTopButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_topLeftButton];
-    [_topLeftButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(22, 22));
-        make.top.offset(mStatusBarHeight + 7);
-        make.left.offset(STWidth(15));
-    }];
-    
-    _topRightButton = QMUIButton.new;
-    [_topRightButton setImage:[UIImage imageNamed:@"home_mine"] forState:UIControlStateNormal];
-    [_topRightButton setTitleColor:UIColor.fe_mainColor forState:UIControlStateNormal];
-    [_topRightButton addTarget:self action:@selector(actionForTopButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_topRightButton];
-    [_topRightButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(22, 22));
-        make.top.offset(mStatusBarHeight + 7);
-        make.right.offset(-STWidth(15));
-    }];
- 
-    
-    UIView *gridViewBackgroundView = UIView.new;
-    gridViewBackgroundView.backgroundColor = UIColor.fe_contentBackgroundColor;
-    [_scrollView addSubview:gridViewBackgroundView];
-    [gridViewBackgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(headerHeight);
-        make.left.right.bottom.offset(0);
-    }];
-    _gridView = [[QMUIGridView alloc] initWithColumn:2 rowHeight:STWidth(125)];
+    _gridView = [[QMUIGridView alloc] initWithColumn:2 rowHeight:STWidth(165)];
     _gridView.separatorWidth = STWidth(15);
     _gridView.separatorColor = UIColor.clearColor;
-    [gridViewBackgroundView addSubview:_gridView];
+    [_scrollView addSubview:_gridView];
     [_gridView mas_makeConstraints:^(MASConstraintMaker *make) {
-       make.size.mas_equalTo(CGSizeMake(mScreenWidth - STWidth(30), STWidth(400)));
-        make.edges.mas_equalTo(UIEdgeInsetsMake(STWidth(20), STWidth(15), STWidth(20), STWidth(15)));
+        make.size.mas_equalTo(CGSizeMake(mScreenWidth - STWidth(30), STWidth(165) * 3 + STWidth(30)));
+        make.top.offset(STWidth(40));
+        make.centerX.offset(0);
     }];
+    
+    UIView *view = UIView.new;
+    view.frame = CGRectMake(0, 0 , 29, 29);
+    _topRightButton = QMUIButton.new;
+    [_topRightButton setImage:[UIImage imageNamed:@"tucao"] forState:UIControlStateNormal];
+    [_topRightButton setTitleColor:UIColor.fe_mainColor forState:UIControlStateNormal];
+    [_topRightButton addTarget:self action:@selector(gotoComment) forControlEvents:UIControlEventTouchUpInside];
+    _topRightButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    _topRightButton.frame = CGRectMake(0, 0 , 29, 29);
+    [view addSubview:_topRightButton];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.fd_prefersNavigationBarHidden = YES;
-    [self forcePefectInfoWhenDeviceloginIfNeeded];
+    self.navigationBarShadowHidden = YES;
     self.searchBar.delegate = self;
-    @weakObj(self);
-    [self.view addTapGestureWithBlock:^{
-        [selfweak.searchBar resignFirstResponder];
-    }];
-    self.extendedLayoutIncludesOpaqueBars = YES;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    [self initData];
-    [self loadDataWithCompletion:nil];
-    [self updateGridView];
+    [self showBetaLeftTitle:@"测评"];
+    
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self initDataWithCompletion:^{
+        [self updateGridView];
+    }];
+}
+
+static NSString *const kLibCommentTargetId = @"test_comment_target_id";
+- (void)gotoComment {
+    FECommentViewController *commentViewController = [[FECommentViewController alloc] initWithContentId:kLibCommentTargetId type:FECommentTypeArticle];
+    commentViewController.title = @"我要吐槽";
+    [self.navigationController pushViewController:commentViewController animated:YES];
+}
+
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [_searchBar resignFirstResponder];
 }
 
-- (void)initData {
-    _categoryTitles = @[@"学习能力", @"心理健康", @"自我认知", @" 家庭与学校", @"生涯规划"];
-    _categoryImageNames = @[@"home_xxnl", @"home_xljk", @"home_zwrz", @"home_jtyxx", @"home_sygh"];
-    _categoryTintColors = @[mHexColor(@"#FF5752"), mHexColor(@"#30DBCB"), mHexColor(@"#EF7E39"), mHexColor(@"#393BDE"), mHexColor(@"#368BDE")];
-}
-
-- (void)loadDataWithCompletion:(void(^)(BOOL success))completion {
-    [PATestCategoryManager.sharedInstance loadCategoriesOnSucess:^{
-        [self->_scrollView.mj_header endRefreshing];
-        self->_dataLoaded = YES;
-        if (completion) completion(YES);
-    } failure:^{
-        [self->_scrollView.mj_header endRefreshing];
-        self->_dataLoaded = NO;
-        if (completion) completion(NO);
+- (void)initDataWithCompletion:(void(^)(void))completion {
+    _categoryTitles = @[@"职业性格倾向", @"职业价值倾向", @"文科课程学习效能", @"理科课程学习效能", @"我的学业能力", @"我的职业兴趣"];
+    _categoryCodes = @[@"zyxgqx", @"zyjzqx", @"wkxxxn", @"lkxxxn", @"xynl", @"zyxq"];
+    _categoryImageNames = @[@"elective_test_xg", @"elective_test_jz", @"elective_test_wk", @"elective_test_lk", @"elective_test_xyxq", @"elective_test_zyxq"];
+    _categoryTintColors = @[mHexColor(@"#A7855D"), mHexColor(@"#F58BD5"), mHexColor(@"#FBCC7B"), mHexColor(@"#5CB3E0"), mHexColor(@"#40DB77"), mHexColor(@"#716EFF")];
+    if (BSUser.currentUser == nil) {
+        _completedStatus = @[@0, @0, @0, @0, @0, @0];
+        if (completion) completion();
+        return;
+    }
+    
+     AVQuery *reportQuery = [AVQuery queryWithClassName:@"TestUser"];
+    [reportQuery whereKey:@"userId" equalTo:BSUser.currentUser.objectId];
+    [reportQuery getFirstObjectInBackgroundWithBlock:^(AVObject * _Nullable object, NSError * _Nullable error) {
+        if (object) {
+            self->_obj = object;
+            NSMutableArray *temp = @[].mutableCopy;
+            for (NSString *key in self->_categoryCodes) {
+                [temp addObject:@([[object objectForKey:key] integerValue] != -1)];
+            }
+            self->_completedStatus = temp.copy;
+            if (completion) completion();
+        } else {
+            object = [AVObject objectWithClassName:@"TestUser"];
+            [object setObject:BSUser.currentUser.objectId forKey:@"userId"];
+            [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                if (succeeded) {
+                    [object fetch];
+                    self->_obj = object;
+                    self->_completedStatus = @[@0, @0, @0, @0, @0, @0];
+                    if (completion) completion();
+                } else {
+                    [HttpErrorManager showErorInfo:error];
+                }
+            }];
+        }
+        
     }];
 }
 
+
 - (void)updateGridView {
+    [_gridView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     for (int i = 0; i < _categoryTitles.count; i ++) {
         NSString *title = _categoryTitles[i];
         NSString *imageName = _categoryImageNames[i];
         PAHomeGridViewCell *cell = PAHomeGridViewCell.new;
         cell.title = title;
         cell.image = [UIImage imageNamed:imageName];
+        cell.completed = [_completedStatus[i] boolValue];
         cell.tintColor = _categoryTintColors[i];
-        @weakObj(self);
         cell.onTouch = ^{
-            [selfweak gotoListPageWithCategoryName:title];
+            [self gotoListPageAtIndex:i];
         };
+        cell.onButtonClick = ^{
+            //已经完成
+            if ([self->_completedStatus[i] boolValue]) {
+                FECommonAlertView *alertView = [[FECommonAlertView alloc] initWithTitle:@"确定要重测吗" leftText:@"取消" rightText:@"确定" icon:nil];
+                alertView.resultIndex = ^(NSInteger index) {
+                    if (index == 2) {
+                        [self->_obj setObject:@-1 forKey:self->_categoryCodes[i]];
+                        [self->_obj saveInBackground];
+                        [self gotoListPageAtIndex:i];
+                    }
+                };
+                [alertView showCustomAlertView];
+            } else {
+                [self gotoListPageAtIndex:i];
+            }
+             
+         };
         [_gridView addSubview:cell];
     }
 }
@@ -214,35 +206,39 @@
     }
 }
 
-- (void)forcePefectInfoWhenDeviceloginIfNeeded {
-    if (UCManager.sharedInstance.didFormalAccountLogin == NO) {
-        if (UCManager.sharedInstance.needPerfectInfoForDeviceAccount) {
-            [TCDeviceLoginInfoPerfectionViewController showWithPresentedViewController:self onPerfectionSuccess:^{
-            }];
-            return;
-        }
-    }
-}
 
-- (void)gotoListPageWithCategoryName:(NSString *)categoryName  {
-    @weakObj(self);
-    void (^block)(void) = ^{
-        if ([NSString isEmptyString:categoryName]) return;
-           PATestListViewController *viewController = PATestListViewController.new;
-           viewController.categoryName = categoryName;
-           [selfweak.navigationController pushViewController:viewController animated:YES];
-    };
-    
-    if (_dataLoaded == NO) {
-        [self loadDataWithCompletion:^(BOOL success) {
-            if (success) {
-                block();
-            } 
-        }];
+- (void)gotoListPageAtIndex:(NSInteger)idx  {
+    if ([UCManager showLoginAlertIfVisitorPatternWithMessage:@"登录后才可访问"]) {
         return;
     }
-    block();
-    
+
+    NSInteger level = [[_obj objectForKey:self->_categoryCodes[idx]] integerValue];
+    if ( level != -1) {
+        //去报告
+        AVQuery *query = [AVQuery queryWithClassName:@"TestQuestion"];
+        [query whereKey:@"name" equalTo:self->_categoryTitles[idx]];
+        [query getFirstObjectInBackgroundWithBlock:^(AVObject * _Nullable object, NSError * _Nullable error) {
+            if (object) {
+                FEEvaluationReportViewController *vc = [[FEEvaluationReportViewController alloc] initWithAVObject:object level:level ];
+                vc.isCreating = YES;
+                vc.isCareerReport = YES;
+                
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+        }];
+        
+    } else {
+        //去答题
+        AVQuery *query = [AVQuery queryWithClassName:@"TestQuestion"];
+        [query whereKey:@"name" equalTo:self->_categoryTitles[idx]];
+        [query getFirstObjectInBackgroundWithBlock:^(AVObject * _Nullable object, NSError * _Nullable error) {
+            if (object) {
+                FEAnswerViewController *answerVC = FEAnswerViewController.new;
+                answerVC.avObject = object;
+                [self.navigationController pushViewController:answerVC animated:YES];
+            }
+        }];
+    }
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
@@ -252,10 +248,10 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat contentOffsetY = _scrollView.contentOffset.y;
     if (contentOffsetY < 0) {
-        _headerView.frame = CGRectMake(0, contentOffsetY, mScreenWidth, STWidth(162) + mStatusBarHeight - contentOffsetY);
+        _headerView.frame = CGRectMake(0, contentOffsetY, mScreenWidth, STWidth(60) - contentOffsetY);
 
     } else {
-        _headerView.frame = CGRectMake(0, 0, mScreenWidth, STWidth(162) + mStatusBarHeight);
+        _headerView.frame = CGRectMake(0, 0, mScreenWidth, STWidth(60));
     }
 }
 

@@ -22,6 +22,8 @@
 #import "PATestCategoryManager.h"
 #import "OccupationDetailsViewController.h"
 #import "ProfessionalDetailsViewController.h"
+#import "FECommentViewController.h"
+
 @interface PALibViewController () <UIScrollViewDelegate, UISearchBarDelegate>
 @property (nonatomic, strong) QMUIButton *topRightButton;
 @property (nonatomic, strong) UIImageView *headerView;
@@ -65,9 +67,7 @@
     _headerView.userInteractionEnabled = YES;
     UIImage *gradientImage = [UIImage gradientImageWithWithColors:@[UIColor.fe_mainColor, UIColor.fe_backgroundColor] locations:@[@0, @1] startPoint:CGPointMake(0.5, 0) endPoint:CGPointMake(0.5, 1) size:CGSizeMake(mScreenWidth, headerHeight)];
     _headerView.image = gradientImage;
-    _headerView.qmui_borderPosition = QMUIViewBorderPositionBottom;
-    _headerView.qmui_borderColor = UIColor.fe_separatorColor;
-    _headerView.qmui_borderWidth = 0.5;
+   
     [_scrollView addSubview:_headerView];
     [_scrollView sendSubviewToBack:_headerView];
  
@@ -83,17 +83,17 @@
         make.bottom.offset(-STWidth(10));
     }];
 
-//    _topRightButton = QMUIButton.new;
-//    [_topRightButton setImage:[UIImage imageNamed:@"home_mine"] forState:UIControlStateNormal];
-//    [_topRightButton setTitleColor:UIColor.fe_mainColor forState:UIControlStateNormal];
-//    [_topRightButton addTarget:self action:@selector(actionForTopButton:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:_topRightButton];
-//    [_topRightButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.size.mas_equalTo(CGSizeMake(22, 22));
-//        make.top.offset(mStatusBarHeight + 7);
-//        make.right.offset(-STWidth(15));
-//    }];
-//
+    UIView *view = UIView.new;
+    view.frame = CGRectMake(0, 0 , 29, 29);
+    _topRightButton = QMUIButton.new;
+    [_topRightButton setImage:[UIImage imageNamed:@"tucao"] forState:UIControlStateNormal];
+    [_topRightButton setTitleColor:UIColor.fe_mainColor forState:UIControlStateNormal];
+    [_topRightButton addTarget:self action:@selector(gotoComment) forControlEvents:UIControlEventTouchUpInside];
+    _topRightButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    _topRightButton.frame = CGRectMake(0, 0 , 29, 29);
+    [view addSubview:_topRightButton];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
+
     
     UIView *gridViewBackgroundView = UIView.new;
     gridViewBackgroundView.backgroundColor = UIColor.fe_backgroundColor;
@@ -112,6 +112,14 @@
        make.size.mas_equalTo(CGSizeMake(mScreenWidth - STWidth(30), itemHeight * 3 + verticalSpacing * 2));
         make.edges.mas_equalTo(UIEdgeInsetsMake(STWidth(20), STWidth(15), STWidth(20), STWidth(15)));
     }];
+}
+
+
+static NSString *const kLibCommentTargetId = @"lib_comment_target_id";
+- (void)gotoComment {
+    FECommentViewController *commentViewController = [[FECommentViewController alloc] initWithContentId:kLibCommentTargetId type:FECommentTypeArticle];
+    commentViewController.title = @"我要吐槽";
+    [self.navigationController pushViewController:commentViewController animated:YES];
 }
 
 - (void)viewDidLoad {

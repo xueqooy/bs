@@ -19,6 +19,8 @@
 
 - (instancetype)initWithDimensionId:(NSString *)dimensionId childDimensionId:(NSString *)childDimensionId;
 
+- (instancetype)initWithAVObject:(AVObject *)object level:(NSInteger)level;
+
 - (void)requestReportDataWithSuccess:(void (^_Nullable)(void))success failure:(void (^_Nullable)(void))failure ifRequstOverUpperLimit:(void (^_Nullable)(void))overLimit;
 
 

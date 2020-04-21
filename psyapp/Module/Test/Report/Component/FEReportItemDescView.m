@@ -96,7 +96,7 @@
 - (void)setScoreDescText {
     BOOL isDarkMode = [[FEThemeManager currentTheme].themeName isEqualToString:FEThemeConfigureDarkIdentifier];
     NSString *mainTextColorString = isDarkMode ? @"rgba(255,255,255,0.6)" :@"#606266";
-    NSString *highlightedColorString = isDarkMode ? @"#99542a" : @"#ff8b45";
+    NSString *highlightedColorString = isDarkMode ? @"#99542a" : @"#FC674F";
     
     UILabel *scoreDescLabel = _scoreDescLabel;
     scoreDescLabel.numberOfLines = 0;

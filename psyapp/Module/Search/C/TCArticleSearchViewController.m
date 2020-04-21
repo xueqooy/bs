@@ -23,12 +23,11 @@
 @synthesize filter = _filter;
 - (void)loadView {
     [super loadView];
-    self.view.backgroundColor = UIColor.fe_contentBackgroundColor;
 
 
     self.view.backgroundColor = UIColor.fe_backgroundColor;
     _tableView = [UITableView new];
-    _tableView.backgroundColor = UIColor.fe_contentBackgroundColor;
+    _tableView.backgroundColor = UIColor.fe_backgroundColor;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.showsHorizontalScrollIndicator = NO;
     _tableView.estimatedRowHeight = 0;
@@ -44,7 +43,7 @@
     _tableView.tableFooterView = ({
         UIView *view = UIView.new;
         view.frame = CGRectMake(0, 0, mScreenWidth, mBottomSafeHeight);
-        view.backgroundColor = UIColor.fe_contentBackgroundColor;
+        view.backgroundColor = UIColor.fe_backgroundColor;
         view;
     });
     [self.view addSubview:_tableView];
@@ -106,8 +105,12 @@
     return self.dataManager.articleResult.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    ArticleDetailsModel *articleModel = self.dataManager.articleResult[indexPath.row];
+    if (![NSString isEmptyString:articleModel.articleVideo]) {
+        return STWidth(295);
+    }
+    return STWidth(110);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

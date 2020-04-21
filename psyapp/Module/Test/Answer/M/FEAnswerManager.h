@@ -37,5 +37,8 @@
 - (void)test_answerAllQuestions;
 
 
+@property (nonatomic, strong) AVObject *avObject;
+- (instancetype)initWithAVObject:(AVObject *)avObject;
+
 @end
 

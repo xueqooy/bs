@@ -16,7 +16,7 @@
 #import "FEEvaluationView.h"
 
 #import "FEEvalutaionReportManager.h"
-
+#import "FEOccupationLibViewController.h"
 
 #import <FLAnimatedImageView.h>
 #import <FLAnimatedImage.h>
@@ -45,6 +45,12 @@
     return self;
 }
 
+- (instancetype)initWithAVObject:(AVObject *)object level:(NSInteger)level {
+    self = [super init];
+    _dataManager = [[FEEvalutaionReportManager alloc] initWithAVObject:object level:level];
+    return self;
+}
+
 - (void)loadView {
     [super loadView];
 
@@ -62,7 +68,6 @@
     self.view.backgroundColor = UIColor.fe_mainColor;
     _cellCache = [NSCache new];
     
-    _dataManager = [[FEEvalutaionReportManager alloc] initWithDimensionId:self.dimensionId childDimensionId:self.childDimensionId];
     [self p_loadData];
 }
 
@@ -168,7 +173,7 @@
 - (void)p_buildLoadingView{
     //骨架图
     _loadingImageView = [UIImageView new];
-    _loadingImageView.image = [UIImage imageNamed:@"report_load_bg"];
+    _loadingImageView.image = [UIImage qmui_imageWithColor:UIColor.fe_mainColor];
     _loadingImageView.frame = CGRectMake(0, 0, mScreenWidth, CGRectGetHeight(self.view.frame));
     
     [self.view addSubview:_loadingImageView];
@@ -181,7 +186,7 @@
         //报告生成中的加载UI
        CALayer *loadingImageViewMask = [CALayer layer];
        loadingImageViewMask.frame = CGRectMake(0, -mNavBarAndStatusBarHeight, mScreenWidth, CGRectGetHeight(self.view.frame) );
-       loadingImageViewMask.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4].CGColor;
+       loadingImageViewMask.backgroundColor = [UIColor colorWithWhite:0 alpha:0].CGColor;
        [_loadingImageView.layer addSublayer:loadingImageViewMask];
     
        UIView *animationViewContainer = [UIView new];
@@ -267,21 +272,20 @@
             [self customTitleTransitionWithPercent:scrollViewOffsetY/mNavBarHeight];
         }
     };
+
     
-    _cell.recommendedProductClickHandler = ^(TCRecommendProductModel *model) {
+    FEEvaluationCareerReportCollectionViewCell *mbtiCell = (FEEvaluationCareerReportCollectionViewCell *)_cell;
+    mbtiCell.occupationRecommendTagClickHandler = ^(NSInteger idx) {
         @strongObj(self);
-        if ([NSString isEmptyString:model.itemId]) return;
-        if (model.productType == TCProductTypeTest) {
-            TCTestDetailViewController *detailViewController = [TCTestDetailViewController.alloc initWithDimensionId:model.itemId];
-            [self.navigationController pushViewController:detailViewController animated:YES];
-        }
-        
+        MbtiRecommendModel *mbtiModel = self.dataManager.reportInfo.recommend[idx];
+
+        NSString *areaName = mbtiModel.areaName;
+
+        FEOccupationLibViewController *vc = [[FEOccupationLibViewController alloc] init];
+        vc.areaName = areaName;
+
+        [self.navigationController pushViewController:vc animated:YES];
     };
-    
-//    if ([_cell isKindOfClass:[FEEvaluationCareerReportCollectionViewCell class]] && [_dataManager.reportInfo.title containsString:@"职业性格"]) {
-//        FEEvaluationCareerReportCollectionViewCell *mbtiCell = (FEEvaluationCareerReportCollectionViewCell *)_cell;
-//       
-//    }
 }
 
 
@@ -350,12 +354,8 @@
                 [selfweak p_playOpeningAnimation];
             });
         };
+        handler();
         
-        [self.dataManager requestRecommendProductDataWithSuccess:^{
-            handler();
-        } failure:^{
-            handler();
-        }];
     } failure:^{
         @strongObj(self);
         [self.loadingImageView removeFromSuperview];

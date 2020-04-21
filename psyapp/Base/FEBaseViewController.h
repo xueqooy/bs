@@ -24,6 +24,7 @@
 
 - (void)showLeftTitle:(NSString *)title;
 
+- (void)showBetaLeftTitle:(NSString *)title;
 
 - (void)addDoubleClickGestureForNavigationBarWithHandler:(void(^)(void))handler andTitle:(NSString *)title;
 

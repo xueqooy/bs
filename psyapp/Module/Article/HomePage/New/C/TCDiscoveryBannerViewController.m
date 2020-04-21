@@ -48,7 +48,7 @@
     _bannerView.minimumPageAlpha = 0.1;
     _bannerView.isCarousel = YES;
     _bannerView.isOpenAutoScroll = YES;
-    _bannerView.backgroundColor = UIColor.fe_contentBackgroundColor;
+//    _bannerView.backgroundColor = UIColor.fe_contentBackgroundColor;
     [self.view addSubview:_bannerView];
     [_bannerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(UIEdgeInsetsZero);
@@ -66,6 +66,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = UIColor.clearColor;
     _bannerView.delegate = self;
     _bannerView.dataSource = self;
 }

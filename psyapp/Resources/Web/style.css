@@ -11,7 +11,7 @@
 }
 
 #article_content .tinymce-highliter1 {
-  color: #ff8b45;
+  color: #FC674F;
 }
 
 #article_content .tinymce-highliter2 {
@@ -99,7 +99,7 @@ body {
 #article_content .dimension-box {
   margin: 10pt 0;
   width: 100%;
-  border: 1pt solid #ff8b45;
+  border: 1pt solid #FC674F;
   border-radius: 4pt;
 }
 
@@ -132,7 +132,7 @@ body {
   font-size: 15pt;
   font-family: PingFang SC;
   font-weight: bold;
-  color: #ff8b45;
+  color: #FC674F;
 }
 
 /* .dimension-box.complete .result,
@@ -142,7 +142,7 @@ color: #ffffff;
 } */
 
 #article_content .dimension-box.complete .result span {
-  background: #ff8b45;
+  background: #FC674F;
   color: #ffffff;
 }
 

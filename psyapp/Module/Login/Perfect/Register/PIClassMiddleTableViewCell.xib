@@ -50,10 +50,10 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQX-GT-juj" customClass="TCCommonButton">
-                        <rect key="frame" x="15" y="300" width="412" height="60"/>
+                        <rect key="frame" x="15" y="300" width="412" height="48"/>
                         <color key="backgroundColor" red="0.88235294117647056" green="0.8901960784313725" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="60" id="4hu-ms-vZD">
+                            <constraint firstAttribute="height" constant="48" id="4hu-ms-vZD">
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="adaptionEnable" value="YES"/>
                                 </userDefinedRuntimeAttributes>

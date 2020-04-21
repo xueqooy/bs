@@ -18,6 +18,7 @@
 
 @implementation BSOccupationSearchViewController
 @synthesize filter = _filter;
+@synthesize countDidChange = _countDidChange;
 
 - (instancetype)init {
     self = [super init];
@@ -57,7 +58,7 @@
     [_manager searchWithKeyName:self.filter andSuccess:^(BOOL isEmpty) {
         @strongObj(self);
         self.tableView.alreadyLoadAllData = YES;
-
+        self.countDidChange(self.manager.searchData.count);
         [self.tableView reloadData];
         [self showEmptyViewIfEmpty];
 

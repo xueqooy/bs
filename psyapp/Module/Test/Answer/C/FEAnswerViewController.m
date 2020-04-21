@@ -51,6 +51,7 @@
 @property (nonatomic,assign) BOOL lastDidseleted;
 
 @property (nonatomic,assign) NSInteger onceAnswerCount;//连续答题次数
+@property (nonatomic, assign) BOOL isMerge;
 
 @property (nonatomic, strong) FEAnswerManager *answerManager;
 @property (nonatomic, weak) AFNetworkReachabilityManager *networkReachabilityManager;
@@ -61,9 +62,8 @@
 @implementation FEAnswerViewController
 
 - (void)initDataManager {
-    NSString *childDimensionId = self.dimensionModel.childDimensionID;
-    BOOL isMerge = [self.dimensionModel.isMergeAnswer boolValue];
-    _answerManager = [[FEAnswerManager alloc] initWithChildDimensionID:childDimensionId isMerge:isMerge ];
+    self.isMerge = [[_avObject objectForKey:@"isMerge"] boolValue];
+    _answerManager = [[FEAnswerManager alloc] initWithAVObject:_avObject];
 }
 
 - (void)initNetworkReachabilityManager {
@@ -226,32 +226,7 @@
     self.answerManager.costedTime ++;
     
     [self.progressBar setTimeWithString:[self getMMSSFromSS:[NSString stringWithFormat:@"%li", (long)self.answerManager.costedTime]]];
-    if(self.answerManager.costedTime - self.stopCurrentTime >= STOP_TIMES){
-        
-        mLog(@"弹出休息提示");
-
-       // 当前题目停留时间超过30s,弹窗提示
-        [self stopTimes];
-        @weakObj(self);
-        FEPicturedAlertView *exitAlert = [[FEPicturedAlertView alloc] initWithTitle:@"如果你想休息一下在答题，你可以放心地退出，我们会保存你测评的进度" leftText:@"退出" rightText:@"继续答题" picture:[UIImage imageNamed:@"answer_rest_picture"]];
-        exitAlert.resultIndex = ^(NSInteger index) {
-            @strongObj(self);
-
-            if(index == 1){
-                //退出
-                [self saveDimensionQuestions];
-            }else{
-                [self initTimes];
-            }
-        };
-        exitAlert.extraHandlerForClickingBackground = ^{
-            @strongObj(self);
-
-            [self initTimes];
-        };
-        [exitAlert showWithAnimated:YES];
-    }
-
+  
 }
 
 
@@ -260,22 +235,19 @@
     @weakObj(self);
     _progressBar = [FEExamProgressBar new];
     _progressBar.definitionButtonClickHandler = ^{
-        if (mIsProduct) {
-            [selfweak stopTimes];
-            FECommonAlertView *alertView = [[FECommonAlertView alloc] initWithTitle:selfweak.dimensionModel.instruction leftText:nil rightText:@"确定" icon:nil];
-            [alertView setAttributeTextWithNormalText:selfweak.dimensionModel.instruction];
-            alertView.resultIndex = ^(NSInteger index) {
-                [selfweak initTimes];
-            };
-            alertView.extraHandlerForClickingBackground = ^{
-                [selfweak initTimes];
-            };
-            [alertView showCustomAlertView];
-        } else {
-            [selfweak testSaveAllAnswer];
-        }
-        
-        
+        [selfweak stopTimes];
+        FECommonAlertView *alertView = [[FECommonAlertView alloc] initWithTitle:selfweak.dimensionModel.instruction leftText:nil rightText:@"确定" icon:nil];
+        NSString *intro = [selfweak.avObject objectForKey:@"introduction"];
+        [alertView setAttributeTextWithNormalText:intro];
+        alertView.resultIndex = ^(NSInteger index) {
+            [selfweak initTimes];
+        };
+        alertView.extraHandlerForClickingBackground = ^{
+            [selfweak initTimes];
+        };
+        [alertView showCustomAlertView];
+//        [selfweak submitDim ensionQuestions];
+       
     };
     [self.view addSubview:_progressBar];
     [_progressBar mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -368,11 +340,7 @@
             [self updatePage];
             [self initTimes];
             
-            if(self.dimensionModel.instruction && ![self.dimensionModel.instruction isEqualToString:@""]){
-                [self.progressBar setDefinitionButtonHidden:NO];
-            }else{
-                [self.progressBar setDefinitionButtonHidden:YES];
-            }
+            
         });
         
         [self initNetworkReachabilityManager];
@@ -410,7 +378,7 @@
     [_answerManager saveSingleAnswerWithOptionIndex:optionIndex optionText:optionText forPage:self.currPageIndex ifMergeSubquestionIndex:subquestionIdx];
     
     
-    if ([self.dimensionModel.isMergeAnswer boolValue] == NO) {
+    if (self.isMerge == NO) {
         [self showFastClickAlertIfAnswerIsTooFast];
     }
     
@@ -514,57 +482,48 @@
 
 //保存量表答题
 -(void)saveDimensionQuestions{
-    if (TCNetworkReachabilityHelper.isReachable ) {
-        @weakObj(self);
-        [_answerManager saveAnswers:^{
-            @strongObj(self);
             [self.navigationController popViewControllerAnimated:YES];
-        } failure:^{
-            @strongObj(self);
-            [self.navigationController popViewControllerAnimated:YES];
-        }];
-    } else {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
+
 }
 
 //提交量表答题
 -(void)submitDimensionQuestions{
-    @weakObj(self);
-    [_answerManager submitAnwsersWithSuccess:^(id data) {
-        @strongObj(self);
-        [self goReportViewController:data];
-    } failure:^{
-        [selfweak initTimes];
+//    @weakObj(self);
+//    [_answerManager submitAnwsersWithSuccess:^(id data) {
+//        @strongObj(self);
+//        [self goReportViewController:data];
+//    } failure:^{
+//        [selfweak initTimes];
+//    }];
+    NSString *code = [_avObject objectForKey:@"code"];
+    NSInteger level = 1;
+    
+    AVQuery *query = [AVQuery queryWithClassName:@"TestUser"];
+    [query whereKey:@"userId" equalTo:BSUser.currentUser.objectId];
+    [query getFirstObjectInBackgroundWithBlock:^(AVObject * _Nullable object, NSError * _Nullable error) {
+        if (object) {
+            [object setObject:@(level) forKey:code];
+        } else {
+            object = [AVObject objectWithClassName:@"TestUser"];
+            [object setObject:BSUser.currentUser.objectId forKey:@"userId"];
+            [object setObject:@(level) forKey:code];
+        }
+        [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded) {
+                [self goReportViewControllerWithLevel:level];
+            }
+        }];
     }];
 }
 
--(void)goReportViewController:(NSDictionary *)data{
+-(void)goReportViewControllerWithLevel:(NSInteger)level{
     
     self.isCompleteAndToReport = YES;
-    
-    if ([self.dimensionModel.reportForbid isEqualToNumber:@1]){
-        //报告被禁止查看，返回测评详情
-        //不需要提前移除VC，因为该页不允许返回手势，所以不用考虑提交后手势返回时重复可进入测评
-        NSArray *originViewControllers = self.navigationController.viewControllers;
-        NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:originViewControllers];
-        NSRange removeIndexRange = NSMakeRange([self.navigationController.viewControllers count] -2, 1);
-        NSIndexSet *removeIndexSet = [[NSIndexSet alloc] initWithIndexesInRange:removeIndexRange];
-        [viewControllers removeObjectsAtIndexes:removeIndexSet];
-        self.navigationController.viewControllers = viewControllers;
-        
-        [self.navigationController popViewControllerAnimated:YES];
-        [QSToast toast:[UIApplication sharedApplication].keyWindow message:@"提交成功"];
-        return;
-    }
-    
-    FEEvaluationReportViewController *vc = [[FEEvaluationReportViewController alloc] initWithDimensionId:self.dimensionModel.dimensionID childDimensionId:self.dimensionModel.childDimensionID];
-    vc.isCreating = YES;
 
-    if ([[UCManager sharedInstance].careerChildExamId isEqualToString:self.dimensionModel.childExamID]) {
-        vc.isCareerReport = YES;
-    }
+    FEEvaluationReportViewController *vc = [[FEEvaluationReportViewController alloc] initWithAVObject:_avObject level:level];
+    vc.isCreating = YES;
+    vc.isCareerReport = YES;
+    
     [self.navigationController pushViewController:vc animated:YES];
 
     
@@ -598,7 +557,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     FEAnswerCollectionCell *_cell = (FEAnswerCollectionCell *)cell;
-    if ([self.dimensionModel.isMergeAnswer boolValue] == NO) {
+    if (self.isMerge == NO) {
         _cell.single_question = _answerManager.questions[indexPath.item];
     } else {
         _cell.merge_question = _answerManager.questions[indexPath.item];
@@ -612,7 +571,7 @@
         self.stopCurrentTime = self.answerManager.costedTime;
         
         //非合并答题，答完一题，切换下一题
-        if ([self.dimensionModel.isMergeAnswer boolValue] == NO) {
+        if (self.isMerge == NO) {
 
             if (indexPath.item != self.answerManager.questions.count - 1) {
                self.collectionView.userInteractionEnabled = NO;
@@ -626,7 +585,7 @@
     };
     
     //合并答题，全部答完，切换下一题
-    if ([self.dimensionModel.isMergeAnswer boolValue]) {
+    if (self.isMerge) {
         _cell.merge_allSubquestionAnsweredHandler = ^{
             @strongObj(self);
             [self showFastClickAlertIfAnswerIsTooFast];

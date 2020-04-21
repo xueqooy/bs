@@ -28,6 +28,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         _completeButton.userInteractionEnabled = NO;
+        _completeButton.backgroundColor = [UIColor.fe_mainColor colorWithAlphaComponent:0.4];
         _completeButton.layer.cornerRadius = STWidth(2);
 
         [_nickBar setCategory:@"昵称" placeholder:@"2-12位数字/英文/中文"];

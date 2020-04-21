@@ -31,7 +31,12 @@
 @property (nonatomic, strong) TCDiscoverySearchDataManager *dataManager;
 @end
 
-@implementation TCLibSearchMainViewController
+@implementation TCLibSearchMainViewController {
+    NSInteger _universityCount;
+    NSInteger _majorCount;
+    NSInteger _occupationCount;
+
+}
 
 - (void)present {
     FENavigationViewController *searchNavigationController = [[FENavigationViewController alloc] initWithRootViewController:self];
@@ -41,6 +46,10 @@
 
 - (void)loadView {
     [super loadView];
+    _universityCount = -1;
+    _majorCount = -1;
+    _occupationCount = -1;
+    
     _segmentView = [SegmentView new];
     _segmentView.header.itemWidth = mScreenWidth / 3;
     _segmentView.header.itemSpacing = 0;
@@ -111,25 +120,47 @@
     
     UIImageView *searchImageView = UIImageView.new;
     searchImageView.frame = CGRectMake(0, 0, 22, 22);
-    searchImageView.image = [UIImage imageNamed:@"search_gray"];
+    searchImageView.image = [UIImage imageNamed:@"search_white"];
     UIView *leftView = UIView.new;
     leftView.frame = CGRectMake(0, 0, 22, 22);
     [leftView addSubview:searchImageView];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftView];
-    self.navigationItem.leftBarButtonItem.tintColor = UIColor.fe_placeholderColor;
-    self.navigationItem.rightBarButtonItem.tintColor = UIColor.fe_mainTextColor;
+    self.navigationItem.rightBarButtonItem.tintColor = UIColor.fe_contentBackgroundColor;
 }
 
 - (void)initViewControllers {
     _universitySearchViewController = BSUniversitySearchViewController.new;
     _universitySearchViewController.dataManager = self.dataManager;
+    @weakObj(self);
+    _universitySearchViewController.countDidChange = ^(NSInteger count) {
+        @strongObj(self);
+        self->_universityCount = count;
+        [self updateSegmentTitles];
+    };
   
     _majorSearchViewController = BSMajorSearchViewController.new;
     _majorSearchViewController.dataManager = self.dataManager;
+    _majorSearchViewController.countDidChange = ^(NSInteger count) {
+        @strongObj(self);
+        self->_majorCount = count;
+        [self updateSegmentTitles];
+    };
     
     _occupationSearchViewController = BSOccupationSearchViewController.new;
-    
+    _occupationSearchViewController.countDidChange = ^(NSInteger count) {
+        @strongObj(self);
+        self->_occupationCount = count;
+        [self updateSegmentTitles];
+    };
     [_segmentView setViewControllers:@[_universitySearchViewController, _majorSearchViewController, _occupationSearchViewController] parentViewController:self titles:@[@"学校", @"专业" , @"职业"]];
+}
+
+- (void)updateSegmentTitles {
+    NSMutableArray *titleArray = @[].mutableCopy;
+    [titleArray addObject:[NSString stringWithFormat:@"学校%@", _universityCount < 0?@"":[NSString stringWithFormat:@"(%li)", (long)_universityCount]]];
+    [titleArray addObject:[NSString stringWithFormat:@"专业%@", _majorCount < 0?@"":[NSString stringWithFormat:@"(%li)", (long)_majorCount]]];
+    [titleArray addObject:[NSString stringWithFormat:@"职业%@", _occupationCount < 0?@"":[NSString stringWithFormat:@"(%li)", (long)_occupationCount]]];
+    self.segmentView.titleArray = titleArray.copy;
 }
 
 - (NSString *)searchFilter {
@@ -156,6 +187,9 @@
     [_majorSearchViewController startSearchWithFilter:filter];
     [_occupationSearchViewController startSearchWithFilter:filter];
 }
+
+
+
 
 - (void)dissmissController {
     [self.view endEditing:YES];

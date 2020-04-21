@@ -8,6 +8,7 @@
 
 #import "FEEvalutaionReportManager.h"
 #import "EvaluateService.h"
+#import "TCJSONHelper.h"
 @interface FEEvalutaionReportManager ()
 @property (nonatomic, copy) NSString *dimensionId;
 @property (nonatomic, copy) NSString *childDimensionId;
@@ -20,6 +21,9 @@
 @property (nonatomic, copy) void (^requestFailure)(void);
 @property (nonatomic, copy) void (^requestOverLimit)(void);
 
+@property (nonatomic, strong) AVObject *object;
+@property (nonatomic, assign) NSInteger level;
+
 @end
 
 @implementation FEEvalutaionReportManager
@@ -28,6 +32,13 @@
     self.dimensionId = dimensionId;
     self.childDimensionId = childDimensionId;
   
+    return self;
+}
+
+- (instancetype)initWithAVObject:(AVObject *)object level:(NSInteger)level {
+    self = [super init];
+    self.object = object;
+    self.level = level;
     return self;
 }
 
@@ -55,31 +66,45 @@
      _requestFailure = failure;
      _requestOverLimit = overLimit;
      
-
-    [EvaluateService getDimensionReportByChildDimensionId:self.childDimensionId success:^(id data) {
-        if(data){
-            self.reportInfo = [MTLJSONAdapter modelOfClass:CareerReportDataModel.class fromJSONDictionary:data error:nil];
-          
-            if ([self.reportInfo.reportStatus isEqualToNumber:@1]) { //报告在生成中
-                [self p_startUpDataLoadTimer];
-                return;
-            } else {
-                if (_dataLoadTimer) {
-                    [_dataLoadTimer invalidate];
-                }
+    AVQuery *query = [AVQuery queryWithClassName:@"TestReport"];
+    [query whereKey:@"question" equalTo:_object];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        for (AVObject *obj in objects) {
+            if ([[obj objectForKey:@"level"] integerValue] == self.level) {
+                NSDictionary *data = [TCJSONHelper dictionaryWithJsonString:[obj objectForKey:@"data"]];
+                self.reportInfo = [MTLJSONAdapter modelOfClass:CareerReportDataModel.class fromJSONDictionary:data error:nil];
                 if (success) {
                     success();
                 }
+                return ;
             }
-            
         }
-    } failure:^(NSError *error) {
-        [QSLoadingView dismiss];
-        [HttpErrorManager showErorInfo:error showView:mKeyWindow];
-        if (failure) {
-            failure();
-        }
+        if (failure) failure();
     }];
+//    [EvaluateService getDimensionReportByChildDimensionId:self.childDimensionId success:^(id data) {
+//        if(data){
+//            self.reportInfo = [MTLJSONAdapter modelOfClass:CareerReportDataModel.class fromJSONDictionary:data error:nil];
+//
+//            if ([self.reportInfo.reportStatus isEqualToNumber:@1]) { //报告在生成中
+//                [self p_startUpDataLoadTimer];
+//                return;
+//            } else {
+//                if (_dataLoadTimer) {
+//                    [_dataLoadTimer invalidate];
+//                }
+//                if (success) {
+//                    success();
+//                }
+//            }
+//
+//        }
+//    } failure:^(NSError *error) {
+//        [QSLoadingView dismiss];
+//        [HttpErrorManager showErorInfo:error showView:mKeyWindow];
+//        if (failure) {
+//            failure();
+//        }
+//    }];
 }
 
 - (void)requestRecommendProductDataWithSuccess:(void (^)(void))success failure:(void (^)(void))failure {
