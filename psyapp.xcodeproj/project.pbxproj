@@ -141,7 +141,6 @@
 		045D025D243D7D1D0006423E /* FESwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D025C243D7D1D0006423E /* FESwitch.m */; };
 		045D026E243D7E2A0006423E /* TCSystemFeedBackHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D026D243D7E2A0006423E /* TCSystemFeedBackHelper.m */; };
 		045D0271243DBCBA0006423E /* BSUniversitySearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0270243DBCBA0006423E /* BSUniversitySearchViewController.m */; };
-		045D0274243DC1EB0006423E /* TCSearchMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0273243DC1EA0006423E /* TCSearchMainViewController.m */; };
 		045D0277243DCAA00006423E /* TCSearchAppearanceButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0276243DCA9F0006423E /* TCSearchAppearanceButton.m */; };
 		045D027A243DE8B10006423E /* BSOccupationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D0279243DE8B00006423E /* BSOccupationSearchViewController.m */; };
 		045D027F243DEB240006423E /* SegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045D027B243DEB210006423E /* SegmentView.m */; };
@@ -405,6 +404,7 @@
 		046CF3DB24449271004E83B4 /* TCArticleSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046CF3DA24449271004E83B4 /* TCArticleSearchViewController.m */; };
 		046CF3DE244566EF004E83B4 /* BSLibCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046CF3DD244566EF004E83B4 /* BSLibCell.m */; };
 		046CF3E12445904C004E83B4 /* TCFilterCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046CF3E02445904C004E83B4 /* TCFilterCollectionCell.m */; };
+		046D5CD9244EDD48000293A4 /* TCSearchMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D5CD8244EDD48000293A4 /* TCSearchMainViewController.m */; };
 		0489901A2417BD0F005F25DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 048990192417BD0F005F25DC /* AppDelegate.m */; };
 		048990202417BD0F005F25DC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0489901F2417BD0F005F25DC /* ViewController.m */; };
 		048990232417BD0F005F25DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048990212417BD0F005F25DC /* Main.storyboard */; };
@@ -900,8 +900,6 @@
 		045D026D243D7E2A0006423E /* TCSystemFeedBackHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCSystemFeedBackHelper.m; sourceTree = "<group>"; };
 		045D026F243DBCBA0006423E /* BSUniversitySearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSUniversitySearchViewController.h; sourceTree = "<group>"; };
 		045D0270243DBCBA0006423E /* BSUniversitySearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BSUniversitySearchViewController.m; sourceTree = "<group>"; };
-		045D0272243DC1E90006423E /* TCSearchMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCSearchMainViewController.h; path = "../../../../../cheers-genie-plus/CheersgeniePlus/Module/Discovery/Search/C/TCSearchMainViewController.h"; sourceTree = "<group>"; };
-		045D0273243DC1EA0006423E /* TCSearchMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCSearchMainViewController.m; path = "../../../../../cheers-genie-plus/CheersgeniePlus/Module/Discovery/Search/C/TCSearchMainViewController.m"; sourceTree = "<group>"; };
 		045D0275243DCA9F0006423E /* TCSearchAppearanceButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCSearchAppearanceButton.h; sourceTree = "<group>"; };
 		045D0276243DCA9F0006423E /* TCSearchAppearanceButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCSearchAppearanceButton.m; sourceTree = "<group>"; };
 		045D0278243DE8B00006423E /* BSOccupationSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSOccupationSearchViewController.h; sourceTree = "<group>"; };
@@ -1422,6 +1420,8 @@
 		046CF3DD244566EF004E83B4 /* BSLibCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BSLibCell.m; sourceTree = "<group>"; };
 		046CF3DF2445904B004E83B4 /* TCFilterCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCFilterCollectionCell.h; sourceTree = "<group>"; };
 		046CF3E02445904C004E83B4 /* TCFilterCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCFilterCollectionCell.m; sourceTree = "<group>"; };
+		046D5CD7244EDD47000293A4 /* TCSearchMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCSearchMainViewController.h; sourceTree = "<group>"; };
+		046D5CD8244EDD48000293A4 /* TCSearchMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCSearchMainViewController.m; sourceTree = "<group>"; };
 		048990152417BD0F005F25DC /* bs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		048990182417BD0F005F25DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		048990192417BD0F005F25DC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1691,10 +1691,10 @@
 		042F0F6E241D341C00D39AA6 /* C */ = {
 			isa = PBXGroup;
 			children = (
+				046D5CD7244EDD47000293A4 /* TCSearchMainViewController.h */,
+				046D5CD8244EDD48000293A4 /* TCSearchMainViewController.m */,
 				042F0F75241D341C00D39AA6 /* TCLibSearchMainViewController.h */,
 				042F0F71241D341C00D39AA6 /* TCLibSearchMainViewController.m */,
-				045D0272243DC1E90006423E /* TCSearchMainViewController.h */,
-				045D0273243DC1EA0006423E /* TCSearchMainViewController.m */,
 				046CF3D924449271004E83B4 /* TCArticleSearchViewController.h */,
 				046CF3DA24449271004E83B4 /* TCArticleSearchViewController.m */,
 				042F0F76241D341C00D39AA6 /* TCTestSearchViewController.h */,
@@ -4300,7 +4300,6 @@
 				046CF3D524447FD8004E83B4 /* FEMyCollectViewController.m in Sources */,
 				04FB47A3241FAD610073E948 /* FEMergeQuestionModel.m in Sources */,
 				045D01F1243D7B430006423E /* EnrollmentNavigationModel.m in Sources */,
-				045D0274243DC1EB0006423E /* TCSearchMainViewController.m in Sources */,
 				0466EE4524206DEE00E2FBAF /* FEReportRadarChartView.m in Sources */,
 				0466EE3724206DEE00E2FBAF /* FEReportProportionChartView.m in Sources */,
 				04643053241B2550006FA1F5 /* PIModel.m in Sources */,
@@ -4363,6 +4362,7 @@
 				0466EE4724206DEE00E2FBAF /* FEEvalutaionReportManager.m in Sources */,
 				048FC702243ED49A0047D4A2 /* FEOtherFollowsTableViewCell.m in Sources */,
 				045D020C243D7B430006423E /* UniversityDetailsViewController.m in Sources */,
+				046D5CD9244EDD48000293A4 /* TCSearchMainViewController.m in Sources */,
 				0466EE7024206FEB00E2FBAF /* KMTagListView.m in Sources */,
 				048FCADC244058F90047D4A2 /* RelevanceArticleTableViewCell.m in Sources */,
 				04FB479E241FAD610073E948 /* OptionModel.m in Sources */,

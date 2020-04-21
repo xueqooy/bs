@@ -45,39 +45,7 @@
 }
 
 
-+(NSString*) getAuth:(NSString *)method url:(NSString *)url {
 
-    if (![UCManager sharedInstance].accessToken) {
-        return @"";
-    }
-    NSString *host = [url hasPrefix:API_HOST]?API_HOST:API_HOST;
-    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
-    
-    //NSTimeZone *timeZone = [NSTimeZone systemTimeZone]; // 获取的是系统的时区
-    //NSInteger interval = [timeZone secondsFromGMTForDate:dat];// local时间距离GMT
-    
-    long long timeInterval = (long long)([dat timeIntervalSince1970]*1000);//当前时间戳
-    NSString *timeSppStr = [NSString stringWithFormat:@"%lld", timeInterval];//转为字符型
-    NSString *nonce = [[timeSppStr stringByAppendingString:@":"] stringByAppendingString:[self mixRandomCode:8]];
-    
-    NSString *rawMac = [nonce stringByAppendingString:@"\n"];
-    rawMac = [rawMac stringByAppendingString:method];
-    rawMac = [rawMac stringByAppendingString:@"\n"];
-    rawMac = [rawMac stringByAppendingString:[url stringByReplacingOccurrencesOfString:host withString:@""]];// 请求uri
-    rawMac = [rawMac stringByAppendingString:@"\n"];
-    if([url containsString:@"https://"]){ //mac签名区分是http还是https
-        rawMac = [rawMac stringByAppendingString:[host stringByReplacingOccurrencesOfString:@"https://" withString:@""]];//有端口号必须加上
-    }else{
-       rawMac = [rawMac stringByAppendingString:[host stringByReplacingOccurrencesOfString:@"http://" withString:@""]];//有端口号必须加上
-    }
-    rawMac = [rawMac stringByAppendingString:@"\n"];
-    //NSString* newMac = [self hmac:rawMac withKey:[UCManager sharedInstance].macKey];
-    NSString* newMac = [self hmacsha1:rawMac secret:[UCManager sharedInstance].code];
-    newMac = [newMac stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-    NSString *auth = [NSString stringWithFormat:@"MAC id=\"%@\",nonce=\"%@\",mac=\"%@\"",[UCManager sharedInstance].accessToken,nonce,newMac];
-    
-    return auth;
-}
 
 +(AFHTTPSessionManager *) getAFHTTPSessionManagerWithUrl:(NSString *)url method:(NSString *)method{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -85,11 +53,7 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    if(![url containsString:@"third_sign_in"] ){
-        if(!UCManager.sharedInstance.isVisitorPattern){
-//            [manager.requestSerializer setValue:[self getAuth:method url:url] forHTTPHeaderField:@"Authorization"];
-        }
-    }
+   
     
 //    [manager.requestSerializer setValue:API_APP_ID forHTTPHeaderField:@"CHEERSMIND-APPID"];
     
@@ -364,82 +328,7 @@ void _handleRequestFailed(NSError * _Nonnull error, failure failure, NSString *r
     }
 }
 
-//上传图片
-+(void)uploadImage:(UIImage *)image success:(success)success failure:(failure)failure{
-    NSString *postUrl = FE_URL_USER_UPLOAD_HEAD;
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
-    
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
-    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    
-    [manager.requestSerializer setValue:@"b3575040-17ba-47a3-8bb9-357f2a928582" forHTTPHeaderField:@"CHEERSMIND-APPID"];
-    
-    [manager.requestSerializer setValue:@"agent" forHTTPHeaderField:@"X-IOS"];
-    [manager.requestSerializer setValue:@"local" forHTTPHeaderField:@"zh"];
-    [manager.requestSerializer setValue:@"version" forHTTPHeaderField:[[UIDevice currentDevice] systemVersion]];
-    [manager.requestSerializer setValue:@"device"forHTTPHeaderField:[[UIDevice currentDevice] model]];
-    
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[@"text/plain",@"multipart/form-data"]];
 
-//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
-    [manager.requestSerializer setValue:[self getAuth:@"POST" url:postUrl] forHTTPHeaderField:@"Authorization"];
-    
-    [manager POST:postUrl parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        NSDate *date = [NSDate date];
-        NSDateFormatter *formormat = [[NSDateFormatter alloc]init];
-        [formormat setDateFormat:@"HHmmss"];
-        NSString *dateString = [formormat stringFromDate:date];
-           
-        NSString *fileName = [NSString  stringWithFormat:@"%@.png",dateString];
-        NSData *imageData = UIImageJPEGRepresentation(image, 1);
-        double scaleNum = (double)300*1024/imageData.length;
-        NSLog(@"图片压缩率：%f",scaleNum);
-           
-        if(scaleNum <1){
-            imageData = UIImageJPEGRepresentation(image, scaleNum);
-        }else{
-            imageData = UIImageJPEGRepresentation(image, 0.1);
-        }
-        [formData  appendPartWithFileData:imageData name:@"image" fileName:fileName mimeType:@"image/png"];
-    } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (success) {
-            success(responseObject);
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (error) {
-            NSDictionary * errorInfo = error.userInfo;
-            if ([[errorInfo allKeys] containsObject: @"com.alamofire.serialization.response.error.data"]){
-                NSData * errorData = errorInfo[@"com.alamofire.serialization.response.error.data"];
-                 NSDictionary *errorDict =  [NSJSONSerialization JSONObjectWithData: errorData options:NSJSONReadingAllowFragments error:nil];
-                
-                if(errorDict && ![errorDict isKindOfClass:[NSNull class]]){
-                    
-                    if(errorDict[@"file_path"] && ![errorDict[@"file_path"] isKindOfClass:[NSNull class]]){
-                        //TODO 此处上传头像已经成功，不知道为啥走失败回调，暂时处理
-                        success(errorDict);
-                    }else{
-                        failure(error);
-                    }
-                    
-                }else{
-                    failure(error);
-                }
-            }else{
-                failure(error);
-            }
-            
-        }
-    }];
-    
-   
-    
-
-}
 
 
 @end

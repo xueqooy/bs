@@ -590,19 +590,7 @@
     } failure:failure];
 }
 
-+ (void)uploadHeadImage:(UIImage *)image success:(success)success failure:(failure)failure{
-    
-    
-    [QSRequestBase uploadImage:image success:^(id data) {
-        if (success) {
-            success(data);
-        }
-    } failure:^(NSError *error) {
-        if(failure){
-            failure(error);
-        }
-    }];
-}
+
 
 + (void)addChildInfoByChildName:(NSString *)childName nickname:(NSString *)nickname sex:(NSString *)sex gradeNum:(NSString *)gradeNum birthday:(NSString *)birthday success:(success)success failure:(failure)failure {
     NSDictionary *params = @{@"child_name" : childName,

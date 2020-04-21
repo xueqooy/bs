@@ -66,10 +66,6 @@ typedef void (^failure)(NSError *error);
  */
 +(void) delete:(NSString *) url parameters:(id) params success:(success)success failure:(failure) failure;
 
-/**
- * post 上传头像
- */
-+(void)uploadImage:(UIImage *)image success:(success)success failure:(failure)failure;
 
 
 @end
