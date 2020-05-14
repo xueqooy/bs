@@ -405,6 +405,7 @@
 		046CF3DE244566EF004E83B4 /* BSLibCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046CF3DD244566EF004E83B4 /* BSLibCell.m */; };
 		046CF3E12445904C004E83B4 /* TCFilterCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046CF3E02445904C004E83B4 /* TCFilterCollectionCell.m */; };
 		046D5CD9244EDD48000293A4 /* TCSearchMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D5CD8244EDD48000293A4 /* TCSearchMainViewController.m */; };
+		046D5CF92451B4D4000293A4 /* UIViewController+LookinDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D5CEA2451B4D3000293A4 /* UIViewController+LookinDebug.m */; };
 		0489901A2417BD0F005F25DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 048990192417BD0F005F25DC /* AppDelegate.m */; };
 		048990202417BD0F005F25DC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0489901F2417BD0F005F25DC /* ViewController.m */; };
 		048990232417BD0F005F25DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048990212417BD0F005F25DC /* Main.storyboard */; };
@@ -489,6 +490,7 @@
 		04BE22BE241F4A2000C42540 /* FEEvaluationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BE22B4241F4A2000C42540 /* FEEvaluationView.m */; };
 		04BE22BF241F4A2000C42540 /* TCAppraisalHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BE22B5241F4A2000C42540 /* TCAppraisalHelper.m */; };
 		04BE22C5241F8BBB00C42540 /* TCTestMoreOperationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BE22C4241F8BBB00C42540 /* TCTestMoreOperationView.m */; };
+		04C1C0642452FC2500F79A77 /* TCMineImageLabelControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C1C0632452FC2500F79A77 /* TCMineImageLabelControl.swift */; };
 		04FB479E241FAD610073E948 /* OptionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FB4789241FAD610073E948 /* OptionModel.m */; };
 		04FB479F241FAD610073E948 /* QuestionChildModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FB478B241FAD610073E948 /* QuestionChildModel.m */; };
 		04FB47A0241FAD610073E948 /* FEAnswerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FB478C241FAD610073E948 /* FEAnswerModel.m */; };
@@ -1422,6 +1424,8 @@
 		046CF3E02445904C004E83B4 /* TCFilterCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCFilterCollectionCell.m; sourceTree = "<group>"; };
 		046D5CD7244EDD47000293A4 /* TCSearchMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCSearchMainViewController.h; sourceTree = "<group>"; };
 		046D5CD8244EDD48000293A4 /* TCSearchMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCSearchMainViewController.m; sourceTree = "<group>"; };
+		046D5CEA2451B4D3000293A4 /* UIViewController+LookinDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LookinDebug.m"; sourceTree = "<group>"; };
+		046D5CF82451B4D3000293A4 /* UIViewController+LookinDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LookinDebug.h"; sourceTree = "<group>"; };
 		048990152417BD0F005F25DC /* bs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		048990182417BD0F005F25DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		048990192417BD0F005F25DC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1579,6 +1583,8 @@
 		04BE22B5241F4A2000C42540 /* TCAppraisalHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCAppraisalHelper.m; sourceTree = "<group>"; };
 		04BE22C3241F8BBA00C42540 /* TCTestMoreOperationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCTestMoreOperationView.h; sourceTree = "<group>"; };
 		04BE22C4241F8BBB00C42540 /* TCTestMoreOperationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCTestMoreOperationView.m; sourceTree = "<group>"; };
+		04C1C0532452FB5D00F79A77 /* psyapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "psyapp-Bridging-Header.h"; sourceTree = "<group>"; };
+		04C1C0632452FC2500F79A77 /* TCMineImageLabelControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCMineImageLabelControl.swift; sourceTree = "<group>"; };
 		04FB4785241FAD610073E948 /* FEAnswerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEAnswerModel.h; sourceTree = "<group>"; };
 		04FB4787241FAD610073E948 /* FEAnswerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEAnswerManager.h; sourceTree = "<group>"; };
 		04FB4788241FAD610073E948 /* FEQuestionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEQuestionModel.h; sourceTree = "<group>"; };
@@ -2336,6 +2342,8 @@
 				04643139241B8331006FA1F5 /* Order */,
 				04643126241B82FB006FA1F5 /* Info */,
 				0464311F241B822D006FA1F5 /* Home */,
+				04C1C0532452FB5D00F79A77 /* psyapp-Bridging-Header.h */,
+				04C1C0632452FC2500F79A77 /* TCMineImageLabelControl.swift */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -2866,6 +2874,8 @@
 		0467EB942419E3AC002F0694 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				046D5CF82451B4D3000293A4 /* UIViewController+LookinDebug.h */,
+				046D5CEA2451B4D3000293A4 /* UIViewController+LookinDebug.m */,
 				0467EC202419E409002F0694 /* UtilsHeader.h */,
 				0467EC282419E429002F0694 /* Adapter */,
 				0467EC252419E428002F0694 /* RSA */,
@@ -3865,6 +3875,7 @@
 				TargetAttributes = {
 					048990142417BD0F005F25DC = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1120;
 					};
 					0489902F2417BD14005F25DC = {
 						CreatedOnToolsVersion = 11.2.1;
@@ -4367,6 +4378,7 @@
 				048FCADC244058F90047D4A2 /* RelevanceArticleTableViewCell.m in Sources */,
 				04FB479E241FAD610073E948 /* OptionModel.m in Sources */,
 				046430CD241B3172006FA1F5 /* FETextInputAlertView.m in Sources */,
+				046D5CF92451B4D4000293A4 /* UIViewController+LookinDebug.m in Sources */,
 				0467EC102419E3FB002F0694 /* NSObject+FEObserver.m in Sources */,
 				045D0206243D7B430006423E /* UniversityRankingItemModel.m in Sources */,
 				0467EC9C2419E45C002F0694 /* AALegend.m in Sources */,
@@ -4456,6 +4468,7 @@
 				048FCAF9244060180047D4A2 /* CommentRootMdoel.m in Sources */,
 				048FCACF244058F90047D4A2 /* TCDiscoveryBannerViewController.m in Sources */,
 				0467ECCE2419E77C002F0694 /* TCDeviceAccount.m in Sources */,
+				04C1C0642452FC2500F79A77 /* TCMineImageLabelControl.swift in Sources */,
 				048FCADF244058F90047D4A2 /* NewPagedFlowView.m in Sources */,
 				048FCAFF244060180047D4A2 /* FECommentView.m in Sources */,
 				0467ECC12419E712002F0694 /* AppSettingsManager.m in Sources */,
@@ -4783,10 +4796,12 @@
 			baseConfigurationReference = 3FD62DB9A20A6CF748AD06EB /* Pods-psyapp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = psyapp/bsDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = YNGPZD6JP4;
 				GCC_PREFIX_HEADER = "/Users/mac/psy-app-01/psyapp/psyapp/Others/PrefixHeader.pch";
 				INFOPLIST_FILE = "/Users/mac/psy-app-01/psyapp/psyapp/Others/Info.plist";
@@ -4799,6 +4814,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xueqooy.bs;
 				PRODUCT_NAME = bs;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "psyapp/Module/Mine/psyapp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -4808,10 +4826,12 @@
 			baseConfigurationReference = 23D0C645AD1FE68C81DF0936 /* Pods-psyapp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = psyapp/psyapp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = YNGPZD6JP4;
 				GCC_PREFIX_HEADER = "/Users/mac/psy-app-01/psyapp/psyapp/Others/PrefixHeader.pch";
 				INFOPLIST_FILE = "/Users/mac/psy-app-01/psyapp/psyapp/Others/Info.plist";
@@ -4824,6 +4844,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xueqooy.bs;
 				PRODUCT_NAME = bs;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "psyapp/Module/Mine/psyapp-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -4832,6 +4854,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CDC3536DB3FF79682C98B208 /* Pods-psyappTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JQQT65Q524;
@@ -4853,6 +4876,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1EC9CA5E1C4BD80D867726BF /* Pods-psyappTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JQQT65Q524;
@@ -4874,6 +4898,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 750BA93F025CEADE9F7B8324 /* Pods-psyappUITests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JQQT65Q524;
 				INFOPLIST_FILE = psyappUITests/Info.plist;
@@ -4893,6 +4918,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DBF26DCA1D6B912DD69E35E5 /* Pods-psyappUITests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JQQT65Q524;
 				INFOPLIST_FILE = psyappUITests/Info.plist;

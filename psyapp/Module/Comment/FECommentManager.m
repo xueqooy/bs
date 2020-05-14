@@ -116,6 +116,16 @@
 }
 
 + (void)commitComment:(NSString *)comment type:(FECommentType)type forContentId:(NSString *)contentId completion:(CommentResultBlock) completion{
+    NSArray *bans = @[@"傻", @"笨蛋", @"愚蠢", @"恶心", @"SB", @"麻痹", @"智障", @"共产党", @"尼玛", @"全家死", @"你妈", @"死", @"白痴", @"贱货", @"滚"];
+    for (NSString *ban in bans) {
+        if ([comment containsString:ban]) {
+            [QSToast toastWithMessage:@"评论中包含违禁词，不允许发布"];
+             if (completion) completion(NO, nil);
+            return;
+        }
+    }
+    if ([comment containsString:@"傻子"])
+    
     if ([NSString isEmptyString:contentId]) {
         [QSToast toastWithMessage:@"评论对象缺失"];
         if (completion) completion(NO, nil);

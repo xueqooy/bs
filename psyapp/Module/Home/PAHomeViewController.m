@@ -20,6 +20,8 @@
 #import "FECommonAlertView.h"
 #import "FECommentViewController.h"
 
+#import "bs-Swift.h"
+
 #import "PATestCategoryManager.h"
 @interface PAHomeViewController () <UIScrollViewDelegate, UISearchBarDelegate>
 @property (nonatomic, strong) QMUIButton *topLeftButton;
@@ -90,6 +92,7 @@
     _topRightButton.frame = CGRectMake(0, 0 , 29, 29);
     [view addSubview:_topRightButton];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
+    
 }
 
 - (void)viewDidLoad {
