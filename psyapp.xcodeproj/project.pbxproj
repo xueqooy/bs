@@ -4803,8 +4803,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = YNGPZD6JP4;
-				GCC_PREFIX_HEADER = "/Users/mac/psy-app-01/psyapp/psyapp/Others/PrefixHeader.pch";
-				INFOPLIST_FILE = "/Users/mac/psy-app-01/psyapp/psyapp/Others/Info.plist";
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/psyapp/Others/PrefixHeader.pch";
+				INFOPLIST_FILE = "$(PROJECT_DIR)/psyapp/Others/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4833,8 +4833,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = YNGPZD6JP4;
-				GCC_PREFIX_HEADER = "/Users/mac/psy-app-01/psyapp/psyapp/Others/PrefixHeader.pch";
-				INFOPLIST_FILE = "/Users/mac/psy-app-01/psyapp/psyapp/Others/Info.plist";
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/psyapp/Others/PrefixHeader.pch";
+				INFOPLIST_FILE = "$(PROJECT_DIR)/psyapp/Others/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

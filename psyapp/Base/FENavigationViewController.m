@@ -24,14 +24,21 @@
 }
 
 - (void)initializeNavigationBarAppearance {
-    [self.navigationBar setTintColor:UIColor.fe_mainColor];
-    [self.navigationBar setShadowImage:[UIImage new]];
-    [self.navigationBar setTitleTextAttributes:@{NSFontAttributeName:mFontBold(17),NSForegroundColorAttributeName:UIColor.whiteColor}];
     self.fd_interactivePopDisabled = NO;
 
     if (@available(iOS 13.0, *)) {
-       
+        UINavigationBarAppearance *appearance = [UINavigationBarAppearance new];
+        [appearance configureWithDefaultBackground];
+        appearance.backgroundColor = UIColor.fe_mainColor;
+        appearance.shadowColor = UIColor.clearColor;
+        appearance.titleTextAttributes = @{NSFontAttributeName:mFontBold(17),NSForegroundColorAttributeName:UIColor.whiteColor};
+        self.navigationBar.standardAppearance = appearance;
+        self.navigationBar.scrollEdgeAppearance = appearance;
     } else {
+        [self.navigationBar setTintColor:UIColor.fe_mainColor];
+        [self.navigationBar setShadowImage:[UIImage new]];
+        [self.navigationBar setTitleTextAttributes:@{NSFontAttributeName:mFontBold(17),NSForegroundColorAttributeName:UIColor.whiteColor}];
+        
         UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
            if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]){
                statusBar.backgroundColor = [UIColor colorWithHexString:@"ffffff" alpha:0];
