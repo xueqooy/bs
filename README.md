@@ -1,5 +1,7 @@
 # 高考学科专业选择助手
-毕业设计作品，完成于2020年5月
+毕业设计作品，完成于2020年5月。
+
+前后端应用，后端服务使用leanCloud。
 
 # 截图
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
